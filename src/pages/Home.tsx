@@ -818,46 +818,6 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
 
       {/* ── Responsive overrides ── */}
       <style>{`
-        /* Hero responsive logic */
-        @media (max-width: 900px) {
-          #hero {
-            min-height: auto !important;
-          }
-          #hero > div:first-child {
-            position: relative !important;
-            width: 100% !important;
-            height: 320px !important;
-            order: 2;
-          }
-          #hero > div:nth-child(2) {
-            display: none !important; /* Hide left gradient on stacked layout */
-          }
-          #hero > .container {
-            padding-block: 40px 20px !important;
-            order: 1;
-          }
-        }
-        @media (max-width: 479px) {
-          #hero > div:first-child {
-            height: 220px !important;
-          }
-        }
-
-        /* Stats card */
-        #stats .stats-card > div {
-          grid-template-columns: repeat(5, 1fr);
-        }
-        @media (max-width: 1023px) {
-          #stats .stats-card > div {
-            grid-template-columns: repeat(3, 1fr);
-          }
-        }
-        @media (max-width: 639px) {
-          #stats .stats-card > div {
-            grid-template-columns: repeat(2, 1fr);
-          }
-        }
-
         /* About grid */
         #about > .container > div {
           grid-template-columns: 1fr 1.4fr;
@@ -964,13 +924,6 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           }
         }
 
-        /* Stats card borders on mobile */
-        @media (max-width: 1023px) {
-          #stats .stats-card > div > div {
-            border-right: none !important;
-            border-bottom: 1px solid var(--border);
-          }
-        }
       `}</style>
     </div>
   );
