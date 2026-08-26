@@ -461,7 +461,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Layout helpers */
+/* Layout helpers — default = desktop visible, mobile hidden */
 .desktop-only-block {
   display: flex !important;
 }
@@ -475,14 +475,15 @@ body {
   display: none !important;
 }
 
-@media (max-width: 1495px) and (min-width: 753px) {
+/* Desktop/tablet hero responsive (768px and above) */
+@media (max-width: 1495px) and (min-width: 768px) {
   .hero-section {
     flex-direction: row !important;
     min-height: auto !important;
     height: auto !important;
     align-items: stretch !important;
   }
-  
+
   .hero-left-col {
     width: 45% !important;
     padding-left: clamp(24px, 4vw, 40px) !important;
@@ -493,7 +494,7 @@ body {
     align-items: center !important;
     justify-content: flex-start !important;
   }
-  
+
   .hero-title {
     font-size: clamp(32px, 3.5vw, 48px) !important;
   }
@@ -516,7 +517,7 @@ body {
     width: 100% !important;
     height: 100% !important;
   }
-  
+
   .stats-grid {
     grid-template-columns: repeat(3, 1fr) !important;
   }
@@ -534,15 +535,19 @@ body {
     border-bottom: none !important;
   }
 }
-/* ── Tablet navbar height ── */
+
+/* Tablet navbar height (768px–1099px) */
 @media (min-width: 768px) and (max-width: 1099px) {
   :root { --navbar-h: 130px; }
 }
 
-@media (max-width: 752px) {
-  :root { --navbar-h: 96px; }
+/* ══════════════════════════════════════════════════════════
+   MOBILE ( ≤ 767px ) — switch to mobile hero + compact header
+══════════════════════════════════════════════════════════ */
+@media (max-width: 767px) {
+  :root { --navbar-h: 100px; }
 
-
+  /* Hide desktop hero, show mobile hero */
   .desktop-only-block {
     display: none !important;
   }
@@ -560,113 +565,240 @@ body {
     display: flex !important;
   }
 
+  /* ─── Mobile hero section outer shell ─── */
   .hero-section-mobile {
     display: flex;
     flex-direction: column;
-    min-height: auto;
-    background-color: #FFFFFF;
+    background: #ffffff;
     position: relative;
     overflow: hidden;
-    padding-top: calc(var(--navbar-h) + 20px);
+    /* push content below fixed navbar */
+    padding-top: var(--navbar-h);
   }
-  
-  .mobile-hero-wrapper {
+
+  /* ══════════════════════════════════════════
+     HERO CARD
+     The truck SVG is the entire scene (sky,
+     cranes, ground, truck). Text sits on top.
+  ══════════════════════════════════════════ */
+  .mob-hero-card {
+    position: relative;
+    /* Horizontal margin gives the card the look from the reference */
+    margin: 0 clamp(12px, 4vw, 20px);
+    border-radius: 16px;
+    overflow: hidden;
+    /* Subtle shadow to lift the card off the page */
+    box-shadow: 0 4px 24px rgba(7, 26, 54, 0.14);
+    /* No fixed height — let the image set the aspect ratio */
+    line-height: 0;
+  }
+
+  /* The scene image fills the card completely */
+  .mob-hero-scene-img {
+    display: block;
     width: 100%;
-    padding-inline: 24px;
+    height: auto;
+    /* Preserve every pixel of the scene: sky, cranes, ground, truck */
+    object-fit: contain;
+    line-height: 0;
+  }
+
+  /* Text overlay — covers the upper portion of the card */
+  .mob-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    /* White gradient fades from opaque at top (where text is) to transparent lower down */
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.92) 0%,
+      rgba(255, 255, 255, 0.82) 30%,
+      rgba(255, 255, 255, 0.55) 55%,
+      rgba(255, 255, 255, 0.00) 80%
+    );
+    padding: clamp(16px, 4.5vw, 24px) clamp(16px, 4.5vw, 24px) clamp(40px, 12vw, 60px);
+    line-height: normal;
+  }
+
+  /* Main heading */
+  .mob-hero-title {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-weight: 900;
+    font-size: clamp(38px, 10.5vw, 54px);
+    line-height: 0.97;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    margin: 0 0 12px 0;
+    padding: 0;
+    user-select: none;
+    /* Stack spans vertically */
     display: flex;
     flex-direction: column;
   }
-  
-  .hero-section-mobile .hero-label {
-    margin-bottom: 8px;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: var(--blue);
-  }
-  
-  .hero-section-mobile .hero-title {
-    font-size: clamp(38px, 10vw, 56px);
-    line-height: 1.05;
-    font-weight: 800;
+
+  .mob-hero-title-dark {
     color: var(--navy);
-    margin-bottom: 16px;
+    display: block;
   }
-  
-  .hero-section-mobile .hero-paragraph {
-    font-size: 16px;
-    line-height: 1.6;
+
+  .mob-hero-title-blue {
+    color: var(--blue);
+    display: block;
+  }
+
+  /* Description paragraph under heading */
+  .mob-hero-desc {
+    font-size: clamp(13px, 3.6vw, 16px);
+    line-height: 1.55;
     color: var(--text-muted);
-    margin-bottom: 24px;
+    max-width: min(300px, 80vw);
+    margin: 0;
   }
-  
-  .mobile-truck-container {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16/10;
-    margin-bottom: 24px;
-    position: relative;
-  }
-  
-  .mobile-truck-img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: center;
-  }
-  
-  .hero-section-mobile .hero-buttons {
+
+  /* ══ CTA BUTTONS ══ */
+  .mob-cta-section {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin-bottom: 20px;
-  }
-  
-  .hero-section-mobile .hero-buttons button {
-    width: 100%;
-    min-height: 64px;
-    border-radius: 10px;
-    font-size: 15px;
-    font-weight: 700;
-    justify-content: center;
-  }
-  
-  .hero-section-mobile .hero-location {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--navy);
-    margin-bottom: 40px;
-  }
-  
-  .hero-section-mobile .hero-wave-container {
-    position: relative;
-    margin-top: -30px;
-    height: 60px;
-    z-index: 6;
-  }
-  
-  .stats-section {
-    margin-top: -20px !important;
-    padding-inline: 20px !important;
+    padding: 20px clamp(20px, 6vw, 28px) 10px;
+    background: #ffffff;
   }
 
+  /* Primary — solid blue */
+  .mob-btn-primary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 64px;
+    padding: 0 clamp(18px, 5vw, 24px);
+    background: var(--blue);
+    color: #ffffff;
+    font-family: inherit;
+    font-size: clamp(13px, 3.5vw, 15px);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border: 2px solid var(--blue);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
+  }
+  .mob-btn-primary:hover {
+    background: #0554a8;
+    border-color: #0554a8;
+    box-shadow: 0 6px 20px rgba(8, 104, 201, 0.28);
+    transform: translateY(-1px);
+  }
+  .mob-btn-primary:active { transform: scale(0.98); }
+
+  /* Secondary — white bg, blue border */
+  .mob-btn-secondary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 64px;
+    padding: 0 clamp(18px, 5vw, 24px);
+    background: #ffffff;
+    color: var(--blue);
+    font-family: inherit;
+    font-size: clamp(13px, 3.5vw, 15px);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border: 2px solid var(--blue);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background var(--transition), color var(--transition), transform var(--transition);
+  }
+  .mob-btn-secondary:hover {
+    background: var(--blue-light);
+    transform: translateY(-1px);
+  }
+  .mob-btn-secondary:active { transform: scale(0.98); }
+
+  /* ══ SERVICE AREA ══ */
+  .mob-service-area {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 14px clamp(20px, 6vw, 28px) 20px;
+    background: #ffffff;
+    font-size: clamp(11px, 3vw, 13px);
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    line-height: 1.55;
+    flex-wrap: wrap;
+  }
+  .mob-service-area svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* Wave sits directly below service area */
+  .hero-section-mobile .hero-wave-container {
+    position: relative;
+    margin-top: 0;
+    height: 44px;
+    z-index: 6;
+    overflow: hidden;
+  }
+  .hero-section-mobile .hero-wave-svg {
+    width: 100%;
+    height: 44px;
+    object-fit: fill;
+  }
+
+  /* Stats */
+  .stats-section {
+    margin-top: -16px !important;
+    padding-inline: 16px !important;
+  }
   .stats-grid {
     grid-template-columns: 1fr !important;
   }
-
   .stats-item {
     border-right: none !important;
     border-bottom: 1px solid var(--border) !important;
     padding: 16px 20px !important;
   }
-
   .stats-item:last-child {
     border-bottom: none !important;
   }
 }
+
+/* ── Tiny phones ( ≤ 380px ) ── */
+@media (max-width: 380px) {
+  .mob-hero-card {
+    margin: 0 10px;
+  }
+  .mob-hero-title {
+    font-size: clamp(34px, 9.5vw, 42px);
+  }
+  .mob-hero-overlay {
+    padding: 12px 12px 30px;
+  }
+  .mob-cta-section {
+    padding: 16px 14px 8px;
+  }
+  .mob-btn-primary,
+  .mob-btn-secondary {
+    min-height: 58px;
+    font-size: 13px;
+  }
+}
+
+/* ── Medium phones ( 481px–767px ) ── */
+@media (min-width: 481px) and (max-width: 767px) {
+  .mob-hero-title {
+    font-size: clamp(44px, 10vw, 58px);
+  }
+}
+
 
 /* ── Timeline connector line ── */
 .timeline-line {

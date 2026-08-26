@@ -370,23 +370,64 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
           .nh-compact-row { display: none; }
         }
 
-        /* Tablet + mobile — compact row */
+        /* Tablet + mobile — compact row (logo + hamburger only) */
         @media (max-width: 1099px) {
           .nh-desktop-row { display: none; }
           .nh-compact-row { display: flex; }
         }
 
-        /* Tablet (768–1099px): slightly larger logo */
+        /* Tablet (768px–1099px) */
         @media (min-width: 768px) and (max-width: 1099px) {
           .nh-logo-img--compact { height: clamp(64px, 8vw, 80px); }
           .nh-compact-row { padding: 26px 24px 12px; }
         }
 
-        /* Mobile (< 768px): compact, large logo */
+        /* Mobile (≤ 767px): compact header, large clear logo */
         @media (max-width: 767px) {
-          .nh-wrapper { padding: 10px 10px 0; }
-          .nh-logo-img--compact { height: 70px; }
-          .nh-compact-row { padding: 24px 16px 10px; }
+          /* Tighten the outer wrapper so it never causes overflow */
+          .nh-wrapper {
+            padding: 8px 8px 0;
+            /* Prevent it from ever exceeding the viewport */
+            max-width: 100vw;
+            box-sizing: border-box;
+          }
+          /* The floating card must not overflow */
+          .nh-card {
+            overflow: hidden;
+            width: 100%;
+            box-sizing: border-box;
+          }
+          .nh-compact-row {
+            padding: 20px 16px 10px;
+            /* Make sure it never overflows */
+            width: 100%;
+            box-sizing: border-box;
+            overflow: hidden;
+          }
+          /* Logo: clearly readable on small screens */
+          .nh-logo-img--compact {
+            height: clamp(56px, 15vw, 76px);
+            max-width: calc(100vw - 80px); /* leave room for hamburger */
+          }
+          /* Hamburger: large touch target, always visible */
+          .nh-hamburger {
+            flex-shrink: 0;
+            padding: 10px;
+            margin-left: auto;
+          }
+          /* Drawer must also not overflow */
+          .nh-drawer {
+            width: 100%;
+            box-sizing: border-box;
+            overflow-x: hidden;
+          }
+        }
+
+        /* Very small phones (≤ 360px) */
+        @media (max-width: 360px) {
+          .nh-wrapper { padding: 6px 6px 0; }
+          .nh-compact-row { padding: 18px 12px 8px; }
+          .nh-logo-img--compact { height: clamp(48px, 14vw, 64px); }
         }
       `}</style>
     </>

@@ -92,7 +92,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       {/* ══════════════════════════════════════════════════════
           §1  HERO
       ══════════════════════════════════════════════════════ */}
-      {/* ── Desktop/Tablet Hero (≥ 900px) ── */}
+      {/* ── Desktop/Tablet Hero (≥ 752px) ── */}
       <section id="hero-desktop" className="hero-section desktop-only-block">
         <div className="hero-left-col">
           <div className="hero-left-content">
@@ -142,74 +142,68 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* ── Mobile Hero (< 900px) ── */}
+      {/* ── Mobile Hero (≤ 767px) ── */}
       <section id="hero-mobile" className="hero-section-mobile mobile-only-block">
-        <div className="mobile-hero-wrapper">
-          <p className="hero-label">READY MIX CONCRETE</p>
-          <h1 className="hero-title">
-            BUILD WITH<br />
-            <span className="hero-title-accent">RESPECT</span>
-          </h1>
-          <p className="hero-paragraph">
-            For your vision, our materials, and Lucknow’s infrastructure. 18+ years of dependable service.
-          </p>
-          
-          <div className="mobile-truck-container">
-            <img
-              src="/swastik_ready_mix_truck.svg"
-              alt="Swastik Mixtures Ready Mix Concrete Truck"
-              className="mobile-truck-img"
-            />
-          </div>
 
-          <div className="hero-buttons">
-            <button className="btn-primary" onClick={() => onNavigate('/contact')} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', paddingInline: '20px' }}>
-              <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" /></svg>
-                REQUEST A QUOTE
-              </span>
-              <span>→</span>
-            </button>
-            <button className="btn-secondary" onClick={() => onNavigate('/products')} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', paddingInline: '20px' }}>
-              <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /><polyline points="3.27 6.96 12 12.01 20.73 6.96" /><line x1="12" y1="22.08" x2="12" y2="12" /></svg>
-                EXPLORE PRODUCTS
-              </span>
-              <span>→</span>
-            </button>
-          </div>
+        {/* ── Hero Card: truck SVG is the full scene (sky + cranes + ground + truck) ── */}
+        <div className="mob-hero-card">
 
-          <div className="hero-location">
-            <svg width="14" height="14" viewBox="0 0 20 20" fill="var(--blue)" style={{ flexShrink: 0 }}>
-              <path fillRule="evenodd" d="M5.05 4.05a7 7 0 1 1 9.9 9.9L10 18.9l-4.95-4.95a7 7 0 0 1 0-9.9zM10 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" clipRule="evenodd"/>
-            </svg>
-            <span>
-              <strong style={{ color: 'var(--navy)', fontWeight: 700 }}>SERVICE AREA:</strong> LUCKNOW, UTTAR PRADESH
+          {/* Full-bleed scene image — the SVG contains the complete construction background */}
+          <img
+            src="/swastik_ready_mix_truck.svg"
+            alt="Swastik Mixtures Ready Mix Concrete Truck on construction site"
+            className="mob-hero-scene-img"
+          />
+
+          {/* Text overlay — absolutely positioned top-left over the scene */}
+          <div className="mob-hero-overlay">
+            <h1 className="mob-hero-title">
+              <span className="mob-hero-title-dark">BUILD WITH</span>
+              <span className="mob-hero-title-blue">RESPECT</span>
+            </h1>
+            <p className="mob-hero-desc">
+              For your vision, our materials, and Lucknow's
+              infrastructure. 18+ years of dependable service.
+            </p>
+          </div>
+        </div>
+
+        {/* CTA buttons — below the card */}
+        <div className="mob-cta-section">
+          <button className="mob-btn-primary" onClick={() => onNavigate('/contact')}>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+              </svg>
+              REQUEST A QUOTE
             </span>
-          </div>
+            <span>→</span>
+          </button>
+          <button className="mob-btn-secondary" onClick={() => onNavigate('/products')}>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                <line x1="12" y1="22.08" x2="12" y2="12" />
+              </svg>
+              EXPLORE PRODUCTS
+            </span>
+            <span>→</span>
+          </button>
+        </div>
 
-          {/* Mobile Trust features grid */}
-          <div className="mobile-trust-grid" style={{ width: '100%', marginTop: '30px' }}>
-            <div className="mobile-trust-item">
-              <div className="mobile-trust-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <circle cx="12" cy="12" r="10" />
-                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                  <path d="M2 12h20" />
-                </svg>
-              </div>
-              <span>RESPONSIBLE</span>
-            </div>
-            
-            <div className="mobile-trust-item">
-              <div className="mobile-trust-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                </svg>
-              </div>
-              <span>SAFETY</span>
-            </div>
-          </div>
+        {/* Service area */}
+        <div className="mob-service-area">
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="var(--blue)" style={{ flexShrink: 0 }}>
+            <path fillRule="evenodd" d="M5.05 4.05a7 7 0 1 1 9.9 9.9L10 18.9l-4.95-4.95a7 7 0 0 1 0-9.9zM10 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" clipRule="evenodd"/>
+          </svg>
+          <span>
+            <strong style={{ color: 'var(--navy)', fontWeight: 700 }}>SERVICE AREA:</strong>{' '}
+            LUCKNOW, UTTAR PRADESH
+          </span>
         </div>
 
         {/* BLUE DECORATIVE WAVE */}
