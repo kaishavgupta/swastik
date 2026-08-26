@@ -1,35 +1,67 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { navigationLinks } from '../data/mockData';
 
-
 interface NavbarProps {
   currentPath: string;
   onNavigate: (path: string) => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
-  const [mobileOpen, setMobileOpen] = useState(false);
+/* ─── Scroll behaviour ─── */
+function useScroll() {
   const [scrolled, setScrolled] = useState(false);
-  const [visible, setVisible] = useState(true);
-  const lastScrollY = useRef(0);
+  const [hidden, setHidden]     = useState(false);
+  const lastY = useRef(0);
 
   useEffect(() => {
-    const onScroll = () => {
-      const cur = window.scrollY;
-      setScrolled(cur > 8);
-      if (Math.abs(cur - lastScrollY.current) > 6) {
-        if (cur > lastScrollY.current && cur > 80) {
-          setVisible(false);
-          setMobileOpen(false);
-        } else {
-          setVisible(true);
-        }
+    const handler = () => {
+      const cur  = window.scrollY;
+      const diff = cur - lastY.current;
+      setScrolled(cur > 10);
+      if (Math.abs(diff) > 6) {
+        if (diff > 0 && cur > 60) setHidden(true);
+        else if (diff < 0)        setHidden(false);
       }
-      lastScrollY.current = cur;
+      if (cur <= 10) setHidden(false);
+      lastY.current = cur;
     };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    window.addEventListener('scroll', handler, { passive: true });
+    return () => window.removeEventListener('scroll', handler);
   }, []);
+
+  return { scrolled, hidden };
+}
+
+/* ─── Blue wave SVG (top accent of the floating card) ─── */
+const BlueWave: React.FC = () => (
+  <svg
+    viewBox="0 0 1200 26"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+    style={{ position: 'absolute', top: 0, left: 0, right: 0, width: '100%', height: '26px', display: 'block', pointerEvents: 'none' }}
+  >
+    {/* Flat left, gentle curve that deepens toward right */}
+    <path d="M0,0 L0,14 Q300,18 600,14 Q900,10 1200,26 L1200,0 Z" fill="#0868C9" />
+  </svg>
+);
+
+/* ─── Vertical divider between logo and nav ─── */
+const Divider: React.FC = () => (
+  <div style={{
+    width: '1px',
+    height: '56px',
+    background: '#DCE5EF',
+    flexShrink: 0,
+    alignSelf: 'center',
+  }} aria-hidden="true" />
+);
+
+/* ═══════════════════════════════════════════════════════
+   MAIN COMPONENT
+═══════════════════════════════════════════════════════ */
+export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const { scrolled, hidden } = useScroll();
 
   const go = (path: string) => {
     onNavigate(path);
@@ -37,225 +69,327 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  return (
-    <header
-      className={[
-        'navbar-root',
-        !visible ? 'hidden' : '',
-      ].join(' ')}
-      style={{
-        background: '#fff',
-        borderBottom: scrolled ? '1px solid #DCE5EF' : '1px solid transparent',
-        boxShadow: scrolled ? '0 2px 12px rgba(7,26,54,.07)' : 'none',
-      }}
-    >
-      {/* ── Main bar ── */}
-      <div
-        className="container"
-        style={{
-          height: 'var(--navbar-h)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          gap: '24px',
-        }}
+  /* ─── nav link button ─── */
+  const NavLink = ({ link }: { link: { path: string; name: string } }) => {
+    const active = currentPath === link.path;
+    return (
+      <button
+        onClick={() => go(link.path)}
+        className={`nh-link${active ? ' nh-link--active' : ''}`}
       >
-        {/* Logo */}
-        <button
-          onClick={() => go('/')}
-          style={{ background: 'none', border: 'none', padding: 0, flexShrink: 0 }}
-          aria-label="Swastik Mixtures – Home"
-          className="desktop-only"
-        >
-          <img src="/swastik-mixtures-logo.svg" alt="Swastik Mixtures Logo" style={{ height: '77px', width: 'auto' }} />
-        </button>
-        <button
-          onClick={() => go('/')}
-          style={{ background: 'none', border: 'none', padding: 0, flexShrink: 0 }}
-          aria-label="Swastik Mixtures – Home"
-          className="mobile-only"
-        >
-          <img src="/swastik-mixtures-logo.svg" alt="Swastik Mixtures Logo" style={{ height: '66.5px', width: 'auto' }} />
-        </button>
+        {link.name}
+        {active && <span className="nh-link-bar" />}
+      </button>
+    );
+  };
 
-        {/* Desktop nav */}
-        <nav
-          className="desktop-nav"
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '12px',
-          }}
-          aria-label="Main navigation"
-        >
-          {navigationLinks.map(link => {
-            const active = currentPath === link.path;
-            return (
-              <button
-                key={link.path}
-                onClick={() => go(link.path)}
-                style={{
-                  background: 'none',
-                  border: 'none',
-                  padding: '10px 18px',
-                  position: 'relative',
-                  fontSize: '16px',
-                  fontWeight: active ? 700 : 600,
-                  color: active ? 'var(--blue)' : 'var(--text)',
-                  cursor: 'pointer',
-                  borderRadius: '4px',
-                  transition: 'color 200ms ease',
-                  whiteSpace: 'nowrap',
-                }}
-                onMouseEnter={e => {
-                  if (!active) (e.currentTarget as HTMLElement).style.color = 'var(--blue)';
-                }}
-                onMouseLeave={e => {
-                  if (!active) (e.currentTarget as HTMLElement).style.color = 'var(--text)';
-                }}
-              >
-                {link.name}
-                {active && (
-                  <span
-                    style={{
-                      position: 'absolute',
-                      bottom: 0,
-                      left: '18px',
-                      right: '18px',
-                      height: '3px',
-                      background: 'var(--blue)',
-                      borderRadius: '2px',
-                    }}
-                  />
-                )}
-              </button>
-            );
-          })}
-        </nav>
+  return (
+    <>
+      {/* ═══════════════════════════════════════════════════════════
+          OUTER WRAPPER — fixed, full-width, transparent background
+          padding creates the "floating card" margin from edges
+      ═══════════════════════════════════════════════════════════ */}
+      <div
+        className={`nh-wrapper${hidden ? ' nh-wrapper--hidden' : ''}`}
+        role="banner"
+      >
+        {/* ─── Floating card ─── */}
+        <div className={`nh-card${scrolled ? ' nh-card--scrolled' : ''}`}>
 
-        {/* CTA */}
-        <button
-          onClick={() => go('/contact')}
-          className="btn-primary desktop-cta"
-          style={{
-            flexShrink: 0,
-            width: '180px',
-            height: '52px',
-            display: 'inline-flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: '14px',
-            fontWeight: 700,
-            padding: 0,
-          }}
-        >
-          GET A QUOTE →
-        </button>
+          {/* Blue wave accent at top */}
+          <BlueWave />
 
-        {/* Hamburger and User Profile Silhouette on Mobile */}
-        <div className="mobile-actions-wrapper">
-          {/* Hamburger Icon */}
-          <button
-            className="hamburger-btn"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-expanded={mobileOpen}
-            aria-label="Toggle menu"
-            style={{
-              background: 'none',
-              border: 'none',
-              padding: '6px',
-              color: 'var(--navy)',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-            }}
-          >
-            {mobileOpen
-              ? <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-              : <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
-            }
-          </button>
-          
-          {/* User Silhouette Icon */}
-          <button
-            aria-label="User Profile"
-            style={{
-              background: 'none',
-              border: 'none',
-              padding: '6px',
-              color: 'var(--navy)',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-            }}
-          >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path fillRule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clipRule="evenodd" />
-            </svg>
-          </button>
-        </div>
-      </div>
+          {/* ═══ LARGE DESKTOP LAYOUT (≥ 1100px) ═══ */}
+          <div className="nh-desktop-row">
 
-      {/* ── Mobile drawer ── */}
-      {mobileOpen && (
-        <div
-          style={{
-            background: '#fff',
-            borderTop: '1px solid var(--border)',
-            padding: '12px 0 20px',
-          }}
-        >
-          <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+            {/* Logo box */}
+            <button
+              onClick={() => go('/')}
+              className="nh-logo-btn"
+              aria-label="Swastik Mixtures – Home"
+            >
+              <img
+                src="/swastik-mixtures-logo.svg"
+                alt="Swastik Mixtures"
+                className="nh-logo-img"
+              />
+            </button>
+
+            <Divider />
+
+            {/* Nav links */}
+            <nav className="nh-nav" aria-label="Primary navigation">
+              {navigationLinks.map(link => (
+                <NavLink key={link.path} link={link} />
+              ))}
+            </nav>
+
+            {/* Spacer pushes CTA to far right */}
+            <div style={{ flex: 1 }} />
+
+            {/* GET A QUOTE CTA */}
+            <button
+              onClick={() => go('/contact')}
+              className="btn-primary nh-cta"
+            >
+              GET A QUOTE →
+            </button>
+          </div>
+
+          {/* ═══ TABLET + MOBILE LAYOUT (< 1100px) ═══ */}
+          <div className="nh-compact-row">
+
+            {/* Logo */}
+            <button
+              onClick={() => go('/')}
+              className="nh-logo-btn"
+              aria-label="Swastik Mixtures – Home"
+            >
+              <img
+                src="/swastik-mixtures-logo.svg"
+                alt="Swastik Mixtures"
+                className="nh-logo-img nh-logo-img--compact"
+              />
+            </button>
+
+            {/* Hamburger */}
+            <button
+              className="nh-hamburger"
+              onClick={() => setMobileOpen(o => !o)}
+              aria-expanded={mobileOpen}
+              aria-label="Toggle navigation"
+            >
+              {mobileOpen
+                ? <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                : <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+              }
+            </button>
+          </div>
+
+        </div>{/* /nh-card */}
+
+        {/* ─── Mobile drawer (outside the card, below it) ─── */}
+        {mobileOpen && (
+          <div className="nh-drawer">
             {navigationLinks.map(link => {
               const active = currentPath === link.path;
               return (
                 <button
                   key={link.path}
                   onClick={() => go(link.path)}
-                  style={{
-                    background: active ? 'var(--blue-light)' : 'none',
-                    border: 'none',
-                    borderLeft: active ? '3px solid var(--blue)' : '3px solid transparent',
-                    padding: '12px 16px',
-                    textAlign: 'left',
-                    fontSize: '15px',
-                    fontWeight: active ? 700 : 500,
-                    color: active ? 'var(--blue)' : 'var(--text)',
-                    cursor: 'pointer',
-                    borderRadius: '0 6px 6px 0',
-                    width: '100%',
-                  }}
+                  className={`nh-drawer-btn${active ? ' nh-drawer-btn--active' : ''}`}
                 >
                   {link.name}
                 </button>
               );
             })}
-            <div style={{ marginTop: '12px' }}>
-              <button
-                onClick={() => go('/contact')}
-                className="btn-primary"
-                style={{ width: '100%', justifyContent: 'center' }}
-              >
-                GET A QUOTE →
-              </button>
-            </div>
+            <button
+              onClick={() => go('/contact')}
+              className="btn-primary"
+              style={{ width: '100%', marginTop: '12px', justifyContent: 'center' }}
+            >
+              GET A QUOTE →
+            </button>
           </div>
-        </div>
-      )}
+        )}
+      </div>
 
-      {/* Responsive styles */}
+      {/* ═══════════════════════════════════════════════════════════
+          SCOPED STYLES
+      ═══════════════════════════════════════════════════════════ */}
       <style>{`
-        .desktop-nav  { display: flex; }
-        .desktop-cta  { display: inline-flex; }
-        .mobile-actions-wrapper { display: none; }
+        /* ── Outer wrapper: fixed, transparent, provides floating margin ── */
+        .nh-wrapper {
+          position: fixed;
+          top: 0; left: 0; right: 0;
+          z-index: 200;
+          padding: 14px 16px 0;
+          pointer-events: none; /* clicks pass through padding area */
+          transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .nh-wrapper--hidden {
+          transform: translateY(-120%);
+        }
 
-        @media (max-width: 752px) {
-          .desktop-nav  { display: none; }
-          .desktop-cta  { display: none; }
-          .mobile-actions-wrapper { display: flex !important; align-items: center; gap: 12px; }
+        /* ── Floating card ── */
+        .nh-card {
+          background: #fff;
+          border-radius: 14px;
+          box-shadow: 0 4px 24px rgba(7, 26, 54, 0.10);
+          position: relative;
+          overflow: visible; /* allow dropdowns to overflow */
+          pointer-events: auto;
+          transition: box-shadow 0.3s ease;
+        }
+        .nh-card::before {
+          /* invisible top-left/top-right border-radius clip for wave */
+          content: '';
+          position: absolute;
+          inset: 0;
+          border-radius: 14px;
+          pointer-events: none;
+          z-index: -1;
+        }
+        .nh-card--scrolled {
+          box-shadow: 0 8px 40px rgba(7, 26, 54, 0.15);
+        }
+
+        /* ── Logo button ── */
+        .nh-logo-btn {
+          background: none;
+          border: none;
+          padding: 0;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          flex-shrink: 0;
+        }
+        .nh-logo-img {
+          height: clamp(72px, 6vw, 92px);
+          width: auto;
+          display: block;
+        }
+        .nh-logo-img--compact {
+          height: clamp(60px, 9vw, 80px);
+        }
+
+        /* ── Nav links ── */
+        .nh-nav {
+          display: flex;
+          align-items: center;
+          gap: 0;
+          flex-wrap: nowrap;
+        }
+        .nh-link {
+          position: relative;
+          background: none;
+          border: none;
+          padding: 8px clamp(8px, 1.1vw, 16px);
+          font-size: clamp(13px, 1.05vw, 15px);
+          font-weight: 600;
+          color: #0B1B35;
+          cursor: pointer;
+          border-radius: 4px;
+          white-space: nowrap;
+          transition: color 200ms ease;
+        }
+        .nh-link:hover { color: #0868C9; }
+        .nh-link--active { color: #0868C9; font-weight: 700; }
+        .nh-link-bar {
+          position: absolute;
+          bottom: 2px;
+          left: clamp(8px, 1.1vw, 16px);
+          right: clamp(8px, 1.1vw, 16px);
+          height: 3px;
+          background: #0868C9;
+          border-radius: 2px;
+        }
+
+        /* ── CTA button override ── */
+        .nh-cta {
+          height: 48px;
+          padding: 0 clamp(14px, 1.5vw, 28px);
+          font-size: clamp(12px, 1vw, 14px);
+          font-weight: 700;
+          white-space: nowrap;
+          border-radius: 10px;
+          flex-shrink: 0;
+        }
+
+        /* ── Desktop row (≥ 1100px) ── */
+        .nh-desktop-row {
+          display: none;
+          align-items: center;
+          gap: clamp(10px, 1.5vw, 24px);
+          padding: 30px clamp(16px, 2.5vw, 32px) 14px;
+        }
+
+        /* ── Compact row (< 1100px) ── */
+        .nh-compact-row {
+          display: none;
+          align-items: center;
+          justify-content: space-between;
+          padding: 28px 20px 12px;
+        }
+
+        /* ── Hamburger ── */
+        .nh-hamburger {
+          background: none;
+          border: none;
+          padding: 8px;
+          color: #071A36;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          border-radius: 8px;
+          transition: background 150ms ease;
+        }
+        .nh-hamburger:hover { background: #EAF4FF; }
+
+        /* ── Mobile drawer ── */
+        .nh-drawer {
+          background: #fff;
+          border-radius: 0 0 14px 14px;
+          margin-top: 2px;
+          padding: 12px 20px 20px;
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+          box-shadow: 0 8px 24px rgba(7, 26, 54, 0.10);
+          pointer-events: auto;
+        }
+        .nh-drawer-btn {
+          background: none;
+          border: none;
+          border-left: 3px solid transparent;
+          padding: 12px 16px;
+          text-align: left;
+          font-size: 15px;
+          font-weight: 500;
+          color: #0B1B35;
+          cursor: pointer;
+          border-radius: 0 6px 6px 0;
+          width: 100%;
+          transition: background 150ms ease, color 150ms ease;
+        }
+        .nh-drawer-btn:hover { background: #EAF4FF; color: #0868C9; }
+        .nh-drawer-btn--active {
+          background: #EAF4FF;
+          border-left-color: #0868C9;
+          color: #0868C9;
+          font-weight: 700;
+        }
+
+        /* ═══════════ BREAKPOINTS ═══════════ */
+
+        /* Large desktop — full row */
+        @media (min-width: 1100px) {
+          .nh-desktop-row { display: flex; }
+          .nh-compact-row { display: none; }
+        }
+
+        /* Tablet + mobile — compact row */
+        @media (max-width: 1099px) {
+          .nh-desktop-row { display: none; }
+          .nh-compact-row { display: flex; }
+        }
+
+        /* Tablet (768–1099px): slightly larger logo */
+        @media (min-width: 768px) and (max-width: 1099px) {
+          .nh-logo-img--compact { height: clamp(64px, 8vw, 80px); }
+          .nh-compact-row { padding: 26px 24px 12px; }
+        }
+
+        /* Mobile (< 768px): compact, large logo */
+        @media (max-width: 767px) {
+          .nh-wrapper { padding: 10px 10px 0; }
+          .nh-logo-img--compact { height: 70px; }
+          .nh-compact-row { padding: 24px 16px 10px; }
         }
       `}</style>
-    </header>
+    </>
   );
 };
 

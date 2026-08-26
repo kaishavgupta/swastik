@@ -16,7 +16,7 @@
   --shadow-sm: 0 1px 3px rgba(7, 26, 54, .08);
   --shadow-md: 0 4px 16px rgba(7, 26, 54, .10);
   --shadow-lg: 0 10px 32px rgba(7, 26, 54, .12);
-  --navbar-h: 88px;
+  --navbar-h: 130px;
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 14px;
@@ -534,8 +534,15 @@ body {
     border-bottom: none !important;
   }
 }
+/* ── Tablet navbar height ── */
+@media (min-width: 768px) and (max-width: 1099px) {
+  :root { --navbar-h: 130px; }
+}
 
 @media (max-width: 752px) {
+  :root { --navbar-h: 96px; }
+
+
   .desktop-only-block {
     display: none !important;
   }
