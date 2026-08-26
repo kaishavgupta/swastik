@@ -16,7 +16,7 @@ const ArrowRight = () => (
 const CheckIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0, marginTop: 3 }}>
     <path d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"
-      stroke="#0868C9" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      stroke="var(--blue)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
@@ -117,7 +117,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
             </div>
 
             <div className="hero-location">
-              <svg width="14" height="14" viewBox="0 0 20 20" fill="#0868C9" style={{ flexShrink: 0 }}>
+              <svg width="14" height="14" viewBox="0 0 20 20" fill="var(--blue)" style={{ flexShrink: 0 }}>
                 <path fillRule="evenodd" d="M5.05 4.05a7 7 0 1 1 9.9 9.9L10 18.9l-4.95-4.95a7 7 0 0 1 0-9.9zM10 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" clipRule="evenodd"/>
               </svg>
               <span>

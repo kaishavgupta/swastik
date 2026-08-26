@@ -51,12 +51,13 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
     >
       {/* ── Main bar ── */}
       <div
-        className="container"
+        className="navbar-container"
         style={{
           height: 'var(--navbar-h)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
+          paddingInline: 'clamp(24px, 5vw, 90px)',
           gap: '24px',
         }}
       >
@@ -66,7 +67,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
           style={{ background: 'none', border: 'none', padding: 0, flexShrink: 0 }}
           aria-label="Swastik Mixtures – Home"
         >
-          <SwastikLogo size={220} />
+          <SwastikLogo size={190} />
         </button>
 
         {/* Desktop nav */}
