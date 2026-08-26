@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { navigationLinks } from '../data/mockData';
-import { SwastikLogo } from '../icons/SVGIcons';
+
 
 interface NavbarProps {
   currentPath: string;
@@ -65,8 +65,17 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
           onClick={() => go('/')}
           style={{ background: 'none', border: 'none', padding: 0, flexShrink: 0 }}
           aria-label="Swastik Mixtures – Home"
+          className="desktop-only"
         >
-          <SwastikLogo size={220} />
+          <img src="/swastik-mixtures-logo.svg" alt="Swastik Mixtures Logo" style={{ height: '77px', width: 'auto' }} />
+        </button>
+        <button
+          onClick={() => go('/')}
+          style={{ background: 'none', border: 'none', padding: 0, flexShrink: 0 }}
+          aria-label="Swastik Mixtures – Home"
+          className="mobile-only"
+        >
+          <img src="/swastik-mixtures-logo.svg" alt="Swastik Mixtures Logo" style={{ height: '66.5px', width: 'auto' }} />
         </button>
 
         {/* Desktop nav */}

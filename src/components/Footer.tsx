@@ -1,5 +1,5 @@
 import React from 'react';
-import { SwastikLogo, SVGIcons } from '../icons/SVGIcons';
+import { SVGIcons } from '../icons/SVGIcons';
 import { navigationLinks } from '../data/mockData';
 
 interface FooterProps {
@@ -74,7 +74,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 marginBottom: '20px',
               }}
             >
-              <SwastikLogo size={180} />
+              <img src="/swastik-mixtures-logo.svg" alt="Swastik Mixtures Logo" style={{ height: '63px', width: 'auto' }} />
             </div>
             <p
               style={{

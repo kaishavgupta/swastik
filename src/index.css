@@ -344,16 +344,15 @@ a {
   left: 0;
   right: 0;
   width: 100%;
-  height: 100px;
-  z-index: 4;
+  height: auto;
+  z-index: 6;
   line-height: 0;
   pointer-events: none;
 }
 
 .hero-wave-svg {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   display: block;
 }
 
@@ -480,7 +479,7 @@ body {
   .hero-section {
     flex-direction: row !important;
     min-height: auto !important;
-    height: clamp(520px, 50vw, 750px) !important;
+    height: auto !important;
     align-items: stretch !important;
   }
   
@@ -489,7 +488,7 @@ body {
     padding-left: clamp(24px, 4vw, 40px) !important;
     padding-right: 20px !important;
     padding-top: 40px !important;
-    padding-bottom: 60px !important;
+    padding-bottom: 120px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: flex-start !important;
@@ -513,7 +512,7 @@ body {
 
   .hero-truck-visual {
     object-fit: cover !important;
-    object-position: left center !important;
+    object-position: 15% center !important;
     width: 100% !important;
     height: 100% !important;
   }

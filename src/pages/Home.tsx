@@ -130,7 +130,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
 
         <div className="hero-right-col">
           <img
-            src="/swastik-hero-visual.svg"
+            src="/swastik_ready_mix_truck.svg"
             alt="Swastik Mixtures Ready Mix Concrete Truck"
             className="hero-truck-visual"
           />
@@ -156,7 +156,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           
           <div className="mobile-truck-container">
             <img
-              src="/swastik-hero-visual.svg"
+              src="/swastik_ready_mix_truck.svg"
               alt="Swastik Mixtures Ready Mix Concrete Truck"
               className="mobile-truck-img"
             />
@@ -184,8 +184,31 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
               <path fillRule="evenodd" d="M5.05 4.05a7 7 0 1 1 9.9 9.9L10 18.9l-4.95-4.95a7 7 0 0 1 0-9.9zM10 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" clipRule="evenodd"/>
             </svg>
             <span>
-              <strong style={{ color: 'var(--navy)', fontWeight: 700 }}>LOCATION:</strong> LUCKNOW, UTTAR PRADESH, INDIA
+              <strong style={{ color: 'var(--navy)', fontWeight: 700 }}>SERVICE AREA:</strong> LUCKNOW, UTTAR PRADESH
             </span>
+          </div>
+
+          {/* Mobile Trust features grid */}
+          <div className="mobile-trust-grid" style={{ width: '100%', marginTop: '30px' }}>
+            <div className="mobile-trust-item">
+              <div className="mobile-trust-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                  <path d="M2 12h20" />
+                </svg>
+              </div>
+              <span>RESPONSIBLE</span>
+            </div>
+            
+            <div className="mobile-trust-item">
+              <div className="mobile-trust-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+              </div>
+              <span>SAFETY</span>
+            </div>
           </div>
         </div>
 
