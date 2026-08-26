@@ -9,9 +9,9 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [scrolled, setScrolled]     = useState(false);
-  const [visible, setVisible]        = useState(true);
-  const lastScrollY                  = useRef(0);
+  const [scrolled, setScrolled] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
     const onScroll = () => {
@@ -51,13 +51,12 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
     >
       {/* ── Main bar ── */}
       <div
-        className="navbar-container"
+        className="container"
         style={{
           height: 'var(--navbar-h)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          paddingInline: 'clamp(24px, 5vw, 90px)',
           gap: '24px',
         }}
       >
@@ -67,7 +66,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
           style={{ background: 'none', border: 'none', padding: 0, flexShrink: 0 }}
           aria-label="Swastik Mixtures – Home"
         >
-          <SwastikLogo size={190} />
+          <SwastikLogo size={220} />
         </button>
 
         {/* Desktop nav */}
@@ -144,25 +143,48 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
           GET A QUOTE →
         </button>
 
-        {/* Hamburger */}
-        <button
-          className="hamburger"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-expanded={mobileOpen}
-          aria-label="Toggle menu"
-          style={{
-            background: 'none',
-            border: 'none',
-            padding: '6px',
-            color: 'var(--navy)',
-            cursor: 'pointer',
-          }}
-        >
-          {mobileOpen
-            ? <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-            : <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
-          }
-        </button>
+        {/* Hamburger and User Profile Silhouette on Mobile */}
+        <div className="mobile-actions-wrapper">
+          {/* Hamburger Icon */}
+          <button
+            className="hamburger-btn"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-expanded={mobileOpen}
+            aria-label="Toggle menu"
+            style={{
+              background: 'none',
+              border: 'none',
+              padding: '6px',
+              color: 'var(--navy)',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            {mobileOpen
+              ? <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+              : <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            }
+          </button>
+          
+          {/* User Silhouette Icon */}
+          <button
+            aria-label="User Profile"
+            style={{
+              background: 'none',
+              border: 'none',
+              padding: '6px',
+              color: 'var(--navy)',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path fillRule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clipRule="evenodd" />
+            </svg>
+          </button>
+        </div>
       </div>
 
       {/* ── Mobile drawer ── */}
@@ -216,12 +238,12 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
       <style>{`
         .desktop-nav  { display: flex; }
         .desktop-cta  { display: inline-flex; }
-        .hamburger    { display: none; }
+        .mobile-actions-wrapper { display: none; }
 
-        @media (max-width: 1023px) {
+        @media (max-width: 752px) {
           .desktop-nav  { display: none; }
           .desktop-cta  { display: none; }
-          .hamburger    { display: flex; }
+          .mobile-actions-wrapper { display: flex !important; align-items: center; gap: 12px; }
         }
       `}</style>
     </header>
