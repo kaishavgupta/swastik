@@ -476,11 +476,11 @@ body {
   display: none !important;
 }
 
-@media (max-width: 1495px) and (min-width: 768px) {
+@media (max-width: 1495px) and (min-width: 753px) {
   .hero-section {
     flex-direction: row !important;
     min-height: auto !important;
-    height: clamp(520px, 50vw, 650px) !important;
+    height: clamp(520px, 50vw, 750px) !important;
     align-items: stretch !important;
   }
   
@@ -504,18 +504,16 @@ body {
     position: relative !important;
     z-index: 1 !important;
     overflow: hidden !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
   }
 
   .hero-right-col::before {
-    display: none !important;
+    display: block !important;
+    width: 40% !important;
   }
 
   .hero-truck-visual {
-    object-fit: contain !important;
-    object-position: center !important;
+    object-fit: cover !important;
+    object-position: left center !important;
     width: 100% !important;
     height: 100% !important;
   }
@@ -538,7 +536,7 @@ body {
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 752px) {
   .desktop-only-block {
     display: none !important;
   }
