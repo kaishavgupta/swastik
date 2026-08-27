@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 280" role="img" aria-label="Hindustan Aeronautics Limited logo">
+  <defs>
+    <linearGradient id="halBlue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0875C9"/><stop offset="1" stop-color="#0B3F8F"/>
+    </linearGradient>
+    <linearGradient id="halRed" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E73324"/><stop offset="1" stop-color="#A90F18"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(18 18)">
+    <!-- globe -->
+    <circle cx="122" cy="122" r="103" fill="none" stroke="url(#halBlue)" stroke-width="13"/>
+    <path d="M31 122h182M45 76c25 18 53 27 77 27s52-9 77-27M45 168c25-18 53-27 77-27s52 9 77 27" fill="none" stroke="#0875C9" stroke-width="6" stroke-linecap="round"/>
+    <path d="M122 20c-29 27-43 61-43 102s14 75 43 102M122 20c29 27 43 61 43 102s-14 75-43 102" fill="none" stroke="#0875C9" stroke-width="6"/>
+    <!-- aircraft/orbit mark -->
+    <path d="M35 145c34-24 62-48 93-76 14-13 29-22 45-25l-16 27 32 2-25 16-24-2c-23 21-54 46-91 67z" fill="url(#halRed)"/>
+    <path d="M91 114l54-35 17 2-28 17 23 2-22 14-25-3-19 12z" fill="#F04A2E"/>
+  </g>
+  <g transform="translate(260 60)" fill="#073B86">
+    <text x="0" y="62" font-family="Noto Sans Devanagari, Arial, sans-serif" font-size="44" font-weight="700">हिन्दुस्तान</text>
+    <text x="0" y="128" font-family="Arial, sans-serif" font-size="68" font-weight="800" letter-spacing="3">HAL</text>
+    <text x="7" y="164" font-family="Arial, sans-serif" font-size="22" font-weight="600" letter-spacing="2">AERONAUTICS LIMITED</text>
+  </g>
+</svg>

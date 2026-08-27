@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 300" role="img" aria-label="Jaypee Group logo">
+  <defs>
+    <linearGradient id="jpBlue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0A65B7"/><stop offset="1" stop-color="#163C86"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(28 25)">
+    <!-- stylized Jaypee triangular mark -->
+    <path d="M116 8L222 190H10Z" fill="url(#jpBlue)"/>
+    <path d="M116 43L174 143H58Z" fill="#F4B52B"/>
+    <path d="M116 70L148 126H84Z" fill="#FFFFFF"/>
+    <path d="M92 190H140L116 230Z" fill="#163C86"/>
+    <text x="250" y="92" font-family="Arial, sans-serif" font-size="74" font-weight="800" fill="#123C86">JAYPEE</text>
+    <text x="250" y="153" font-family="Arial, sans-serif" font-size="42" font-weight="700" letter-spacing="4" fill="#17458D">GROUP</text>
+    <path d="M252 177H565" stroke="#F4B52B" stroke-width="6"/>
+  </g>
+</svg>

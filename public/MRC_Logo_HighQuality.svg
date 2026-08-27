@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 280" role="img" aria-label="MRC Construction logo">
+  <defs>
+    <linearGradient id="mrcBlue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0C73C8"/><stop offset="1" stop-color="#164C96"/>
+    </linearGradient>
+    <linearGradient id="mrcGreen" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2AA36B"/><stop offset="1" stop-color="#1591B5"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(38 42)">
+    <path d="M28 105C92 35 164 10 245 34C210 37 181 48 155 63C111 88 77 105 28 105Z" fill="url(#mrcBlue)"/>
+    <path d="M47 108C118 52 182 34 247 48C199 51 153 68 112 94C88 109 66 115 47 108Z" fill="url(#mrcGreen)" opacity=".95"/>
+    <path d="M58 106C112 67 165 53 216 55" fill="none" stroke="#0D478F" stroke-width="10" stroke-linecap="round"/>
+    <text x="0" y="188" font-family="Arial, sans-serif" font-size="112" font-weight="800" letter-spacing="2" fill="#0C4C98">MRC</text>
+  </g>
+</svg>
