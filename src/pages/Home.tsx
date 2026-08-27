@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { SVGProjects } from '../icons/SVGIcons';
 import { products, legacyTimeline, qualitySteps, clients } from '../data/mockData';
 import heroTruck from '../assets/hero_truck_right.jpg';
@@ -82,10 +83,147 @@ const QualityIcon = ({ idx }: { idx: number }) => {
   );
 };
 
+/* ─── STRENGTHS features data ────────────────────────── */
+const FEATURE_CARDS = [
+  {
+    title: '18+ Years Experience',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+        <line x1="16" y1="2" x2="16" y2="6" />
+        <line x1="8" y1="2" x2="8" y2="6" />
+        <line x1="3" y1="10" x2="21" y2="10" />
+      </svg>
+    )
+  },
+  {
+    title: 'Premium Quality',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+      </svg>
+    )
+  },
+  {
+    title: 'High Strength Concrete',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+      </svg>
+    )
+  },
+  {
+    title: 'Reliable Delivery',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="1" y="3" width="15" height="13" />
+        <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
+        <circle cx="5.5" cy="18.5" r="2.5" />
+        <circle cx="18.5" cy="18.5" r="2.5" />
+      </svg>
+    )
+  },
+  {
+    title: 'Technical Expertise',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+      </svg>
+    )
+  },
+  {
+    title: 'Customer-Focused Service',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+      </svg>
+    )
+  },
+  {
+    title: 'Consistent Quality',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10" />
+        <polyline points="12 6 12 12 16 14" />
+      </svg>
+    )
+  },
+  {
+    title: 'Professional Support',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+      </svg>
+    )
+  }
+];
+
+/* ─── LEGACY timeline milestones data ────────────────── */
+const TIMELINE_MILESTONES = [
+  {
+    label: '2009',
+    title: 'Company Founded',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+        <line x1="16" y1="2" x2="16" y2="6" />
+        <line x1="8" y1="2" x2="8" y2="6" />
+        <line x1="3" y1="10" x2="21" y2="10" />
+      </svg>
+    )
+  },
+  {
+    label: 'Early Mover',
+    title: 'One of the first 4 RMC plants in Lucknow',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+        <path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+      </svg>
+    )
+  },
+  {
+    label: 'Culture Builder',
+    title: 'Started the culture of RMC in the city',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+      </svg>
+    )
+  },
+  {
+    label: 'Today',
+    title: '18+ Years of Trusted Concrete Solutions',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+        <circle cx="12" cy="12" r="10" />
+        <polyline points="12 6 12 12 16 14" />
+      </svg>
+    )
+  }
+];
+
 /* ══════════════════════════════════════════════════════════
    HOME PAGE
 ══════════════════════════════════════════════════════════ */
 export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
+  const { scrollY } = useScroll();
+  const truckY = useTransform(scrollY, [0, 600], [0, 40]);
+  const waveY = useTransform(scrollY, [0, 600], [0, 15]);
+  const textY = useTransform(scrollY, [0, 600], [0, -15]);
+  const statsY = useTransform(scrollY, [0, 600], [0, -10]);
+
+  // Window size tracking to conditionally apply styles if needed
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 1024);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <div style={{ width: '100%', overflowX: 'hidden', color: 'var(--text)' }}>
 
@@ -95,7 +233,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       {/* ── Desktop/Tablet Hero (≥ 752px) ── */}
       <section id="hero-desktop" className="hero-section desktop-only-block">
         <div className="hero-left-col">
-          <div className="hero-left-content">
+          <motion.div style={{ y: textY }} className="hero-left-content">
             <p className="hero-label">READY MIX CONCRETE</p>
             <h1 className="hero-title">
               BUILDING<br />
@@ -125,11 +263,12 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                 <strong style={{ color: 'var(--navy)', fontWeight: 700 }}>LOCATION:</strong> LUCKNOW, UTTAR PRADESH, INDIA
               </span>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         <div className="hero-right-col">
-          <img
+          <motion.img
+            style={{ y: truckY }}
             src="/swastik_ready_mix_truck.svg"
             alt="Swastik Mixtures Ready Mix Concrete Truck"
             className="hero-truck-visual"
@@ -137,9 +276,39 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
         </div>
 
         {/* BLUE DECORATIVE WAVE */}
-        <div className="hero-wave-container">
+        <motion.div style={{ y: waveY }} className="hero-wave-container">
           <img src="/swastik-wave.svg" alt="" className="hero-wave-svg" />
-        </div>
+        </motion.div>
+
+        {/* BOTTOM STATISTICS CARD (contained inside hero viewport wrapper) */}
+        <motion.div style={{ y: statsY }} className="hero-stats-wrapper">
+          <div className="container" style={{ maxWidth: '1440px' }}>
+            <div className="stats-card">
+              <div className="stats-grid">
+                {STATS.map((s, i) => (
+                  <div key={i} className="stats-item">
+                    {/* Icon circle */}
+                    <div className="stats-icon-wrap">
+                      <img src={s.iconUrl} alt="" className="stats-icon-img" />
+                    </div>
+                    {/* Text */}
+                    <div className="stats-text-wrap">
+                      {s.hasLabel && (
+                        <p className="stats-label">{s.label}</p>
+                      )}
+                      <p className={`stats-main ${s.blue ? 'color-blue' : 'color-navy'} ${s.big ? 'size-big' : 'size-normal'}`}>
+                        {s.main}
+                      </p>
+                      <p className="stats-sub">
+                        {s.sub1}<br />{s.sub2}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </section>
 
       {/* ── Mobile Hero (≤ 767px) ── */}
@@ -215,7 +384,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       {/* ══════════════════════════════════════════════════════
           §2  STATISTICS CARD
       ══════════════════════════════════════════════════════ */}
-      <section id="stats" className="stats-section">
+      <section id="stats" className="stats-section mobile-only-block">
         <div className="container">
           <div className="stats-card">
             <div className="stats-grid">
@@ -247,160 +416,211 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       {/* ══════════════════════════════════════════════════════
           §3  ABOUT SWASTIK MIXTURES
       ══════════════════════════════════════════════════════ */}
-      <section id="about" className="section-py" style={{ background: 'var(--bg)' }}>
+      <section id="about" className="section-py">
         <div className="container">
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1.4fr',
-              gap: '72px',
-              alignItems: 'center',
-            }}
-          >
+          <div className="about-grid">
             {/* Left text */}
-            <div>
-              <span className="section-label">ABOUT SWASTIK MIXTURES</span>
-              <h2 className="section-heading" style={{ marginBottom: '20px' }}>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="about-left"
+            >
+              <span className="about-eyebrow">ABOUT SWASTIK MIXTURES</span>
+              <h2 className="about-heading">
                 18 Years of<br />Concreting Trust
               </h2>
-              <span className="blue-divider" />
-              <p className="body-text" style={{ marginTop: '24px' }}>
-                Swastik Mixtures is a trusted Ready Mix Concrete company based in Lucknow, Uttar Pradesh,
-                bringing 18+ years of dedicated experience to the construction and infrastructure sector.
+              <span className="about-divider" />
+              <p className="about-paragraph">
+                Swastik Mixtures is a trusted Ready Mix Concrete company based in Lucknow, Uttar Pradesh, bringing 18+ years of dedicated experience to the construction and infrastructure sector.
               </p>
-              <p className="body-text" style={{ marginTop: '16px' }}>
-                From residential builders to large infrastructure contractors, we work closely with our
-                customers to understand their requirements and deliver concrete solutions suited to their project.
+              <p className="about-paragraph">
+                From residential builders to large infrastructure contractors, we work closely with our customers to understand their requirements and deliver concrete solutions suited to their project.
               </p>
-              <div style={{ marginTop: '36px', display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
-                <button className="btn-primary" onClick={() => onNavigate('/about')}>
-                  DISCOVER OUR STORY <ArrowRight />
-                </button>
-              </div>
-            </div>
+              <button className="about-cta" onClick={() => onNavigate('/about')}>
+                DISCOVER OUR STORY &rarr;
+              </button>
+            </motion.div>
 
-            {/* Right image with floating badge */}
-            <div style={{ position: 'relative' }}>
-              <div
-                style={{
-                  borderRadius: 'var(--radius-lg)',
-                  overflow: 'hidden',
-                  aspectRatio: '4/3',
-                  background: 'var(--bg-alt)',
-                  boxShadow: 'var(--shadow-lg)',
-                }}
+            {/* Right image with overlapping badge & statistics strip */}
+            <div className="about-right">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.97 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.9, ease: "easeOut" }}
+                style={{ position: 'relative' }}
               >
-                <img
-                  src={heroTruck}
-                  alt="Swastik Mixtures RMC Plant and Construction Site"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center left' }}
-                />
-              </div>
-              {/* Floating experience badge */}
-              <div
-                style={{
-                  position: 'absolute',
-                  bottom: '20px',
-                  left: '-24px',
-                  background: 'var(--blue)',
-                  color: '#fff',
-                  borderRadius: 'var(--radius-md)',
-                  padding: '14px 20px',
-                  boxShadow: 'var(--shadow-md)',
-                  textAlign: 'center',
-                }}
+                <div className="about-img-container">
+                  <img
+                    src="/swastik-concrete-batching-plant.svg"
+                    alt="Swastik Mixtures Concrete Batching Plant"
+                    className="about-img"
+                  />
+                </div>
+                {/* Overlapping Trust Card */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
+                  className="about-badge"
+                >
+                  <div className="about-badge-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
+                    </svg>
+                  </div>
+                  <p className="about-badge-num">18+</p>
+                  <p className="about-badge-txt">YEARS OF<br />CONCRETING TRUST</p>
+                </motion.div>
+              </motion.div>
+
+              {/* Connected Statistics Strip */}
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
+                className="about-strip"
               >
-                <p style={{ fontSize: '30px', fontWeight: 900, lineHeight: 1 }}>18+</p>
-                <p style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', marginTop: '4px', opacity: .85 }}>YEARS OF TRUST</p>
-              </div>
+                <div className="about-strip-item">
+                  <div className="about-strip-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                      <circle cx="12" cy="10" r="3" />
+                    </svg>
+                  </div>
+                  <p className="about-strip-text">
+                    LUCKNOW
+                    <span>UTTAR PRADESH</span>
+                  </p>
+                </div>
+                <div className="about-strip-item">
+                  <div className="about-strip-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                    </svg>
+                  </div>
+                  <p className="about-strip-text">
+                    READY MIX
+                    <span>CONCRETE</span>
+                  </p>
+                </div>
+                <div className="about-strip-item">
+                  <div className="about-strip-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg>
+                  </div>
+                  <p className="about-strip-text">
+                    QUALITY
+                    <span>YOU CAN TRUST</span>
+                  </p>
+                </div>
+              </motion.div>
             </div>
           </div>
         </div>
       </section>
 
+
       {/* ══════════════════════════════════════════════════════
-          §4  LEGACY / TIMELINE
+          §4  STRENGTHS & LEGACY SECTION
       ══════════════════════════════════════════════════════ */}
-      <section id="legacy" className="section-py" style={{ background: 'var(--bg-alt)' }}>
-        <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '56px' }}>
-            <span className="section-label">OUR LEGACY</span>
-            <h2 className="section-heading">
-              Building Lucknow's RMC<br />Culture Since 2009
-            </h2>
-          </div>
-
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(4, 1fr)',
-              gap: '0',
-              position: 'relative',
-            }}
-          >
-            {/* Connector line */}
-            <div
-              aria-hidden="true"
-              style={{
-                position: 'absolute',
-                top: '23px',
-                left: '12.5%',
-                right: '12.5%',
-                height: '2px',
-                background: 'linear-gradient(to right, var(--blue) 0%, var(--blue) 100%)',
-                opacity: .2,
-                zIndex: 0,
-              }}
-            />
-
-            {legacyTimeline.map((item, i) => (
-              <div
-                key={i}
-                style={{
-                  padding: '0 24px',
-                  position: 'relative',
-                  zIndex: 1,
-                }}
-              >
-                {/* Step circle */}
-                <div
-                  style={{
-                    width: '48px',
-                    height: '48px',
-                    borderRadius: '50%',
-                    background: 'var(--blue)',
-                    color: '#fff',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: '13px',
-                    fontWeight: 800,
-                    boxShadow: '0 0 0 6px white, 0 0 0 8px rgba(8,104,201,.18)',
-                    marginBottom: '24px',
-                  }}
-                >
-                  {i + 1}
-                </div>
-                <p
-                  style={{
-                    fontSize: '12px',
-                    fontWeight: 700,
-                    color: 'var(--blue)',
-                    textTransform: 'uppercase',
-                    letterSpacing: '2px',
-                    marginBottom: '6px',
-                  }}
-                >
-                  {item.year}
-                </p>
-                <h3 style={{ fontSize: '17px', fontWeight: 700, color: 'var(--navy)', marginBottom: '8px' }}>
-                  {item.title}
-                </h3>
-                <p style={{ fontSize: '14px', color: 'var(--text-muted)', lineHeight: 1.65 }}>
-                  {item.description}
-                </p>
+      <section id="legacy" className="section-py" style={{ background: '#FFFFFF', borderTop: '1px solid var(--border)' }}>
+        <div className="container" style={{ maxWidth: '1300px' }}>
+          <div className="strengths-legacy-grid">
+            
+            {/* Left Block — Key Strengths Feature Panel */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="strengths-panel"
+            >
+              <div className="strengths-grid">
+                {FEATURE_CARDS.map((card, i) => (
+                  <motion.div
+                    key={card.title}
+                    variants={{
+                      hidden: { opacity: 0, y: 15 },
+                      visible: { opacity: 1, y: 0 }
+                    }}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ delay: i * 0.05, duration: 0.5, ease: "easeOut" }}
+                    className="strength-card"
+                  >
+                    <div className="strength-card-icon">
+                      {card.icon}
+                    </div>
+                    <h4 className="strength-card-title">{card.title}</h4>
+                  </motion.div>
+                ))}
               </div>
-            ))}
+            </motion.div>
+
+            {/* Right Block — Our Legacy Timeline */}
+            <div className="legacy-right">
+              <motion.span
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.5 }}
+                className="legacy-eyebrow"
+              >
+                OUR LEGACY
+              </motion.span>
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ delay: 0.1, duration: 0.7, ease: "easeOut" }}
+                className="legacy-heading"
+              >
+                Building Lucknow's RMC<br />Culture Since 2009
+              </motion.h2>
+
+              <div className="horizontal-timeline">
+                {/* Horizontal line track animated with Framer Motion */}
+                <motion.div
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ delay: 0.2, duration: 1, ease: "easeInOut" }}
+                  className="timeline-line-track"
+                />
+
+                {TIMELINE_MILESTONES.map((item, i) => (
+                  <div key={item.label} className="timeline-milestone">
+                    <span className="timeline-node-year">{item.label}</span>
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.85 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true, margin: "-100px" }}
+                      transition={{ delay: 0.3 + i * 0.1, duration: 0.6, ease: "easeOut" }}
+                      className="timeline-node-circle"
+                    >
+                      {item.icon}
+                    </motion.div>
+                    <motion.p
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true, margin: "-100px" }}
+                      transition={{ delay: 0.5 + i * 0.1, duration: 0.6 }}
+                      className="timeline-node-desc"
+                    >
+                      {item.title}
+                    </motion.p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
