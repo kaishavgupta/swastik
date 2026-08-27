@@ -417,24 +417,43 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           §3  ABOUT SWASTIK MIXTURES
       ══════════════════════════════════════════════════════ */}
       <section id="about" className="about-section-fullscreen">
+
+        {/* ── Full-bleed right-side image ── */}
+        <div className="about-bg-img-col" aria-hidden="true">
+          <img
+            src="/swastik-concrete-batching-plant.svg"
+            alt=""
+            className="about-bg-img"
+          />
+          {/* Gradient: white → transparent from left edge into image */}
+          <div className="about-img-fade" />
+        </div>
+
+        {/* ── Left text content ── */}
         <div className="about-left-col">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.85, ease: "easeOut" }}
             className="about-left-content"
           >
             <span className="about-eyebrow">ABOUT SWASTIK MIXTURES</span>
             <h2 className="about-heading">
-              18 Years of<br />Concreting <span className="about-heading-accent">Trust</span>
+              18 Years of<br />Concreting{' '}
+              <span className="about-heading-accent">Trust</span>
             </h2>
             <span className="about-divider" />
             <p className="about-paragraph">
-              Swastik Mixtures is a trusted Ready Mix Concrete company based in Lucknow, Uttar Pradesh, bringing 18+ years of dedicated experience to the construction and infrastructure sector.
+              Swastik Mixtures is a trusted Ready Mix Concrete company based
+              in Lucknow, Uttar Pradesh, bringing 18+ years of dedicated
+              experience to the construction and infrastructure sector.
             </p>
             <p className="about-paragraph">
-              From residential builders to large infrastructure contractors, we work closely with our customers to understand their requirements and deliver concrete solutions suited to their project.
+              From residential builders to large infrastructure contractors,
+              we work closely with our customers to understand their
+              requirements and deliver concrete solutions suited to their
+              project.
             </p>
             <button className="about-cta" onClick={() => onNavigate('/about')}>
               DISCOVER OUR STORY &rarr;
@@ -442,27 +461,16 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           </motion.div>
         </div>
 
-        {/* Full-bleed background image — fills right side edge to edge */}
-        <div className="about-bg-img-col">
-          <img
-            src="/swastik-concrete-batching-plant.svg"
-            alt="Swastik Mixtures Concrete Batching Plant"
-            className="about-bg-img"
-          />
-          {/* White gradient fade on the LEFT edge of image to blend with text */}
-          <div className="about-img-fade" />
-        </div>
-
-        {/* 18+ Floating Badge — overlaps between text and image */}
+        {/* ── 18+ Floating Badge at the text/image seam ── */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ delay: 0.4, duration: 0.7, ease: "easeOut" }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ delay: 0.35, duration: 0.75, ease: "easeOut" }}
           className="about-floating-badge"
         >
           <div className="about-badge-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
               <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
             </svg>
           </div>
@@ -470,138 +478,214 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           <p className="about-badge-txt">YEARS OF<br />CONCRETING TRUST</p>
         </motion.div>
 
-        {/* Bottom Information Strip — white card with navy wave decoration */}
+        {/* ── Bottom Wave ── */}
+        <div className="about-wave-container" aria-hidden="true">
+          <svg
+            viewBox="0 0 1440 130"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+            className="about-wave-svg"
+          >
+            {/* Deep navy base wave */}
+            <path
+              d="M0,65 C180,10 360,110 540,60 C720,10 900,100 1080,55 C1260,10 1380,70 1440,55 L1440,130 L0,130 Z"
+              fill="#071A36"
+            />
+            {/* Blue accent wave layered on top */}
+            <path
+              d="M0,85 C200,40 400,115 600,75 C800,35 1000,105 1200,70 C1320,50 1390,85 1440,80 L1440,130 L0,130 Z"
+              fill="#0868C9"
+              fillOpacity="0.45"
+            />
+          </svg>
+        </div>
+
+        {/* ── Bottom 3-column Info Panel ── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
-          className="about-strip-wrapper"
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ delay: 0.45, duration: 0.8, ease: "easeOut" }}
+          className="about-info-panel"
         >
-          {/* Navy wave decoration on the left */}
-          <div className="about-strip-wave">
-            <svg viewBox="0 0 120 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-              <path d="M0,0 L120,0 L120,90 Q80,55 40,70 Q15,80 0,90 Z" fill="#071A36"/>
-              <path d="M0,20 Q30,10 60,30 Q90,50 120,35 L120,90 Q80,55 40,70 Q15,80 0,90 Z" fill="rgba(8,104,201,0.35)"/>
-            </svg>
+          {/* Lucknow */}
+          <div className="about-info-item">
+            <div className="about-info-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+            </div>
+            <div className="about-info-text">
+              <p className="about-info-main">LUCKNOW</p>
+              <p className="about-info-sub">UTTAR PRADESH, INDIA</p>
+            </div>
           </div>
 
-          {/* Stats items — reuse the same STATS data as hero */}
-          {STATS.map((s, i) => (
-            <div key={i} className="about-strip-item">
-              <div className="about-strip-icon">
-                <img src={s.iconUrl} alt="" className="about-strip-icon-img" />
-              </div>
-              <div className="about-strip-text-wrap">
-                {s.hasLabel && <p className="about-strip-label">{s.label}</p>}
-                <p className={`about-strip-main ${s.blue ? 'astrip-blue' : 'astrip-navy'} ${s.big ? 'astrip-big' : ''}`}>
-                  {s.main}
-                </p>
-                <p className="about-strip-sub">{s.sub1}{s.sub2 ? <><br />{s.sub2}</> : null}</p>
-              </div>
+          <div className="about-info-sep" />
+
+          {/* Ready Mix */}
+          <div className="about-info-item">
+            <div className="about-info-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+              </svg>
             </div>
-          ))}
+            <div className="about-info-text">
+              <p className="about-info-main">READY MIX</p>
+              <p className="about-info-sub">CONCRETE</p>
+            </div>
+          </div>
+
+          <div className="about-info-sep" />
+
+          {/* Quality */}
+          <div className="about-info-item">
+            <div className="about-info-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+            </div>
+            <div className="about-info-text">
+              <p className="about-info-main">QUALITY</p>
+              <p className="about-info-sub">YOU CAN TRUST</p>
+            </div>
+          </div>
         </motion.div>
+
       </section>
 
 
       {/* ══════════════════════════════════════════════════════
-          §4  STRENGTHS & LEGACY SECTION
+          §4  OUR LEGACY — FULL-SCREEN SECTION
       ══════════════════════════════════════════════════════ */}
-      <section id="legacy" className="section-py" style={{ background: '#FFFFFF', borderTop: '1px solid var(--border)' }}>
-        <div className="container" style={{ maxWidth: '1300px' }}>
-          <div className="strengths-legacy-grid">
-            
-            {/* Left Block — Key Strengths Feature Panel */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="strengths-panel"
-            >
-              <div className="strengths-grid">
-                {FEATURE_CARDS.map((card, i) => (
-                  <motion.div
-                    key={card.title}
-                    variants={{
-                      hidden: { opacity: 0, y: 15 },
-                      visible: { opacity: 1, y: 0 }
-                    }}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ delay: i * 0.05, duration: 0.5, ease: "easeOut" }}
-                    className="strength-card"
-                  >
-                    <div className="strength-card-icon">
-                      {card.icon}
-                    </div>
-                    <h4 className="strength-card-title">{card.title}</h4>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
+      <section id="legacy" className="legacy-section">
 
-            {/* Right Block — Our Legacy Timeline */}
-            <div className="legacy-right">
-              <motion.span
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5 }}
-                className="legacy-eyebrow"
-              >
-                OUR LEGACY
-              </motion.span>
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ delay: 0.1, duration: 0.7, ease: "easeOut" }}
-                className="legacy-heading"
-              >
-                Building Lucknow's RMC<br />Culture Since 2009
-              </motion.h2>
+        {/* ── z-index 1: Blurred factory background ── */}
+        <div className="legacy-factory-bg" aria-hidden="true" />
 
-              <div className="horizontal-timeline">
-                {/* Horizontal line track animated with Framer Motion */}
+        {/* ── z-index 2: White gradient overlay (left clean, right reveals factory) ── */}
+        <div className="legacy-factory-fade" aria-hidden="true" />
+
+        {/* ── z-index 3: Main content grid ── */}
+        <div className="legacy-content-grid">
+
+          {/* LEFT — Feature Panel (4×2 grid) */}
+          <motion.div
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.75, ease: "easeOut" }}
+            className="legacy-features-panel"
+          >
+            <div className="legacy-features-grid">
+              {FEATURE_CARDS.map((card, i) => (
                 <motion.div
-                  initial={{ scaleX: 0 }}
-                  whileInView={{ scaleX: 1 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ delay: 0.2, duration: 1, ease: "easeInOut" }}
-                  className="timeline-line-track"
-                />
-
-                {TIMELINE_MILESTONES.map((item, i) => (
-                  <div key={item.label} className="timeline-milestone">
-                    <span className="timeline-node-year">{item.label}</span>
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.85 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true, margin: "-100px" }}
-                      transition={{ delay: 0.3 + i * 0.1, duration: 0.6, ease: "easeOut" }}
-                      className="timeline-node-circle"
-                    >
-                      {item.icon}
-                    </motion.div>
-                    <motion.p
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      viewport={{ once: true, margin: "-100px" }}
-                      transition={{ delay: 0.5 + i * 0.1, duration: 0.6 }}
-                      className="timeline-node-desc"
-                    >
-                      {item.title}
-                    </motion.p>
-                  </div>
-                ))}
-              </div>
+                  key={card.title}
+                  initial={{ opacity: 0, y: 14 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ delay: i * 0.055, duration: 0.5, ease: "easeOut" }}
+                  className="legacy-feature-card"
+                >
+                  <div className="legacy-feature-icon">{card.icon}</div>
+                  <h4 className="legacy-feature-title">{card.title}</h4>
+                  <span className="legacy-feature-accent" />
+                </motion.div>
+              ))}
             </div>
+          </motion.div>
 
+          {/* RIGHT — Our Legacy heading + timeline */}
+          <div className="legacy-right-col">
+            <motion.span
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.5 }}
+              className="legacy-eyebrow"
+            >
+              OUR LEGACY
+            </motion.span>
+
+            <motion.h2
+              initial={{ opacity: 0, y: 22 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ delay: 0.1, duration: 0.75, ease: "easeOut" }}
+              className="legacy-heading"
+            >
+              Building Lucknow's RMC<br />
+              Culture Since{' '}
+              <span className="legacy-heading-accent">2009</span>
+            </motion.h2>
+
+            {/* Blue accent divider */}
+            <span className="legacy-divider" />
+
+            {/* Horizontal timeline */}
+            <div className="legacy-timeline">
+              {/* Dashed connector track */}
+              <div className="legacy-timeline-track" aria-hidden="true" />
+
+              {TIMELINE_MILESTONES.map((item, i) => (
+                <div key={item.label} className="legacy-milestone">
+                  {/* Year/label above node */}
+                  <span className="legacy-milestone-label">{item.label}</span>
+
+                  {/* Blue ring + filled circle with icon */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.75 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true, margin: "-60px" }}
+                    transition={{ delay: 0.25 + i * 0.12, duration: 0.55, ease: "easeOut" }}
+                    className="legacy-milestone-node"
+                  >
+                    {item.icon}
+                  </motion.div>
+
+                  {/* Small dot connector below node */}
+                  <div className="legacy-milestone-dot" aria-hidden="true" />
+
+                  {/* Description below */}
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true, margin: "-60px" }}
+                    transition={{ delay: 0.45 + i * 0.12, duration: 0.55 }}
+                    className="legacy-milestone-desc"
+                  >
+                    {item.title}
+                  </motion.p>
+                </div>
+              ))}
+            </div>
           </div>
+
+        </div>{/* /legacy-content-grid */}
+
+        {/* ── z-index 4: Bottom wave SVG ── */}
+        <div className="legacy-wave-container" aria-hidden="true">
+          <svg
+            viewBox="0 0 1440 160"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+            className="legacy-wave-svg"
+          >
+            {/* Dark navy base — solid fill to bottom */}
+            <path
+              d="M0,80 C240,20 480,140 720,80 C960,20 1200,130 1440,70 L1440,160 L0,160 Z"
+              fill="#071A36"
+            />
+            {/* Bright blue accent wave on top */}
+            <path
+              d="M0,100 C200,48 440,150 720,95 C960,48 1220,140 1440,88 L1440,160 L0,160 Z"
+              fill="#0868C9"
+              fillOpacity="0.7"
+            />
+          </svg>
         </div>
+
       </section>
 
       {/* ══════════════════════════════════════════════════════
