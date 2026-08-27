@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { PRODUCT_IMAGES } from './product_assets';
 
 interface ProductPart5Props {
   onNavigate?: (path: string) => void;
@@ -7,12 +8,12 @@ interface ProductPart5Props {
 
 export const ProductPart5: React.FC<ProductPart5Props> = ({ onNavigate }) => {
   const INFRA_GRID = [
-    { title: 'RMC Batching Plant', img: '/01_RMC_Batching_Plant.svg' },
-    { title: 'Transit Mixers', img: '/02_Transit_Mixers.svg' },
-    { title: 'Concrete Pumps', img: '/03_Concrete_Pumps.svg' },
-    { title: 'Material Handling', img: '/04_Material_Handling.svg' },
-    { title: 'Quality-Control Lab', img: '/05_Quality_Control_Lab.svg' },
-    { title: 'Modern Equipment', img: '/06_Modern_Equipment.svg' },
+    { title: 'RMC BATCHING PLANT', img: PRODUCT_IMAGES.batchingPlant, alt: 'Swastik Mixtures RMC batching plant' },
+    { title: 'TRANSIT MIXERS', img: PRODUCT_IMAGES.transitMixerCloseup, alt: 'Swastik Mixtures transit mixer closeup' },
+    { title: 'CONCRETE PUMPS', img: PRODUCT_IMAGES.concretePump, alt: 'Swastik Mixtures concrete pump' },
+    { title: 'MATERIAL HANDLING', img: PRODUCT_IMAGES.materialHandling, alt: 'Swastik Mixtures material handling equipment' },
+    { title: 'QUALITY-CONTROL LAB', img: PRODUCT_IMAGES.qualityControlLab, alt: 'Swastik Mixtures quality control laboratory' },
+    { title: 'MODERN EQUIPMENT', img: PRODUCT_IMAGES.transitMixerFleet, alt: 'Swastik Mixtures transit mixer fleet' },
   ];
 
   return (
@@ -36,7 +37,14 @@ export const ProductPart5: React.FC<ProductPart5Props> = ({ onNavigate }) => {
             <div className="product-tech-grid-2x3">
               {INFRA_GRID.map((item, idx) => (
                 <div key={idx} className="product-infra-card">
-                  <img src={item.img} alt={item.title} className="product-infra-img" />
+                  <img
+                    src={item.img}
+                    alt={item.alt}
+                    loading="lazy"
+                    width="240"
+                    height="180"
+                    className="product-infra-img"
+                  />
                   <div className="product-infra-label">{item.title}</div>
                 </div>
               ))}
@@ -50,7 +58,7 @@ export const ProductPart5: React.FC<ProductPart5Props> = ({ onNavigate }) => {
             </button>
           </motion.div>
 
-          {/* RIGHT: Enquiry Panel & Mixer Truck Visual */}
+          {/* RIGHT: Enquiry Panel & Mixer Truck Closeup Visual */}
           <motion.div
             initial={{ opacity: 0, x: 25 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -91,11 +99,14 @@ export const ProductPart5: React.FC<ProductPart5Props> = ({ onNavigate }) => {
                 </button>
               </div>
 
-              {/* Mixer Truck Visual */}
+              {/* Transit Mixer Closeup SVG Visual */}
               <div className="product-enquiry-truck-wrap">
                 <img
-                  src="/swastik_ready_mix_truck.svg"
-                  alt="Swastik Ready Mix Concrete Mixer Truck"
+                  src={PRODUCT_IMAGES.transitMixerCloseup}
+                  alt="Swastik Mixtures transit mixer truck closeup"
+                  loading="lazy"
+                  width="400"
+                  height="160"
                   className="product-enquiry-truck-img"
                 />
               </div>

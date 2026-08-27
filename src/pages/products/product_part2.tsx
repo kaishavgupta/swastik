@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { PRODUCT_IMAGES } from './product_assets';
 
 interface ProductPart2Props {
   onNavigate?: (path: string) => void;
@@ -10,6 +11,7 @@ interface GradeData {
   desc: string;
   idealFor: string[];
   image: string;
+  altText: string;
 }
 
 const GRADES_DATA: Record<string, GradeData> = {
@@ -22,7 +24,8 @@ const GRADES_DATA: Record<string, GradeData> = {
       'Pathway Under-layers',
       'Non-Structural Blinding'
     ],
-    image: '/concrete-floor-finishing.svg'
+    image: PRODUCT_IMAGES.concretePouring,
+    altText: 'Swastik Mixtures M10 concrete pouring closeup'
   },
   M20: {
     grade: 'M20',
@@ -33,7 +36,8 @@ const GRADES_DATA: Record<string, GradeData> = {
       'Retaining & Boundary Walls',
       'Ground Slabs & Footings'
     ],
-    image: '/concrete-pour.svg'
+    image: PRODUCT_IMAGES.concretePouring,
+    altText: 'Swastik Mixtures M20 concrete pouring closeup'
   },
   M25: {
     grade: 'M25',
@@ -44,7 +48,8 @@ const GRADES_DATA: Record<string, GradeData> = {
       'Footings & Reinforced Beams',
       'Internal Roads & Parking Lots'
     ],
-    image: '/concrete-pour.svg'
+    image: PRODUCT_IMAGES.concretePouring,
+    altText: 'Swastik Mixtures M25 concrete pouring closeup'
   },
   M30: {
     grade: 'M30',
@@ -55,7 +60,8 @@ const GRADES_DATA: Record<string, GradeData> = {
       'Foundations & Footings',
       'Pavements & Rigid Floors'
     ],
-    image: '/concrete-pour.svg'
+    image: PRODUCT_IMAGES.concretePouring,
+    altText: 'Swastik Mixtures M30 concrete grade pouring closeup'
   },
   M35: {
     grade: 'M35',
@@ -66,7 +72,8 @@ const GRADES_DATA: Record<string, GradeData> = {
       'Industrial Heavy Slabs',
       'Bridge Abutments & Piers'
     ],
-    image: '/industrial-construction.svg'
+    image: PRODUCT_IMAGES.concretePouring,
+    altText: 'Swastik Mixtures M35 concrete grade pouring closeup'
   },
   M40: {
     grade: 'M40',
@@ -77,7 +84,8 @@ const GRADES_DATA: Record<string, GradeData> = {
       'Heavy Industrial Pavements',
       'Pre-stressed Concrete Members'
     ],
-    image: '/infrastructure-projects.svg'
+    image: PRODUCT_IMAGES.concretePouring,
+    altText: 'Swastik Mixtures M40 concrete grade pouring closeup'
   },
   M45: {
     grade: 'M45',
@@ -88,7 +96,8 @@ const GRADES_DATA: Record<string, GradeData> = {
       'Heavy Machinery Foundations',
       'Bridge Slabs & Box Girders'
     ],
-    image: '/bridges.svg'
+    image: PRODUCT_IMAGES.concretePouring,
+    altText: 'Swastik Mixtures M45 concrete grade pouring closeup'
   },
   M50: {
     grade: 'M50',
@@ -99,7 +108,8 @@ const GRADES_DATA: Record<string, GradeData> = {
       'Metro Rail Corridors',
       'High-Durability Infrastructure'
     ],
-    image: '/high-rise-buildings.svg'
+    image: PRODUCT_IMAGES.concretePouring,
+    altText: 'Swastik Mixtures M50 concrete grade pouring closeup'
   },
   M55: {
     grade: 'M55',
@@ -110,7 +120,8 @@ const GRADES_DATA: Record<string, GradeData> = {
       'Pre-cast Infrastructure Members',
       'Specialized Civil Works'
     ],
-    image: '/commercial-structures.svg'
+    image: PRODUCT_IMAGES.concretePouring,
+    altText: 'Swastik Mixtures M55 concrete grade pouring closeup'
   },
   M60: {
     grade: 'M60',
@@ -121,7 +132,8 @@ const GRADES_DATA: Record<string, GradeData> = {
       'Extreme Load-Bearing Piles',
       'Critical Structural Nodes'
     ],
-    image: '/high-rise-buildings.svg'
+    image: PRODUCT_IMAGES.concretePouring,
+    altText: 'Swastik Mixtures M60 concrete grade pouring closeup'
   }
 };
 
@@ -203,12 +215,15 @@ export const ProductPart2: React.FC<ProductPart2Props> = ({ onNavigate }) => {
             </button>
           </div>
 
-          {/* RIGHT: Image visual + 4 mini cards */}
+          {/* RIGHT: Large Concrete Pouring Image (10_concrete_pouring_closeup.svg) + 4 mini cards */}
           <div className="product-selected-right">
             <div className="product-selected-img-wrap">
               <img
                 src={currentData.image}
-                alt={`${currentData.grade} Concrete Grade`}
+                alt={currentData.altText}
+                loading="lazy"
+                width="640"
+                height="280"
                 className="product-selected-img"
               />
 

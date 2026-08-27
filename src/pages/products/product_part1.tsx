@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { PRODUCT_IMAGES } from './product_assets';
 
 interface ProductPart1Props {
   onNavigate?: (path: string) => void;
@@ -45,12 +46,12 @@ export const ProductPart1: React.FC<ProductPart1Props> = ({ onNavigate }) => {
               EXPLORE GRADES →
             </button>
             <button onClick={() => onNavigate && onNavigate('/contact')} className="btn-secondary product-btn-secondary">
-              REQUEST A QUOTE
+              REQUEST A QUOTE →
             </button>
           </div>
         </motion.div>
 
-        {/* RIGHT COLUMN: Concrete Pouring Visual */}
+        {/* RIGHT COLUMN: Concrete Pouring Closeup SVG Visual */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -60,8 +61,11 @@ export const ProductPart1: React.FC<ProductPart1Props> = ({ onNavigate }) => {
         >
           <div className="product-hero-img-wrap">
             <img
-              src="/concrete-pour.svg"
-              alt="Swastik Mixtures Ready Mix Concrete Pouring"
+              src={PRODUCT_IMAGES.concretePouring}
+              alt="Swastik Mixtures concrete pouring closeup"
+              loading="eager"
+              width="700"
+              height="460"
               className="product-hero-img"
             />
             <div className="product-hero-img-fade" />
