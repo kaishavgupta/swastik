@@ -367,14 +367,14 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
 
         /* Large desktop — full row */
         @media (min-width: 1100px) {
-          .nh-desktop-row { display: flex; }
-          .nh-compact-row { display: none; }
+          .nh-desktop-row { display: flex !important; }
+          .nh-compact-row { display: none !important; }
         }
 
         /* Tablet + mobile — compact row (logo + hamburger only) */
         @media (max-width: 1099px) {
-          .nh-desktop-row { display: none; }
-          .nh-compact-row { display: flex; }
+          .nh-desktop-row { display: none !important; }
+          .nh-compact-row { display: flex !important; }
         }
 
         /* Tablet (768px–1099px) */

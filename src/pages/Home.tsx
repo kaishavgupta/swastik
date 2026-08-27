@@ -7,8 +7,8 @@ interface HomeProps {
 }
 
 /* ─── small inline helpers ─────────────────────────────── */
-const ArrowRight = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+const ArrowRight: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={className} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
     <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M12 5l7 7-7 7" />
   </svg>
 );
@@ -121,7 +121,52 @@ const STATS = [
   },
 ];
 
-
+/* ─── Responsive InformationCards component ─── */
+const InformationCards: React.FC = () => {
+  return (
+    <div className="stats-grid">
+      {STATS.map((s, i) => (
+        <div key={i} className={`stats-item ${i === 4 ? 'stats-item--quality' : ''}`}>
+          {/* Icon circle */}
+          <div className="stats-icon-wrap">
+            <img src={s.iconUrl} alt="" className="stats-icon-img" />
+          </div>
+          {/* Text */}
+          <div className="stats-text-wrap">
+            {s.hasLabel && (
+              <p className="stats-label">{s.label}</p>
+            )}
+            {i === 4 ? (
+              <>
+                <div className="stats-quality-desktop">
+                  <p className={`stats-main ${s.blue ? 'color-blue' : 'color-navy'} ${s.big ? 'size-big' : 'size-normal'}`}>
+                    {s.main}
+                  </p>
+                  <p className="stats-sub">
+                    {s.sub1}<br />{s.sub2}
+                  </p>
+                </div>
+                <p className="stats-quality-mobile">QUALITY YOU CAN TRUST</p>
+              </>
+            ) : (
+              <>
+                <p className={`stats-main ${s.blue ? 'color-blue' : 'color-navy'} ${s.big ? 'size-big' : 'size-normal'}`}>
+                  {s.main}
+                </p>
+                <p className="stats-sub">
+                  {s.sub1}
+                  <span className="stats-desktop-br"><br /></span>
+                  <span className="stats-sub-separator"> </span>
+                  {s.sub2}
+                </p>
+              </>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
 
 /* ─── PROCESS steps outline icons ─────────────────────── */
 const ProcessStepIcon = ({ iconKey }: { iconKey: string }) => {
@@ -734,17 +779,15 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       {/* ══════════════════════════════════════════════════════
           §1  HERO
       ══════════════════════════════════════════════════════ */}
-      {/* ── Desktop/Tablet Hero (≥ 752px) ── */}
-      <section id="hero-desktop" className="hero-section desktop-only-block">
+      {/* ── Single Unified Hero Section ── */}
+      <section id="hero" className="hero-section">
         <div className="hero-flex-layout">
+          {/* Hero Left Column (Text & CTAs) */}
           <div className="hero-left-col">
-            <motion.div style={{ y: textY }} className="hero-left-content">
-              <p className="hero-label">READY MIX CONCRETE</p>
+            <motion.div style={{ y: textY }} className="hero-text-content">
+              <span className="hero-label">READY MIX CONCRETE</span>
               <h1 className="hero-title">
-                BUILDING<br />
-                STRENGTH.<br />
-                DELIVERING<br />
-                <span className="hero-title-accent">TRUST.</span>
+                BUILDING<span className="br-desktop"><br /></span> STRENGTH.<span className="br-all"><br /></span> DELIVERING<span className="br-desktop"><br /></span> <span className="hero-title-accent">TRUST.</span>
               </h1>
               <p className="hero-paragraph">
                 18+ years of dependable Ready Mix Concrete solutions for
@@ -753,14 +796,32 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
 
               <div className="hero-buttons">
                 <button className="btn-primary" onClick={() => onNavigate('/contact')}>
-                  REQUEST A QUOTE <ArrowRight />
+                  <span className="btn-icon--left">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                      <line x1="16" y1="2" x2="16" y2="6" />
+                      <line x1="8" y1="2" x2="8" y2="6" />
+                      <line x1="3" y1="10" x2="21" y2="10" />
+                    </svg>
+                  </span>
+                  REQUEST A QUOTE
+                  <span className="btn-icon--right-chevron">→</span>
+                  <ArrowRight className="btn-icon--right-arrow" />
                 </button>
                 <button className="btn-secondary" onClick={() => onNavigate('/products')}>
+                  <span className="btn-icon--left">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                      <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                      <line x1="12" y1="22.08" x2="12" y2="12" />
+                    </svg>
+                  </span>
                   EXPLORE PRODUCTS
+                  <span className="btn-icon--right-chevron">→</span>
                 </button>
               </div>
 
-              <div className="hero-location">
+              <div className="hero-location-badge">
                 <svg width="14" height="14" viewBox="0 0 20 20" fill="var(--blue)" style={{ flexShrink: 0 }}>
                   <path fillRule="evenodd" d="M5.05 4.05a7 7 0 1 1 9.9 9.9L10 18.9l-4.95-4.95a7 7 0 0 1 0-9.9zM10 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" clipRule="evenodd"/>
                 </svg>
@@ -771,6 +832,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
             </motion.div>
           </div>
 
+          {/* Hero Right Column (Truck Image Visual) */}
           <div className="hero-right-col">
             <motion.img
               style={{ y: truckY }}
@@ -778,6 +840,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
               alt="Swastik Mixtures Ready Mix Concrete Truck"
               className="hero-truck-visual"
             />
+            <div className="hero-visual-gradient" />
           </div>
         </div>
 
@@ -786,136 +849,24 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           <img src="/swastik-wave.svg" alt="" className="hero-wave-svg" />
         </motion.div>
 
-        {/* BOTTOM STATISTICS CARD (contained inside hero viewport wrapper) */}
+        {/* BOTTOM STATISTICS CARD */}
         <div className="hero-stats-wrapper">
           <motion.div style={{ y: statsY }} className="stats-card">
-            <div className="stats-grid">
-              {STATS.map((s, i) => (
-                <div key={i} className="stats-item">
-                  {/* Icon circle */}
-                  <div className="stats-icon-wrap">
-                    <img src={s.iconUrl} alt="" className="stats-icon-img" />
-                  </div>
-                  {/* Text */}
-                  <div className="stats-text-wrap">
-                    {s.hasLabel && (
-                      <p className="stats-label">{s.label}</p>
-                    )}
-                    <p className={`stats-main ${s.blue ? 'color-blue' : 'color-navy'} ${s.big ? 'size-big' : 'size-normal'}`}>
-                      {s.main}
-                    </p>
-                    <p className="stats-sub">
-                      {s.sub1}<br />{s.sub2}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <InformationCards />
           </motion.div>
         </div>
-      </section>
 
-      {/* ── Mobile Hero (≤ 767px) ── */}
-      <section id="hero-mobile" className="hero-section-mobile mobile-only-block">
-
-        {/* ── Hero Card: truck SVG is the full scene (sky + cranes + ground + truck) ── */}
-        <div className="mob-hero-card">
-
-          {/* Full-bleed scene image — the SVG contains the complete construction background */}
+        {/* DECORATIVE CONSTRUCTION SITE BACKGROUND TRANSITION (Mobile Bottom) */}
+        <div className="hero-construction-wrap" aria-hidden="true">
+          <div className="hero-construction-fade" />
           <img
-            src="/swastik_ready_mix_truck.svg"
-            alt="Swastik Mixtures Ready Mix Concrete Truck on construction site"
-            className="mob-hero-scene-img"
+            src="/swastik_construction_site.svg"
+            alt=""
+            className="mob-construction-img"
           />
-
-          {/* Text overlay — absolutely positioned top-left over the scene */}
-          <div className="mob-hero-overlay">
-            <h1 className="mob-hero-title">
-              <span className="mob-hero-title-dark">BUILD WITH</span>
-              <span className="mob-hero-title-blue">RESPECT</span>
-            </h1>
-            <p className="mob-hero-desc">
-              For your vision, our materials, and Lucknow's
-              infrastructure. 18+ years of dependable service.
-            </p>
-          </div>
-        </div>
-
-        {/* CTA buttons — below the card */}
-        <div className="mob-cta-section">
-          <button className="mob-btn-primary" onClick={() => onNavigate('/contact')}>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                <line x1="16" y1="2" x2="16" y2="6" />
-                <line x1="8" y1="2" x2="8" y2="6" />
-                <line x1="3" y1="10" x2="21" y2="10" />
-              </svg>
-              REQUEST A QUOTE
-            </span>
-            <span>→</span>
-          </button>
-          <button className="mob-btn-secondary" onClick={() => onNavigate('/products')}>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-                <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
-                <line x1="12" y1="22.08" x2="12" y2="12" />
-              </svg>
-              EXPLORE PRODUCTS
-            </span>
-            <span>→</span>
-          </button>
-        </div>
-
-        {/* Service area */}
-        <div className="mob-service-area">
-          <svg width="14" height="14" viewBox="0 0 20 20" fill="var(--blue)" style={{ flexShrink: 0 }}>
-            <path fillRule="evenodd" d="M5.05 4.05a7 7 0 1 1 9.9 9.9L10 18.9l-4.95-4.95a7 7 0 0 1 0-9.9zM10 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" clipRule="evenodd"/>
-          </svg>
-          <span>
-            <strong style={{ color: 'var(--navy)', fontWeight: 700 }}>SERVICE AREA:</strong>{' '}
-            LUCKNOW, UTTAR PRADESH
-          </span>
-        </div>
-
-        {/* BLUE DECORATIVE WAVE */}
-        <div className="hero-wave-container">
-          <img src="/swastik-wave.svg" alt="" className="hero-wave-svg" />
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════
-          §2  STATISTICS CARD
-      ══════════════════════════════════════════════════════ */}
-      <section id="stats" className="stats-section mobile-only-block">
-        <div className="container">
-          <div className="stats-card">
-            <div className="stats-grid">
-              {STATS.map((s, i) => (
-                <div key={i} className="stats-item">
-                  {/* Icon circle */}
-                  <div className="stats-icon-wrap">
-                    <img src={s.iconUrl} alt="" className="stats-icon-img" />
-                  </div>
-                  {/* Text */}
-                  <div className="stats-text-wrap">
-                    {s.hasLabel && (
-                      <p className="stats-label">{s.label}</p>
-                    )}
-                    <p className={`stats-main ${s.blue ? 'color-blue' : 'color-navy'} ${s.big ? 'size-big' : 'size-normal'}`}>
-                      {s.main}
-                    </p>
-                    <p className="stats-sub">
-                      {s.sub1}<br />{s.sub2}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* ══════════════════════════════════════════════════════
           §3  ABOUT SWASTIK MIXTURES
