@@ -1,8 +1,8 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { SVGProjects } from '../icons/SVGIcons';
-import { products, legacyTimeline, qualitySteps, clients } from '../data/mockData';
-import heroTruck from '../assets/hero_truck_right.jpg';
+import { qualitySteps, clients } from '../data/mockData';
+
 
 interface HomeProps {
   onNavigate: (path: string) => void;
@@ -61,8 +61,7 @@ const STATS = [
   },
 ];
 
-/* ─── PRODUCT cards data ───────────────────────────────── */
-const PRODUCT_COLORS = ['#0868C9', '#1677D2', '#0554a8', '#0775DB', '#0549A0'];
+
 
 /* ─── QUALITY steps icon ───────────────────────────────── */
 const QualityIcon = ({ idx }: { idx: number }) => {
@@ -205,6 +204,46 @@ const TIMELINE_MILESTONES = [
   }
 ];
 
+/* ─── PRODUCTS cards definition ──────────────────────── */
+const PRODUCT_CARDS_DATA = [
+  {
+    image: '/concrete-texture.svg',
+    badge: 'M10 – M60',
+    title: 'Concrete Grades',
+    desc: 'Wide range of grades for all construction requirements.',
+    id: 'concrete-grades',
+  },
+  {
+    image: '/concrete-pour.svg',
+    badge: 'M40+',
+    title: 'Self Compacting Concrete (SCC)',
+    desc: 'High flowability, self-leveling and excellent finish.',
+    id: 'scc',
+  },
+  {
+    image: '/construction-workers.svg',
+    badge: 'M30 – M45',
+    title: 'High Strength Concrete',
+    desc: 'Engineered for high rise and heavy load structures.',
+    id: 'high-strength',
+  },
+  {
+    image: '/concrete-floor-finishing.svg',
+    badge: 'Waterproof',
+    title: 'Waterproof Concrete',
+    desc: 'Specially designed to resist water penetration.',
+    id: 'waterproof',
+  },
+  {
+    image: '/concrete-fiber-material.svg',
+    badge: 'Fiber Reinforced',
+    title: 'Fiber Reinforced Concrete (FRC)',
+    desc: 'Improved durability, crack resistance & toughness.',
+    id: 'frc',
+  },
+];
+
+
 /* ══════════════════════════════════════════════════════════
    HOME PAGE
 ══════════════════════════════════════════════════════════ */
@@ -215,14 +254,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
   const textY = useTransform(scrollY, [0, 600], [0, -15]);
   const statsY = useTransform(scrollY, [0, 600], [0, -10]);
 
-  // Window size tracking to conditionally apply styles if needed
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 1024);
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+
 
   return (
     <div style={{ width: '100%', overflowX: 'hidden', color: 'var(--text)' }}>
@@ -691,99 +723,49 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       {/* ══════════════════════════════════════════════════════
           §5  PRODUCTS
       ══════════════════════════════════════════════════════ */}
-      <section id="products" className="section-py" style={{ background: 'var(--bg)' }}>
-        <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-            <span className="section-label">OUR PRODUCTS</span>
-            <h2 className="section-heading">
-              Concrete Engineered<br />for Every Requirement
-            </h2>
+      <section id="products" className="products-outer-section">
+        <div className="products-container">
+          
+          <div className="products-main-layout">
+            {/* Left Block — Heading Block */}
+            <div className="products-heading-block">
+              <span className="products-eyebrow">OUR PRODUCTS</span>
+              <h2 className="products-main-title">
+                Concrete Engineered<br />
+                for Every Requirement
+              </h2>
+            </div>
+
+            {/* Right Block — Product Cards Grid */}
+            <div className="products-grid-wrapper">
+              <div className="products-cards-grid">
+                {PRODUCT_CARDS_DATA.map((card) => (
+                  <div key={card.id} className="product-card">
+                    <div className="product-card-image-wrap">
+                      <img
+                        src={card.image}
+                        alt={card.title}
+                        className="product-card-image"
+                      />
+                    </div>
+                    <div className="product-card-content">
+                      <span className="product-card-badge">{card.badge}</span>
+                      <h3 className="product-card-title">{card.title}</h3>
+                      <p className="product-card-description">{card.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(5, 1fr)',
-              gap: '20px',
-            }}
-          >
-            {products.map((p, i) => (
-              <div
-                key={p.id}
-                className="card"
-                style={{ display: 'flex', flexDirection: 'column', overflow: 'hidden' }}
-              >
-                {/* Color banner */}
-                <div
-                  style={{
-                    height: '6px',
-                    background: PRODUCT_COLORS[i % PRODUCT_COLORS.length],
-                  }}
-                />
-                <div style={{ padding: '20px' }}>
-                  <p
-                    style={{
-                      fontSize: '10.5px',
-                      fontWeight: 700,
-                      color: PRODUCT_COLORS[i % PRODUCT_COLORS.length],
-                      textTransform: 'uppercase',
-                      letterSpacing: '2px',
-                      marginBottom: '8px',
-                    }}
-                  >
-                    {p.category}
-                  </p>
-                  {p.grade && (
-                    <p
-                      style={{
-                        fontSize: '22px',
-                        fontWeight: 800,
-                        color: 'var(--navy)',
-                        marginBottom: '4px',
-                        lineHeight: 1.1,
-                      }}
-                    >
-                      {p.grade}
-                    </p>
-                  )}
-                  <h3
-                    style={{
-                      fontSize: '15px',
-                      fontWeight: 700,
-                      color: 'var(--navy)',
-                      marginBottom: '10px',
-                      lineHeight: 1.3,
-                    }}
-                  >
-                    {p.name}
-                  </h3>
-                  <p style={{ fontSize: '13px', color: 'var(--text-muted)', lineHeight: 1.65 }}>
-                    {p.description}
-                  </p>
-                </div>
-                <div style={{ padding: '14px 20px', marginTop: 'auto', borderTop: '1px solid var(--border)' }}>
-                  <button
-                    onClick={() => onNavigate('/products')}
-                    style={{
-                      background: 'none',
-                      border: 'none',
-                      color: 'var(--blue)',
-                      fontSize: '12.5px',
-                      fontWeight: 700,
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '6px',
-                      cursor: 'pointer',
-                      textTransform: 'uppercase',
-                      letterSpacing: '1px',
-                    }}
-                  >
-                    LEARN MORE <ArrowRight />
-                  </button>
-                </div>
-              </div>
-            ))}
+          {/* Bottom Action — View All Products Button */}
+          <div className="products-action-bar">
+            <button className="products-view-all-btn" onClick={() => onNavigate('/products')}>
+              VIEW ALL PRODUCTS <ArrowRight />
+            </button>
           </div>
+
         </div>
       </section>
 
@@ -894,7 +876,8 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
               gap: '20px',
             }}
           >
-            {Object.entries(SVGProjects).map(([key, SvgComp], i) => {
+            {Object.entries(SVGProjects).map(([key, SvgCompRaw], i) => {
+              const SvgComp = SvgCompRaw as any;
               const labels: Record<string, string> = {
                 HighRise: 'High-Rise Buildings',
                 Roads: 'Roads & Highways',
