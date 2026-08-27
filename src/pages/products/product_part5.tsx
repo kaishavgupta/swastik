@@ -1,0 +1,129 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+
+interface ProductPart5Props {
+  onNavigate?: (path: string) => void;
+}
+
+export const ProductPart5: React.FC<ProductPart5Props> = ({ onNavigate }) => {
+  const INFRA_GRID = [
+    { title: 'RMC Batching Plant', img: '/01_RMC_Batching_Plant.svg' },
+    { title: 'Transit Mixers', img: '/02_Transit_Mixers.svg' },
+    { title: 'Concrete Pumps', img: '/03_Concrete_Pumps.svg' },
+    { title: 'Material Handling', img: '/04_Material_Handling.svg' },
+    { title: 'Quality-Control Lab', img: '/05_Quality_Control_Lab.svg' },
+    { title: 'Modern Equipment', img: '/06_Modern_Equipment.svg' },
+  ];
+
+  return (
+    <section id="product-part5" className="product-snap-part product-tech-part">
+      <div className="product-container product-tech-container">
+        {/* TOP HALF: TECHNOLOGY & PRODUCTION + ENQUIRY PANEL */}
+        <div className="product-tech-layout">
+          {/* LEFT: 2x3 Grid + Infrastructure CTA */}
+          <motion.div
+            initial={{ opacity: 0, x: -25 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="product-tech-left-col"
+          >
+            <div className="product-section-header">
+              <h2 className="product-section-title">TECHNOLOGY & PRODUCTION</h2>
+              <div className="product-title-bar" />
+            </div>
+
+            <div className="product-tech-grid-2x3">
+              {INFRA_GRID.map((item, idx) => (
+                <div key={idx} className="product-infra-card">
+                  <img src={item.img} alt={item.title} className="product-infra-img" />
+                  <div className="product-infra-label">{item.title}</div>
+                </div>
+              ))}
+            </div>
+
+            <button
+              onClick={() => onNavigate && onNavigate('/about')}
+              className="btn-secondary product-infra-btn"
+            >
+              OUR INFRASTRUCTURE →
+            </button>
+          </motion.div>
+
+          {/* RIGHT: Enquiry Panel & Mixer Truck Visual */}
+          <motion.div
+            initial={{ opacity: 0, x: 25 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
+            className="product-enquiry-right-col"
+          >
+            <div className="product-enquiry-card">
+              <div className="product-enquiry-content">
+                <h3 className="product-enquiry-title">
+                  NOT SURE WHICH MIX<br />YOU NEED?
+                </h3>
+                <p className="product-enquiry-desc">
+                  Share your project requirement and our experts will help you choose
+                  the right concrete solution.
+                </p>
+
+                <div className="product-enquiry-checklist">
+                  <div className="product-enquiry-item">
+                    <span className="product-enquiry-check">✓</span>
+                    <span>Expert Guidance</span>
+                  </div>
+                  <div className="product-enquiry-item">
+                    <span className="product-enquiry-check">✓</span>
+                    <span>Right Mix Selection</span>
+                  </div>
+                  <div className="product-enquiry-item">
+                    <span className="product-enquiry-check">✓</span>
+                    <span>Timely Delivery</span>
+                  </div>
+                </div>
+
+                <button
+                  onClick={() => onNavigate && onNavigate('/contact')}
+                  className="btn-primary product-enquiry-btn"
+                >
+                  REQUEST A QUOTE →
+                </button>
+              </div>
+
+              {/* Mixer Truck Visual */}
+              <div className="product-enquiry-truck-wrap">
+                <img
+                  src="/swastik_ready_mix_truck.svg"
+                  alt="Swastik Ready Mix Concrete Mixer Truck"
+                  className="product-enquiry-truck-img"
+                />
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* BOTTOM HALF: FINAL CALL TO ACTION BANNER */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.25 }}
+          className="product-final-cta-banner"
+        >
+          <div className="product-final-cta-text">
+            <h3 className="product-final-cta-heading">
+              NOT SURE WHICH MIX YOU NEED? TALK TO THE SWASTIK MIXTURES TEAM.
+            </h3>
+          </div>
+          <button
+            onClick={() => onNavigate && onNavigate('/contact')}
+            className="btn-primary product-final-cta-btn"
+          >
+            REQUEST A QUOTE →
+          </button>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
