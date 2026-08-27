@@ -416,113 +416,92 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       {/* ══════════════════════════════════════════════════════
           §3  ABOUT SWASTIK MIXTURES
       ══════════════════════════════════════════════════════ */}
-      <section id="about" className="section-py">
-        <div className="container">
-          <div className="about-grid">
-            {/* Left text */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="about-left"
-            >
-              <span className="about-eyebrow">ABOUT SWASTIK MIXTURES</span>
-              <h2 className="about-heading">
-                18 Years of<br />Concreting Trust
-              </h2>
-              <span className="about-divider" />
-              <p className="about-paragraph">
-                Swastik Mixtures is a trusted Ready Mix Concrete company based in Lucknow, Uttar Pradesh, bringing 18+ years of dedicated experience to the construction and infrastructure sector.
-              </p>
-              <p className="about-paragraph">
-                From residential builders to large infrastructure contractors, we work closely with our customers to understand their requirements and deliver concrete solutions suited to their project.
-              </p>
-              <button className="about-cta" onClick={() => onNavigate('/about')}>
-                DISCOVER OUR STORY &rarr;
-              </button>
-            </motion.div>
-
-            {/* Right image with overlapping badge & statistics strip */}
-            <div className="about-right">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.97 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.9, ease: "easeOut" }}
-                style={{ position: 'relative' }}
-              >
-                <div className="about-img-container">
-                  <img
-                    src="/swastik-concrete-batching-plant.svg"
-                    alt="Swastik Mixtures Concrete Batching Plant"
-                    className="about-img"
-                  />
-                </div>
-                {/* Overlapping Trust Card */}
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
-                  className="about-badge"
-                >
-                  <div className="about-badge-icon">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
-                    </svg>
-                  </div>
-                  <p className="about-badge-num">18+</p>
-                  <p className="about-badge-txt">YEARS OF<br />CONCRETING TRUST</p>
-                </motion.div>
-              </motion.div>
-
-              {/* Connected Statistics Strip */}
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
-                className="about-strip"
-              >
-                <div className="about-strip-item">
-                  <div className="about-strip-icon">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                      <circle cx="12" cy="10" r="3" />
-                    </svg>
-                  </div>
-                  <p className="about-strip-text">
-                    LUCKNOW
-                    <span>UTTAR PRADESH</span>
-                  </p>
-                </div>
-                <div className="about-strip-item">
-                  <div className="about-strip-icon">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-                    </svg>
-                  </div>
-                  <p className="about-strip-text">
-                    READY MIX
-                    <span>CONCRETE</span>
-                  </p>
-                </div>
-                <div className="about-strip-item">
-                  <div className="about-strip-icon">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                    </svg>
-                  </div>
-                  <p className="about-strip-text">
-                    QUALITY
-                    <span>YOU CAN TRUST</span>
-                  </p>
-                </div>
-              </motion.div>
-            </div>
-          </div>
+      <section id="about" className="about-section-fullscreen">
+        <div className="about-left-col">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="about-left-content"
+          >
+            <span className="about-eyebrow">ABOUT SWASTIK MIXTURES</span>
+            <h2 className="about-heading">
+              18 Years of<br />Concreting <span className="about-heading-accent">Trust</span>
+            </h2>
+            <span className="about-divider" />
+            <p className="about-paragraph">
+              Swastik Mixtures is a trusted Ready Mix Concrete company based in Lucknow, Uttar Pradesh, bringing 18+ years of dedicated experience to the construction and infrastructure sector.
+            </p>
+            <p className="about-paragraph">
+              From residential builders to large infrastructure contractors, we work closely with our customers to understand their requirements and deliver concrete solutions suited to their project.
+            </p>
+            <button className="about-cta" onClick={() => onNavigate('/about')}>
+              DISCOVER OUR STORY &rarr;
+            </button>
+          </motion.div>
         </div>
+
+        {/* Full-bleed background image — fills right side edge to edge */}
+        <div className="about-bg-img-col">
+          <img
+            src="/swastik-concrete-batching-plant.svg"
+            alt="Swastik Mixtures Concrete Batching Plant"
+            className="about-bg-img"
+          />
+          {/* White gradient fade on the LEFT edge of image to blend with text */}
+          <div className="about-img-fade" />
+        </div>
+
+        {/* 18+ Floating Badge — overlaps between text and image */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ delay: 0.4, duration: 0.7, ease: "easeOut" }}
+          className="about-floating-badge"
+        >
+          <div className="about-badge-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
+            </svg>
+          </div>
+          <p className="about-badge-num">18+</p>
+          <p className="about-badge-txt">YEARS OF<br />CONCRETING TRUST</p>
+        </motion.div>
+
+        {/* Bottom Information Strip — white card with navy wave decoration */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
+          className="about-strip-wrapper"
+        >
+          {/* Navy wave decoration on the left */}
+          <div className="about-strip-wave">
+            <svg viewBox="0 0 120 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+              <path d="M0,0 L120,0 L120,90 Q80,55 40,70 Q15,80 0,90 Z" fill="#071A36"/>
+              <path d="M0,20 Q30,10 60,30 Q90,50 120,35 L120,90 Q80,55 40,70 Q15,80 0,90 Z" fill="rgba(8,104,201,0.35)"/>
+            </svg>
+          </div>
+
+          {/* Stats items — reuse the same STATS data as hero */}
+          {STATS.map((s, i) => (
+            <div key={i} className="about-strip-item">
+              <div className="about-strip-icon">
+                <img src={s.iconUrl} alt="" className="about-strip-icon-img" />
+              </div>
+              <div className="about-strip-text-wrap">
+                {s.hasLabel && <p className="about-strip-label">{s.label}</p>}
+                <p className={`about-strip-main ${s.blue ? 'astrip-blue' : 'astrip-navy'} ${s.big ? 'astrip-big' : ''}`}>
+                  {s.main}
+                </p>
+                <p className="about-strip-sub">{s.sub1}{s.sub2 ? <><br />{s.sub2}</> : null}</p>
+              </div>
+            </div>
+          ))}
+        </motion.div>
       </section>
 
 
