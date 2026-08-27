@@ -300,8 +300,9 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
         .nh-desktop-row {
           display: none;
           align-items: center;
-          gap: clamp(10px, 1.5vw, 24px);
-          padding: 30px clamp(16px, 2.5vw, 32px) 14px;
+          flex-wrap: nowrap;
+          gap: clamp(8px, 1.2vw, 24px);
+          padding: 30px clamp(12px, 2vw, 32px) 14px;
         }
 
         /* ── Compact row (< 1100px) ── */

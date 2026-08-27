@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { SVGProjects } from '../icons/SVGIcons';
-import { qualitySteps, clients } from '../data/mockData';
+import { clients } from '../data/mockData';
 
 
 interface HomeProps {
@@ -63,23 +63,173 @@ const STATS = [
 
 
 
-/* ─── QUALITY steps icon ───────────────────────────────── */
-const QualityIcon = ({ idx }: { idx: number }) => {
-  const icons = [
-    <path key={0} strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />,
-    <path key={1} strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />,
-    <path key={2} strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0 1 12 15a9.065 9.065 0 0 1-6.23-.693L5 14.5m14.8.8 1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0 1 12 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />,
-    <path key={3} strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5m.75-9 3-3 2.148 2.148A12.061 12.061 0 0 1 16.5 7.605" />,
-    <path key={4} strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6" />,
-    <path key={5} strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />,
-    <path key={6} strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />,
-    <path key={7} strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197" />,
-  ];
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8">
-      {icons[idx % icons.length]}
-    </svg>
-  );
+/* ─── PROCESS steps outline icons ─────────────────────── */
+const ProcessStepIcon = ({ iconKey }: { iconKey: string }) => {
+  const props = { width: "28", height: "28", viewBox: "0 0 24 24", fill: "none", stroke: "#0875D1", strokeWidth: "2", strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
+  switch (iconKey) {
+    case 'Verify': // Shield with check mark / quality verification
+      return (
+        <svg {...props}>
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          <path d="m9 11 2 2 4-4" />
+        </svg>
+      );
+    case 'Sliders': // Three vertical slider tracks
+      return (
+        <svg {...props}>
+          <line x1="6" y1="3" x2="6" y2="21" />
+          <circle cx="6" cy="15" r="2.5" fill="#EEF6FF" stroke="#0875D1" strokeWidth="2" />
+          <line x1="12" y1="3" x2="12" y2="21" />
+          <circle cx="12" cy="9" r="2.5" fill="#EEF6FF" stroke="#0875D1" strokeWidth="2" />
+          <line x1="18" y1="3" x2="18" y2="21" />
+          <circle cx="18" cy="14" r="2.5" fill="#EEF6FF" stroke="#0875D1" strokeWidth="2" />
+        </svg>
+      );
+    case 'Flask': // Chemistry flask with liquid line
+      return (
+        <svg {...props}>
+          <path d="M10 2h4M10 2v6L5.5 17.5a2 2 0 0 0 1.8 2.5h9.4a2 2 0 0 0 1.8-2.5L14 8V2" />
+          <path d="M7.8 15h8.4" />
+        </svg>
+      );
+    case 'Slump': // Slump cone testing bucket with horizontal rings and line
+      return (
+        <svg {...props}>
+          <path d="M6 3h12l-2 15H8L6 3z" />
+          <path d="M7 8h10" />
+          <path d="M7.5 13h9" />
+          <path d="M12 3v15" />
+        </svg>
+      );
+    case 'Strength': // Compression testing frame with piston pressing cube block
+      return (
+        <svg {...props}>
+          <rect x="4" y="3" width="16" height="18" rx="2" />
+          <line x1="4" y1="8" x2="20" y2="8" />
+          <line x1="4" y1="16" x2="20" y2="16" />
+          <rect x="9" y="10" width="6" height="4" rx="1" fill="#EEF6FF" stroke="#0875D1" strokeWidth="2" />
+          <path d="M12 5v3" />
+        </svg>
+      );
+    case 'Sync': // Circular arrows
+      return (
+        <svg {...props}>
+          <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l.73-.73" />
+        </svg>
+      );
+    case 'Monitor': // Magnifying glass with centered checkmark
+      return (
+        <svg {...props}>
+          <circle cx="11" cy="11" r="6" />
+          <path d="m21 21-4.3-4.3" />
+          <path d="m9 11 1.5 1.5 2.5-2.5" />
+        </svg>
+      );
+    case 'Support': // Support headset
+      return (
+        <svg {...props}>
+          <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
+          <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
+        </svg>
+      );
+    default:
+      return null;
+  }
+};
+
+const StatsBarIcon = ({ iconKey }: { iconKey: string }) => {
+  const props = { width: "24", height: "24", viewBox: "0 0 24 24", fill: "none", stroke: "#0875D1", strokeWidth: "2", strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
+  switch (iconKey) {
+    case 'Verify':
+      return (
+        <svg {...props}>
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          <path d="m9 11 2 2 4-4" />
+        </svg>
+      );
+    case 'Award': // Medal with ribbon tails
+      return (
+        <svg {...props}>
+          <circle cx="12" cy="8" r="6" />
+          <path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11" />
+        </svg>
+      );
+    case 'Building': // High-rise office building
+      return (
+        <svg {...props}>
+          <rect x="4" y="2" width="16" height="20" rx="2" ry="2" />
+          <line x1="9" y1="22" x2="9" y2="16" />
+          <line x1="9" y1="16" x2="15" y2="16" />
+          <line x1="15" y1="16" x2="15" y2="22" />
+          <line x1="9" y1="6" x2="9" y2="6.01" />
+          <line x1="15" y1="6" x2="15" y2="6.01" />
+          <line x1="9" y1="10" x2="9" y2="10.01" />
+          <line x1="15" y1="10" x2="15" y2="10.01" />
+        </svg>
+      );
+    case 'Users': // Group of users
+      return (
+        <svg {...props}>
+          <path d="M17 21v-2a4 4 0 0 0-3-3.87" />
+          <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+          <path d="M21 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+          <circle cx="9" cy="7" r="4" />
+        </svg>
+      );
+    default:
+      return null;
+  }
+};
+
+const ProductCardIcon = ({ iconKey }: { iconKey: string }) => {
+  const props = { width: "20", height: "20", viewBox: "0 0 24 24", fill: "none", stroke: "#0875D1", strokeWidth: "2.2", strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
+  switch (iconKey) {
+    case 'Verify': // ShieldCheck
+      return (
+        <svg {...props}>
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          <path d="m9 11 2 2 4-4" />
+        </svg>
+      );
+    case 'Sliders': // SlidersHorizontal
+      return (
+        <svg {...props}>
+          <line x1="4" y1="21" x2="4" y2="14" />
+          <line x1="4" y1="10" x2="4" y2="3" />
+          <line x1="12" y1="21" x2="12" y2="12" />
+          <line x1="12" y1="8" x2="12" y2="3" />
+          <line x1="20" y1="21" x2="20" y2="16" />
+          <line x1="20" y1="12" x2="20" y2="3" />
+          <line x1="2" y1="14" x2="6" y2="14" />
+          <line x1="10" y1="8" x2="14" y2="8" />
+          <line x1="18" y1="16" x2="22" y2="16" />
+        </svg>
+      );
+    case 'Flask': // FlaskConical
+      return (
+        <svg {...props}>
+          <path d="M10 2h4M10 2v6L5.5 17.5a2 2 0 0 0 1.8 2.5h9.4a2 2 0 0 0 1.8-2.5L14 8V2" />
+          <path d="M7.8 15h8.4" />
+        </svg>
+      );
+    case 'Waterproof': // Shield + Droplet
+      return (
+        <svg {...props}>
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          <path d="M12 10a2.5 2.5 0 0 0-2.5 2.5c0 1.5 2.5 3.5 2.5 3.5s2.5-2 2.5-3.5A2.5 2.5 0 0 0 12 10z" />
+        </svg>
+      );
+    case 'Fiber': // Layers / Hexagon structure
+      return (
+        <svg {...props}>
+          <path d="M12 2L2 7l10 5 10-5-10-5z" />
+          <path d="M2 17l10 5 10-5" />
+          <path d="M2 12l10 5 10-5" />
+        </svg>
+      );
+    default:
+      return null;
+  }
 };
 
 /* ─── STRENGTHS features data ────────────────────────── */
@@ -212,6 +362,7 @@ const PRODUCT_CARDS_DATA = [
     title: 'Concrete Grades',
     desc: 'Wide range of grades for all construction requirements.',
     id: 'concrete-grades',
+    iconKey: 'Verify'
   },
   {
     image: '/concrete-pour.svg',
@@ -219,6 +370,7 @@ const PRODUCT_CARDS_DATA = [
     title: 'Self Compacting Concrete (SCC)',
     desc: 'High flowability, self-leveling and excellent finish.',
     id: 'scc',
+    iconKey: 'Sliders'
   },
   {
     image: '/construction-workers.svg',
@@ -226,22 +378,101 @@ const PRODUCT_CARDS_DATA = [
     title: 'High Strength Concrete',
     desc: 'Engineered for high rise and heavy load structures.',
     id: 'high-strength',
+    iconKey: 'Flask'
   },
   {
     image: '/concrete-floor-finishing.svg',
-    badge: 'Waterproof',
+    badge: 'WATERPROOF',
     title: 'Waterproof Concrete',
     desc: 'Specially designed to resist water penetration.',
     id: 'waterproof',
+    iconKey: 'Waterproof'
   },
   {
     image: '/concrete-fiber-material.svg',
-    badge: 'Fiber Reinforced',
+    badge: 'FIBER REINFORCED',
     title: 'Fiber Reinforced Concrete (FRC)',
     desc: 'Improved durability, crack resistance & toughness.',
     id: 'frc',
+    iconKey: 'Fiber'
   },
 ];
+
+/* ─── PROCESS steps definition ───────────────────────── */
+const PROCESS_STEPS_DATA = [
+  {
+    step: 'STEP 01',
+    title: 'Raw Material Check',
+    desc: 'Rigorous testing of cement, aggregates, sand, and water at every source.',
+    iconKey: 'Verify'
+  },
+  {
+    step: 'STEP 02',
+    title: 'Mix Design Control',
+    desc: 'Advanced computerized batching controlled to exact recipe requirements.',
+    iconKey: 'Sliders'
+  },
+  {
+    step: 'STEP 03',
+    title: 'Concrete Testing',
+    desc: 'Regular sampling and temperature checks during production and mix stages.',
+    iconKey: 'Flask'
+  },
+  {
+    step: 'STEP 04',
+    title: 'Slump Testing',
+    desc: 'Ensuring consistency, flowability, and workability properties on-site.',
+    iconKey: 'Slump'
+  },
+  {
+    step: 'STEP 05',
+    title: 'Strength Testing',
+    desc: 'Compression testing of cubes at 7 and 28 days in our quality control labs.',
+    iconKey: 'Strength'
+  },
+  {
+    step: 'STEP 06',
+    title: 'Batch Consistency',
+    desc: 'Continuous automatic calibration checks on batching sensors.',
+    iconKey: 'Sync'
+  },
+  {
+    step: 'STEP 07',
+    title: 'Quality Monitoring',
+    desc: 'Real-time surveys and performance audit reports.',
+    iconKey: 'Monitor'
+  },
+  {
+    step: 'STEP 08',
+    title: 'Site Support',
+    desc: 'Dedicated technical staff on-site to assist with pumping and placement.',
+    iconKey: 'Support'
+  }
+];
+
+const BOTTOM_STATS_DATA = [
+  {
+    iconKey: 'Verify',
+    value: '100%',
+    label: 'QUALITY ASSURED'
+  },
+  {
+    iconKey: 'Award',
+    value: '18+',
+    label: 'YEARS OF EXPERIENCE'
+  },
+  {
+    iconKey: 'Building',
+    value: '1000+',
+    label: 'PROJECTS DELIVERED'
+  },
+  {
+    iconKey: 'Users',
+    value: '500+',
+    label: 'SATISFIED CLIENTS'
+  }
+];
+
 
 
 /* ══════════════════════════════════════════════════════════
@@ -264,47 +495,49 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       ══════════════════════════════════════════════════════ */}
       {/* ── Desktop/Tablet Hero (≥ 752px) ── */}
       <section id="hero-desktop" className="hero-section desktop-only-block">
-        <div className="hero-left-col">
-          <motion.div style={{ y: textY }} className="hero-left-content">
-            <p className="hero-label">READY MIX CONCRETE</p>
-            <h1 className="hero-title">
-              BUILDING<br />
-              STRENGTH.<br />
-              DELIVERING<br />
-              <span className="hero-title-accent">TRUST.</span>
-            </h1>
-            <p className="hero-paragraph">
-              18+ years of dependable Ready Mix Concrete solutions for
-              construction and infrastructure across Lucknow.
-            </p>
+        <div className="hero-flex-layout">
+          <div className="hero-left-col">
+            <motion.div style={{ y: textY }} className="hero-left-content">
+              <p className="hero-label">READY MIX CONCRETE</p>
+              <h1 className="hero-title">
+                BUILDING<br />
+                STRENGTH.<br />
+                DELIVERING<br />
+                <span className="hero-title-accent">TRUST.</span>
+              </h1>
+              <p className="hero-paragraph">
+                18+ years of dependable Ready Mix Concrete solutions for
+                construction and infrastructure across Lucknow.
+              </p>
 
-            <div className="hero-buttons">
-              <button className="btn-primary" onClick={() => onNavigate('/contact')}>
-                REQUEST A QUOTE <ArrowRight />
-              </button>
-              <button className="btn-secondary" onClick={() => onNavigate('/products')}>
-                EXPLORE PRODUCTS
-              </button>
-            </div>
+              <div className="hero-buttons">
+                <button className="btn-primary" onClick={() => onNavigate('/contact')}>
+                  REQUEST A QUOTE <ArrowRight />
+                </button>
+                <button className="btn-secondary" onClick={() => onNavigate('/products')}>
+                  EXPLORE PRODUCTS
+                </button>
+              </div>
 
-            <div className="hero-location">
-              <svg width="14" height="14" viewBox="0 0 20 20" fill="var(--blue)" style={{ flexShrink: 0 }}>
-                <path fillRule="evenodd" d="M5.05 4.05a7 7 0 1 1 9.9 9.9L10 18.9l-4.95-4.95a7 7 0 0 1 0-9.9zM10 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" clipRule="evenodd"/>
-              </svg>
-              <span>
-                <strong style={{ color: 'var(--navy)', fontWeight: 700 }}>LOCATION:</strong> LUCKNOW, UTTAR PRADESH, INDIA
-              </span>
-            </div>
-          </motion.div>
-        </div>
+              <div className="hero-location">
+                <svg width="14" height="14" viewBox="0 0 20 20" fill="var(--blue)" style={{ flexShrink: 0 }}>
+                  <path fillRule="evenodd" d="M5.05 4.05a7 7 0 1 1 9.9 9.9L10 18.9l-4.95-4.95a7 7 0 0 1 0-9.9zM10 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" clipRule="evenodd"/>
+                </svg>
+                <span>
+                  <strong style={{ color: 'var(--navy)', fontWeight: 700 }}>LOCATION:</strong> LUCKNOW, UTTAR PRADESH, INDIA
+                </span>
+              </div>
+            </motion.div>
+          </div>
 
-        <div className="hero-right-col">
-          <motion.img
-            style={{ y: truckY }}
-            src="/swastik_ready_mix_truck.svg"
-            alt="Swastik Mixtures Ready Mix Concrete Truck"
-            className="hero-truck-visual"
-          />
+          <div className="hero-right-col">
+            <motion.img
+              style={{ y: truckY }}
+              src="/swastik_ready_mix_truck.svg"
+              alt="Swastik Mixtures Ready Mix Concrete Truck"
+              className="hero-truck-visual"
+            />
+          </div>
         </div>
 
         {/* BLUE DECORATIVE WAVE */}
@@ -313,34 +546,32 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
         </motion.div>
 
         {/* BOTTOM STATISTICS CARD (contained inside hero viewport wrapper) */}
-        <motion.div style={{ y: statsY }} className="hero-stats-wrapper">
-          <div className="container" style={{ maxWidth: '1440px' }}>
-            <div className="stats-card">
-              <div className="stats-grid">
-                {STATS.map((s, i) => (
-                  <div key={i} className="stats-item">
-                    {/* Icon circle */}
-                    <div className="stats-icon-wrap">
-                      <img src={s.iconUrl} alt="" className="stats-icon-img" />
-                    </div>
-                    {/* Text */}
-                    <div className="stats-text-wrap">
-                      {s.hasLabel && (
-                        <p className="stats-label">{s.label}</p>
-                      )}
-                      <p className={`stats-main ${s.blue ? 'color-blue' : 'color-navy'} ${s.big ? 'size-big' : 'size-normal'}`}>
-                        {s.main}
-                      </p>
-                      <p className="stats-sub">
-                        {s.sub1}<br />{s.sub2}
-                      </p>
-                    </div>
+        <div className="hero-stats-wrapper">
+          <motion.div style={{ y: statsY }} className="stats-card">
+            <div className="stats-grid">
+              {STATS.map((s, i) => (
+                <div key={i} className="stats-item">
+                  {/* Icon circle */}
+                  <div className="stats-icon-wrap">
+                    <img src={s.iconUrl} alt="" className="stats-icon-img" />
                   </div>
-                ))}
-              </div>
+                  {/* Text */}
+                  <div className="stats-text-wrap">
+                    {s.hasLabel && (
+                      <p className="stats-label">{s.label}</p>
+                    )}
+                    <p className={`stats-main ${s.blue ? 'color-blue' : 'color-navy'} ${s.big ? 'size-big' : 'size-normal'}`}>
+                      {s.main}
+                    </p>
+                    <p className="stats-sub">
+                      {s.sub1}<br />{s.sub2}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </section>
 
       {/* ── Mobile Hero (≤ 767px) ── */}
@@ -724,16 +955,97 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           §5  PRODUCTS
       ══════════════════════════════════════════════════════ */}
       <section id="products" className="products-outer-section">
+        {/* Subtle Dotted Pattern - Upper Left */}
+        <div className="products-bg-dots" aria-hidden="true">
+          <svg width="240" height="240" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="dotPattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                <circle cx="2" cy="2" r="1.5" fill="#0875D1" fillOpacity="0.08" />
+              </pattern>
+            </defs>
+            <rect width="240" height="240" fill="url(#dotPattern)" />
+          </svg>
+        </div>
+
+        {/* Subtle Curved Lines - Bottom Left */}
+        <div className="products-bg-curve-left" aria-hidden="true">
+          <svg width="350" height="350" viewBox="0 0 350 350" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="-50" cy="400" r="150" stroke="#0875D1" strokeOpacity="0.05" strokeWidth="1.5" />
+            <circle cx="-50" cy="400" r="200" stroke="#0875D1" strokeOpacity="0.05" strokeWidth="1.5" />
+            <circle cx="-50" cy="400" r="250" stroke="#0875D1" strokeOpacity="0.05" strokeWidth="1.5" />
+            <circle cx="-50" cy="400" r="300" stroke="#0875D1" strokeOpacity="0.05" strokeWidth="1.5" />
+          </svg>
+        </div>
+
+        {/* Subtle Curved Lines - Right/Bottom */}
+        <div className="products-bg-curve-right" aria-hidden="true">
+          <svg width="450" height="450" viewBox="0 0 450 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="500" cy="500" r="180" stroke="#0875D1" strokeOpacity="0.05" strokeWidth="1.5" />
+            <circle cx="500" cy="500" r="230" stroke="#0875D1" strokeOpacity="0.05" strokeWidth="1.5" />
+            <circle cx="500" cy="500" r="280" stroke="#0875D1" strokeOpacity="0.05" strokeWidth="1.5" />
+            <circle cx="500" cy="500" r="330" stroke="#0875D1" strokeOpacity="0.05" strokeWidth="1.5" />
+            <circle cx="500" cy="500" r="380" stroke="#0875D1" strokeOpacity="0.05" strokeWidth="1.5" />
+          </svg>
+        </div>
+
         <div className="products-container">
-          
           <div className="products-main-layout">
-            {/* Left Block — Heading Block */}
-            <div className="products-heading-block">
+            
+            {/* Left Block — Heading & Introduction */}
+            <div className="products-intro">
               <span className="products-eyebrow">OUR PRODUCTS</span>
               <h2 className="products-main-title">
-                Concrete Engineered<br />
-                for Every Requirement
+                Concrete<br />
+                Engineered<br />
+                for <span className="text-accent-blue">Every</span><br />
+                Requirement
               </h2>
+              <div className="products-heading-line" aria-hidden="true" />
+              
+              <p className="products-description">
+                High performance concrete solutions designed to meet diverse construction needs with strength, durability and unmatched reliability.
+              </p>
+
+              <div className="products-cta-wrap">
+                <button className="products-view-all-btn" onClick={() => onNavigate('/products')}>
+                  VIEW ALL PRODUCTS <ArrowRight />
+                </button>
+              </div>
+
+              {/* Trust Feature List */}
+              <div className="products-feature-list">
+                <div className="products-feature-line-connector" aria-hidden="true" />
+                
+                <div className="products-feature-item">
+                  <div className="products-feature-icon-circle">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0875D1" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                      <path d="m9 11 2 2 4-4" />
+                    </svg>
+                  </div>
+                  <span className="products-feature-text">Advanced Technology</span>
+                </div>
+                
+                <div className="products-feature-item">
+                  <div className="products-feature-icon-circle">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0875D1" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76z" />
+                      <path d="m9 12 2 2 4-4" />
+                    </svg>
+                  </div>
+                  <span className="products-feature-text">Consistent Quality</span>
+                </div>
+                
+                <div className="products-feature-item">
+                  <div className="products-feature-icon-circle">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0875D1" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
+                      <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
+                    </svg>
+                  </div>
+                  <span className="products-feature-text">Reliable Support</span>
+                </div>
+              </div>
             </div>
 
             {/* Right Block — Product Cards Grid */}
@@ -741,6 +1053,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
               <div className="products-cards-grid">
                 {PRODUCT_CARDS_DATA.map((card) => (
                   <div key={card.id} className="product-card">
+                    {/* Card Image */}
                     <div className="product-card-image-wrap">
                       <img
                         src={card.image}
@@ -748,114 +1061,155 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                         className="product-card-image"
                       />
                     </div>
-                    <div className="product-card-content">
+                    
+                    {/* Meta Row: Icon Circle (Left) & Badge (Right) */}
+                    <div className="product-card-meta-row">
+                      <div className="product-card-icon-wrap">
+                        <ProductCardIcon iconKey={card.iconKey} />
+                      </div>
                       <span className="product-card-badge">{card.badge}</span>
+                    </div>
+
+                    {/* Card Body Content */}
+                    <div className="product-card-content">
                       <h3 className="product-card-title">{card.title}</h3>
+                      <div className="product-card-line" aria-hidden="true" />
                       <p className="product-card-description">{card.desc}</p>
+                      
+                      {/* Bottom-left Arrow Button */}
+                      <div className="product-card-arrow-wrap">
+                        <div className="product-card-circle-arrow">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                            <polyline points="12 5 19 12 12 19" />
+                          </svg>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
+            
           </div>
+        </div>
 
-          {/* Bottom Action — View All Products Button */}
-          <div className="products-action-bar">
-            <button className="products-view-all-btn" onClick={() => onNavigate('/products')}>
-              VIEW ALL PRODUCTS <ArrowRight />
-            </button>
-          </div>
-
+        {/* Bottom Navy Wave Transition */}
+        <div className="products-wave-container" aria-hidden="true">
+          <svg
+            viewBox="0 0 1440 160"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+            className="products-wave-svg"
+          >
+            {/* Primary Blue wave layer */}
+            <path
+              d="M0,90 C260,30 460,150 720,95 C980,40 1200,120 1440,80 L1440,160 L0,160 Z"
+              fill="#0875D1"
+            />
+            {/* Dark Navy wave layer on top */}
+            <path
+              d="M0,110 C240,55 480,165 720,110 C960,55 1200,145 1440,95 L1440,160 L0,160 Z"
+              fill="#071B3A"
+            />
+          </svg>
         </div>
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          §6  QUALITY
+          §6  QUALITY PROCESS
       ══════════════════════════════════════════════════════ */}
-      <section id="quality" className="section-py" style={{ background: 'var(--navy)' }}>
-        <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-            <span
-              style={{
-                display: 'inline-block',
-                fontSize: '11.5px',
-                fontWeight: 700,
-                letterSpacing: '3px',
-                textTransform: 'uppercase',
-                color: '#6DB4F5',
-                marginBottom: '14px',
-              }}
-            >
-              OUR PROCESS
-            </span>
-            <h2
-              style={{
-                fontSize: 'clamp(26px, 3vw, 40px)',
-                fontWeight: 800,
-                color: '#fff',
-                letterSpacing: '-0.02em',
-              }}
-            >
-              Quality That Builds Confidence
-            </h2>
+      <section id="quality" className="quality-section">
+        {/* Abstract Concentric Curved Lines - Top Left */}
+        <div className="quality-bg-pattern-left" aria-hidden="true">
+          <svg width="300" height="300" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="100" stroke="#0875D1" strokeOpacity="0.08" strokeWidth="1.5" />
+            <circle cx="50" cy="50" r="140" stroke="#0875D1" strokeOpacity="0.08" strokeWidth="1.5" />
+            <circle cx="50" cy="50" r="180" stroke="#0875D1" strokeOpacity="0.08" strokeWidth="1.5" />
+            <circle cx="50" cy="50" r="220" stroke="#0875D1" strokeOpacity="0.08" strokeWidth="1.5" />
+            <circle cx="50" cy="50" r="260" stroke="#0875D1" strokeOpacity="0.08" strokeWidth="1.5" />
+          </svg>
+        </div>
+
+        {/* Abstract Concentric Curved Lines - Bottom Right */}
+        <div className="quality-bg-pattern-right" aria-hidden="true">
+          <svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="350" cy="350" r="120" stroke="#0875D1" strokeOpacity="0.08" strokeWidth="1.5" />
+            <circle cx="350" cy="350" r="160" stroke="#0875D1" strokeOpacity="0.08" strokeWidth="1.5" />
+            <circle cx="350" cy="350" r="200" stroke="#0875D1" strokeOpacity="0.08" strokeWidth="1.5" />
+            <circle cx="350" cy="350" r="240" stroke="#0875D1" strokeOpacity="0.08" strokeWidth="1.5" />
+            <circle cx="350" cy="350" r="280" stroke="#0875D1" strokeOpacity="0.08" strokeWidth="1.5" />
+            <circle cx="350" cy="350" r="320" stroke="#0875D1" strokeOpacity="0.08" strokeWidth="1.5" />
+          </svg>
+        </div>
+
+        <div className="quality-container">
+          {/* Header block */}
+          <div className="quality-header">
+            <span className="quality-eyebrow">OUR PROCESS</span>
+            <h2 className="quality-heading">Quality That Builds Confidence</h2>
+            <div className="quality-header-line" aria-hidden="true" />
+            <p className="quality-paragraph">
+              From the finest raw materials to timely delivery, every step in our process is designed to ensure superior strength, durability, and complete reliability.
+            </p>
           </div>
 
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(4, 1fr)',
-              gap: '24px',
-            }}
-          >
-            {qualitySteps.map((step, i) => (
-              <div
-                key={step.id}
-                style={{
-                  background: 'rgba(255,255,255,.06)',
-                  border: '1px solid rgba(255,255,255,.10)',
-                  borderRadius: 'var(--radius-md)',
-                  padding: '24px',
-                  transition: 'background var(--transition)',
-                }}
-                onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,.10)')}
-                onMouseLeave={e => (e.currentTarget.style.background = 'rgba(255,255,255,.06)')}
-              >
-                <div
-                  style={{
-                    width: '48px',
-                    height: '48px',
-                    borderRadius: '50%',
-                    background: 'rgba(255,255,255,.12)',
-                    border: '1.5px solid rgba(255,255,255,.22)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    marginBottom: '16px',
-                  }}
-                >
-                  <QualityIcon idx={i} />
+          {/* Cards Grid */}
+          <div className="quality-grid">
+            {PROCESS_STEPS_DATA.map((step, i) => (
+              <div key={i} className="quality-card">
+                <div className="quality-card-icon-wrap">
+                  <ProcessStepIcon iconKey={step.iconKey} />
                 </div>
-                <p
-                  style={{
-                    fontSize: '10px',
-                    fontWeight: 700,
-                    color: '#6DB4F5',
-                    textTransform: 'uppercase',
-                    letterSpacing: '2px',
-                    marginBottom: '6px',
-                  }}
-                >
-                  STEP {String(i + 1).padStart(2, '0')}
-                </p>
-                <h3 style={{ fontSize: '16px', fontWeight: 700, color: '#fff', marginBottom: '10px' }}>
-                  {step.title}
-                </h3>
-                <p style={{ fontSize: '13.5px', color: 'rgba(255,255,255,.60)', lineHeight: 1.65 }}>
-                  {step.description}
-                </p>
+                <span className="quality-card-step">{step.step}</span>
+                <h3 className="quality-card-title">{step.title}</h3>
+                <div className="quality-card-line" aria-hidden="true" />
+                <p className="quality-card-desc">{step.desc}</p>
               </div>
             ))}
           </div>
+
+          {/* Bottom Stats Bar */}
+          <div className="quality-stats-bar">
+            {BOTTOM_STATS_DATA.map((stat, i) => (
+              <React.Fragment key={i}>
+                <div className="quality-stat-block">
+                  <div className="quality-stat-icon">
+                    <StatsBarIcon iconKey={stat.iconKey} />
+                  </div>
+                  <div className="quality-stat-text">
+                    <span className="quality-stat-value">{stat.value}</span>
+                    <span className="quality-stat-label">{stat.label}</span>
+                  </div>
+                </div>
+                {i < BOTTOM_STATS_DATA.length - 1 && (
+                  <div className="quality-stat-divider" aria-hidden="true" />
+                )}
+              </React.Fragment>
+            ))}
+          </div>
+        </div>
+
+        {/* Bottom layered blue wave */}
+        <div className="quality-wave-container" aria-hidden="true">
+          <svg
+            viewBox="0 0 1440 160"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+            className="quality-wave-svg"
+          >
+            {/* Dark navy base — solid fill to bottom */}
+            <path
+              d="M0,80 C240,20 480,140 720,80 C960,20 1200,130 1440,70 L1440,160 L0,160 Z"
+              fill="#071D41"
+            />
+            {/* Bright blue accent wave on top */}
+            <path
+              d="M0,100 C200,48 440,150 720,95 C960,48 1220,140 1440,88 L1440,160 L0,160 Z"
+              fill="#0875D1"
+              fillOpacity="0.75"
+            />
+          </svg>
         </div>
       </section>
 
