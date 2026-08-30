@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-interface BlogCategoriesProps {
+interface Blog2Props {
   searchQuery: string;
   setSearchQuery: (query: string) => void;
   selectedCategory: string;
@@ -17,7 +17,7 @@ const CATEGORIES_LIST = [
   'COMPANY NEWS'
 ];
 
-export const BlogCategories: React.FC<BlogCategoriesProps> = ({
+export const Blog2: React.FC<Blog2Props> = ({
   searchQuery,
   setSearchQuery,
   selectedCategory,
@@ -97,3 +97,5 @@ export const BlogCategories: React.FC<BlogCategoriesProps> = ({
     </section>
   );
 };
+
+export default Blog2;

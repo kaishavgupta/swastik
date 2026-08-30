@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-export const BlogHero: React.FC = () => {
+export const Blog1: React.FC = () => {
   const scrollToSearch = () => {
     const el = document.getElementById('blog-part2');
     if (el) {
@@ -62,3 +62,5 @@ export const BlogHero: React.FC = () => {
     </section>
   );
 };
+
+export default Blog1;

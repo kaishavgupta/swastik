@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
-interface BlogSubscribeProps {
+interface Blog5Props {
   onNavigate?: (path: string) => void;
 }
 
-export const BlogSubscribe: React.FC<BlogSubscribeProps> = ({ onNavigate }) => {
+export const Blog5: React.FC<Blog5Props> = ({ onNavigate }) => {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
@@ -84,3 +84,5 @@ export const BlogSubscribe: React.FC<BlogSubscribeProps> = ({ onNavigate }) => {
     </section>
   );
 };
+
+export default Blog5;

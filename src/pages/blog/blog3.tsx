@@ -2,12 +2,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import type { BlogPost } from './blog_data';
 
-interface BlogFeaturedProps {
+interface Blog3Props {
   posts: BlogPost[];
   onSelectPost?: (post: BlogPost) => void;
 }
 
-export const BlogFeatured: React.FC<BlogFeaturedProps> = ({ posts, onSelectPost }) => {
+export const Blog3: React.FC<Blog3Props> = ({ posts, onSelectPost }) => {
   const featuredPosts = posts.filter(p => p.featured).slice(0, 3);
   const displayPosts = featuredPosts.length > 0 ? featuredPosts : posts.slice(0, 3);
 
@@ -71,3 +71,5 @@ export const BlogFeatured: React.FC<BlogFeaturedProps> = ({ posts, onSelectPost 
     </section>
   );
 };
+
+export default Blog3;

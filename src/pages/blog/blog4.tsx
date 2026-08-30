@@ -2,13 +2,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import type { BlogPost } from './blog_data';
 
-interface BlogGridProps {
+interface Blog4Props {
   posts: BlogPost[];
   allPosts: BlogPost[];
   onSelectPost?: (post: BlogPost) => void;
 }
 
-export const BlogGrid: React.FC<BlogGridProps> = ({ posts, allPosts, onSelectPost }) => {
+export const Blog4: React.FC<Blog4Props> = ({ posts, allPosts, onSelectPost }) => {
   const popularPosts = allPosts.slice(0, 4);
 
   return (
@@ -104,17 +104,10 @@ export const BlogGrid: React.FC<BlogGridProps> = ({ posts, allPosts, onSelectPos
                     onClick={() => onSelectPost && onSelectPost(post)}
                     className="blog-popular-item"
                   >
-                    <img
-                      src={post.image}
-                      alt={post.title}
-                      loading="lazy"
-                      width="64"
-                      height="48"
-                      className="blog-popular-img"
-                    />
+                    <img src={post.image} alt={post.title} className="blog-popular-img" />
                     <div className="blog-popular-info">
-                      <span className="blog-popular-item-title">{post.title}</span>
-                      <span className="blog-popular-item-date">{post.date}</span>
+                      <h4 className="blog-popular-title">{post.title}</h4>
+                      <span className="blog-popular-date">{post.date}</span>
                     </div>
                   </div>
                 ))}
@@ -126,3 +119,5 @@ export const BlogGrid: React.FC<BlogGridProps> = ({ posts, allPosts, onSelectPos
     </section>
   );
 };
+
+export default Blog4;

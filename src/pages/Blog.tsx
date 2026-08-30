@@ -1,12 +1,12 @@
 import React from 'react';
-import { Blog1 } from '../about/blog1';
+import BlogPage from './blog/index';
 
 interface BlogProps {
   onNavigate?: (path: string) => void;
 }
 
 export const Blog: React.FC<BlogProps> = ({ onNavigate }) => {
-  return <Blog1 onNavigate={onNavigate} />;
+  return <BlogPage onNavigate={onNavigate} />;
 };
 
 export default Blog;

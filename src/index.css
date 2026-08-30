@@ -8560,3 +8560,410 @@ body {
     width: 100%;
   }
 }
+
+
+/* ══════════════════════════════════════════════════════════
+   HOMEPAGE — 12-PART FULLSCREEN SNAP PRESENTATION
+══════════════════════════════════════════════════════════ */
+
+.home-scroll-container {
+  width: 100%;
+  position: relative;
+  overflow-x: hidden;
+  background-color: #FFFFFF;
+}
+
+.home-snap-part {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+@media (max-width: 767px) {
+  .home-snap-part {
+    min-height: auto;
+    scroll-snap-align: none;
+  }
+}
+
+/* Part 6: Technology & Infrastructure */
+.tech-infra-section {
+  background: #F8FAFC;
+  padding-block: clamp(40px, 5vh, 80px);
+}
+.tech-infra-container {
+  width: min(92%, 1400px);
+  margin: 0 auto;
+}
+.tech-infra-header {
+  margin-bottom: clamp(24px, 3vh, 40px);
+}
+.tech-infra-eyebrow {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--blue, #0875D1);
+  margin-bottom: 8px;
+  display: block;
+}
+.tech-infra-title {
+  font-size: clamp(24px, 2.5vw, 38px);
+  font-weight: 800;
+  color: var(--navy, #071A36);
+  margin-bottom: 10px;
+}
+.tech-infra-title-bar {
+  width: 48px;
+  height: 3px;
+  background: var(--blue, #0875D1);
+  border-radius: 2px;
+  margin-bottom: 12px;
+}
+.tech-infra-title-bar.margin-auto {
+  margin: 0 auto 12px auto;
+}
+.tech-infra-lead {
+  font-size: 14px;
+  color: var(--text-muted, #526887);
+  max-width: 600px;
+  margin: 0 auto;
+}
+.tech-infra-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.tech-infra-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(7, 26, 54, 0.08);
+  box-shadow: 0 4px 16px rgba(7, 26, 54, 0.04);
+  transition: transform 0.3s ease;
+}
+.tech-infra-card:hover {
+  transform: translateY(-4px);
+}
+.tech-infra-img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+.tech-infra-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.tech-infra-tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--blue, #0875D1);
+  color: #FFFFFF;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+.tech-infra-body {
+  padding: 18px;
+}
+.tech-infra-card-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--navy, #071A36);
+  margin-bottom: 6px;
+}
+.tech-infra-card-desc {
+  font-size: 12px;
+  color: var(--text-muted, #526887);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Part 7: Equipment & Fleet */
+.equipment-fleet-section {
+  background: #FFFFFF;
+  padding-block: clamp(40px, 5vh, 80px);
+}
+.equipment-fleet-container {
+  width: min(92%, 1400px);
+  margin: 0 auto;
+}
+.equipment-fleet-header {
+  margin-bottom: clamp(24px, 3vh, 40px);
+}
+.equipment-fleet-eyebrow {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--blue, #0875D1);
+  margin-bottom: 8px;
+  display: block;
+}
+.equipment-fleet-title {
+  font-size: clamp(24px, 2.5vw, 38px);
+  font-weight: 800;
+  color: var(--navy, #071A36);
+  margin-bottom: 10px;
+}
+.equipment-fleet-title-bar {
+  width: 48px;
+  height: 3px;
+  background: var(--blue, #0875D1);
+  border-radius: 2px;
+  margin-bottom: 12px;
+}
+.equipment-fleet-lead {
+  font-size: 14px;
+  color: var(--text-muted, #526887);
+  max-width: 640px;
+}
+.equipment-fleet-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.equipment-fleet-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(7, 26, 54, 0.08);
+  box-shadow: 0 4px 16px rgba(7, 26, 54, 0.04);
+}
+.equipment-fleet-img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+.equipment-fleet-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.equipment-fleet-count {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(7, 26, 54, 0.85);
+  color: #FFFFFF;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+.equipment-fleet-card-body {
+  padding: 16px;
+}
+.equipment-fleet-card-title {
+  font-size: 14.5px;
+  font-weight: 800;
+  color: var(--navy, #071A36);
+  margin-bottom: 6px;
+}
+.equipment-fleet-card-desc {
+  font-size: 12px;
+  color: var(--text-muted, #526887);
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* Part 8: Where Our Concrete Builds */
+.concrete-builds-section {
+  background: #F8FAFC;
+  padding-block: clamp(40px, 5vh, 80px);
+}
+.concrete-builds-container {
+  width: min(92%, 1400px);
+  margin: 0 auto;
+}
+.concrete-builds-header {
+  margin-bottom: clamp(24px, 3vh, 40px);
+}
+.concrete-builds-eyebrow {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--blue, #0875D1);
+  margin-bottom: 8px;
+  display: block;
+}
+.concrete-builds-title {
+  font-size: clamp(24px, 2.5vw, 38px);
+  font-weight: 800;
+  color: var(--navy, #071A36);
+  margin-bottom: 10px;
+}
+.concrete-builds-title-bar {
+  width: 48px;
+  height: 3px;
+  background: var(--blue, #0875D1);
+  border-radius: 2px;
+  margin-bottom: 12px;
+}
+.concrete-builds-title-bar.margin-auto {
+  margin: 0 auto 12px auto;
+}
+.concrete-builds-lead {
+  font-size: 14px;
+  color: var(--text-muted, #526887);
+  max-width: 600px;
+  margin: 0 auto;
+}
+.concrete-builds-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.concrete-builds-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(7, 26, 54, 0.08);
+  box-shadow: 0 4px 16px rgba(7, 26, 54, 0.04);
+}
+.concrete-builds-img-wrap {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+.concrete-builds-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.concrete-builds-body {
+  padding: 18px;
+}
+.concrete-builds-card-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--navy, #071A36);
+  margin-bottom: 6px;
+}
+.concrete-builds-card-desc {
+  font-size: 12px;
+  color: var(--text-muted, #526887);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Part 9: Process Workflow */
+.process-workflow-section {
+  background: #FFFFFF;
+  padding-block: clamp(40px, 5vh, 80px);
+}
+.process-workflow-container {
+  width: min(92%, 1400px);
+  margin: 0 auto;
+}
+.process-workflow-header {
+  margin-bottom: clamp(24px, 3vh, 40px);
+}
+.process-workflow-eyebrow {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--blue, #0875D1);
+  margin-bottom: 8px;
+  display: block;
+}
+.process-workflow-title {
+  font-size: clamp(24px, 2.5vw, 38px);
+  font-weight: 800;
+  color: var(--navy, #071A36);
+  margin-bottom: 10px;
+}
+.process-workflow-title-bar {
+  width: 48px;
+  height: 3px;
+  background: var(--blue, #0875D1);
+  border-radius: 2px;
+  margin-bottom: 12px;
+}
+.process-workflow-title-bar.margin-auto {
+  margin: 0 auto 12px auto;
+}
+.process-workflow-lead {
+  font-size: 14px;
+  color: var(--text-muted, #526887);
+  max-width: 600px;
+  margin: 0 auto;
+}
+.process-workflow-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.process-workflow-card {
+  position: relative;
+  background: #F8FAFC;
+  border: 1px solid rgba(7, 26, 54, 0.08);
+  border-radius: 14px;
+  padding: 20px;
+}
+.process-step-badge {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--blue, #0875D1);
+  background: rgba(8, 117, 209, 0.1);
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.process-workflow-card-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--navy, #071A36);
+  margin-bottom: 6px;
+}
+.process-workflow-card-desc {
+  font-size: 11.5px;
+  color: var(--text-muted, #526887);
+  line-height: 1.45;
+  margin: 0;
+}
+.process-arrow-indicator {
+  position: absolute;
+  top: 50%;
+  right: -12px;
+  transform: translateY(-50%);
+  color: var(--blue, #0875D1);
+  font-weight: 900;
+  z-index: 2;
+}
+
+@media (max-width: 1099px) {
+  .tech-infra-grid,
+  .concrete-builds-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .equipment-fleet-grid,
+  .process-workflow-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .tech-infra-grid,
+  .equipment-fleet-grid,
+  .concrete-builds-grid,
+  .process-workflow-grid {
+    grid-template-columns: 1fr;
+  }
+  .process-arrow-indicator {
+    display: none;
+  }
+}
