@@ -16,9 +16,9 @@ export const ProductPart1: React.FC<ProductPart1Props> = ({ onNavigate }) => {
 
   const handleQuoteNav = () => {
     if (onNavigate) {
-      onNavigate('/contact');
+      onNavigate('/contact?form=true');
     } else {
-      window.location.hash = '/contact';
+      window.location.hash = '/contact?form=true';
     }
   };
 
@@ -163,3 +163,5 @@ export const ProductPart1: React.FC<ProductPart1Props> = ({ onNavigate }) => {
 };
 
 export default ProductPart1;
+
+

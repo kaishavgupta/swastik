@@ -185,7 +185,7 @@ export const AboutPart6: React.FC<AboutPart6Props> = ({ onNavigate }) => {
           </div>
 
           <button
-            onClick={() => handleNav('/contact')}
+            onClick={() => handleNav('/contact?form=true')}
             className="about-safety-cta-button"
           >
             REQUEST A QUOTE →
@@ -202,3 +202,4 @@ export const AboutPart6: React.FC<AboutPart6Props> = ({ onNavigate }) => {
 };
 
 export default AboutPart6;
+

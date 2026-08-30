@@ -129,7 +129,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
 
             {/* GET A QUOTE CTA */}
             <button
-              onClick={() => go('/contact')}
+              onClick={() => go('/contact?form=true')}
               className="btn-primary nh-cta"
             >
               GET A QUOTE →
@@ -184,7 +184,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
               );
             })}
             <button
-              onClick={() => go('/contact')}
+              onClick={() => go('/contact?form=true')}
               className="btn-primary"
               style={{ width: '100%', marginTop: '12px', justifyContent: 'center' }}
             >

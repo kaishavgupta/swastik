@@ -17,8 +17,9 @@ function App() {
   // Synced titles according to SEO specifications
   useEffect(() => {
     let title = 'Swastik Mixtures | Ready Mix Concrete in Lucknow';
+    const basePath = currentPath.split('?')[0];
     
-    switch (currentPath) {
+    switch (basePath) {
       case '/':
         title = 'Swastik Mixtures | Ready Mix Concrete in Lucknow';
         break;
@@ -51,6 +52,7 @@ function App() {
   useEffect(() => {
     const handlePopState = () => {
       setCurrentPath(window.location.hash.replace('#', '') || '/');
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     };
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
@@ -59,24 +61,27 @@ function App() {
   const handleNavigation = (path: string) => {
     window.location.hash = path;
     setCurrentPath(path);
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   };
 
+  const basePath = currentPath.split('?')[0];
+
   const renderActivePage = () => {
-    switch (currentPath) {
+    switch (basePath) {
       case '/':
         return <Home onNavigate={handleNavigation} />;
       case '/about':
-        return <About />;
+        return <About onNavigate={handleNavigation} />;
       case '/products':
-        return <Products />;
+        return <Products onNavigate={handleNavigation} />;
       case '/projects':
-        return <Projects />;
+        return <Projects onNavigate={handleNavigation} />;
       case '/quality':
-        return <Quality />;
+        return <Quality onNavigate={handleNavigation} />;
       case '/blog':
-        return <Blog />;
+        return <Blog onNavigate={handleNavigation} />;
       case '/contact':
-        return <Contact />;
+        return <Contact onNavigate={handleNavigation} />;
       default:
         return <Home onNavigate={handleNavigation} />;
     }

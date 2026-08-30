@@ -163,7 +163,7 @@ export const HomePart12: React.FC<HomePart12Props> = ({ onNavigate }) => {
           </p>
           <div style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
             <button
-              onClick={() => handleNav('/contact')}
+              onClick={() => handleNav('/contact?form=true')}
               style={{
                 background: '#fff',
                 color: 'var(--blue, #0875D1)',
@@ -183,7 +183,7 @@ export const HomePart12: React.FC<HomePart12Props> = ({ onNavigate }) => {
               REQUEST A QUOTE →
             </button>
             <button
-              onClick={() => handleNav('/contact')}
+              onClick={() => handleNav('/contact?form=true')}
               style={{
                 background: 'transparent',
                 color: '#fff',
@@ -207,3 +207,4 @@ export const HomePart12: React.FC<HomePart12Props> = ({ onNavigate }) => {
 };
 
 export default HomePart12;
+

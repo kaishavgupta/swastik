@@ -8,17 +8,17 @@ interface ProjectCTAProps {
 export const ProjectCTA: React.FC<ProjectCTAProps> = ({ onNavigate }) => {
   const handleQuoteClick = () => {
     if (onNavigate) {
-      onNavigate('/contact');
+      onNavigate('/contact?form=true');
     } else {
-      window.location.hash = '/contact';
+      window.location.hash = '/contact?form=true';
     }
   };
 
   const handleTalkClick = () => {
     if (onNavigate) {
-      onNavigate('/contact');
+      onNavigate('/contact?form=true');
     } else {
-      window.location.hash = '/contact';
+      window.location.hash = '/contact?form=true';
     }
   };
 
@@ -68,3 +68,4 @@ export const ProjectCTA: React.FC<ProjectCTAProps> = ({ onNavigate }) => {
     </section>
   );
 };
+

@@ -8,9 +8,9 @@ interface Quality5Props {
 export const Quality5: React.FC<Quality5Props> = ({ onNavigate }) => {
   const handleQuoteClick = () => {
     if (onNavigate) {
-      onNavigate('/contact');
+      onNavigate('/contact?form=true');
     } else {
-      window.location.hash = '/contact';
+      window.location.hash = '/contact?form=true';
     }
   };
 
@@ -86,3 +86,5 @@ export const Quality5: React.FC<Quality5Props> = ({ onNavigate }) => {
     </section>
   );
 };
+
+

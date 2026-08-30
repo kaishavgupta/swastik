@@ -37,6 +37,17 @@ export const Contact: React.FC<ContactProps> = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (window.location.hash.includes('?')) {
+      setTimeout(() => {
+        const el = document.getElementById('contact-part2');
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 150);
+    }
+  }, []);
+
   const scrollToPart = (index: number) => {
     const el = document.getElementById(`contact-part${index + 1}`);
     if (el) {

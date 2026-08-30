@@ -93,7 +93,7 @@ export const AboutPart1: React.FC<AboutPart1Props> = ({ onNavigate }) => {
             </p>
 
             <div className="hero-buttons">
-              <button className="btn-primary" onClick={() => handleNav('/contact')}>
+              <button className="btn-primary" onClick={() => handleNav('/contact?form=true')}>
                 <span className="btn-icon--left">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
@@ -176,3 +176,4 @@ export const AboutPart1: React.FC<AboutPart1Props> = ({ onNavigate }) => {
 };
 
 export default AboutPart1;
+
