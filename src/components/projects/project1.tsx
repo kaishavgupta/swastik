@@ -16,7 +16,7 @@ export const Project1: React.FC<Project1Props> = ({ onNavigate }) => {
       <ProjectHero onNavigate={onNavigate} />
 
       {/* SECTION 2: Project Categories */}
-      <ProjectCategories />
+      <ProjectCategories onNavigate={onNavigate} />
 
       {/* SECTION 3: Featured Projects */}
       <FeaturedProjects onNavigate={onNavigate} />
