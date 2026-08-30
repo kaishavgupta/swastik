@@ -22109,3 +22109,1046 @@ body {
     gap: 12px;
   }
 }
+
+
+/* ══════════════════════════════════════════════════════════
+   QUALITY PAGE — PART 4: CONSISTENCY IN EVERY BATCH
+   Faded Skyline & Silos Background + 3-Column Layout +
+   2x2 Quality Metric Cards + Concrete Pouring Chute Image +
+   Dual Concrete Cubes with Dot Matrix & Blue Waves
+══════════════════════════════════════════════════════════ */
+
+.consistency-sec {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  background: #F8FAFE;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(70px, 8.5vh, 100px) 0 clamp(50px, 6.5vh, 80px) 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* 1. Background Skyline Asset (z-index: 0) */
+.consistency-bg-skyline {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.85;
+}
+
+/* 2. Top-Left Concentric Circles (z-index: 1) */
+.consistency-bg-circles {
+  position: absolute;
+  top: -120px;
+  left: -120px;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 111, 230, 0.08);
+  pointer-events: none;
+  z-index: 1;
+  box-shadow: inset 0 0 0 45px rgba(0, 111, 230, 0.03),
+              inset 0 0 0 90px rgba(0, 111, 230, 0.02),
+              inset 0 0 0 135px rgba(0, 111, 230, 0.015);
+}
+
+/* 3. Foreground Container (z-index: 2) */
+.consistency-container {
+  width: min(94%, 1440px);
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Top Right Editorial Badge */
+.consistency-editorial-badge {
+  position: absolute;
+  top: -10px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  z-index: 2;
+}
+
+.consistency-badge-top {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #526887;
+}
+
+.consistency-badge-bottom {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #071A36;
+}
+
+.consistency-badge-line-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  margin-top: 5px;
+}
+
+.consistency-badge-line {
+  height: 2px;
+  flex-grow: 1;
+  background: #006FE6;
+  border-radius: 1px;
+}
+
+.consistency-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #006FE6;
+}
+
+/* ── 3-Column Main Row ── */
+.consistency-main-row {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: clamp(24px, 3vw, 40px);
+  width: 100%;
+  margin-top: 15px;
+}
+
+/* ── Column 1 (Left Content) ── */
+.consistency-col-left {
+  flex: 0 0 28%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  z-index: 3;
+}
+
+.consistency-eyebrow-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.consistency-eyebrow {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #006FE6;
+}
+
+.consistency-eyebrow-line {
+  width: 28px;
+  height: 2.5px;
+  background: #006FE6;
+  border-radius: 2px;
+}
+
+.consistency-headline {
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-size: clamp(36px, 3.8vw, 52px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin: 0 0 12px 0;
+}
+
+.consistency-headline-navy {
+  color: #071A36;
+}
+
+.consistency-headline-blue {
+  color: #006FE6;
+}
+
+.consistency-title-bar {
+  width: 38px;
+  height: 3.5px;
+  background: #006FE6;
+  border-radius: 2px;
+  margin-bottom: 18px;
+}
+
+.consistency-desc {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: clamp(14px, 1.05vw, 15.5px);
+  line-height: 1.6;
+  color: #526887;
+  margin: 0;
+}
+
+/* Bottom-Left Concrete Cubes & Dot Matrix */
+.consistency-cubes-wrapper {
+  position: relative;
+  margin-top: clamp(24px, 4vh, 48px);
+  width: 100%;
+  min-height: 120px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.consistency-dot-grid {
+  position: absolute;
+  top: 10px;
+  left: 90px;
+  display: grid;
+  grid-template-columns: repeat(5, 6px);
+  gap: 10px;
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.consistency-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #006FE6;
+}
+
+.consistency-cubes-pair {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  position: relative;
+  z-index: 4;
+}
+
+.consistency-cube-item.large {
+  width: 105px;
+  position: relative;
+}
+
+.consistency-cube-item.small {
+  width: 80px;
+  margin-bottom: 4px;
+  position: relative;
+}
+
+.consistency-cube-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 20px rgba(7, 26, 54, 0.22));
+}
+
+.consistency-cube-shadow.large {
+  width: 90px;
+  height: 12px;
+  background: radial-gradient(ellipse at center, rgba(7, 26, 54, 0.28) 0%, transparent 70%);
+  margin: -6px auto 0 auto;
+}
+
+.consistency-cube-shadow.small {
+  width: 70px;
+  height: 10px;
+  background: radial-gradient(ellipse at center, rgba(7, 26, 54, 0.25) 0%, transparent 70%);
+  margin: -5px auto 0 auto;
+}
+
+/* ── Column 2 (Center 2x2 Quality Cards) ── */
+.consistency-col-center {
+  flex: 0 0 38%;
+  max-width: 440px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 3;
+}
+
+.consistency-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  width: 100%;
+}
+
+.consistency-card {
+  background: #FFFFFF;
+  border-radius: 24px;
+  box-shadow: 0 16px 40px rgba(7, 26, 54, 0.08);
+  border: 1px solid rgba(0, 111, 230, 0.12);
+  padding: 24px 18px 20px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.consistency-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 48px rgba(7, 26, 54, 0.13);
+  border-color: rgba(0, 111, 230, 0.25);
+}
+
+.consistency-card-icon-wrap {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(0, 111, 230, 0.08);
+  border: 1.5px solid rgba(0, 111, 230, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.consistency-card-val.is-number {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: clamp(30px, 2.6vw, 36px);
+  font-weight: 900;
+  color: #071A36;
+  line-height: 1.05;
+  margin-bottom: 2px;
+}
+
+.consistency-card-val.is-text {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: clamp(16px, 1.4vw, 20px);
+  font-weight: 900;
+  color: #006FE6;
+  line-height: 1.15;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.consistency-card-title {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 900;
+  color: #071A36;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.consistency-card-sub {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 10.5px;
+  font-weight: 800;
+  color: #526887;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+
+/* ── Column 3 (Right Concrete Pouring Image) ── */
+.consistency-col-right {
+  flex: 0 0 34%;
+  max-width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 3;
+}
+
+.consistency-pour-frame {
+  width: 100%;
+  height: 100%;
+  min-height: 380px;
+  border-radius: 26px;
+  overflow: hidden;
+  box-shadow: 0 20px 48px rgba(7, 26, 54, 0.14);
+  border: 2px solid rgba(0, 111, 230, 0.15);
+  background: #FFFFFF;
+}
+
+.consistency-pour-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.consistency-pour-frame:hover .consistency-pour-img {
+  transform: scale(1.03);
+}
+
+/* ══════════════════════════════════════════════════════════
+   QUALITY PART 4 — MEDIUM / TABLET (768px – 1199px)
+══════════════════════════════════════════════════════════ */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .consistency-sec {
+    min-height: 100svh;
+    height: auto;
+    padding: 60px 0;
+  }
+
+  .consistency-bg-skyline {
+    opacity: 0.4;
+  }
+
+  .consistency-editorial-badge {
+    position: static;
+    margin-bottom: 20px;
+    align-items: flex-start;
+  }
+
+  .consistency-main-row {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .consistency-col-left {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .consistency-col-center {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .consistency-col-right {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .consistency-pour-frame {
+    min-height: 320px;
+    height: 320px;
+  }
+
+  .consistency-cubes-wrapper {
+    margin-top: 24px;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   QUALITY PART 4 — SMALL SCREEN / MOBILE (320px – 767px)
+   Vertical Flow: Headings -> Cards -> Pouring Image -> Cubes
+══════════════════════════════════════════════════════════ */
+@media (max-width: 767px) {
+  .consistency-sec {
+    min-height: 100svh;
+    height: auto;
+    padding: 44px 0 60px 0;
+  }
+
+  .consistency-bg-skyline {
+    opacity: 0.16;
+    object-position: right center;
+  }
+
+  .consistency-container {
+    width: calc(100% - 24px);
+  }
+
+  .consistency-editorial-badge {
+    position: static;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  .consistency-main-row {
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 0;
+  }
+
+  .consistency-col-left {
+    flex: 1 1 100%;
+    max-width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+
+  .consistency-eyebrow-wrap {
+    justify-content: center;
+  }
+
+  .consistency-headline {
+    font-size: clamp(28px, 8vw, 36px);
+    text-align: center;
+  }
+
+  .consistency-title-bar {
+    margin: 0 auto 16px auto;
+  }
+
+  .consistency-desc {
+    font-size: 13.5px;
+    text-align: center;
+  }
+
+  /* Center Cards on Mobile: 2x2 or 1-col */
+  .consistency-col-center {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .consistency-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .consistency-card {
+    padding: 18px 12px 16px 12px;
+    border-radius: 18px;
+  }
+
+  .consistency-card-icon-wrap {
+    width: 38px;
+    height: 38px;
+    margin-bottom: 8px;
+  }
+
+  .consistency-card-icon-wrap svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .consistency-card-val.is-number {
+    font-size: 24px;
+  }
+
+  .consistency-card-val.is-text {
+    font-size: 14px;
+  }
+
+  .consistency-card-title {
+    font-size: 11px;
+  }
+
+  .consistency-card-sub {
+    font-size: 9.5px;
+  }
+
+  /* Right Pouring Image on Mobile */
+  .consistency-col-right {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .consistency-pour-frame {
+    min-height: 220px;
+    height: 240px;
+    border-radius: 20px;
+  }
+
+  /* Bottom Cubes on Mobile */
+  .consistency-cubes-wrapper {
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .consistency-dot-grid {
+    left: calc(50% + 20px);
+  }
+
+  .consistency-cube-item.large {
+    width: 85px;
+  }
+
+  .consistency-cube-item.small {
+    width: 65px;
+  }
+}
+
+/* Micro-screen support (320px – 360px) */
+@media (max-width: 360px) {
+  .consistency-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   QUALITY PAGE — PART 5: FINAL CTA - BUILD WITH CONFIDENCE
+   Architectural Silhouette Background + Dark Navy 3-Column Card +
+   Mixer Truck Visual + Request Quote Action + Direct Contacts +
+   Dual Concrete Cubes with Dot Matrix & Blue Geometric Wave Treatment
+══════════════════════════════════════════════════════════ */
+
+.quality-cta-sec {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  background: #F8FAFE;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(70px, 8.5vh, 100px) 0 clamp(50px, 6.5vh, 80px) 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* 1. Background Skyline Asset (z-index: 0) */
+.quality-cta-bg-skyline {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.85;
+}
+
+/* 2. Top-Left Concentric Circles (z-index: 1) */
+.quality-cta-bg-circles {
+  position: absolute;
+  top: -120px;
+  left: -120px;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 111, 230, 0.08);
+  pointer-events: none;
+  z-index: 1;
+  box-shadow: inset 0 0 0 45px rgba(0, 111, 230, 0.03),
+              inset 0 0 0 90px rgba(0, 111, 230, 0.02),
+              inset 0 0 0 135px rgba(0, 111, 230, 0.015);
+}
+
+/* 3. Foreground Container (z-index: 2) */
+.quality-cta-container {
+  width: min(94%, 1360px);
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── Dark Navy Card (z-index: 3) ── */
+.quality-cta-dark-card {
+  width: 100%;
+  background: #061B3A;
+  border-radius: 26px;
+  box-shadow: 0 24px 60px rgba(6, 27, 58, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: clamp(28px, 3.2vw, 38px) clamp(24px, 3vw, 42px);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(20px, 2.5vw, 36px);
+  box-sizing: border-box;
+  position: relative;
+  z-index: 3;
+}
+
+/* ── Column 1: Truck Image ── */
+.quality-cta-truck-col {
+  flex: 0 0 36%;
+  max-width: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quality-cta-truck-frame {
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1.5px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  background: #071A36;
+  aspect-ratio: 16/10;
+}
+
+.quality-cta-truck-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.quality-cta-dark-card:hover .quality-cta-truck-img {
+  transform: scale(1.03);
+}
+
+/* ── Column 2: CTA Content ── */
+.quality-cta-content-col {
+  flex: 1 1 auto;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.quality-cta-accent-line {
+  width: 32px;
+  height: 3px;
+  background: #006FE6;
+  border-radius: 2px;
+  margin-bottom: 12px;
+}
+
+.quality-cta-headline {
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-size: clamp(26px, 2.4vw, 36px);
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  margin: 0 0 12px 0;
+}
+
+.quality-cta-headline-white {
+  color: #FFFFFF;
+}
+
+.quality-cta-headline-blue {
+  color: #006FE6;
+}
+
+.quality-cta-desc {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: clamp(13px, 1vw, 14.5px);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 0 20px 0;
+}
+
+.quality-cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #006FE6;
+  color: #FFFFFF;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 13.5px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 13px 26px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(0, 111, 230, 0.4);
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+
+.quality-cta-button:hover {
+  background: #005ec4;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 111, 230, 0.55);
+}
+
+/* ── Column 3: Contact Details ── */
+.quality-cta-contact-col {
+  flex: 0 0 28%;
+  max-width: 300px;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: clamp(18px, 2vw, 30px);
+}
+
+.quality-cta-divider {
+  width: 1px;
+  background: rgba(255, 255, 255, 0.12);
+  flex-shrink: 0;
+}
+
+.quality-cta-contact-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+}
+
+.quality-cta-contact-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.quality-cta-icon-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #006FE6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 111, 230, 0.3);
+}
+
+.quality-cta-contact-text {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.35;
+}
+
+.quality-cta-contact-link {
+  color: #FFFFFF;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.quality-cta-contact-link:hover {
+  color: #38BDF8;
+}
+
+/* ── Bottom Decor: Concrete Cubes & Dot Grid ── */
+.quality-cta-bottom-decor {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+  margin-top: clamp(20px, 3vh, 36px);
+  min-height: 90px;
+}
+
+.quality-cta-dot-grid {
+  position: absolute;
+  top: 0;
+  left: 80px;
+  display: grid;
+  grid-template-columns: repeat(5, 6px);
+  gap: 10px;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.quality-cta-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #006FE6;
+}
+
+.quality-cta-cubes-pair {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  position: relative;
+  z-index: 4;
+}
+
+.quality-cta-cube-item.large {
+  width: 95px;
+  position: relative;
+}
+
+.quality-cta-cube-item.small {
+  width: 72px;
+  margin-bottom: 3px;
+  position: relative;
+}
+
+.quality-cta-cube-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 18px rgba(7, 26, 54, 0.2));
+}
+
+.quality-cta-cube-shadow.large {
+  width: 80px;
+  height: 10px;
+  background: radial-gradient(ellipse at center, rgba(7, 26, 54, 0.28) 0%, transparent 70%);
+  margin: -5px auto 0 auto;
+}
+
+.quality-cta-cube-shadow.small {
+  width: 60px;
+  height: 8px;
+  background: radial-gradient(ellipse at center, rgba(7, 26, 54, 0.25) 0%, transparent 70%);
+  margin: -4px auto 0 auto;
+}
+
+/* ══════════════════════════════════════════════════════════
+   QUALITY PART 5 — TABLET (768px – 1199px)
+══════════════════════════════════════════════════════════ */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .quality-cta-sec {
+    min-height: 100svh;
+    height: auto;
+    padding: 60px 0;
+  }
+
+  .quality-cta-bg-skyline {
+    opacity: 0.4;
+  }
+
+  .quality-cta-dark-card {
+    padding: 24px 20px;
+    gap: 18px;
+  }
+
+  .quality-cta-truck-col {
+    flex: 0 0 36%;
+  }
+
+  .quality-cta-content-col {
+    flex: 0 0 35%;
+  }
+
+  .quality-cta-contact-col {
+    flex: 0 0 26%;
+    gap: 16px;
+  }
+
+  .quality-cta-headline {
+    font-size: 22px;
+  }
+
+  .quality-cta-desc {
+    font-size: 12px;
+    margin-bottom: 14px;
+  }
+
+  .quality-cta-button {
+    font-size: 12px;
+    padding: 10px 18px;
+  }
+
+  .quality-cta-icon-circle {
+    width: 34px;
+    height: 34px;
+  }
+
+  .quality-cta-icon-circle svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .quality-cta-contact-text {
+    font-size: 11px;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   QUALITY PART 5 — SMALL SCREEN / MOBILE (320px – 767px)
+   Vertical Stack: Truck -> Headline/Desc -> Button -> Contacts
+══════════════════════════════════════════════════════════ */
+@media (max-width: 767px) {
+  .quality-cta-sec {
+    min-height: 100svh;
+    height: auto;
+    padding: 44px 0 60px 0;
+  }
+
+  .quality-cta-bg-skyline {
+    opacity: 0.14;
+    object-position: right center;
+  }
+
+  .quality-cta-container {
+    width: calc(100% - 24px);
+  }
+
+  .quality-cta-dark-card {
+    flex-direction: column;
+    padding: 22px 18px;
+    gap: 20px;
+    border-radius: 20px;
+  }
+
+  .quality-cta-truck-col {
+    flex: 1 1 100%;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .quality-cta-truck-frame {
+    aspect-ratio: 16/9;
+    max-height: 220px;
+  }
+
+  .quality-cta-content-col {
+    flex: 1 1 100%;
+    max-width: 100%;
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .quality-cta-headline {
+    font-size: clamp(24px, 7vw, 30px);
+  }
+
+  .quality-cta-button {
+    width: 100%;
+    min-height: 44px;
+    font-size: 13px;
+  }
+
+  .quality-cta-contact-col {
+    flex: 1 1 100%;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .quality-cta-divider {
+    display: none;
+  }
+
+  .quality-cta-contact-list {
+    gap: 10px;
+  }
+
+  .quality-cta-contact-row {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .quality-cta-bottom-decor {
+    justify-content: center;
+    margin-top: 18px;
+  }
+
+  .quality-cta-dot-grid {
+    left: calc(50% + 20px);
+  }
+
+  .quality-cta-cube-item.large {
+    width: 80px;
+  }
+
+  .quality-cta-cube-item.small {
+    width: 60px;
+  }
+}
