@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
+import { FloatingContact } from './components/FloatingContact';
 import { Home } from './pages/Home';
 import { About } from './pages/About';
 import { Products } from './pages/Products';
@@ -93,6 +94,9 @@ function App() {
 
       {/* Footer Navigation Area */}
       <Footer onNavigate={handleNavigation} />
+
+      {/* Global Floating Contact Widget */}
+      <FloatingContact />
     </div>
   );
 }

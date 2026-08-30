@@ -186,6 +186,7 @@ export const HomePart1: React.FC<HomePart1Props> = ({ onNavigate }) => {
           className="mob-construction-img"
         />
       </div>
+      
     </section>
   );
 };

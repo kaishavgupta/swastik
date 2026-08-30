@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { getWhatsAppUrl } from '../../config/contact';
 
 export const Contact2: React.FC = () => {
   // Form State
@@ -29,8 +30,30 @@ export const Contact2: React.FC = () => {
     e.preventDefault();
     setFormError('');
 
-    if (!formData.name.trim() || !formData.phone.trim() || !formData.email.trim() || !formData.message.trim()) {
-      setFormError('Please fill in all required fields (*).');
+    // 1. Validation
+    if (!formData.name.trim()) {
+      setFormError('Please enter your name.');
+      return;
+    }
+
+    if (!formData.phone.trim()) {
+      setFormError('Please enter your phone number.');
+      return;
+    }
+
+    if (!formData.email.trim()) {
+      setFormError('Please enter your email address.');
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email.trim())) {
+      setFormError('Please enter a valid email address.');
+      return;
+    }
+
+    if (!formData.message.trim()) {
+      setFormError('Please enter your message.');
       return;
     }
 
@@ -39,19 +62,57 @@ export const Contact2: React.FC = () => {
       return;
     }
 
+    // 2. Format WhatsApp Message
+    const formattedMessage = `Hello Swastik Mixtures,
+
+I would like to make an enquiry regarding my concrete requirement.
+
+━━━━━━━━━━━━━━━━━━
+CUSTOMER DETAILS
+━━━━━━━━━━━━━━━━━━
+
+Name: ${formData.name.trim()}
+
+Phone: ${formData.phone.trim()}
+
+Email: ${formData.email.trim()}
+
+Project Location: ${formData.location.trim() || 'N/A'}
+
+Type of Requirement: ${formData.requirement}
+
+Message:
+${formData.message.trim()}
+
+━━━━━━━━━━━━━━━━━━
+
+This enquiry was submitted through the Swastik Mixtures website.
+
+Thank you.`;
+
+    // 3. Open WhatsApp Web/App dynamically with configured contact number
+    const whatsappUrl = getWhatsAppUrl(formattedMessage);
+
     setFormStatus('loading');
+
     setTimeout(() => {
+      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
       setFormStatus('success');
-      setFormData({
-        name: '',
-        phone: '',
-        email: '',
-        location: '',
-        requirement: 'Select Requirement',
-        message: '',
-        agree: false
-      });
-    }, 1200);
+    }, 600);
+  };
+
+  const handleResetForm = () => {
+    setFormData({
+      name: '',
+      phone: '',
+      email: '',
+      location: '',
+      requirement: 'Select Requirement',
+      message: '',
+      agree: false
+    });
+    setFormStatus('idle');
+    setFormError('');
   };
 
   return (
@@ -100,8 +161,8 @@ export const Contact2: React.FC = () => {
                 <div className="contact-info-content">
                   <span className="contact-info-label">PHONE</span>
                   <p className="contact-info-text">
-                    +91 9307381838<br />
-                    +91 7619906200
+                    +91 8076439354<br />
+                    +91 9307381838
                   </p>
                 </div>
               </div>
@@ -158,10 +219,10 @@ export const Contact2: React.FC = () => {
                   <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
                   <polyline points="22 4 12 14.01 9 11.01" />
                 </svg>
-                <h3>THANK YOU FOR YOUR MESSAGE!</h3>
-                <p>Our team will contact you shortly regarding your concrete requirement.</p>
-                <button onClick={() => setFormStatus('idle')} className="btn-secondary">
-                  SEND ANOTHER MESSAGE
+                <h3>ENQUIRY READY IN WHATSAPP!</h3>
+                <p>Your complete enquiry has been formatted. Please click <strong>Send</strong> inside WhatsApp to transmit your message to Swastik Mixtures.</p>
+                <button onClick={handleResetForm} className="btn-secondary">
+                  SEND ANOTHER ENQUIRY
                 </button>
               </div>
             ) : (
@@ -264,7 +325,7 @@ export const Contact2: React.FC = () => {
                   disabled={formStatus === 'loading'}
                   className="btn-primary contact-submit-btn"
                 >
-                  {formStatus === 'loading' ? 'SENDING...' : 'SEND MESSAGE →'}
+                  {formStatus === 'loading' ? 'OPENING WHATSAPP...' : 'SEND MESSAGE →'}
                 </button>
               </form>
             )}

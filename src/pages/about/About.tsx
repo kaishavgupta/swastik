@@ -4,6 +4,7 @@ import { AboutPart2 } from './about_part2';
 import { AboutPart3 } from './about_part3';
 import { AboutPart4 } from './about_part4';
 import { AboutPart5 } from './about_part5';
+import { AboutPart6 } from './about_part6';
 
 interface AboutProps {
   onNavigate?: (path: string) => void;
@@ -16,7 +17,8 @@ export const AboutPage: React.FC<AboutProps> = ({ onNavigate }) => {
       <AboutPart2 />
       <AboutPart3 />
       <AboutPart4 />
-      <AboutPart5 onNavigate={onNavigate} />
+      <AboutPart5 />
+      <AboutPart6 onNavigate={onNavigate} />
     </div>
   );
 };

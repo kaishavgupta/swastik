@@ -20,102 +20,53 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
     'Fiber Reinforced Concrete',
   ];
 
-  const SocialBtn = ({ label, children }: { label: string; children: React.ReactNode }) => (
+  const SocialBtn = ({ label, href = '#', children }: { label: string; href?: string; children: React.ReactNode }) => (
     <a
-      href="#"
+      href={href}
       aria-label={label}
-      style={{
-        width: '36px',
-        height: '36px',
-        borderRadius: '50%',
-        background: 'rgba(255,255,255,.08)',
-        border: '1px solid rgba(255,255,255,.15)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        color: 'rgba(255,255,255,.7)',
-        transition: 'background 200ms ease, color 200ms ease',
-      }}
-      onMouseEnter={e => {
-        (e.currentTarget as HTMLElement).style.background = 'var(--blue)';
-        (e.currentTarget as HTMLElement).style.color = '#fff';
-      }}
-      onMouseLeave={e => {
-        (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,.08)';
-        (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,.7)';
-      }}
+      className="footer-social-btn"
     >
       {children}
     </a>
   );
 
   return (
-    <footer style={{ background: 'var(--navy)', color: '#fff', borderTop: '4px solid var(--blue)' }}>
-      {/* Main grid */}
-      <div className="container" style={{ paddingBlock: '64px 48px' }}>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '1.5fr 1fr 1fr 1fr',
-            gap: '48px',
-            paddingBottom: '48px',
-            borderBottom: '1px solid rgba(255,255,255,.10)',
-          }}
-        >
-          {/* Brand column */}
-          <div>
-            {/* Logo on dark bg — white box */}
-            <div
-              style={{
-                background: '#fff',
-                borderRadius: 'var(--radius-sm)',
-                padding: '10px 14px',
-                display: 'inline-block',
-                marginBottom: '20px',
-              }}
-            >
-              <img src="/swastik-mixtures-logo.svg" alt="Swastik Mixtures Logo" style={{ height: '63px', width: 'auto' }} />
+    <footer className="footer-section">
+      <div className="footer-container">
+        {/* Main grid */}
+        <div className="footer-grid">
+          {/* Brand Column */}
+          <div className="footer-col">
+            <div className="footer-logo-box">
+              <img
+                src="/swastik-mixtures-logo.svg"
+                alt="Swastik Mixtures Logo"
+                className="footer-logo-img"
+              />
             </div>
-            <p
-              style={{
-                fontSize: '14px',
-                color: 'rgba(255,255,255,.60)',
-                lineHeight: 1.75,
-                marginBottom: '24px',
-                maxWidth: '280px',
-              }}
-            >
+            <p className="footer-brand-desc">
               Concreting Trust Since 18 Years. Providing premium ready mix
               concrete solutions for Lucknow's infrastructure since 2009.
             </p>
-            <div style={{ display: 'flex', gap: '10px' }}>
-              <SocialBtn label="Facebook"><SVGIcons.Facebook size={16} /></SocialBtn>
-              <SocialBtn label="Instagram"><SVGIcons.Instagram size={16} /></SocialBtn>
-              <SocialBtn label="LinkedIn"><SVGIcons.LinkedIn size={16} /></SocialBtn>
-              <SocialBtn label="YouTube"><SVGIcons.YouTube size={16} /></SocialBtn>
+            <div className="footer-social-row">
+              <SocialBtn label="Facebook"><SVGIcons.Facebook size={18} /></SocialBtn>
+              <SocialBtn label="Instagram"><SVGIcons.Instagram size={18} /></SocialBtn>
+              <SocialBtn label="LinkedIn"><SVGIcons.LinkedIn size={18} /></SocialBtn>
+              <SocialBtn label="YouTube"><SVGIcons.YouTube size={18} /></SocialBtn>
             </div>
           </div>
 
-          {/* Quick links */}
-          <div>
+          {/* Quick Links Column */}
+          <div className="footer-col">
             <h4 className="footer-col-heading">QUICK LINKS</h4>
-            <ul style={{ listStyle: 'none' }}>
+            <ul className="footer-links-list">
               {navigationLinks.map(link => (
                 <li key={link.path}>
                   <button
                     onClick={() => go(link.path)}
-                    className="footer-link"
-                    style={{
-                      background: 'none',
-                      border: 'none',
-                      cursor: 'pointer',
-                      padding: '3px 0',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '6px',
-                    }}
+                    className="footer-link-btn"
                   >
-                    <span style={{ color: 'var(--blue)', fontSize: '10px' }}>›</span>
+                    <span className="footer-link-arrow">›</span>
                     {link.name}
                   </button>
                 </li>
@@ -123,26 +74,17 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </ul>
           </div>
 
-          {/* Products */}
-          <div>
+          {/* Products Column */}
+          <div className="footer-col">
             <h4 className="footer-col-heading">PRODUCTS</h4>
-            <ul style={{ listStyle: 'none' }}>
+            <ul className="footer-links-list">
               {products.map(p => (
                 <li key={p}>
                   <button
                     onClick={() => go('/products')}
-                    className="footer-link"
-                    style={{
-                      background: 'none',
-                      border: 'none',
-                      cursor: 'pointer',
-                      padding: '3px 0',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '6px',
-                    }}
+                    className="footer-link-btn"
                   >
-                    <span style={{ color: 'var(--blue)', fontSize: '10px' }}>›</span>
+                    <span className="footer-link-arrow">›</span>
                     {p}
                   </button>
                 </li>
@@ -150,77 +92,44 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </ul>
           </div>
 
-          {/* Contact + Hours */}
-          <div>
+          {/* Contact Us + Opening Hours Column */}
+          <div className="footer-col">
             <h4 className="footer-col-heading">CONTACT US</h4>
-            {[
-              { icon: <SVGIcons.Phone size={14} />, text: '+91 98765 43210' },
-              { icon: <SVGIcons.Mail size={14} />, text: 'info@swastikmixtures.com' },
-              { icon: <SVGIcons.MapPin size={14} />, text: 'Lucknow, Uttar Pradesh, India' },
-            ].map((item, i) => (
-              <div
-                key={i}
-                style={{
-                  display: 'flex',
-                  alignItems: 'flex-start',
-                  gap: '10px',
-                  marginBottom: '12px',
-                  color: 'rgba(255,255,255,.65)',
-                  fontSize: '14px',
-                }}
-              >
-                <span style={{ color: 'var(--blue)', marginTop: '3px', flexShrink: 0 }}>{item.icon}</span>
-                {item.text}
+            <div className="footer-contact-list">
+              <a href="tel:+918076439354" className="footer-contact-item">
+                <span className="footer-contact-icon"><SVGIcons.Phone size={15} /></span>
+                <span>+91 8076439354 / +91 9307381838</span>
+              </a>
+              <a href="mailto:info@swastikmixtures.com" className="footer-contact-item">
+                <span className="footer-contact-icon"><SVGIcons.Mail size={15} /></span>
+                <span>info@swastikmixtures.com</span>
+              </a>
+              <div className="footer-contact-item">
+                <span className="footer-contact-icon"><SVGIcons.MapPin size={15} /></span>
+                <span>Lucknow, Uttar Pradesh, India</span>
               </div>
-            ))}
+            </div>
 
-            <h4 className="footer-col-heading" style={{ marginTop: '28px' }}>OPENING HOURS</h4>
-            <p style={{ fontSize: '14px', color: 'rgba(255,255,255,.65)', lineHeight: 1.7 }}>
-              Mon – Sat<br />
-              <span style={{ color: '#fff', fontWeight: 600 }}>8:00 AM – 6:00 PM</span>
-            </p>
-            <p style={{ fontSize: '14px', color: 'rgba(255,255,255,.45)', marginTop: '8px' }}>
-              Sunday — Closed
-            </p>
+            <div className="footer-hours-card">
+              <span className="footer-hours-title">OPENING HOURS</span>
+              <p className="footer-hours-time">
+                Mon – Sat: <strong>8:00 AM – 6:00 PM</strong><br />
+                Sunday — Closed
+              </p>
+            </div>
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div
-          style={{
-            paddingTop: '24px',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-            gap: '12px',
-          }}
-        >
-          <p style={{ fontSize: '13px', color: 'rgba(255,255,255,.40)' }}>
+        {/* Bottom Bar */}
+        <div className="footer-bottom-bar">
+          <p className="footer-bottom-text">
             © {new Date().getFullYear()} Swastik Mixtures. All rights reserved.
           </p>
-          <p style={{ fontSize: '13px', color: 'rgba(255,255,255,.40)' }}>
+          <p className="footer-bottom-text">
             Ready Mix Concrete · Lucknow, India
           </p>
         </div>
       </div>
-
-      {/* Responsive */}
-      <style>{`
-        footer .container > div:first-child {
-          grid-template-columns: 1.5fr 1fr 1fr 1fr;
-        }
-        @media (max-width: 1023px) {
-          footer .container > div:first-child {
-            grid-template-columns: 1fr 1fr;
-          }
-        }
-        @media (max-width: 639px) {
-          footer .container > div:first-child {
-            grid-template-columns: 1fr;
-          }
-        }
-      `}</style>
     </footer>
   );
 };
