@@ -8,6 +8,6 @@ export const PRODUCT_IMAGES = {
   concretePouringWorker: '/07_concrete_pouring_worker.svg',
   constructionSite: '/08_construction_site_worker.svg',
   fiberConcrete: '/09_fiber_reinforced_concrete.svg',
-  concretePouring: '/10_concrete_pouring_closeup.svg',
+  concretePouring: '/swastik_concrete_pouring_clean.svg',
   waterproofConcrete: '/11_waterproof_concrete_channel.svg',
 } as const;
