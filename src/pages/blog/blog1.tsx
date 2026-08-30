@@ -78,44 +78,89 @@ export const Blog1: React.FC<Blog1Props> = ({ onNavigate }) => {
   return (
     <section id="blog-part1" className="blog-snap-part blog-hero-section" aria-label="Blog & Insights Hero">
       <div className="blog-hero-main-container">
-        {/* ── 1. MAIN HERO BANNER (Left Navy Panel + Right Plant Image + Diagonal Divider) ── */}
+        {/* ── 1. MAIN HERO BANNER (670px Desktop Height) ── */}
         <div className="blog-hero-banner-wrapper">
-          {/* LEFT: Deep Swastik Navy Content Panel */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="blog-hero-left-panel"
-          >
-            {/* Top-Left Decorative Dot Matrix */}
-            <div className="blog-hero-dot-matrix" aria-hidden="true">
-              {Array.from({ length: 24 }).map((_, i) => (
-                <span key={i} className="blog-hero-dot" />
-              ))}
-            </div>
+          {/* Background Right: RMC Industrial Scene Image Asset */}
+          <div className="blog-hero-image-bg-layer" aria-hidden="true">
+            <img
+              src="/swastik_mixtures_industrial_scene.svg"
+              alt="Swastik Mixtures Ready Mix Concrete Plant Industrial Scene"
+              className="blog-hero-bg-plant-img"
+            />
+          </div>
 
-            {/* Bottom-Left Blueprint Truck Line Illustration */}
-            <div className="blog-hero-blueprint-bg" aria-hidden="true">
-              <svg width="260" height="150" viewBox="0 0 260 150" fill="none" stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1.2">
-                <rect x="20" y="50" width="130" height="60" rx="8" />
-                <path d="M150 70h50l30 40H150V70z" />
-                <circle cx="60" cy="115" r="18" />
-                <circle cx="110" cy="115" r="18" />
-                <circle cx="195" cy="115" r="18" />
-                <path d="M20 70h130M20 90h130" />
-                <line x1="30" y1="20" x2="30" y2="50" />
-                <line x1="80" y1="20" x2="80" y2="50" />
-                <line x1="130" y1="20" x2="130" y2="50" />
-                <path d="M10 20h140" />
-              </svg>
-            </div>
+          {/* Precision Diagonal SVG Split Layer (Navy Fill + White Line + Blue Line) */}
+          <div className="blog-hero-diagonal-svg-layer" aria-hidden="true">
+            <svg
+              className="blog-hero-diagonal-svg"
+              viewBox="0 0 100 100"
+              preserveAspectRatio="none"
+            >
+              {/* Navy Polygon Shape Covering the Left 40-42% */}
+              <polygon
+                points="0,0 53,0 39,100 0,100"
+                fill="#071F42"
+              />
+              {/* Crisp White Separator Line */}
+              <line
+                x1="53"
+                y1="0"
+                x2="39"
+                y2="100"
+                stroke="#FFFFFF"
+                strokeWidth="0.8"
+                vectorEffect="non-scaling-stroke"
+              />
+              {/* Crisp Swastik Blue Accent Separator Line */}
+              <line
+                x1="53.8"
+                y1="0"
+                x2="39.8"
+                y2="100"
+                stroke="#006FE6"
+                strokeWidth="0.6"
+                vectorEffect="non-scaling-stroke"
+              />
+            </svg>
+          </div>
 
-            {/* Content Container */}
-            <div className="blog-hero-left-content">
+          {/* Blueprint Truck Vector Background in Left Corner */}
+          <div className="blog-hero-blueprint-bg" aria-hidden="true">
+            <svg width="280" height="150" viewBox="0 0 280 150" fill="none" stroke="rgba(255, 255, 255, 0.06)" strokeWidth="1.2">
+              <rect x="20" y="45" width="140" height="65" rx="8" />
+              <path d="M160 65h55l35 45H160V65z" />
+              <circle cx="65" cy="115" r="20" />
+              <circle cx="120" cy="120" r="20" />
+              <circle cx="210" cy="120" r="20" />
+              <path d="M20 65h140M20 90h140" />
+              <line x1="30" y1="15" x2="30" y2="45" />
+              <line x1="85" y1="15" x2="85" y2="45" />
+              <line x1="140" y1="15" x2="140" y2="45" />
+              <path d="M10 15h150" />
+            </svg>
+          </div>
+
+          {/* Top-Left Decorative 6x4 Dot Matrix */}
+          <div className="blog-hero-dot-matrix" aria-hidden="true">
+            {Array.from({ length: 24 }).map((_, i) => (
+              <span key={i} className="blog-hero-dot" />
+            ))}
+          </div>
+
+          {/* Left Foreground Content Panel */}
+          <div className="blog-hero-content-panel">
+            <motion.div
+              initial={{ opacity: 0, x: -25 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="blog-hero-text-block"
+            >
               {/* Eyebrow */}
-              <span className="blog-hero-eyebrow">OUR BLOG</span>
+              <div className="blog-hero-eyebrow-wrap">
+                <span className="blog-hero-eyebrow">OUR BLOG</span>
+              </div>
 
-              {/* Main Heading */}
+              {/* Main Heading (2 Lines) */}
               <h1 className="blog-hero-heading">
                 BLOG &<br />
                 <span>INSIGHTS</span>
@@ -126,8 +171,7 @@ export const Blog1: React.FC<Blog1Props> = ({ onNavigate }) => {
 
               {/* Lead Paragraph */}
               <p className="blog-hero-lead-text">
-                News, updates and expert insights from the world of ready
-                mix concrete, construction and infrastructure.
+                News, updates and expert insights from the world of ready mix concrete, construction and infrastructure.
               </p>
 
               {/* Buttons Row */}
@@ -148,32 +192,10 @@ export const Blog1: React.FC<Blog1Props> = ({ onNavigate }) => {
                   <span>VIEW PROJECTS &rarr;</span>
                 </button>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
 
-          {/* RIGHT: Swastik RMC Plant Imagery & Diagonal Treatment */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-            className="blog-hero-right-panel"
-          >
-            {/* Diagonal Divider Overlay Stripes */}
-            <div className="blog-hero-diagonal-divider" aria-hidden="true">
-              <span className="blog-hero-diag-line-white" />
-              <span className="blog-hero-diag-line-blue" />
-            </div>
-
-            {/* Large RMC Plant Image */}
-            <img
-              src="/08_Swastik_RMC_Plant.svg"
-              alt="Swastik Mixtures Ready Mix Concrete Batching Plant & Transit Mixer"
-              loading="eager"
-              className="blog-hero-plant-img"
-            />
-          </motion.div>
-
-          {/* ── KNOWLEDGE BADGE (Overlapping at the bottom boundary) ── */}
+          {/* ── KNOWLEDGE BADGE (Overlapping at the bottom intersection) ── */}
           <div className="blog-knowledge-badge">
             <div className="blog-badge-icon-circle" aria-hidden="true">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">

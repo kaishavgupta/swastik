@@ -23156,115 +23156,183 @@ body {
 
 /* ══════════════════════════════════════════════════════════
    BLOG PAGE — PART 1: BLOG HERO & INSIGHTS FEATURE STRIP
-   Deep Swastik Navy Left Panel + Diagonal Edge Divider +
-   RMC Plant Image + Knowledge Solutions Overlapping Badge +
-   4-Column Feature Highlights Strip Below
+   670px Tall Hero Banner + Visible Header Separation +
+   Vector SVG Diagonal Split + RMC Industrial Scene Asset +
+   Deep Navy Left Panel + Knowledge Badge + 4-Column Feature Strip
+   Full Desktop (1440px+), Tablet (768px-1024px) & Mobile (360px-480px)
 ══════════════════════════════════════════════════════════ */
 
+/* Blog Scoped Scroll Snap Container */
+.blog-presentation-wrapper {
+  width: 100%;
+  position: relative;
+}
+
+/* Generic Section Snapping for Blog Parts */
+.blog-snap-part {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding-top: calc(var(--navbar-h, 115px) + 24px);
+  padding-bottom: clamp(40px, 5vh, 70px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  scroll-snap-align: start;
+  scroll-margin-top: calc(var(--navbar-h, 115px) + 16px);
+}
+
+/* ── PART 1: BLOG HERO SECTION (670px Tall Hero + Feature Strip Below) ── */
 .blog-hero-section {
   position: relative;
   width: 100%;
+  min-height: auto;
   background: #F8FAFE;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: clamp(30px, 4vh, 50px) 0 clamp(24px, 3.5vh, 44px) 0;
+  padding-top: calc(var(--navbar-h, 115px) + 24px);
+  padding-bottom: clamp(36px, 4.5vh, 60px);
+  padding-left: 0;
+  padding-right: 0;
   box-sizing: border-box;
+  scroll-snap-align: start;
+  scroll-margin-top: calc(var(--navbar-h, 115px) + 16px);
 }
 
 .blog-hero-main-container {
-  width: min(94%, 1440px);
+  width: min(95%, 1460px);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: clamp(20px, 3vh, 32px);
+  gap: 28px;
   box-sizing: border-box;
   position: relative;
 }
 
-/* ── 1. Main Hero Banner ── */
+/* ── 1. Main Hero Banner Container (670px Tall on Desktop) ── */
 .blog-hero-banner-wrapper {
+  position: relative;
   width: 100%;
-  min-height: 520px;
-  height: 540px;
-  background: #061B3A;
-  border-radius: 28px;
+  height: 670px;
+  min-height: 640px;
+  background: #071F42;
+  border-radius: 26px;
   overflow: hidden;
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  box-shadow: 0 24px 60px rgba(6, 27, 58, 0.24);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-/* ── Left Navy Panel ── */
-.blog-hero-left-panel {
-  flex: 0 0 46%;
-  width: 46%;
-  background: #061B3A;
-  padding: clamp(36px, 4vw, 56px) clamp(28px, 3.5vw, 48px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-  z-index: 3;
+  box-shadow: 0 24px 65px rgba(6, 27, 58, 0.22);
   box-sizing: border-box;
+  display: flex;
 }
 
+/* Background Right Layer: RMC Industrial Scene Image Asset */
+.blog-hero-image-bg-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.blog-hero-bg-plant-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center right;
+  display: block;
+}
+
+/* Precision Diagonal SVG Split Layer (Navy Fill + White Line + Blue Line) */
+.blog-hero-diagonal-svg-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.blog-hero-diagonal-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Blueprint Truck Vector Background in Left Corner */
+.blog-hero-blueprint-bg {
+  position: absolute;
+  bottom: 14px;
+  left: 28px;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0.45;
+}
+
+/* Top-Left Decorative 6x4 Dot Matrix */
 .blog-hero-dot-matrix {
   position: absolute;
-  top: 28px;
-  left: 36px;
+  top: 36px;
+  left: 48px;
+  z-index: 3;
   display: grid;
-  grid-template-columns: repeat(6, 4px);
-  gap: 10px;
+  grid-template-columns: repeat(6, 4.5px);
+  gap: 12px;
   opacity: 0.22;
   pointer-events: none;
 }
 
 .blog-hero-dot {
-  width: 4px;
-  height: 4px;
+  width: 4.5px;
+  height: 4.5px;
   border-radius: 50%;
   background: #FFFFFF;
 }
 
-.blog-hero-blueprint-bg {
-  position: absolute;
-  bottom: 8px;
-  left: 16px;
-  opacity: 0.38;
-  pointer-events: none;
-  z-index: 1;
+/* Left Foreground Content Panel (~42% Width) */
+.blog-hero-content-panel {
+  position: relative;
+  z-index: 4;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 clamp(48px, 4.5vw, 72px);
+  box-sizing: border-box;
 }
 
-.blog-hero-left-content {
-  position: relative;
-  z-index: 2;
+.blog-hero-text-block {
   max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.blog-hero-eyebrow-wrap {
+  margin-bottom: 14px;
 }
 
 .blog-hero-eyebrow {
   font-family: 'Inter', Arial, sans-serif;
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 800;
-  letter-spacing: 2.5px;
+  letter-spacing: 3px;
   text-transform: uppercase;
-  color: #38BDF8;
-  margin-bottom: 12px;
-  display: block;
+  color: #006FE6;
 }
 
 .blog-hero-heading {
   font-family: 'Inter', Arial, Helvetica, sans-serif;
-  font-size: clamp(38px, 4vw, 56px);
+  font-size: clamp(48px, 4.4vw, 66px);
   font-weight: 900;
-  line-height: 1.04;
+  line-height: 1.02;
   letter-spacing: -0.02em;
   color: #FFFFFF;
   text-transform: uppercase;
-  margin: 0 0 14px 0;
+  margin: 0 0 16px 0;
 }
 
 .blog-hero-heading span {
@@ -23272,26 +23340,27 @@ body {
 }
 
 .blog-hero-title-line {
-  width: 34px;
-  height: 3px;
+  width: 36px;
+  height: 3.5px;
   background: #006FE6;
   border-radius: 2px;
-  margin-bottom: 18px;
+  margin-bottom: 22px;
 }
 
 .blog-hero-lead-text {
   font-family: 'Inter', Arial, sans-serif;
-  font-size: clamp(14px, 1.1vw, 16px);
-  line-height: 1.55;
-  color: rgba(255, 255, 255, 0.82);
-  margin: 0 0 28px 0;
-  max-width: 430px;
+  font-size: clamp(15px, 1.1vw, 16.5px);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.88);
+  margin: 0 0 32px 0;
+  max-width: 450px;
 }
 
+/* Buttons Row */
 .blog-hero-btn-group {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 22px;
   flex-wrap: wrap;
 }
 
@@ -23299,35 +23368,35 @@ body {
   background: #006FE6;
   color: #FFFFFF;
   font-family: 'Inter', Arial, sans-serif;
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 800;
   letter-spacing: 1px;
   text-transform: uppercase;
-  padding: 13px 24px;
+  padding: 14px 26px;
   border-radius: 8px;
   border: none;
   cursor: pointer;
-  box-shadow: 0 8px 20px rgba(0, 111, 230, 0.4);
+  box-shadow: 0 8px 22px rgba(0, 111, 230, 0.45);
   transition: all 0.25s ease;
 }
 
 .blog-hero-primary-btn:hover {
   background: #005ec4;
   transform: translateY(-2px);
-  box-shadow: 0 12px 26px rgba(0, 111, 230, 0.55);
+  box-shadow: 0 14px 30px rgba(0, 111, 230, 0.6);
 }
 
 .blog-hero-secondary-btn {
   background: transparent;
   color: #FFFFFF;
   font-family: 'Inter', Arial, sans-serif;
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 800;
   letter-spacing: 1px;
   text-transform: uppercase;
-  padding: 13px 14px;
+  padding: 14px 18px;
   border: none;
-  border-bottom: 1.5px solid rgba(255, 255, 255, 0.4);
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.45);
   cursor: pointer;
   transition: all 0.25s ease;
   border-radius: 0;
@@ -23338,86 +23407,27 @@ body {
   color: #38BDF8;
 }
 
-/* ── Right Panel: RMC Plant Image with Diagonal Cut ── */
-.blog-hero-right-panel {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 62%;
-  height: 100%;
-  clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
-  z-index: 2;
-  overflow: hidden;
-  background: #071A36;
-}
-
-.blog-hero-plant-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  transition: transform 0.5s ease;
-}
-
-.blog-hero-banner-wrapper:hover .blog-hero-plant-img {
-  transform: scale(1.02);
-}
-
-/* Diagonal Divider Stripes */
-.blog-hero-diagonal-divider {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 4;
-}
-
-.blog-hero-diag-line-white {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-left: 3.5px solid #FFFFFF;
-  transform: skewX(-14deg);
-  transform-origin: top left;
-}
-
-.blog-hero-diag-line-blue {
-  position: absolute;
-  top: 0;
-  left: 6px;
-  width: 100%;
-  height: 100%;
-  border-left: 3px solid #006FE6;
-  transform: skewX(-14deg);
-  transform-origin: top left;
-}
-
-/* ── Knowledge Badge (Overlapping Bottom) ── */
+/* ── Knowledge Badge (Overlapping Bottom Intersection) ── */
 .blog-knowledge-badge {
   position: absolute;
   bottom: 0;
-  left: 38%;
-  transform: translateX(-20%);
-  z-index: 5;
+  left: 34%;
+  z-index: 10;
   background: #FFFFFF;
-  border-radius: 16px 16px 0 0;
-  padding: 14px 26px 12px 20px;
+  border-radius: 14px 14px 0 0;
+  padding: 14px 28px 12px 22px;
   display: flex;
   align-items: center;
   gap: 14px;
   box-shadow: 0 -8px 24px rgba(7, 26, 54, 0.12);
+  clip-path: polygon(14px 0, 100% 0, calc(100% - 14px) 100%, 0 100%);
   border-top: 3px solid #006FE6;
   box-sizing: border-box;
 }
 
 .blog-badge-icon-circle {
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background: #006FE6;
   display: flex;
@@ -23434,7 +23444,7 @@ body {
 
 .blog-badge-title {
   font-family: 'Inter', Arial, sans-serif;
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 900;
   color: #071A36;
   line-height: 1.2;
@@ -23442,21 +23452,21 @@ body {
 
 .blog-badge-sub {
   font-family: 'Inter', Arial, sans-serif;
-  font-size: 11.5px;
+  font-size: 12px;
   font-weight: 700;
   color: #526887;
   line-height: 1.2;
   margin-top: 2px;
 }
 
-/* ── 2. Feature Highlights Strip Below ── */
+/* ── 2. Feature Highlights Strip (Positioned BELOW the Hero with 28px gap) ── */
 .blog-features-strip {
   width: 100%;
   background: #FFFFFF;
   border-radius: 20px;
   box-shadow: 0 14px 36px rgba(7, 26, 54, 0.06);
   border: 1px solid rgba(0, 111, 230, 0.1);
-  padding: 22px clamp(20px, 3vw, 36px);
+  padding: 24px clamp(24px, 3.5vw, 44px);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -23468,12 +23478,12 @@ body {
   flex: 1 1 0;
   display: flex;
   align-items: flex-start;
-  gap: 14px;
+  gap: 16px;
 }
 
 .blog-feature-icon-circle {
-  width: 44px;
-  height: 44px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
   background: rgba(0, 111, 230, 0.08);
   border: 1.5px solid rgba(0, 111, 230, 0.18);
@@ -23500,7 +23510,7 @@ body {
 
 .blog-feature-title {
   font-family: 'Inter', Arial, sans-serif;
-  font-size: 15px;
+  font-size: 15.5px;
   font-weight: 900;
   color: #071A36;
   margin: 0 0 4px 0;
@@ -23509,8 +23519,8 @@ body {
 
 .blog-feature-desc {
   font-family: 'Inter', Arial, sans-serif;
-  font-size: 12px;
-  line-height: 1.45;
+  font-size: 12.5px;
+  line-height: 1.5;
   color: #526887;
   margin: 0;
 }
@@ -23524,60 +23534,63 @@ body {
 
 /* ══════════════════════════════════════════════════════════
    BLOG HERO — TABLET / MEDIUM (768px – 1024px)
+   Vertical Stack: Navy Content -> Diagonal -> Industrial Image -> Badge -> 2x2 Features Grid
 ══════════════════════════════════════════════════════════ */
 @media (min-width: 768px) and (max-width: 1024px) {
+  .blog-hero-section {
+    padding-top: calc(var(--navbar-h, 90px) + 20px);
+    padding-bottom: 36px;
+  }
+
+  .blog-hero-main-container {
+    width: calc(100% - 36px);
+    gap: 22px;
+  }
+
   .blog-hero-banner-wrapper {
     height: auto;
     min-height: auto;
     flex-direction: column;
-    border-radius: 24px;
+    border-radius: 22px;
   }
 
-  .blog-hero-left-panel {
-    flex: 1 1 100%;
+  .blog-hero-image-bg-layer {
+    position: relative;
     width: 100%;
-    padding: 38px 32px 30px 32px;
+    height: 380px;
+    clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%);
   }
 
-  .blog-hero-left-content {
+  .blog-hero-bg-plant-img {
+    object-position: center;
+  }
+
+  .blog-hero-diagonal-svg-layer {
+    display: none;
+  }
+
+  .blog-hero-content-panel {
+    padding: 44px 36px 36px 36px;
+  }
+
+  .blog-hero-text-block {
     max-width: 100%;
   }
 
   .blog-hero-heading {
-    font-size: 38px;
+    font-size: 44px;
   }
 
   .blog-hero-lead-text {
     max-width: 100%;
-    margin-bottom: 22px;
-  }
-
-  .blog-hero-right-panel {
-    position: relative;
-    width: 100%;
-    height: 320px;
-    clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%);
-  }
-
-  .blog-hero-diag-line-white {
-    top: 0;
-    left: 0;
-    border-left: none;
-    border-top: 3.5px solid #FFFFFF;
-    transform: none;
-  }
-
-  .blog-hero-diag-line-blue {
-    top: 5px;
-    left: 0;
-    border-left: none;
-    border-top: 3px solid #006FE6;
-    transform: none;
+    margin-bottom: 26px;
   }
 
   .blog-knowledge-badge {
     left: 50%;
     transform: translateX(-50%);
+    clip-path: none;
+    border-radius: 12px 12px 0 0;
   }
 
   /* Features 2x2 */
@@ -23594,44 +23607,47 @@ body {
 }
 
 /* ══════════════════════════════════════════════════════════
-   BLOG HERO — SMALL / MOBILE (320px – 767px)
+   BLOG HERO — SMALL / MOBILE (360px – 480px / max-width: 767px)
    Vertical Stack: Left Content -> Diagonal -> Image -> Badge -> Features List
 ══════════════════════════════════════════════════════════ */
 @media (max-width: 767px) {
   .blog-hero-section {
-    padding: 20px 0 36px 0;
+    padding-top: calc(var(--navbar-h, 76px) + 14px);
+    padding-bottom: 32px;
   }
 
   .blog-hero-main-container {
     width: calc(100% - 24px);
-    gap: 20px;
+    gap: 18px;
   }
 
   .blog-hero-banner-wrapper {
     height: auto;
     min-height: auto;
     flex-direction: column;
-    border-radius: 20px;
+    border-radius: 18px;
   }
 
-  .blog-hero-left-panel {
-    flex: 1 1 100%;
-    width: 100%;
-    padding: 28px 18px 24px 18px;
-    align-items: flex-start;
-  }
-
-  .blog-hero-dot-matrix {
-    top: 16px;
-    left: 18px;
+  .blog-hero-diagonal-svg-layer {
+    display: none;
   }
 
   .blog-hero-blueprint-bg {
     display: none;
   }
 
-  .blog-hero-left-content {
+  .blog-hero-content-panel {
+    padding: 28px 18px 24px 18px;
+    align-items: flex-start;
+  }
+
+  .blog-hero-text-block {
     max-width: 100%;
+  }
+
+  .blog-hero-dot-matrix {
+    top: 14px;
+    left: 16px;
   }
 
   .blog-hero-eyebrow {
@@ -23639,7 +23655,7 @@ body {
   }
 
   .blog-hero-heading {
-    font-size: clamp(28px, 8.5vw, 36px);
+    font-size: clamp(28px, 8vw, 36px);
     line-height: 1.05;
   }
 
@@ -23671,25 +23687,15 @@ body {
     padding: 11px;
   }
 
-  .blog-hero-right-panel {
+  .blog-hero-image-bg-layer {
     position: relative;
     width: 100%;
-    height: 220px;
+    height: 250px;
     clip-path: polygon(0 6%, 100% 0, 100% 100%, 0 100%);
   }
 
-  .blog-hero-diag-line-white {
-    border-left: none;
-    border-top: 3px solid #FFFFFF;
-    transform: none;
-  }
-
-  .blog-hero-diag-line-blue {
-    border-left: none;
-    border-top: 2.5px solid #006FE6;
-    top: 4px;
-    left: 0;
-    transform: none;
+  .blog-hero-bg-plant-img {
+    object-position: center;
   }
 
   .blog-knowledge-badge {
@@ -23697,9 +23703,10 @@ body {
     bottom: auto;
     left: auto;
     transform: none;
-    margin: -14px auto 0 auto;
+    clip-path: none;
+    margin: -16px auto 0 auto;
     width: calc(100% - 28px);
-    border-radius: 14px;
+    border-radius: 12px;
     box-shadow: 0 8px 24px rgba(7, 26, 54, 0.16);
     justify-content: center;
     padding: 10px 14px;
@@ -23718,7 +23725,7 @@ body {
     flex-direction: column;
     gap: 14px;
     padding: 18px 16px;
-    border-radius: 18px;
+    border-radius: 16px;
   }
 
   .blog-feature-item {
@@ -23753,5 +23760,424 @@ body {
 
   .blog-feature-divider {
     display: none;
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   BLOG PAGE — PART 3: FEATURED INSIGHTS & PRACTICAL KNOWLEDGE
+   Subtle SVG Background Layer (swastik_insights_background.svg) +
+   Left-Aligned Desktop Header + 3 High-End Featured Article Cards +
+   Compact Horizontal Tablet Cards + Mobile Stack + View All Button
+══════════════════════════════════════════════════════════ */
+
+.featured-insights-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  background-color: #F8FAFD;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(52px, 6.5vh, 84px) 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Subtle SVG Background Layer */
+.featured-insights-bg-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/swastik_insights_background.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.85;
+}
+
+.featured-insights-container {
+  position: relative;
+  z-index: 2;
+  width: min(94%, 1280px);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(28px, 3.8vh, 44px);
+  box-sizing: border-box;
+}
+
+/* ── 1. Section Header ── */
+.featured-insights-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.featured-insights-eyebrow {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #006FE6;
+  margin-bottom: 12px;
+  display: inline-block;
+}
+
+.featured-insights-title {
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-size: clamp(38px, 3.8vw, 52px);
+  font-weight: 900;
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  color: #071A36;
+  text-transform: uppercase;
+  margin: 0 0 16px 0;
+}
+
+.featured-insights-title span {
+  color: #071A36;
+}
+
+.featured-insights-title-line {
+  width: 38px;
+  height: 3.5px;
+  background: #006FE6;
+  border-radius: 2px;
+  margin-bottom: 18px;
+}
+
+.featured-insights-desc {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: clamp(14.5px, 1.05vw, 16px);
+  line-height: 1.6;
+  color: #526887;
+  max-width: 680px;
+  margin: 0;
+}
+
+/* ── 2. Three Featured Article Cards (Desktop Grid) ── */
+.featured-insights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 2.2vw, 32px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.featured-insight-card {
+  background: #FFFFFF;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(7, 26, 54, 0.05);
+  border: 1px solid rgba(7, 26, 54, 0.08);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.featured-insight-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 45px rgba(7, 26, 54, 0.12);
+  border-color: rgba(0, 111, 230, 0.25);
+}
+
+.featured-card-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+  background: #071F42;
+}
+
+.featured-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.featured-insight-card:hover .featured-card-img {
+  transform: scale(1.03);
+}
+
+.featured-card-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: #006FE6;
+  color: #FFFFFF;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 111, 230, 0.35);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 2;
+}
+
+.featured-badge-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.featured-card-body {
+  padding: 24px 24px 22px 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  box-sizing: border-box;
+}
+
+.featured-card-date-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.featured-card-date-text {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #64748B;
+}
+
+.featured-card-title {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: clamp(18px, 1.35vw, 21px);
+  font-weight: 800;
+  color: #071A36;
+  line-height: 1.3;
+  margin: 0 0 10px 0;
+  min-height: 52px;
+}
+
+.featured-card-desc {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: #526887;
+  margin: 0 0 18px 0;
+  flex: 1;
+}
+
+.featured-card-footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+}
+
+.featured-card-readmore-btn {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #006FE6;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.2s ease;
+}
+
+.featured-card-readmore-btn:hover {
+  color: #005ec4;
+}
+
+/* ── 3. View All Articles Button ── */
+.featured-insights-action-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 4px;
+}
+
+.featured-insights-viewall-btn {
+  background: #FFFFFF;
+  border: 1.5px solid #006FE6;
+  color: #006FE6;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 13px 32px;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(0, 111, 230, 0.08);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.featured-insights-viewall-btn:hover {
+  background: #006FE6;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 111, 230, 0.3);
+}
+
+/* ══════════════════════════════════════════════════════════
+   BLOG PART 3 — TABLET / MEDIUM (768px – 1024px)
+   Compact Horizontal Article Cards Stacked Vertically
+══════════════════════════════════════════════════════════ */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .featured-insights-section {
+    padding: 60px 0;
+    min-height: auto;
+  }
+
+  .featured-insights-container {
+    width: calc(100% - 36px);
+    gap: 32px;
+  }
+
+  .featured-insights-header {
+    align-items: center;
+    text-align: center;
+  }
+
+  .featured-insights-title-line {
+    margin: 0 auto 16px auto;
+  }
+
+  .featured-insights-desc {
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  /* Compact Horizontal Cards */
+  .featured-insights-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .featured-insight-card {
+    flex-direction: row;
+    align-items: stretch;
+    border-radius: 16px;
+  }
+
+  .featured-card-img-wrap {
+    width: 38%;
+    height: auto;
+    min-height: 180px;
+    flex-shrink: 0;
+  }
+
+  .featured-card-body {
+    padding: 20px 22px;
+    width: 62%;
+  }
+
+  .featured-card-title {
+    font-size: 18px;
+    min-height: auto;
+    margin-bottom: 8px;
+  }
+
+  .featured-card-desc {
+    font-size: 13px;
+    margin-bottom: 14px;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   BLOG PART 3 — SMALL / MOBILE (360px – 480px / max-width: 767px)
+   Full-Width Vertical Cards Stacked Vertically
+══════════════════════════════════════════════════════════ */
+@media (max-width: 767px) {
+  .featured-insights-section {
+    padding: 42px 0;
+    min-height: auto;
+  }
+
+  .featured-insights-container {
+    width: calc(100% - 24px);
+    gap: 24px;
+  }
+
+  .featured-insights-header {
+    align-items: center;
+    text-align: center;
+  }
+
+  .featured-insights-eyebrow {
+    font-size: 11.5px;
+    letter-spacing: 2px;
+  }
+
+  .featured-insights-title {
+    font-size: clamp(26px, 7.5vw, 32px);
+    line-height: 1.1;
+  }
+
+  .featured-insights-title-line {
+    margin: 0 auto 14px auto;
+  }
+
+  .featured-insights-desc {
+    font-size: 13.5px;
+    text-align: center;
+  }
+
+  /* Vertical Cards Stack */
+  .featured-insights-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .featured-insight-card {
+    flex-direction: column;
+    border-radius: 14px;
+  }
+
+  .featured-card-img-wrap {
+    width: 100%;
+    height: 180px;
+  }
+
+  .featured-card-body {
+    padding: 18px 16px;
+  }
+
+  .featured-card-title {
+    font-size: 17px;
+    min-height: auto;
+    margin-bottom: 8px;
+  }
+
+  .featured-card-desc {
+    font-size: 13px;
+    margin-bottom: 14px;
+  }
+
+  .featured-insights-viewall-btn {
+    width: 100%;
+    max-width: 320px;
   }
 }
