@@ -6,19 +6,49 @@ interface AboutPart6Props {
 }
 
 export const AboutPart6: React.FC<AboutPart6Props> = ({ onNavigate }) => {
-  const CHECKLIST_COL1 = [
+  // Desktop 3-Column Checklist Data
+  const DESKTOP_COL1 = [
     'Safety-first approach',
     'Proper PPE for all team members',
     'Safe concrete handling & operations'
   ];
 
-  const CHECKLIST_COL2 = [
+  const DESKTOP_COL2 = [
     'Professional and trained workforce',
     'Quality-controlled production',
     'On-time site coordination'
   ];
 
-  const CHECKLIST_COL3 = [
+  const DESKTOP_COL3 = [
+    'Committed to a safer construction environment',
+    'Responsible execution of every project',
+    'Technical support at every step'
+  ];
+
+  // Tablet 2-Column Checklist Data
+  const TABLET_COL1 = [
+    'Safety-first approach',
+    'Proper PPE for all team members',
+    'Safe concrete handling & operations',
+    'On-time site coordination'
+  ];
+
+  const TABLET_COL2 = [
+    'Professional and trained workforce',
+    'Quality-controlled production',
+    'Committed to a safer construction environment',
+    'Responsible execution of every project',
+    'Technical support at every step'
+  ];
+
+  // Mobile Single-Column Checklist Data (9 items in exact order)
+  const MOBILE_CHECKLIST = [
+    'Safety-first approach',
+    'Proper PPE for all team members',
+    'Safe concrete handling & operations',
+    'Professional and trained workforce',
+    'Quality-controlled production',
+    'On-time site coordination',
     'Committed to a safer construction environment',
     'Responsible execution of every project',
     'Technical support at every step'
@@ -35,7 +65,7 @@ export const AboutPart6: React.FC<AboutPart6Props> = ({ onNavigate }) => {
   return (
     <section id="about-part6" className="about-safety-responsibility-section">
       <div className="about-safety-resp-wrapper">
-        {/* ── TOP TWO-COLUMN AREA: Image Left, Narrative & 3-Col Checklist Right ── */}
+        {/* ── TOP TWO-COLUMN AREA (Desktop & Tablet) / STACKED (Mobile) ── */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -43,7 +73,7 @@ export const AboutPart6: React.FC<AboutPart6Props> = ({ onNavigate }) => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="about-safety-main-layout"
         >
-          {/* LEFT COLUMN: Construction Site Worker Visual */}
+          {/* Construction Site Worker Visual */}
           <div className="about-safety-img-col">
             <div className="about-safety-photo-card">
               <img
@@ -54,7 +84,7 @@ export const AboutPart6: React.FC<AboutPart6Props> = ({ onNavigate }) => {
             </div>
           </div>
 
-          {/* RIGHT COLUMN: Eyebrow, Title, Paragraph & 3-Col Checklist */}
+          {/* Narrative & Checklists */}
           <div className="about-safety-content-col">
             <span className="about-safety-eyebrow-label">SAFETY & RESPONSIBILITY</span>
             <div className="about-safety-eyebrow-line" />
@@ -68,41 +98,64 @@ export const AboutPart6: React.FC<AboutPart6Props> = ({ onNavigate }) => {
               to ensure a safe and secure environment at every site.
             </p>
 
-            {/* 3-Column Checklist Grid (with subtle vertical dividers) */}
-            <div className="about-safety-3col-checklist">
-              {/* Column 1 */}
+            {/* Desktop 3-Column Checklist */}
+            <div className="about-safety-3col-checklist desktop-checklist-view">
               <div className="about-safety-check-col">
-                {CHECKLIST_COL1.map((item, idx) => (
+                {DESKTOP_COL1.map((item, idx) => (
                   <div key={idx} className="about-safety-check-row">
                     <span className="about-safety-circle-check">✓</span>
                     <span className="about-safety-check-text">{item}</span>
                   </div>
                 ))}
               </div>
-
               <div className="about-safety-col-divider" />
-
-              {/* Column 2 */}
               <div className="about-safety-check-col">
-                {CHECKLIST_COL2.map((item, idx) => (
+                {DESKTOP_COL2.map((item, idx) => (
                   <div key={idx} className="about-safety-check-row">
                     <span className="about-safety-circle-check">✓</span>
                     <span className="about-safety-check-text">{item}</span>
                   </div>
                 ))}
               </div>
-
               <div className="about-safety-col-divider" />
-
-              {/* Column 3 */}
               <div className="about-safety-check-col">
-                {CHECKLIST_COL3.map((item, idx) => (
+                {DESKTOP_COL3.map((item, idx) => (
                   <div key={idx} className="about-safety-check-row">
                     <span className="about-safety-circle-check">✓</span>
                     <span className="about-safety-check-text">{item}</span>
                   </div>
                 ))}
               </div>
+            </div>
+
+            {/* Tablet 2-Column Checklist */}
+            <div className="about-safety-2col-checklist tablet-checklist-view">
+              <div className="about-safety-check-col">
+                {TABLET_COL1.map((item, idx) => (
+                  <div key={idx} className="about-safety-check-row">
+                    <span className="about-safety-circle-check">✓</span>
+                    <span className="about-safety-check-text">{item}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="about-safety-check-col">
+                {TABLET_COL2.map((item, idx) => (
+                  <div key={idx} className="about-safety-check-row">
+                    <span className="about-safety-circle-check">✓</span>
+                    <span className="about-safety-check-text">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Mobile 1-Column Checklist */}
+            <div className="about-safety-1col-checklist mobile-checklist-view">
+              {MOBILE_CHECKLIST.map((item, idx) => (
+                <div key={idx} className="about-safety-check-row mobile-card-row">
+                  <span className="about-safety-circle-check">✓</span>
+                  <span className="about-safety-check-text">{item}</span>
+                </div>
+              ))}
             </div>
           </div>
         </motion.div>
@@ -140,7 +193,7 @@ export const AboutPart6: React.FC<AboutPart6Props> = ({ onNavigate }) => {
         </motion.div>
       </div>
 
-      {/* Decorative Wave Transition */}
+      {/* Decorative Bottom Wave Transition to Footer */}
       <div className="about-safety-wave-container" aria-hidden="true">
         <img src="/swastik-wave.svg" alt="" className="about-safety-wave-svg" />
       </div>

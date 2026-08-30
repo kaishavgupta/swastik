@@ -1,11 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-interface AboutPart5Props {
-  onNavigate?: (path: string) => void;
-}
-
-export const AboutPart5: React.FC<AboutPart5Props> = () => {
+export const AboutPart5: React.FC = () => {
   const LEADERS = [
     {
       name: 'Uma Shankar Mittal',
@@ -46,7 +42,7 @@ export const AboutPart5: React.FC<AboutPart5Props> = () => {
           </p>
         </motion.div>
 
-        {/* Desktop, Tablet & Mobile Leadership Cards */}
+        {/* 4 Leadership Profile Cards */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -57,7 +53,7 @@ export const AboutPart5: React.FC<AboutPart5Props> = () => {
           {LEADERS.map((leader, idx) => (
             <div key={idx} className="about-leadership-card">
               <div className="about-leadership-avatar-wrap">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0875D1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0875D1" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
                   <circle cx="12" cy="7" r="4" />
                 </svg>
@@ -73,7 +69,7 @@ export const AboutPart5: React.FC<AboutPart5Props> = () => {
         </motion.div>
       </div>
 
-      {/* Decorative Bottom Wave Transition */}
+      {/* Leadership Dedicated Bottom Wave */}
       <div className="about-leadership-wave-container" aria-hidden="true">
         <img src="/swastik-wave.svg" alt="" className="about-leadership-wave-svg" />
       </div>

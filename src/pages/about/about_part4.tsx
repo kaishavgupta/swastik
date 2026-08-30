@@ -67,117 +67,53 @@ export const AboutPart4: React.FC = () => {
     }
   ];
 
-  const TECH_ASSETS = [
-    { title: 'RMC Batching Plant', img: '/01_RMC_Batching_Plant.svg' },
-    { title: 'Transit Mixers', img: '/02_Transit_Mixers.svg' },
-    { title: 'Concrete Pumps', img: '/03_Concrete_Pumps.svg' },
-    { title: 'Material Handling', img: '/04_Material_Handling.svg' },
-    { title: 'Quality-Control Lab', img: '/05_Quality_Control_Lab.svg' },
-    { title: 'Modern Equipment', img: '/06_Modern_Equipment.svg' }
-  ];
-
   return (
-    <section id="about-part4" className="about-values-tech-section">
-      <div className="about-values-tech-wrapper">
-        {/* ── BLOCK A: WHAT WE STAND FOR ── */}
+    <section id="about-part4" className="about-values-section">
+      <div className="about-values-wrapper">
+        {/* ── HEADER: WHAT WE STAND FOR ── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="about-block-a"
+          className="about-values-header"
         >
-          <div className="about-block-header">
-            <span className="about-block-eyebrow">WHAT WE STAND FOR</span>
-            <div className="about-block-eyebrow-line" />
-            <h2 className="about-block-heading">
-              Driven By <span className="text-blue-accent">Values.</span> Built On Trust.
-            </h2>
-            <p className="about-block-subheading">
-              Our values define who we are and how we deliver.<br className="values-sub-br" />
-              They guide our people, our processes and our partnerships.
-            </p>
-          </div>
+          <span className="about-values-eyebrow">WHAT WE STAND FOR</span>
+          <div className="about-values-eyebrow-line" />
+          <h2 className="about-values-heading">
+            Driven By <span className="text-blue-accent">Values.</span> Built On Trust.
+          </h2>
+          <p className="about-values-subheading">
+            Our values define who we are and how we deliver.<br className="values-sub-br" />
+            They guide our people, our processes and our partnerships.
+          </p>
+        </motion.div>
 
-          <div className="about-values-row-grid">
-            {VALUES.map((item, index) => (
-              <div key={index} className="about-value-item-card">
-                <div className="about-value-item-icon-wrap">{item.icon}</div>
+        {/* ── 6 VALUE CARDS ROW/GRID ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
+          className="about-values-cards-grid"
+        >
+          {VALUES.map((item, index) => (
+            <div key={index} className="about-value-item-card">
+              <div className="about-value-item-icon-wrap">{item.icon}</div>
+              <div className="about-value-item-info">
                 <h3 className="about-value-item-title">{item.title}</h3>
                 <div className="about-value-item-accent-line" />
                 <p className="about-value-item-desc">{item.desc}</p>
               </div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* ── BLOCK B: TECHNOLOGY & INFRASTRUCTURE ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-          className="about-block-b"
-        >
-          {/* Left Column: Narrative & Checklist */}
-          <div className="about-tech-narrative-col">
-            <span className="about-tech-eyebrow">TECHNOLOGY & INFRASTRUCTURE</span>
-            <h2 className="about-tech-heading">
-              Engineered For<br />
-              <span className="text-blue-accent">Consistency</span>
-            </h2>
-            <p className="about-tech-paragraph">
-              Our modern RMC plant, advanced technology and well-maintained fleet
-              ensure high-quality concrete and timely delivery at every site.
-            </p>
-
-            <div className="about-tech-checklist-grid">
-              <div className="about-checklist-row">
-                <span className="about-check-badge">✓</span>
-                <span className="about-checklist-label">RMC Batching Plant</span>
-              </div>
-              <div className="about-checklist-row">
-                <span className="about-check-badge">✓</span>
-                <span className="about-checklist-label">Transit Mixers</span>
-              </div>
-              <div className="about-checklist-row">
-                <span className="about-check-badge">✓</span>
-                <span className="about-checklist-label">Concrete Pumps</span>
-              </div>
-              <div className="about-checklist-row">
-                <span className="about-check-badge">✓</span>
-                <span className="about-checklist-label">Quality-Control Lab</span>
-              </div>
-              <div className="about-checklist-row">
-                <span className="about-check-badge">✓</span>
-                <span className="about-checklist-label">Material Handling</span>
-              </div>
-              <div className="about-checklist-row">
-                <span className="about-check-badge">✓</span>
-                <span className="about-checklist-label">Modern Equipment</span>
-              </div>
+              <span className="about-values-mobile-arrow">›</span>
             </div>
-          </div>
-
-          {/* Right Column: 2x3 Portfolio Gallery */}
-          <div className="about-tech-gallery-col">
-            <div className="about-tech-gallery-grid">
-              {TECH_ASSETS.map((asset, idx) => (
-                <div key={idx} className="about-tech-gallery-card">
-                  <img src={asset.img} alt={asset.title} className="about-tech-gallery-img" />
-                  <div className="about-tech-gallery-overlay">
-                    <span className="about-tech-gallery-title">{asset.title}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          ))}
         </motion.div>
       </div>
 
       {/* Decorative Bottom Wave Transition */}
-      <div className="about-part4-wave-container" aria-hidden="true">
-        <img src="/swastik-wave.svg" alt="" className="about-part4-wave-svg" />
+      <div className="about-values-wave-container" aria-hidden="true">
+        <img src="/swastik-wave.svg" alt="" className="about-values-wave-svg" />
       </div>
     </section>
   );
