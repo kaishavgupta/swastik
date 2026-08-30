@@ -37,7 +37,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onNavigate }) => {
   return (
     <div className="blog-presentation-wrapper">
       {/* PART 1: Blog Hero */}
-      <Blog1 />
+      <Blog1 onNavigate={onNavigate} />
 
       {/* PART 2: Search + Category Discovery */}
       <Blog2

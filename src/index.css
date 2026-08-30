@@ -23152,3 +23152,606 @@ body {
     width: 60px;
   }
 }
+
+
+/* ══════════════════════════════════════════════════════════
+   BLOG PAGE — PART 1: BLOG HERO & INSIGHTS FEATURE STRIP
+   Deep Swastik Navy Left Panel + Diagonal Edge Divider +
+   RMC Plant Image + Knowledge Solutions Overlapping Badge +
+   4-Column Feature Highlights Strip Below
+══════════════════════════════════════════════════════════ */
+
+.blog-hero-section {
+  position: relative;
+  width: 100%;
+  background: #F8FAFE;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(30px, 4vh, 50px) 0 clamp(24px, 3.5vh, 44px) 0;
+  box-sizing: border-box;
+}
+
+.blog-hero-main-container {
+  width: min(94%, 1440px);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 3vh, 32px);
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* ── 1. Main Hero Banner ── */
+.blog-hero-banner-wrapper {
+  width: 100%;
+  min-height: 520px;
+  height: 540px;
+  background: #061B3A;
+  border-radius: 28px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0 24px 60px rgba(6, 27, 58, 0.24);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ── Left Navy Panel ── */
+.blog-hero-left-panel {
+  flex: 0 0 46%;
+  width: 46%;
+  background: #061B3A;
+  padding: clamp(36px, 4vw, 56px) clamp(28px, 3.5vw, 48px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 3;
+  box-sizing: border-box;
+}
+
+.blog-hero-dot-matrix {
+  position: absolute;
+  top: 28px;
+  left: 36px;
+  display: grid;
+  grid-template-columns: repeat(6, 4px);
+  gap: 10px;
+  opacity: 0.22;
+  pointer-events: none;
+}
+
+.blog-hero-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #FFFFFF;
+}
+
+.blog-hero-blueprint-bg {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+  opacity: 0.38;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.blog-hero-left-content {
+  position: relative;
+  z-index: 2;
+  max-width: 480px;
+}
+
+.blog-hero-eyebrow {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #38BDF8;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.blog-hero-heading {
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-size: clamp(38px, 4vw, 56px);
+  font-weight: 900;
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  margin: 0 0 14px 0;
+}
+
+.blog-hero-heading span {
+  color: #FFFFFF;
+}
+
+.blog-hero-title-line {
+  width: 34px;
+  height: 3px;
+  background: #006FE6;
+  border-radius: 2px;
+  margin-bottom: 18px;
+}
+
+.blog-hero-lead-text {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: clamp(14px, 1.1vw, 16px);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.82);
+  margin: 0 0 28px 0;
+  max-width: 430px;
+}
+
+.blog-hero-btn-group {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.blog-hero-primary-btn {
+  background: #006FE6;
+  color: #FFFFFF;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 13px 24px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 111, 230, 0.4);
+  transition: all 0.25s ease;
+}
+
+.blog-hero-primary-btn:hover {
+  background: #005ec4;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(0, 111, 230, 0.55);
+}
+
+.blog-hero-secondary-btn {
+  background: transparent;
+  color: #FFFFFF;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 13px 14px;
+  border: none;
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  border-radius: 0;
+}
+
+.blog-hero-secondary-btn:hover {
+  border-bottom-color: #FFFFFF;
+  color: #38BDF8;
+}
+
+/* ── Right Panel: RMC Plant Image with Diagonal Cut ── */
+.blog-hero-right-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 62%;
+  height: 100%;
+  clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
+  z-index: 2;
+  overflow: hidden;
+  background: #071A36;
+}
+
+.blog-hero-plant-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.blog-hero-banner-wrapper:hover .blog-hero-plant-img {
+  transform: scale(1.02);
+}
+
+/* Diagonal Divider Stripes */
+.blog-hero-diagonal-divider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.blog-hero-diag-line-white {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-left: 3.5px solid #FFFFFF;
+  transform: skewX(-14deg);
+  transform-origin: top left;
+}
+
+.blog-hero-diag-line-blue {
+  position: absolute;
+  top: 0;
+  left: 6px;
+  width: 100%;
+  height: 100%;
+  border-left: 3px solid #006FE6;
+  transform: skewX(-14deg);
+  transform-origin: top left;
+}
+
+/* ── Knowledge Badge (Overlapping Bottom) ── */
+.blog-knowledge-badge {
+  position: absolute;
+  bottom: 0;
+  left: 38%;
+  transform: translateX(-20%);
+  z-index: 5;
+  background: #FFFFFF;
+  border-radius: 16px 16px 0 0;
+  padding: 14px 26px 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 -8px 24px rgba(7, 26, 54, 0.12);
+  border-top: 3px solid #006FE6;
+  box-sizing: border-box;
+}
+
+.blog-badge-icon-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #006FE6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 111, 230, 0.35);
+}
+
+.blog-badge-text-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-badge-title {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 13.5px;
+  font-weight: 900;
+  color: #071A36;
+  line-height: 1.2;
+}
+
+.blog-badge-sub {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #526887;
+  line-height: 1.2;
+  margin-top: 2px;
+}
+
+/* ── 2. Feature Highlights Strip Below ── */
+.blog-features-strip {
+  width: 100%;
+  background: #FFFFFF;
+  border-radius: 20px;
+  box-shadow: 0 14px 36px rgba(7, 26, 54, 0.06);
+  border: 1px solid rgba(0, 111, 230, 0.1);
+  padding: 22px clamp(20px, 3vw, 36px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  box-sizing: border-box;
+}
+
+.blog-feature-item {
+  flex: 1 1 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.blog-feature-icon-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(0, 111, 230, 0.08);
+  border: 1.5px solid rgba(0, 111, 230, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.25s ease;
+}
+
+.blog-feature-item:hover .blog-feature-icon-circle {
+  background: #006FE6;
+  border-color: #006FE6;
+}
+
+.blog-feature-item:hover .blog-feature-icon-circle svg {
+  stroke: #FFFFFF;
+}
+
+.blog-feature-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-feature-title {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 900;
+  color: #071A36;
+  margin: 0 0 4px 0;
+  line-height: 1.25;
+}
+
+.blog-feature-desc {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.45;
+  color: #526887;
+  margin: 0;
+}
+
+.blog-feature-divider {
+  width: 1px;
+  height: 44px;
+  background: #E2E8F0;
+  flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════════════════════════
+   BLOG HERO — TABLET / MEDIUM (768px – 1024px)
+══════════════════════════════════════════════════════════ */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .blog-hero-banner-wrapper {
+    height: auto;
+    min-height: auto;
+    flex-direction: column;
+    border-radius: 24px;
+  }
+
+  .blog-hero-left-panel {
+    flex: 1 1 100%;
+    width: 100%;
+    padding: 38px 32px 30px 32px;
+  }
+
+  .blog-hero-left-content {
+    max-width: 100%;
+  }
+
+  .blog-hero-heading {
+    font-size: 38px;
+  }
+
+  .blog-hero-lead-text {
+    max-width: 100%;
+    margin-bottom: 22px;
+  }
+
+  .blog-hero-right-panel {
+    position: relative;
+    width: 100%;
+    height: 320px;
+    clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .blog-hero-diag-line-white {
+    top: 0;
+    left: 0;
+    border-left: none;
+    border-top: 3.5px solid #FFFFFF;
+    transform: none;
+  }
+
+  .blog-hero-diag-line-blue {
+    top: 5px;
+    left: 0;
+    border-left: none;
+    border-top: 3px solid #006FE6;
+    transform: none;
+  }
+
+  .blog-knowledge-badge {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* Features 2x2 */
+  .blog-features-strip {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 22px 24px;
+  }
+
+  .blog-feature-divider {
+    display: none;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   BLOG HERO — SMALL / MOBILE (320px – 767px)
+   Vertical Stack: Left Content -> Diagonal -> Image -> Badge -> Features List
+══════════════════════════════════════════════════════════ */
+@media (max-width: 767px) {
+  .blog-hero-section {
+    padding: 20px 0 36px 0;
+  }
+
+  .blog-hero-main-container {
+    width: calc(100% - 24px);
+    gap: 20px;
+  }
+
+  .blog-hero-banner-wrapper {
+    height: auto;
+    min-height: auto;
+    flex-direction: column;
+    border-radius: 20px;
+  }
+
+  .blog-hero-left-panel {
+    flex: 1 1 100%;
+    width: 100%;
+    padding: 28px 18px 24px 18px;
+    align-items: flex-start;
+  }
+
+  .blog-hero-dot-matrix {
+    top: 16px;
+    left: 18px;
+  }
+
+  .blog-hero-blueprint-bg {
+    display: none;
+  }
+
+  .blog-hero-left-content {
+    max-width: 100%;
+  }
+
+  .blog-hero-eyebrow {
+    font-size: 12px;
+  }
+
+  .blog-hero-heading {
+    font-size: clamp(28px, 8.5vw, 36px);
+    line-height: 1.05;
+  }
+
+  .blog-hero-lead-text {
+    font-size: 13.5px;
+    margin-bottom: 20px;
+    max-width: 100%;
+  }
+
+  .blog-hero-btn-group {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .blog-hero-primary-btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    padding: 12px;
+  }
+
+  .blog-hero-secondary-btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    padding: 11px;
+  }
+
+  .blog-hero-right-panel {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    clip-path: polygon(0 6%, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .blog-hero-diag-line-white {
+    border-left: none;
+    border-top: 3px solid #FFFFFF;
+    transform: none;
+  }
+
+  .blog-hero-diag-line-blue {
+    border-left: none;
+    border-top: 2.5px solid #006FE6;
+    top: 4px;
+    left: 0;
+    transform: none;
+  }
+
+  .blog-knowledge-badge {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    margin: -14px auto 0 auto;
+    width: calc(100% - 28px);
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(7, 26, 54, 0.16);
+    justify-content: center;
+    padding: 10px 14px;
+  }
+
+  .blog-badge-title {
+    font-size: 12.5px;
+  }
+
+  .blog-badge-sub {
+    font-size: 10.5px;
+  }
+
+  /* Features List on Mobile */
+  .blog-features-strip {
+    flex-direction: column;
+    gap: 14px;
+    padding: 18px 16px;
+    border-radius: 18px;
+  }
+
+  .blog-feature-item {
+    width: 100%;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #F1F5F9;
+    gap: 12px;
+  }
+
+  .blog-feature-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .blog-feature-icon-circle {
+    width: 38px;
+    height: 38px;
+  }
+
+  .blog-feature-icon-circle svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .blog-feature-title {
+    font-size: 13.5px;
+  }
+
+  .blog-feature-desc {
+    font-size: 11px;
+  }
+
+  .blog-feature-divider {
+    display: none;
+  }
+}
