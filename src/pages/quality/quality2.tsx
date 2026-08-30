@@ -68,36 +68,37 @@ export const Quality2: React.FC = () => {
     {
       num: '06',
       title: 'Batch Consistency',
-      mobileTitle: ['Batch', 'Consist.'],
-      desc: 'Consistent batching for uniform quality in every load.',
+      mobileTitle: ['Batch', 'Consistency'],
+      desc: 'Automated batching plants ensure exact mix proportions.',
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0875D1" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="12" cy="12" r="10" />
-          <polyline points="12 6 12 12 16 14" />
+          <circle cx="12" cy="12" r="3" />
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
         </svg>
       )
     },
     {
       num: '07',
-      title: 'Quality Monitoring',
-      mobileTitle: ['Quality', 'Monitor'],
-      desc: 'Continuous monitoring at every stage of production.',
+      title: 'Moisture Control',
+      mobileTitle: ['Moisture', 'Control'],
+      desc: 'Real-time moisture sensors adjust water content dynamically.',
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0875D1" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-          <polyline points="9 12 11 14 15 10" />
+          <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
         </svg>
       )
     },
     {
       num: '08',
-      title: 'Site Support',
-      mobileTitle: ['Site', 'Support'],
-      desc: 'Expert support to ensure proper placing and performance.',
+      title: 'Transit Monitoring',
+      mobileTitle: ['Transit', 'Monitoring'],
+      desc: 'GPS-tracked transit mixers ensure concrete arrives at ideal slump.',
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0875D1" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
-          <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
+          <rect x="1" y="3" width="15" height="13" />
+          <polygon points="16 8 20 8 23 11 23 16 16 16 8" />
+          <circle cx="5.5" cy="18.5" r="2.5" />
+          <circle cx="18.5" cy="18.5" r="2.5" />
         </svg>
       )
     }
@@ -107,12 +108,13 @@ export const Quality2: React.FC = () => {
     {
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0875D1" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+          <polyline points="22 4 12 14.01 9 11.01" />
         </svg>
       ),
-      highlight: '100%',
-      boldSub: 'Quality Focused',
-      desc: 'Committed to delivering the highest quality concrete every time.'
+      highlight: '100% Tested',
+      boldSub: 'Quality Assurance',
+      desc: 'Every batch undergoes rigorous quality checks before dispatch.'
     },
     {
       icon: (
@@ -154,8 +156,7 @@ export const Quality2: React.FC = () => {
   ];
 
   return (
-    <section id="quality-part2" className="quality-part-2">
-      {/* Deep Navy Gradient & Subtle Architectural Decorations */}
+    <section id="quality-part2" className="quality-snap-section quality-part-2">
       <div className="quality-part-2__bg-dots" aria-hidden="true" />
       <div className="quality-part-2__bg-arcs-top" aria-hidden="true" />
       <div className="quality-part-2__bg-arcs-bottom" aria-hidden="true" />
@@ -207,7 +208,6 @@ export const Quality2: React.FC = () => {
 
         {/* ── TABLET (768–1199px) + SMALL MOBILE (≤ 767px): 4 × 2 Zig-Zag Snake Flow ── */}
         <div className="quality-part-2__process-mobile-snake">
-          {/* Row 1: 01 → 02 → 03 → 04 */}
           <div className="quality-part-2__snake-row row-top">
             {PROCESS_STEPS.slice(0, 4).map((step, idx) => (
               <React.Fragment key={step.num}>
@@ -229,7 +229,6 @@ export const Quality2: React.FC = () => {
             ))}
           </div>
 
-          {/* Snake Turn Connector: 04 ↓ 05 */}
           <div className="quality-part-2__snake-turn-wrap" aria-hidden="true">
             <div className="quality-part-2__snake-turn-down">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(8, 117, 209, 0.75)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
@@ -238,7 +237,6 @@ export const Quality2: React.FC = () => {
             </div>
           </div>
 
-          {/* Row 2: 08 ← 07 ← 06 ← 05 (Rendered in reverse visually: 08 on left, 05 on right) */}
           <div className="quality-part-2__snake-row row-bottom">
             {[PROCESS_STEPS[7], PROCESS_STEPS[6], PROCESS_STEPS[5], PROCESS_STEPS[4]].map((step, idx) => (
               <React.Fragment key={step.num}>
@@ -261,8 +259,7 @@ export const Quality2: React.FC = () => {
           </div>
         </div>
 
-
-        {/* ── BOTTOM FEATURE / STATS PANEL (Shown only on Tablet/Medium ≤ 1199px & Mobile) ── */}
+        {/* ── BOTTOM FEATURE / STATS PANEL ── */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}

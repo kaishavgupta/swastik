@@ -21213,3 +21213,899 @@ body {
     padding: 10px 12px;
   }
 }
+
+
+
+/* ══════════════════════════════════════════════════════════
+   QUALITY PAGE — PART 3: QUALITY TESTING & LABORATORY
+   Atmospheric Architectural Skyline SVG Background +
+   swastik_concrete_lab.svg Image with Precision Ribbon +
+   Testing Capabilities Grid + Quality Checked Trust Card +
+   Floating White Statistics Card + Branded Concrete Cube
+══════════════════════════════════════════════════════════ */
+
+.quality-lab-sec {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  background: #F8FAFD;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(70px, 8.5vh, 100px) 0 clamp(50px, 6.5vh, 80px) 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* 1. BACKGROUND SVG ASSET (z-index: 0) */
+.quality-background-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.85;
+}
+
+/* 2. FOREGROUND CONTENT (z-index: 2) */
+.quality-content {
+  position: relative;
+  z-index: 2;
+}
+
+.quality-lab__container {
+  width: min(94%, 1440px);
+  margin: 0 auto;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(24px, 3.2vh, 36px);
+}
+
+/* ── Top Header Area ── */
+.quality-lab__top-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 30px;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.quality-lab__header-left {
+  flex: 0 0 65%;
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+}
+
+.quality-lab__eyebrow-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.quality-lab__eyebrow {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #0066E6;
+}
+
+.quality-lab__eyebrow-line {
+  width: 32px;
+  height: 2.5px;
+  background: #0066E6;
+  border-radius: 2px;
+}
+
+.quality-lab__headline {
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-size: clamp(34px, 3.6vw, 50px);
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin: 0 0 14px 0;
+}
+
+.quality-lab__headline-navy {
+  color: #071A36;
+}
+
+.quality-lab__headline-blue {
+  color: #0066E6;
+  background: linear-gradient(90deg, #0066E6 0%, #0875D1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.quality-lab__desc {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: clamp(14px, 1.05vw, 15.5px);
+  line-height: 1.6;
+  color: #526887;
+  margin: 0;
+  max-width: 580px;
+}
+
+.quality-lab__header-right {
+  flex: 0 0 30%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding-top: 10px;
+}
+
+.quality-lab__slogan-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.quality-lab__slogan-top {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #526887;
+}
+
+.quality-lab__slogan-bottom {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #071A36;
+}
+
+.quality-lab__slogan-deco {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  margin-top: 6px;
+}
+
+.quality-lab__slogan-line {
+  height: 2px;
+  flex-grow: 1;
+  background: #0066E6;
+  border-radius: 1px;
+}
+
+.quality-lab__slogan-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #0066E6;
+}
+
+/* ── Main Content Grid (55% / 45%) ── */
+.quality-lab__main-grid {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: clamp(20px, 2.5vw, 32px);
+  width: 100%;
+  position: relative;
+  z-index: 3;
+}
+
+/* Left: Laboratory Image Card with swastik_concrete_lab.svg */
+.quality-lab__image-card {
+  flex: 0 0 45%;
+  max-width: 45%;
+  position: relative;
+  border-radius: 24px;
+  box-shadow: 0 20px 48px rgba(7, 26, 54, 0.12);
+  border: 2px solid rgba(0, 102, 230, 0.25);
+  background: #FFFFFF;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.quality-lab__image-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 380px;
+  overflow: hidden;
+}
+
+.quality-lab-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center left;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.quality-lab__image-card:hover .quality-lab-image {
+  transform: scale(1.02);
+}
+
+.quality-lab__img-border-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 140px;
+  height: 140px;
+  border-top: 5px solid #0066E6;
+  border-left: 5px solid #0066E6;
+  border-top-left-radius: 22px;
+  pointer-events: none;
+}
+
+/* Bottom Overlay Ribbon */
+.quality-lab__ribbon {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(7, 26, 54, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 14px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.quality-lab__ribbon-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.quality-lab__ribbon-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: rgba(0, 102, 230, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.quality-lab__ribbon-texts {
+  display: flex;
+  flex-direction: column;
+}
+
+.quality-lab__ribbon-title {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  color: #FFFFFF;
+  text-transform: uppercase;
+}
+
+.quality-lab__ribbon-sub {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #38BDF8;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.quality-lab__ribbon-arrow {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+  cursor: pointer;
+}
+
+.quality-lab__image-card:hover .quality-lab__ribbon-arrow {
+  transform: translateX(4px);
+}
+
+/* Right: Capabilities Card */
+.quality-lab__capabilities-card {
+  flex: 0 0 55%;
+  max-width: 55%;
+  background: #FFFFFF;
+  border-radius: 28px;
+  box-shadow: 0 20px 48px rgba(7, 26, 54, 0.08);
+  border: 1px solid rgba(8, 117, 209, 0.14);
+  padding: clamp(24px, 2.5vw, 32px) clamp(20px, 2vw, 28px);
+  display: flex;
+  flex-direction: row;
+  gap: clamp(18px, 2vw, 28px);
+  box-sizing: border-box;
+  align-items: stretch;
+  position: relative;
+}
+
+.quality-lab__cap-content {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.quality-lab__cap-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.quality-lab__cap-eyebrow {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #0066E6;
+}
+
+.quality-lab__cap-line {
+  width: 28px;
+  height: 2.5px;
+  background: #0066E6;
+  border-radius: 2px;
+}
+
+.quality-lab__cap-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px 14px;
+}
+
+.quality-lab__cap-column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.quality-lab__cap-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.quality-lab__cap-icon-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(0, 102, 230, 0.08);
+  border: 1.5px solid rgba(0, 102, 230, 0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.25s ease;
+  margin-top: 2px;
+}
+
+.quality-lab__cap-item:hover .quality-lab__cap-icon-circle {
+  background: #0066E6;
+  border-color: #0066E6;
+}
+
+.quality-lab__cap-item:hover .quality-lab__cap-icon-circle svg {
+  stroke: #FFFFFF;
+}
+
+.quality-lab__cap-text-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.quality-lab__cap-name {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  color: #071A36;
+  line-height: 1.25;
+  margin: 0 0 3px 0;
+}
+
+.quality-lab__cap-desc {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 11px;
+  color: #526887;
+  line-height: 1.35;
+  margin: 0;
+}
+
+/* Quality Statement Trust Card */
+.quality-lab__statement-panel {
+  flex: 0 0 165px;
+  max-width: 175px;
+  background: linear-gradient(180deg, #0057FF 0%, #003C9A 100%);
+  border-radius: 18px;
+  padding: 24px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  color: #FFFFFF;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(0, 87, 255, 0.25);
+  flex-shrink: 0;
+}
+
+.quality-lab__statement-watermark {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  opacity: 0.12;
+  color: #FFFFFF;
+  pointer-events: none;
+}
+
+.quality-lab__statement-icon {
+  width: 44px;
+  height: 44px;
+  margin-bottom: 18px;
+}
+
+.quality-lab__statement-heading {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.quality-lab__statement-space {
+  height: 8px;
+}
+
+.quality-lab__statement-divider {
+  width: 30px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.4);
+  margin: 16px 0 12px 0;
+}
+
+.quality-lab__statement-desc {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 11px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+}
+
+/* ── Bottom Row ── */
+.quality-lab__bottom-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+  position: relative;
+  z-index: 3;
+}
+
+/* Achievement Strip */
+.quality-lab__achievement-strip {
+  flex: 1 1 auto;
+  background: #FFFFFF;
+  border-radius: 22px;
+  box-shadow: 0 18px 45px rgba(7, 26, 54, 0.09);
+  border: 1px solid rgba(8, 117, 209, 0.14);
+  padding: 18px clamp(20px, 3vw, 38px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(16px, 2.5vw, 36px);
+  box-sizing: border-box;
+}
+
+.quality-lab__achieve-col {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.quality-lab__achieve-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: rgba(0, 102, 230, 0.08);
+  border: 1.5px solid rgba(0, 102, 230, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.quality-lab__achieve-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.quality-lab__achieve-num {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  color: #0066E6;
+  line-height: 1.1;
+}
+
+.quality-lab__achieve-title {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 900;
+  color: #071A36;
+  line-height: 1.15;
+}
+
+.quality-lab__achieve-lbl {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 10.5px;
+  font-weight: 800;
+  color: #526887;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.quality-lab__achieve-sub {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: #526887;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.quality-lab__achieve-divider {
+  width: 1px;
+  height: 34px;
+  background: #E2E8F0;
+}
+
+/* Decorative Concrete Block (z-index: 4) */
+.quality-concrete-cube-wrap {
+  flex: 0 0 160px;
+  position: relative;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.quality-concrete-cube {
+  width: 150px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 14px 24px rgba(7, 26, 54, 0.18));
+}
+
+.quality-lab__cube-shadow {
+  width: 120px;
+  height: 14px;
+  background: radial-gradient(ellipse at center, rgba(7, 26, 54, 0.25) 0%, transparent 70%);
+  margin-top: -6px;
+}
+
+/* ══════════════════════════════════════════════════════════
+   QUALITY PART 3 — MEDIUM / TABLET (768px – 1199px)
+══════════════════════════════════════════════════════════ */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .quality-lab-sec {
+    min-height: 100svh;
+    height: auto;
+    padding: 60px 0;
+  }
+
+  .quality-background-art {
+    opacity: 0.45;
+  }
+
+  .quality-lab__main-grid {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .quality-lab__image-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+    min-height: 320px;
+  }
+
+  .quality-lab__image-frame {
+    min-height: 320px;
+  }
+
+  .quality-lab__capabilities-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .quality-lab__bottom-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .quality-lab__achievement-strip {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    padding: 18px 20px;
+  }
+
+  .quality-lab__achieve-divider {
+    display: none;
+  }
+
+  .quality-lab__achieve-num {
+    font-size: 20px;
+  }
+
+  .quality-lab__achieve-title {
+    font-size: 13px;
+  }
+
+  .quality-lab__achieve-lbl,
+  .quality-lab__achieve-sub {
+    font-size: 9px;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   QUALITY PART 3 — SMALL SCREEN / MOBILE (360px – 767px)
+   Stacked Single-Column Layout with Atmospheric Architecture
+══════════════════════════════════════════════════════════ */
+@media (max-width: 767px) {
+  .quality-lab-sec {
+    min-height: 100svh;
+    height: auto;
+    padding: 44px 0 60px 0;
+  }
+
+  /* Keep background SVG recognizable on mobile without obstructing text */
+  .quality-background-art {
+    opacity: 0.18;
+    object-position: right center;
+  }
+
+  .quality-lab__container {
+    width: calc(100% - 24px);
+    gap: 20px;
+  }
+
+  .quality-lab__top-row {
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .quality-lab__header-left {
+    flex: 1 1 100%;
+    max-width: 100%;
+    align-items: center;
+  }
+
+  .quality-lab__eyebrow-wrap {
+    justify-content: center;
+  }
+
+  .quality-lab__headline {
+    font-size: clamp(26px, 7.5vw, 34px);
+    text-align: center;
+  }
+
+  .quality-lab__desc {
+    font-size: 13px;
+    text-align: center;
+  }
+
+  .quality-lab__header-right {
+    flex: 1 1 100%;
+    justify-content: center;
+    padding-top: 0;
+  }
+
+  .quality-lab__slogan-box {
+    align-items: center;
+  }
+
+  /* Main Grid Stack */
+  .quality-lab__main-grid {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .quality-lab__image-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+    border-radius: 18px;
+  }
+
+  .quality-lab__image-frame {
+    min-height: 240px;
+    height: 240px;
+  }
+
+  .quality-lab__ribbon {
+    padding: 12px 14px;
+  }
+
+  .quality-lab__ribbon-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .quality-lab__ribbon-title {
+    font-size: 11.5px;
+    letter-spacing: 1px;
+  }
+
+  .quality-lab__ribbon-sub {
+    font-size: 10px;
+  }
+
+  .quality-lab__capabilities-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+    flex-direction: column;
+    border-radius: 20px;
+    padding: 20px 16px;
+    gap: 20px;
+  }
+
+  .quality-lab__cap-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px 10px;
+  }
+
+  .quality-lab__cap-icon-circle {
+    width: 32px;
+    height: 32px;
+  }
+
+  .quality-lab__cap-icon-circle svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .quality-lab__cap-name {
+    font-size: 11.5px;
+  }
+
+  .quality-lab__cap-desc {
+    font-size: 10px;
+  }
+
+  .quality-lab__statement-panel {
+    flex: 1 1 100%;
+    max-width: 100%;
+    border-radius: 14px;
+    padding: 18px 16px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .quality-lab__statement-heading {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+    font-size: 14px;
+  }
+
+  .quality-lab__statement-space {
+    display: none;
+  }
+
+  .quality-lab__statement-divider {
+    margin: 10px auto;
+  }
+
+  .quality-lab__statement-desc {
+    text-align: center;
+  }
+
+  /* Bottom Row Stack */
+  .quality-lab__bottom-row {
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .quality-lab__achievement-strip {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px 10px;
+    padding: 16px 14px;
+    border-radius: 18px;
+    width: 100%;
+  }
+
+  .quality-lab__achieve-divider {
+    display: none;
+  }
+
+  .quality-lab__achieve-col {
+    gap: 10px;
+  }
+
+  .quality-lab__achieve-icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .quality-lab__achieve-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .quality-lab__achieve-num {
+    font-size: 18px;
+  }
+
+  .quality-lab__achieve-title {
+    font-size: 12.5px;
+  }
+
+  .quality-lab__achieve-lbl,
+  .quality-lab__achieve-sub {
+    font-size: 9px;
+  }
+
+  .quality-concrete-cube-wrap {
+    flex: 0 0 auto;
+    width: 130px;
+  }
+
+  .quality-concrete-cube {
+    width: 120px;
+  }
+
+  .quality-lab__cube-shadow {
+    width: 90px;
+  }
+}
+
+/* Micro-screen support (320px – 360px) */
+@media (max-width: 360px) {
+  .quality-lab__cap-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .quality-lab__achievement-strip {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
