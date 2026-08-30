@@ -7643,115 +7643,446 @@ body {
 }
 
 
-/* ── SECTION 4: TRUSTED CLIENTS ── */
-.trusted-clients-section {
-  background: #FFFFFF;
-}
+/* ══════════════════════════════════════════════════════════
+   PROJECTS PAGE — PART 4: TRUSTED CLIENTS
+   "CLIENTS WHO BUILD THE NATION"
+   Unified True Infinite Carousel on Desktop, Tablet & Mobile
+══════════════════════════════════════════════════════════ */
 
-.trusted-clients-container {
+.trust-clients {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  background-color: #FFFFFF;
   display: flex;
   flex-direction: column;
-  gap: clamp(24px, 3.5vh, 44px);
+  justify-content: center;
+  align-items: center;
+  padding: clamp(60px, 7.5vh, 100px) 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  outline: none;
 }
 
-.clients-carousel-wrapper {
+/* Full-bleed Absolute Background Layer */
+.trust-clients__bg-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/projects-construction-background.svg');
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.trust-clients__container {
+  width: min(94%, 1440px);
+  margin: 0 auto;
+  position: relative;
+  z-index: 5;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* ── Section Header ── */
+.trust-clients__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: clamp(32px, 4.5vh, 48px);
+  max-width: 840px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.trust-clients__eyebrow-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.trust-clients__eyebrow-dash {
+  color: var(--blue, #0875D1);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.trust-clients__eyebrow {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 13.5px;
+  font-weight: 800;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--blue, #0875D1);
+}
+
+.trust-clients__title {
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-size: clamp(32px, 3.5vw, 48px);
+  font-weight: 900;
+  color: var(--navy, #071A36);
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  line-height: 1.12;
+  margin: 0 0 14px 0;
+}
+
+.trust-clients__desc {
+  font-size: clamp(14.5px, 1.1vw, 16.5px);
+  color: var(--text-muted, #526887);
+  line-height: 1.6;
+  margin: 0 0 20px 0;
+  max-width: 740px;
+}
+
+.trust-clients__divider {
+  width: 44px;
+  height: 3px;
+  background: var(--blue, #0875D1);
+  border-radius: 2px;
+}
+
+/* ── Unified Infinite Carousel Layout ── */
+.trust-clients__carousel-wrap {
   position: relative;
   width: 100%;
   display: flex;
   align-items: center;
-}
-
-.clients-scroll-container {
-  width: 100%;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
-  padding-block: 10px;
-}
-
-.clients-scroll-container::-webkit-scrollbar {
-  display: none;
-}
-
-.clients-logo-track {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  min-width: max-content;
-}
-
-.client-logo-card {
-  background: #FFFFFF;
-  border: 1px solid rgba(7, 26, 54, 0.08);
-  border-radius: 14px;
-  padding: 16px 24px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  gap: 6px;
-  min-width: 180px;
-  height: 90px;
-  box-shadow: 0 4px 16px rgba(7, 26, 54, 0.04);
-  transition: all 0.25s ease;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
-.client-logo-card:hover {
-  border-color: var(--blue, #0875D1);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(8, 117, 209, 0.12);
-}
-
-.client-logo-img {
-  max-width: 130px;
-  max-height: 48px;
-  object-fit: contain;
-  display: block;
-  filter: grayscale(80%);
-  transition: filter 0.25s ease;
-}
-
-.client-logo-card:hover .client-logo-img {
-  filter: grayscale(0%);
-}
-
-.client-logo-subtext {
-  font-size: 9.5px;
-  font-weight: 700;
-  color: var(--text-muted, #526887);
-  letter-spacing: 0.5px;
-}
-
-.clients-nav-btn {
-  width: 42px;
-  height: 42px;
+.trust-clients__nav-btn {
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background: #FFFFFF;
-  border: 1px solid rgba(7, 26, 54, 0.12);
-  color: var(--navy, #071A36);
+  border: 1px solid rgba(8, 117, 209, 0.18);
+  box-shadow: 0 6px 18px rgba(7, 26, 54, 0.08);
+  color: var(--blue, #0875D1);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(7, 26, 54, 0.08);
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   flex-shrink: 0;
   z-index: 10;
+  outline: none;
 }
 
-.clients-nav-btn:hover {
+.trust-clients__nav-btn:hover {
   background: var(--blue, #0875D1);
   color: #FFFFFF;
+  transform: scale(1.08);
+  box-shadow: 0 8px 24px rgba(8, 117, 209, 0.25);
+}
+
+.trust-clients__nav-btn:active {
+  transform: scale(0.95);
+}
+
+.trust-clients__nav-prev {
+  margin-right: 14px;
+}
+
+.trust-clients__nav-next {
+  margin-left: 14px;
+}
+
+.trust-clients__viewport {
+  width: 100%;
+  overflow: hidden;
+  padding: 10px 0;
+  box-sizing: border-box;
+}
+
+.trust-clients__track {
+  display: flex;
+  width: 100%;
+  will-change: transform;
+  box-sizing: border-box;
+}
+
+.trust-clients__card-slot {
+  box-sizing: border-box;
+  padding: 0 6px;
+}
+
+.trust-clients__card {
+  background: #FFFFFF;
+  border: 1px solid rgba(8, 117, 209, 0.14);
+  border-radius: 16px;
+  padding: 22px 12px 18px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(7, 26, 54, 0.04);
+  transition: all 0.3s ease;
+  min-height: 185px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.trust-clients__card:hover {
+  transform: translateY(-5px);
   border-color: var(--blue, #0875D1);
+  box-shadow: 0 14px 32px rgba(8, 117, 209, 0.14);
 }
 
-.clients-nav-prev {
-  margin-right: 12px;
+.trust-clients__logo-wrap {
+  height: 68px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
-.clients-nav-next {
-  margin-left: 12px;
+.trust-clients__logo-img {
+  max-width: 105px;
+  max-height: 58px;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+  transition: transform 0.3s ease;
 }
+
+.trust-clients__card:hover .trust-clients__logo-img {
+  transform: scale(1.05);
+}
+
+.trust-clients__card-divider {
+  width: 24px;
+  height: 2px;
+  background: var(--blue, #0875D1);
+  border-radius: 2px;
+  margin: 12px 0 10px 0;
+}
+
+.trust-clients__name {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--navy, #071A36);
+  line-height: 1.25;
+  text-align: center;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── Pagination Dots ── */
+.trust-clients__dots-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.trust-clients__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #CBD5E1;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.trust-clients__dot.active {
+  background: var(--blue, #0875D1);
+  width: 10px;
+  height: 10px;
+}
+
+/* ══════════════════════════════════════════════════════════
+   MEDIUM / TABLET (768px – 1024px)
+══════════════════════════════════════════════════════════ */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .trust-clients {
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: 60px 0;
+  }
+
+  .trust-clients__container {
+    width: min(92%, 960px);
+  }
+
+  .trust-clients__header {
+    margin-bottom: 34px;
+  }
+
+  .trust-clients__title {
+    font-size: clamp(30px, 4vw, 38px);
+  }
+
+  .trust-clients__desc {
+    font-size: 14px;
+    max-width: 640px;
+  }
+
+  .trust-clients__card-slot {
+    padding: 0 5px;
+  }
+
+  .trust-clients__card {
+    padding: 18px 10px 14px 10px;
+    min-height: 168px;
+  }
+
+  .trust-clients__logo-wrap {
+    height: 58px;
+  }
+
+  .trust-clients__logo-img {
+    max-width: 90px;
+    max-height: 50px;
+  }
+
+  .trust-clients__name {
+    font-size: 12px;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   SMALL MOBILE (320px – 767px)
+   2-Card Simultaneous Display + Full Touch Gestures
+══════════════════════════════════════════════════════════ */
+@media (max-width: 767px) {
+  .trust-clients {
+    min-height: auto;
+    padding: 44px 0 50px 0;
+    justify-content: flex-start;
+  }
+
+  .trust-clients__container {
+    width: calc(100% - 24px);
+    max-width: 520px;
+  }
+
+  .trust-clients__header {
+    margin-bottom: 24px;
+  }
+
+  .trust-clients__eyebrow {
+    font-size: 11.5px;
+    letter-spacing: 2.2px;
+  }
+
+  .trust-clients__title {
+    font-size: clamp(24px, 6.8vw, 32px);
+    line-height: 1.15;
+  }
+
+  .trust-clients__desc {
+    font-size: 13px;
+    line-height: 1.48;
+    margin-bottom: 14px;
+  }
+
+  .trust-clients__carousel-wrap {
+    margin-bottom: 14px;
+  }
+
+  .trust-clients__nav-btn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .trust-clients__nav-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .trust-clients__nav-prev {
+    margin-right: 8px;
+  }
+
+  .trust-clients__nav-next {
+    margin-left: 8px;
+  }
+
+  .trust-clients__card-slot {
+    padding: 0 4px;
+  }
+
+  .trust-clients__card {
+    padding: 14px 8px 12px 8px;
+    min-height: 140px;
+    border-radius: 14px;
+  }
+
+  .trust-clients__logo-wrap {
+    height: 52px;
+  }
+
+  .trust-clients__logo-img {
+    max-width: 78px;
+    max-height: 44px;
+  }
+
+  .trust-clients__card-divider {
+    width: 20px;
+    margin: 6px 0 6px 0;
+  }
+
+  .trust-clients__name {
+    font-size: 11.5px;
+    line-height: 1.2;
+  }
+
+  .trust-clients__dots-wrap {
+    gap: 6px;
+    margin-top: 10px;
+  }
+}
+
+/* Micro-screen support (320px - 360px) */
+@media (max-width: 360px) {
+  .trust-clients__card-slot {
+    padding: 0 3px;
+  }
+
+  .trust-clients__card {
+    min-height: 128px;
+    padding: 12px 6px 10px 6px;
+  }
+
+  .trust-clients__logo-wrap {
+    height: 46px;
+  }
+
+  .trust-clients__logo-img {
+    max-width: 66px;
+    max-height: 38px;
+  }
+
+  .trust-clients__name {
+    font-size: 10.5px;
+  }
+}
+
 
 /* ── SECTION 5: PROJECT CTA ── */
 .project-cta-section {
