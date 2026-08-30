@@ -8084,105 +8084,556 @@ body {
 }
 
 
-/* ── SECTION 5: PROJECT CTA ── */
-.project-cta-section {
-  background: #FFFFFF;
+/* ══════════════════════════════════════════════════════════
+   PROJECTS PAGE — PART 5: PROJECT CTA / INQUIRY SECTION
+   "HAVE A PROJECT IN MIND?"
+   Full Viewport Height Section (min-height: 100svh)
+   Vertically Centered Navy Card + Angled Fleet Image + 3-Item Trust Bar
+══════════════════════════════════════════════════════════ */
+
+.proj-cta {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  background-color: #F8FAFD;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(50px, 6.5vh, 90px) 0;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
-.project-cta-container {
+/* Full-bleed Subtle Light-Blue Construction Line-Art Background */
+.proj-cta__bg-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/projects_background_buildings.svg');
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.proj-cta__container {
+  width: min(92%, 1280px);
+  margin: 0 auto;
+  position: relative;
+  z-index: 5;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ── Main Navy Card ── */
+.proj-cta__card {
+  width: 100%;
+  background: linear-gradient(145deg, #061B3A 0%, #082147 55%, #05152E 100%);
+  border: 1px solid rgba(8, 117, 209, 0.28);
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(6, 27, 58, 0.22);
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
 }
 
-.project-cta-banner-card {
-  background: linear-gradient(135deg, #071A36 0%, #0A2958 100%);
-  border-radius: 20px;
-  padding: clamp(32px, 5vw, 56px);
+/* Main 2-Column Row (Desktop & Tablet) */
+.proj-cta__main-row {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: stretch;
   justify-content: space-between;
-  gap: 40px;
-  color: #FFFFFF;
-  box-shadow: 0 16px 48px rgba(7, 26, 54, 0.16);
   position: relative;
-  overflow: hidden;
+  width: 100%;
 }
 
-.project-cta-left {
-  flex: 0 0 54%;
-  max-width: 54%;
-}
-
-.project-cta-title {
-  font-size: clamp(28px, 3.2vw, 44px);
-  font-weight: 900;
-  line-height: 1.1;
-  color: #FFFFFF;
-  margin-bottom: 14px;
-}
-
-.project-cta-lead {
-  font-size: clamp(14px, 1.2vw, 16px);
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.85);
-  margin-bottom: 28px;
-  max-width: 500px;
-}
-
-.project-cta-buttons {
+/* ── Left Content Column ── */
+.proj-cta__left {
+  flex: 0 0 53%;
+  max-width: 53%;
+  padding: clamp(38px, 4.5vw, 56px) clamp(30px, 3.5vw, 48px) clamp(24px, 3vw, 36px) clamp(38px, 4.5vw, 56px);
+  box-sizing: border-box;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 2;
+}
+
+.proj-cta__eyebrow-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.proj-cta__eyebrow-dash {
+  color: #0066E6;
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.proj-cta__eyebrow {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  color: #0066E6;
+}
+
+.proj-cta__title {
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-size: clamp(32px, 3.4vw, 48px);
+  font-weight: 900;
+  line-height: 1.08;
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin: 0 0 14px 0;
+}
+
+.proj-cta__desc {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: clamp(14px, 1.05vw, 15.5px);
+  line-height: 1.6;
+  color: #94A3B8;
+  margin: 0 0 18px 0;
+  max-width: 480px;
+}
+
+.proj-cta__divider {
+  width: 38px;
+  height: 3px;
+  background: #0066E6;
+  border-radius: 2px;
+  margin-bottom: 26px;
+}
+
+/* Dual Action Buttons */
+.proj-cta__actions {
+  display: flex;
+  align-items: center;
   gap: 14px;
   flex-wrap: wrap;
 }
 
-.project-cta-primary-btn {
-  background: #FFFFFF !important;
-  color: var(--blue, #0875D1) !important;
-  border-color: #FFFFFF !important;
-  height: 48px;
-  padding: 0 24px;
-  font-size: 12.5px;
+.proj-cta__btn-primary {
+  background: #0066E6;
+  color: #FFFFFF;
+  border: none;
+  padding: 13px 26px;
+  border-radius: 8px;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 13px;
   font-weight: 800;
   letter-spacing: 1px;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 16px rgba(0, 102, 230, 0.35);
+  outline: none;
 }
 
-.project-cta-primary-btn:hover {
-  background: #F4F8FC !important;
-  transform: translateY(-1px);
+.proj-cta__btn-primary:hover {
+  background: #0052BF;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 102, 230, 0.45);
 }
 
-.project-cta-secondary-btn {
-  background: transparent !important;
-  color: #FFFFFF !important;
-  border: 2px solid rgba(255, 255, 255, 0.4) !important;
-  height: 48px;
-  padding: 0 24px;
-  font-size: 12.5px;
+.proj-cta__btn-primary:active {
+  transform: translateY(0);
+}
+
+.proj-cta__btn-secondary {
+  background: rgba(255, 255, 255, 0.04);
+  color: #FFFFFF;
+  border: 1.5px solid rgba(255, 255, 255, 0.28);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 13px;
   font-weight: 800;
   letter-spacing: 1px;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  outline: none;
 }
 
-.project-cta-secondary-btn:hover {
-  background: rgba(255, 255, 255, 0.12) !important;
-  border-color: rgba(255, 255, 255, 0.7) !important;
-  transform: translateY(-1px);
+.proj-cta__btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.7);
+  transform: translateY(-2px);
 }
 
-.project-cta-right {
-  flex: 0 0 42%;
-  max-width: 42%;
+.proj-cta__btn-secondary:active {
+  transform: translateY(0);
+}
+
+/* ── Right Column (Angled Mixer Fleet Image) ── */
+.proj-cta__right {
+  flex: 0 0 47%;
+  max-width: 47%;
+  position: relative;
+  overflow: hidden;
   display: flex;
-  justify-content: flex-end;
+  align-items: stretch;
 }
 
-.project-cta-truck-img {
+.proj-cta__truck-wrapper {
+  position: relative;
   width: 100%;
-  height: auto;
-  max-height: 240px;
-  object-fit: contain;
-  display: block;
+  height: 100%;
+  min-height: 340px;
+  overflow: hidden;
 }
+
+.proj-cta__image-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(14% 0, 100% 0, 100% 100%, 0% 100%);
+  overflow: hidden;
+}
+
+.proj-cta__angle-accent {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.proj-cta__angle-accent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 14%;
+  width: 3.5px;
+  background: linear-gradient(180deg, #0066E6 0%, #38BDF8 100%);
+  transform-origin: top left;
+  transform: skewX(-14deg);
+  box-shadow: 0 0 12px rgba(0, 102, 230, 0.6);
+}
+
+.proj-cta__truck-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center right;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.proj-cta__card:hover .proj-cta__truck-img {
+  transform: scale(1.03);
+}
+
+/* ── Bottom 3-Item Trust Bar ── */
+.proj-cta__trust-bar {
+  background: #04142B;
+  border-top: 1px solid rgba(8, 117, 209, 0.22);
+  padding: 16px clamp(24px, 4vw, 54px);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(16px, 3.5vw, 46px);
+  box-sizing: border-box;
+}
+
+.proj-cta__trust-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.proj-cta__trust-icon-wrap {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: rgba(56, 189, 248, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.proj-cta__trust-texts {
+  display: flex;
+  flex-direction: column;
+}
+
+.proj-cta__trust-label {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 11.5px;
+  color: #94A3B8;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.proj-cta__trust-val {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 13px;
+  color: #FFFFFF;
+  font-weight: 800;
+  line-height: 1.25;
+  margin-top: 2px;
+}
+
+.proj-cta__trust-sep {
+  width: 1px;
+  height: 26px;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* ══════════════════════════════════════════════════════════
+   MEDIUM SCREEN (768px – 1024px)
+══════════════════════════════════════════════════════════ */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .proj-cta {
+    min-height: 100vh;
+    min-height: 100svh;
+    height: auto;
+    padding: 50px 0;
+    justify-content: center;
+  }
+
+  .proj-cta__left {
+    flex: 0 0 54%;
+    max-width: 54%;
+    padding: 34px 24px 20px 32px;
+  }
+
+  .proj-cta__title {
+    font-size: clamp(26px, 3.2vw, 36px);
+  }
+
+  .proj-cta__desc {
+    font-size: 13.5px;
+  }
+
+  .proj-cta__right {
+    flex: 0 0 46%;
+    max-width: 46%;
+  }
+
+  .proj-cta__truck-wrapper {
+    min-height: 280px;
+  }
+
+  .proj-cta__trust-bar {
+    padding: 14px 32px;
+    gap: 24px;
+  }
+
+  .proj-cta__trust-val {
+    font-size: 12px;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   SMALL SCREEN (320px – 767px)
+   Stacked Single-Column Layout
+══════════════════════════════════════════════════════════ */
+@media (max-width: 767px) {
+  .proj-cta {
+    min-height: 100vh;
+    min-height: 100svh;
+    height: auto;
+    padding: 44px 0 54px 0;
+    justify-content: center;
+  }
+
+  .proj-cta__container {
+    width: calc(100% - 24px);
+    max-width: 520px;
+  }
+
+  .proj-cta__card {
+    border-radius: 16px;
+  }
+
+  .proj-cta__main-row {
+    flex-direction: column;
+  }
+
+  .proj-cta__left {
+    flex: 1 1 100%;
+    max-width: 100%;
+    padding: 28px 18px 18px 18px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .proj-cta__eyebrow {
+    font-size: 11px;
+    letter-spacing: 2.2px;
+  }
+
+  .proj-cta__title {
+    font-size: clamp(26px, 7.5vw, 34px);
+    line-height: 1.12;
+    text-align: center;
+  }
+
+  .proj-cta__desc {
+    font-size: 13px;
+    line-height: 1.5;
+    text-align: center;
+    margin-bottom: 14px;
+  }
+
+  .proj-cta__divider {
+    margin-bottom: 20px;
+  }
+
+  .proj-cta__actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .proj-cta__btn-primary,
+  .proj-cta__btn-secondary {
+    width: 100%;
+    height: 48px;
+    justify-content: center;
+  }
+
+  /* Truck Photo in Mobile Stack */
+  .proj-cta__right {
+    flex: 1 1 100%;
+    max-width: 100%;
+    padding: 0 18px 18px 18px;
+  }
+
+  .proj-cta__truck-wrapper {
+    min-height: auto;
+    height: 200px;
+    border-radius: 12px;
+  }
+
+  .proj-cta__image-frame {
+    position: relative;
+    clip-path: none;
+    border-radius: 12px;
+    width: 100%;
+    height: 200px;
+  }
+
+  .proj-cta__angle-accent {
+    display: none;
+  }
+
+  .proj-cta__truck-img {
+    border-radius: 12px;
+  }
+
+  /* Mobile Trust Bar */
+  .proj-cta__trust-bar {
+    padding: 16px 14px;
+    border-top: 1px solid rgba(8, 117, 209, 0.2);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 4px;
+  }
+
+  .proj-cta__trust-item {
+    gap: 8px;
+  }
+
+  .proj-cta__trust-icon-wrap {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+  }
+
+  .proj-cta__trust-icon-wrap svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .proj-cta__trust-label {
+    font-size: 10px;
+  }
+
+  .proj-cta__trust-val {
+    font-size: 11px;
+  }
+
+  .proj-cta__trust-sep {
+    height: 22px;
+  }
+}
+
+/* Micro-screen support (320px – 360px) */
+@media (max-width: 360px) {
+  .proj-cta__left {
+    padding: 22px 14px 14px 14px;
+  }
+
+  .proj-cta__right {
+    padding: 0 14px 14px 14px;
+  }
+
+  .proj-cta__truck-wrapper,
+  .proj-cta__image-frame {
+    height: 170px;
+  }
+
+  .proj-cta__title {
+    font-size: 24px;
+  }
+
+  .proj-cta__trust-bar {
+    padding: 14px 8px;
+    gap: 2px;
+  }
+
+  .proj-cta__trust-item {
+    gap: 4px;
+  }
+
+  .proj-cta__trust-icon-wrap {
+    width: 28px;
+    height: 28px;
+  }
+
+  .proj-cta__trust-icon-wrap svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .proj-cta__trust-label {
+    font-size: 9px;
+  }
+
+  .proj-cta__trust-val {
+    font-size: 10px;
+  }
+}
+
 
 /* ══════════════════════════════════════════════════════════
    RESPONSIVE BREAKPOINTS FOR PROJECTS PRESENTATION
