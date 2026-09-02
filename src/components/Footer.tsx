@@ -8,7 +8,7 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
-  const { phoneDisplay, telUrl, mailtoUrl, email } = useContactInfo();
+  const { phoneDisplay, telUrl, mailtoUrl, email, facebook, instagram, linkedin, youtube } = useContactInfo();
 
   const go = (path: string) => {
     onNavigate(path);
@@ -27,6 +27,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
     <a
       href={href}
       aria-label={label}
+      target="_blank"
+      rel="noopener noreferrer"
       className="footer-social-btn"
     >
       {children}
@@ -52,10 +54,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               concrete solutions for Lucknow's infrastructure since 2009.
             </p>
             <div className="footer-social-row">
-              <SocialBtn label="Facebook"><SVGIcons.Facebook size={18} /></SocialBtn>
-              <SocialBtn label="Instagram"><SVGIcons.Instagram size={18} /></SocialBtn>
-              <SocialBtn label="LinkedIn"><SVGIcons.LinkedIn size={18} /></SocialBtn>
-              <SocialBtn label="YouTube"><SVGIcons.YouTube size={18} /></SocialBtn>
+              <SocialBtn label="Facebook" href={facebook}><SVGIcons.Facebook size={18} /></SocialBtn>
+              <SocialBtn label="Instagram" href={instagram}><SVGIcons.Instagram size={18} /></SocialBtn>
+              <SocialBtn label="LinkedIn" href={linkedin}><SVGIcons.LinkedIn size={18} /></SocialBtn>
+              <SocialBtn label="YouTube" href={youtube}><SVGIcons.YouTube size={18} /></SocialBtn>
             </div>
           </div>
 
