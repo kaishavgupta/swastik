@@ -11,7 +11,7 @@ const defaultEmail = (import.meta.env.VITE_CONTACT_EMAIL as string | undefined) 
 const defaultFacebook = (import.meta.env.VITE_FACEBOOK_URL as string | undefined) || 'https://www.facebook.com/share/19W93nerbE/';
 const defaultLinkedin = (import.meta.env.VITE_LINKEDIN_URL as string | undefined) || 'https://www.linkedin.com/in/nikhil-mittal-01ab94426?utm_source=share_via&utm_content=profile&utm_medium=member_android';
 const defaultInstagram = (import.meta.env.VITE_INSTAGRAM_URL as string | undefined) || 'https://www.instagram.com/swastikmixtures?igsi=NXB3emMyc2xiMzEw';
-const defaultYoutube = (import.meta.env.VITE_YOUTUBE_URL as string | undefined) || '#';
+const defaultYoutube = (import.meta.env.VITE_YOUTUBE_URL as string | undefined) || 'https://youtube.com/@swastikmixtures?si=4EmJHFhEllvBXcl2';
 
 export interface ContactState {
   phone: string;

@@ -22,7 +22,7 @@ export default defineConfig(({ mode }) => {
                 facebook: env.FACEBOOK_URL || env.VITE_FACEBOOK_URL || 'https://www.facebook.com/share/19W93nerbE/',
                 linkedin: env.LINKEDIN_URL || env.VITE_LINKEDIN_URL || 'https://www.linkedin.com/in/nikhil-mittal-01ab94426?utm_source=share_via&utm_content=profile&utm_medium=member_android',
                 instagram: env.INSTAGRAM_URL || env.VITE_INSTAGRAM_URL || 'https://www.instagram.com/swastikmixtures?igsi=NXB3emMyc2xiMzEw',
-                youtube: env.YOUTUBE_URL || env.VITE_YOUTUBE_URL || '#',
+                youtube: env.YOUTUBE_URL || env.VITE_YOUTUBE_URL || 'https://youtube.com/@swastikmixtures?si=4EmJHFhEllvBXcl2',
               })
             )
           })

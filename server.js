@@ -27,7 +27,7 @@ app.get('/api/contact-info', (_req, res) => {
     facebook: process.env.FACEBOOK_URL || process.env.VITE_FACEBOOK_URL || 'https://www.facebook.com/share/19W93nerbE/',
     linkedin: process.env.LINKEDIN_URL || process.env.VITE_LINKEDIN_URL || 'https://www.linkedin.com/in/nikhil-mittal-01ab94426?utm_source=share_via&utm_content=profile&utm_medium=member_android',
     instagram: process.env.INSTAGRAM_URL || process.env.VITE_INSTAGRAM_URL || 'https://www.instagram.com/swastikmixtures?igsi=NXB3emMyc2xiMzEw',
-    youtube: process.env.YOUTUBE_URL || process.env.VITE_YOUTUBE_URL || '#',
+    youtube: process.env.YOUTUBE_URL || process.env.VITE_YOUTUBE_URL || 'https://youtube.com/@swastikmixtures?si=4EmJHFhEllvBXcl2',
   });
 });
 
