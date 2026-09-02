@@ -8,7 +8,7 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
-  const { phoneDisplay, telUrl, mailtoUrl, email, facebook, instagram, linkedin, youtube } = useContactInfo();
+  const { phoneDisplay, telUrl, mailtoUrl, email, facebook, instagram, linkedin, youtube, twitter } = useContactInfo();
 
   const go = (path: string) => {
     onNavigate(path);
@@ -58,6 +58,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <SocialBtn label="Instagram" href={instagram}><SVGIcons.Instagram size={18} /></SocialBtn>
               <SocialBtn label="LinkedIn" href={linkedin}><SVGIcons.LinkedIn size={18} /></SocialBtn>
               <SocialBtn label="YouTube" href={youtube}><SVGIcons.YouTube size={18} /></SocialBtn>
+              <SocialBtn label="X (Twitter)" href={twitter}><SVGIcons.Twitter size={16} /></SocialBtn>
             </div>
           </div>
 

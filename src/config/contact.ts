@@ -12,6 +12,7 @@ const defaultFacebook = (import.meta.env.VITE_FACEBOOK_URL as string | undefined
 const defaultLinkedin = (import.meta.env.VITE_LINKEDIN_URL as string | undefined) || 'https://www.linkedin.com/in/nikhil-mittal-01ab94426?utm_source=share_via&utm_content=profile&utm_medium=member_android';
 const defaultInstagram = (import.meta.env.VITE_INSTAGRAM_URL as string | undefined) || 'https://www.instagram.com/swastikmixtures?igsi=NXB3emMyc2xiMzEw';
 const defaultYoutube = (import.meta.env.VITE_YOUTUBE_URL as string | undefined) || 'https://youtube.com/@swastikmixtures?si=4EmJHFhEllvBXcl2';
+const defaultTwitter = (import.meta.env.VITE_TWITTER_URL as string | undefined) || 'https://x.com/NikhilMittzc0s';
 
 export interface ContactState {
   phone: string;
@@ -20,6 +21,7 @@ export interface ContactState {
   linkedin: string;
   instagram: string;
   youtube: string;
+  twitter: string;
   isLoaded: boolean;
 }
 
@@ -30,6 +32,7 @@ let globalContactState: ContactState = {
   linkedin: defaultLinkedin,
   instagram: defaultInstagram,
   youtube: defaultYoutube,
+  twitter: defaultTwitter,
   isLoaded: false,
 };
 
@@ -55,6 +58,7 @@ export const fetchContactInfo = async (): Promise<ContactState> => {
             linkedin: data.linkedin || globalContactState.linkedin,
             instagram: data.instagram || globalContactState.instagram,
             youtube: data.youtube || globalContactState.youtube,
+            twitter: data.twitter || data.x || globalContactState.twitter,
             isLoaded: true,
           };
           listeners.forEach((listener) => listener());
@@ -118,6 +122,7 @@ export let FACEBOOK_URL: string = globalContactState.facebook;
 export let LINKEDIN_URL: string = globalContactState.linkedin;
 export let INSTAGRAM_URL: string = globalContactState.instagram;
 export let YOUTUBE_URL: string = globalContactState.youtube;
+export let TWITTER_URL: string = globalContactState.twitter;
 
 listeners.add(() => {
   CONTACT_NUMBER = globalContactState.phone;
@@ -127,6 +132,7 @@ listeners.add(() => {
   LINKEDIN_URL = globalContactState.linkedin;
   INSTAGRAM_URL = globalContactState.instagram;
   YOUTUBE_URL = globalContactState.youtube;
+  TWITTER_URL = globalContactState.twitter;
 });
 
 /**
@@ -156,6 +162,7 @@ export const useContactInfo = () => {
     linkedin: state.linkedin,
     instagram: state.instagram,
     youtube: state.youtube,
+    twitter: state.twitter,
     phoneDisplay: formatPhoneDisplay(state.phone),
     telUrl: getTelUrl(state.phone),
     mailtoUrl: (subject?: string, body?: string) => getMailtoUrl(subject, body, state.email),
