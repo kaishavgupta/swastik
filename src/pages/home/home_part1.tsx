@@ -12,7 +12,7 @@ const STATS = [
     sub: 'YEARS OF EXPERIENCE',
     big: true,
     svgIcon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#006FE6" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#306497" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
         <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
         <line x1="16" y1="2" x2="16" y2="6" />
         <line x1="8" y1="2" x2="8" y2="6" />
@@ -28,7 +28,7 @@ const STATS = [
     big: true,
     hasLabel: true,
     svgIcon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#006FE6" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#306497" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
         <line x1="4" y1="22" x2="4" y2="15" />
       </svg>
@@ -40,7 +40,7 @@ const STATS = [
     sub: 'UTTAR PRADESH, INDIA',
     blue: true,
     svgIcon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#006FE6" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#306497" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
         <circle cx="12" cy="10" r="3" />
       </svg>
@@ -52,7 +52,7 @@ const STATS = [
     sub: 'CONCRETE SOLUTIONS',
     blue: true,
     svgIcon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#006FE6" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#306497" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
         <rect x="1" y="3" width="15" height="13" />
         <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
         <circle cx="5.5" cy="18.5" r="2.5" />
@@ -67,7 +67,7 @@ const STATS = [
     blue: true,
     isQuality: true,
     svgIcon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#006FE6" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#306497" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
         <polyline points="9 12 11 14 15 10" />
       </svg>
@@ -126,6 +126,22 @@ export const HomePart1: React.FC<HomePart1Props> = ({ onNavigate }) => {
         {/* ── LEFT COLUMN: Typography & CTAs ── */}
         <div className="hero-left-col">
           <motion.div style={{ y: textY }} className="hero-text-content">
+            {/* Floating 18+ Years Badge on mobile/tablet */}
+            <div className="hero-truck-floating-badge" aria-label="18+ Years of Concreting Trust">
+              <div className="hero-truck-badge-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#306497" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              </div>
+              <span className="hero-truck-badge-number">18+</span>
+              <span className="hero-truck-badge-label">
+                YEARS OF<br />CONCRETING TRUST
+              </span>
+            </div>
+
             <span className="hero-label">READY MIX CONCRETE</span>
             <h1 className="hero-title">
               BUILDING<span className="br-desktop"><br /></span> STRENGTH.<span className="br-all"><br /></span> DELIVERING<span className="br-desktop"><br /></span> <span className="hero-title-accent">TRUST.</span>
@@ -162,9 +178,9 @@ export const HomePart1: React.FC<HomePart1Props> = ({ onNavigate }) => {
               >
                 <span className="btn-icon--left" aria-hidden="true">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-                    <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
-                    <line x1="12" y1="22.08" x2="12" y2="12" />
+                    <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                    <polyline points="2 17 12 22 22 17" />
+                    <polyline points="2 12 12 17 22 12" />
                   </svg>
                 </span>
                 <span>EXPLORE PRODUCTS</span>
@@ -191,29 +207,29 @@ export const HomePart1: React.FC<HomePart1Props> = ({ onNavigate }) => {
               alt="Swastik Mixtures Ready Mix Concrete Truck"
               className="hero-truck-visual"
             />
-            {/* Floating 18+ Years Badge over the truck on mobile/tablet */}
-            <div className="hero-truck-floating-badge" aria-label="18+ Years of Concreting Trust">
-              <div className="hero-truck-badge-icon" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#006FE6" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                  <circle cx="9" cy="7" r="4" />
-                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                </svg>
-              </div>
-              <span className="hero-truck-badge-number">18+</span>
-              <span className="hero-truck-badge-label">
-                YEARS OF<br />CONCRETING TRUST
-              </span>
-            </div>
           </motion.div>
           <div className="hero-visual-gradient" aria-hidden="true" />
         </div>
       </div>
 
-      {/* Decorative Wave for Desktop */}
+      {/* Decorative Wave for Desktop & Mobile */}
       <motion.div style={{ y: waveY }} className="hero-wave-container" aria-hidden="true">
-        <img src="/swastik-wave.svg" alt="" className="hero-wave-svg" />
+        <svg
+          viewBox="0 0 1440 160"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+          className="hero-wave-svg"
+        >
+          <path
+            d="M0,80 C240,20 480,140 720,80 C960,20 1200,130 1440,70 L1440,160 L0,160 Z"
+            fill="#172531"
+          />
+          <path
+            d="M0,100 C200,48 440,150 720,95 C960,48 1220,140 1440,88 L1440,160 L0,160 Z"
+            fill="#306497"
+            fillOpacity="0.75"
+          />
+        </svg>
       </motion.div>
 
       {/* ── OVERLAPPING WHITE INFORMATION CONTAINER ── */}
@@ -221,17 +237,6 @@ export const HomePart1: React.FC<HomePart1Props> = ({ onNavigate }) => {
         <motion.div style={{ y: statsY }} className="stats-card">
           <InformationCards />
         </motion.div>
-      </div>
-
-      {/* ── BLURRED CONSTRUCTION BACKGROUND BEHIND & BELOW STATS CONTAINER ── */}
-      <div className="hero-construction-wrap" aria-hidden="true">
-        <img
-          src="/swastik_construction_site.svg"
-          alt=""
-          className="mob-construction-img"
-        />
-        <div className="hero-construction-fade" />
-        <div className="hero-construction-bottom-wave" />
       </div>
     </section>
   );

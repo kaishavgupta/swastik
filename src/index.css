@@ -749,33 +749,63 @@ body {
 }
 
 /* Tablet layout (768px to 1199px) */
-/* Tablet layout (768px to 1199px) — Premium cohesive hero layout */
-@media (max-width: 1199px) and (min-width: 768px) {
+/* ══════════════════════════════════════════════════════════
+   HOME PAGE — PART 1 (HERO) RESPONSIVE REDESIGN
+   Exact Match to Target Reference Mockup:
+   - Official Brand Palette: #6796C6, #306497, #172531, #4B4C4E, #FCFCFD, #FFFFFF
+   - Full Mixer Truck Background with #172531 Dark Navy Overlay
+   - Upper-Right Floating 18+ Trust Badge
+   - Left Typography with #6796C6 Eyebrow & TRUST. accent
+   - Two Stacked Buttons: Solid #306497 & Translucent White Border
+   - 5-Item Trust Information Card: Single White Rounded Card with Thin Dividers
+   - 100% Width Layered Bottom Wave
+══════════════════════════════════════════════════════════ */
+
+/* Default hide for floating badge on desktop */
+.hero-truck-floating-badge {
+  display: none;
+}
+
+/* ══════════════════════════════════════════════════════════
+   1. TABLET / MEDIUM SCREENS (768px – 1199px)
+══════════════════════════════════════════════════════════ */
+@media (min-width: 768px) and (max-width: 1199px) {
+  :root { --navbar-h: 88px; }
+
   .hero-section {
     scroll-snap-align: start;
     position: relative !important;
     width: 100% !important;
+    max-width: 100% !important;
     min-height: 100svh !important;
     height: auto !important;
-    background: #071F42 !important;
-    overflow: hidden !important;
+    background: #172531 !important;
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
     box-sizing: border-box !important;
-    padding-top: var(--navbar-h) !important;
-    padding-bottom: 110px !important;
+    padding-top: calc(var(--navbar-h, 88px) + 16px) !important;
+    padding-bottom: 95px !important;
+    padding-inline: 24px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
     isolation: isolate !important;
   }
 
   .hero-flex-layout {
-    display: grid !important;
-    grid-template-columns: 55% 45% !important;
-    align-items: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
     width: 100% !important;
-    padding: 30px 40px 20px 40px !important;
+    max-width: 760px !important;
+    padding: 0 !important;
     box-sizing: border-box !important;
     position: relative !important;
     z-index: 5 !important;
   }
 
+  /* Full background image of transit mixer truck */
   .hero-right-col {
     position: absolute !important;
     top: 0 !important;
@@ -794,13 +824,19 @@ body {
     display: none !important;
   }
 
+  .hero-truck-wrap {
+    position: relative !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
   .hero-truck-visual {
     width: 100% !important;
     height: 100% !important;
     object-fit: cover !important;
-    object-position: center right !important;
-    opacity: 0.38 !important;
-    filter: brightness(0.9) contrast(1.1) !important;
+    object-position: center 30% !important;
+    opacity: 0.36 !important;
+    filter: brightness(0.9) contrast(1.15) !important;
   }
 
   .hero-visual-gradient {
@@ -811,10 +847,10 @@ body {
     right: 0 !important;
     bottom: 0 !important;
     background: linear-gradient(
-      90deg,
-      #071F42 0%,
-      rgba(7, 31, 66, 0.88) 50%,
-      rgba(7, 31, 66, 0.65) 100%
+      180deg,
+      rgba(23, 37, 49, 0.70) 0%,
+      rgba(23, 37, 49, 0.88) 55%,
+      #172531 100%
     ) !important;
     z-index: 2 !important;
     pointer-events: none !important;
@@ -825,167 +861,269 @@ body {
     z-index: 5 !important;
     width: 100% !important;
     padding: 0 !important;
+    margin: 0 !important;
     background: transparent !important;
   }
 
-  .hero-label {
-    font-size: 12px !important;
-    font-weight: 800 !important;
-    letter-spacing: 3px !important;
-    color: #006FE6 !important;
-    margin-bottom: 12px !important;
-  }
-
-  .hero-title {
-    font-size: clamp(34px, 4.5vw, 44px) !important;
-    font-weight: 900 !important;
-    line-height: 1.08 !important;
-    color: #FFFFFF !important;
-    margin-bottom: 16px !important;
-  }
-
-  .hero-title-accent {
-    color: #006FE6 !important;
-  }
-
-  .hero-paragraph {
-    font-size: 14.5px !important;
-    line-height: 1.6 !important;
-    color: rgba(255, 255, 255, 0.88) !important;
-    margin-bottom: 24px !important;
-    max-width: 480px !important;
-  }
-
-  .hero-buttons {
-    display: flex !important;
-    flex-direction: row !important;
-    gap: 14px !important;
+  .hero-text-content {
     width: 100% !important;
-    margin-bottom: 0 !important;
-    background: transparent !important;
-    padding: 0 !important;
+    position: relative !important;
+    box-sizing: border-box !important;
   }
 
-  .hero-section .btn-primary,
-  .hero-section .btn-secondary {
-    height: 48px !important;
-    border-radius: 10px !important;
-    font-size: 13px !important;
-    font-weight: 800 !important;
-    letter-spacing: 1px !important;
-    padding: 0 22px !important;
-  }
-
-  .hero-section .btn-primary {
-    background: #006FE6 !important;
-    color: #FFFFFF !important;
-    border: none !important;
-    box-shadow: 0 6px 20px rgba(0, 111, 230, 0.35) !important;
-  }
-
-  .hero-section .btn-secondary {
-    background: rgba(255, 255, 255, 0.12) !important;
-    color: #FFFFFF !important;
-    border: 1px solid rgba(255, 255, 255, 0.35) !important;
-  }
-
-  /* Floating 18+ Badge */
+  /* Upper-Right Floating 18+ Badge */
   .hero-truck-floating-badge {
     display: flex !important;
-    position: relative !important;
-    top: auto !important;
-    right: auto !important;
-    background: rgba(255, 255, 255, 0.95) !important;
-    backdrop-filter: blur(10px) !important;
-    -webkit-backdrop-filter: blur(10px) !important;
-    border-radius: 16px !important;
-    padding: 18px 24px !important;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
-    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+    position: absolute !important;
+    top: -4px !important;
+    right: 0 !important;
+    background: #FFFFFF !important;
+    border-radius: 12px !important;
+    padding: 8px 14px !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid rgba(255, 255, 255, 0.9) !important;
     z-index: 10 !important;
     align-items: center !important;
+    gap: 8px !important;
+  }
+
+  .hero-truck-badge-icon {
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 50% !important;
+    background: #EAF4FD !important;
+    display: flex !important;
+    align-items: center !important;
     justify-content: center !important;
-    flex-direction: column !important;
-    text-align: center !important;
-    width: max-content !important;
-    margin-left: auto !important;
   }
 
   .hero-truck-badge-number {
-    font-size: 30px !important;
+    font-family: 'Inter', Arial, sans-serif !important;
+    font-size: 20px !important;
     font-weight: 900 !important;
-    color: #071F42 !important;
+    color: #172531 !important;
     line-height: 1 !important;
   }
 
   .hero-truck-badge-label {
-    font-size: 9.5px !important;
+    font-family: 'Inter', Arial, sans-serif !important;
+    font-size: 8px !important;
     font-weight: 800 !important;
-    color: #006FE6 !important;
-    letter-spacing: 1.2px !important;
-    line-height: 1.3 !important;
-    margin-top: 4px !important;
+    letter-spacing: 0.8px !important;
+    text-transform: uppercase !important;
+    color: #306497 !important;
+    line-height: 1.2 !important;
   }
 
-  /* Floating 3-column information cards on tablet */
+  .hero-label {
+    font-family: 'Inter', Arial, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 800 !important;
+    letter-spacing: 2.5px !important;
+    text-transform: uppercase !important;
+    color: #6796C6 !important;
+    margin-bottom: 8px !important;
+    display: block !important;
+  }
+
+  .hero-title {
+    font-family: 'Inter', Arial, Helvetica, sans-serif !important;
+    font-weight: 900 !important;
+    font-size: clamp(30px, 4.8vw, 42px) !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.025em !important;
+    text-transform: uppercase !important;
+    color: #FFFFFF !important;
+    margin: 0 0 12px 0 !important;
+  }
+
+  .hero-title-accent {
+    color: #6796C6 !important;
+  }
+
+  .hero-paragraph {
+    font-family: 'Inter', Arial, sans-serif !important;
+    font-size: 14px !important;
+    line-height: 1.55 !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    margin: 0 0 18px 0 !important;
+    max-width: 620px !important;
+  }
+
+  .hero-buttons {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    width: 100% !important;
+    margin: 0 0 20px 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+  }
+
+  .hero-section .btn-primary {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+    height: 48px !important;
+    background: #306497 !important;
+    color: #FFFFFF !important;
+    font-family: 'Inter', Arial, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+    border-radius: 10px !important;
+    border: none !important;
+    box-shadow: 0 6px 20px rgba(48, 100, 151, 0.4) !important;
+    cursor: pointer !important;
+  }
+
+  .hero-section .btn-secondary {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+    height: 48px !important;
+    background: rgba(23, 37, 49, 0.45) !important;
+    color: #FFFFFF !important;
+    font-family: 'Inter', Arial, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+    border-radius: 10px !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.65) !important;
+    cursor: pointer !important;
+  }
+
+  .btn-icon--left {
+    display: inline-flex !important;
+    align-items: center !important;
+  }
+
+  .btn-icon--right-chevron {
+    display: inline-flex !important;
+    align-items: center !important;
+  }
+
+  .br-desktop { display: none !important; }
+  .br-all { display: inline !important; }
+  .hero-location-badge { display: none !important; }
+
+  /* 5-Item Trust Information Card */
   .hero-stats-wrapper {
     position: relative !important;
-    bottom: auto !important;
-    left: auto !important;
-    transform: none !important;
-    width: calc(100% - 80px) !important;
-    max-width: 1000px !important;
-    margin: 24px auto 0 auto !important;
-    z-index: 10 !important;
+    width: 100% !important;
+    max-width: 760px !important;
+    z-index: 6 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
   }
 
   .stats-card {
-    background: rgba(255, 255, 255, 0.95) !important;
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
-    border-radius: 16px !important;
-    border: 1px solid rgba(255, 255, 255, 0.8) !important;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
-    padding: 16px 20px !important;
+    background: #FFFFFF !important;
+    border-radius: 18px !important;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25) !important;
+    border: 1px solid rgba(255, 255, 255, 0.9) !important;
+    padding: 6px 16px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
 
   .hero-section .stats-grid {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 16px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
     width: 100% !important;
   }
 
   .hero-section .stats-item {
     display: flex !important;
     align-items: center !important;
-    gap: 12px !important;
-    padding: 8px 12px !important;
+    gap: 14px !important;
+    padding: 11px 4px !important;
+    border-bottom: 1px solid #F1F5F9 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
     background: transparent !important;
-    border: none !important;
+    border-radius: 0 !important;
     box-shadow: none !important;
   }
 
+  .hero-section .stats-item:last-child {
+    border-bottom: none !important;
+  }
+
   .hero-section .stats-icon-wrap {
-    width: 40px !important;
-    height: 40px !important;
+    width: 38px !important;
+    height: 38px !important;
     border-radius: 50% !important;
-    background: rgba(0, 111, 230, 0.1) !important;
+    background: #EAF4FD !important;
+    color: #306497 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+  }
+
+  .hero-section .stats-icon-wrap svg {
+    width: 20px !important;
+    height: 20px !important;
+    stroke: #306497 !important;
+  }
+
+  .hero-section .stats-text-wrap {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2px !important;
+    min-width: 0 !important;
+  }
+
+  .hero-section .stats-label {
+    font-family: 'Inter', Arial, sans-serif !important;
+    font-size: 8.5px !important;
+    font-weight: 800 !important;
+    letter-spacing: 1.2px !important;
+    text-transform: uppercase !important;
+    color: #64748B !important;
+    margin: 0 !important;
+    line-height: 1.2 !important;
   }
 
   .hero-section .stats-main {
-    font-size: 16px !important;
-    font-weight: 800 !important;
-    color: #071F42 !important;
+    font-family: 'Inter', Arial, sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 900 !important;
+    color: #172531 !important;
+    margin: 0 !important;
+    line-height: 1.1 !important;
+  }
+
+  .hero-section .stats-main.color-blue {
+    color: #306497 !important;
   }
 
   .hero-section .stats-sub {
-    font-size: 9.5px !important;
+    font-family: 'Inter', Arial, sans-serif !important;
+    font-size: 9px !important;
     font-weight: 700 !important;
+    letter-spacing: 0.6px !important;
     color: #64748B !important;
-    letter-spacing: 1px !important;
+    text-transform: uppercase !important;
+    margin: 0 !important;
+    line-height: 1.2 !important;
   }
 
+  .stats-quality-content {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2px !important;
+  }
+
+  /* Full-bleed wave at bottom */
   .hero-wave-container {
     display: block !important;
     position: absolute !important;
@@ -993,55 +1131,37 @@ body {
     left: 0 !important;
     right: 0 !important;
     width: 100% !important;
-    height: clamp(120px, 15vh, 160px) !important;
-    z-index: 9 !important;
+    height: 85px !important;
+    z-index: 8 !important;
     pointer-events: none !important;
   }
-}
 
-/* Smooth transitions */
-@media (min-width: 768px) {
-  html {
-    scroll-behavior: smooth;
+  .hero-wave-svg {
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+    object-fit: fill !important;
   }
-}
 
-/* Tablet navbar height (768px–1099px) */
-@media (min-width: 768px) and (max-width: 1099px) {
-  :root { --navbar-h: 130px; }
+  .hero-construction-wrap {
+    display: none !important;
+  }
 }
 
 /* ══════════════════════════════════════════════════════════
-   MOBILE ( ≤ 767px ) — DEDICATED VERTICAL MOBILE COMPOSITION
-   Exact UI Match: Navbar → Truck Image + Floating Badge → Dark Navy Text → Full-Width CTAs →
-   Floating White Overlapping Information Cards → Blurred Construction Scene Background
+   2. SMALL / MOBILE SCREENS ( ≤ 767px )
+   Exact match to Target Reference Mobile Mockup
 ══════════════════════════════════════════════════════════ */
-/* Default desktop hide for floating badge */
-.hero-truck-floating-badge {
-  display: none;
-}
-
 @media (max-width: 767px) {
   :root { --navbar-h: 80px; }
 
-  /* ── Show/hide helpers ── */
-  .desktop-only-block { display: none !important; }
-  .mobile-only-block  { display: block !important; }
-  .desktop-only       { display: none !important; }
-  .mobile-only        { display: block !important; }
-  div.mobile-only, button.mobile-only { display: flex !important; }
-
-  /* Disable parallax offset scroll animations on mobile screens */
+  /* Disable parallax offset on mobile */
   .hero-text-content,
   .hero-truck-visual,
   .hero-stats-wrapper {
     transform: none !important;
   }
 
-  /* ══════════════════════════════════════════════════════
-     HOME PART 1 MOBILE SECTION SHELL
-     Unified single-screen composition over background visual
-  ══════════════════════════════════════════════════════ */
   .hero-section {
     scroll-snap-align: start;
     display: flex !important;
@@ -1052,11 +1172,12 @@ body {
     min-height: 100svh !important;
     height: auto !important;
     overflow-x: hidden !important;
-    overflow-y: hidden !important;
+    overflow-y: visible !important;
     box-sizing: border-box !important;
-    background: #071F42 !important;
-    padding-top: var(--navbar-h) !important;
-    padding-bottom: 90px !important;
+    background: #172531 !important;
+    padding-top: calc(var(--navbar-h, 80px) + 12px) !important;
+    padding-bottom: 80px !important;
+    padding-inline: 16px !important;
     isolation: isolate !important;
   }
 
@@ -1067,12 +1188,12 @@ body {
     width: 100% !important;
     max-width: 100% !important;
     height: auto !important;
-    padding: 20px 20px 16px 20px !important;
+    padding: 0 !important;
     box-sizing: border-box !important;
     z-index: 5 !important;
   }
 
-  /* Background image container for truck visual on mobile */
+  /* Full-bleed transit mixer truck background */
   .hero-right-col {
     position: absolute !important;
     top: 0 !important;
@@ -1102,12 +1223,11 @@ body {
     width: 100% !important;
     height: 100% !important;
     object-fit: cover !important;
-    object-position: center 25% !important;
-    opacity: 0.35 !important;
-    filter: brightness(0.9) contrast(1.1) !important;
+    object-position: center 30% !important;
+    opacity: 0.38 !important;
+    filter: brightness(0.9) contrast(1.15) !important;
   }
 
-  /* Smooth dark navy gradient overlay */
   .hero-visual-gradient {
     display: block !important;
     position: absolute !important;
@@ -1117,15 +1237,14 @@ body {
     bottom: 0 !important;
     background: linear-gradient(
       180deg,
-      rgba(7, 31, 66, 0.70) 0%,
-      rgba(7, 31, 66, 0.92) 55%,
-      #071F42 100%
+      rgba(23, 37, 49, 0.72) 0%,
+      rgba(23, 37, 49, 0.88) 55%,
+      #172531 100%
     ) !important;
     pointer-events: none !important;
     z-index: 2 !important;
   }
 
-  /* Content area sitting over the gradient background */
   .hero-left-col {
     position: relative !important;
     z-index: 5 !important;
@@ -1140,59 +1259,21 @@ body {
   .hero-text-content {
     max-width: 100% !important;
     width: 100% !important;
+    position: relative !important;
     box-sizing: border-box !important;
   }
 
-  .hero-label {
-    font-family: 'Inter', Arial, sans-serif !important;
-    font-size: 11px !important;
-    font-weight: 800 !important;
-    letter-spacing: 2.5px !important;
-    text-transform: uppercase !important;
-    color: #006FE6 !important;
-    margin-bottom: 8px !important;
-    display: block !important;
-  }
-
-  .hero-title {
-    font-family: 'Inter', Arial, Helvetica, sans-serif !important;
-    font-weight: 900 !important;
-    font-size: clamp(26px, 6.8vw, 34px) !important;
-    line-height: 1.12 !important;
-    letter-spacing: -0.025em !important;
-    text-transform: uppercase !important;
-    color: #FFFFFF !important;
-    margin: 0 0 10px 0 !important;
-    padding: 0 !important;
-    user-select: none !important;
-  }
-
-  .hero-title-accent {
-    color: #006FE6 !important;
-  }
-
-  .hero-paragraph {
-    font-family: 'Inter', Arial, sans-serif !important;
-    font-size: 13px !important;
-    line-height: 1.55 !important;
-    color: rgba(255, 255, 255, 0.88) !important;
-    margin: 0 0 16px 0 !important;
-    max-width: 100% !important;
-  }
-
-  /* Floating 18+ Years Badge top-right */
+  /* Upper-Right Floating 18+ Badge */
   .hero-truck-floating-badge {
     display: flex !important;
     position: absolute !important;
-    top: -4px !important;
+    top: -2px !important;
     right: 0 !important;
-    background: rgba(255, 255, 255, 0.95) !important;
-    backdrop-filter: blur(10px) !important;
-    -webkit-backdrop-filter: blur(10px) !important;
-    border-radius: 14px !important;
-    padding: 8px 12px !important;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25) !important;
-    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+    background: #FFFFFF !important;
+    border-radius: 12px !important;
+    padding: 6px 12px !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid rgba(255, 255, 255, 0.9) !important;
     z-index: 10 !important;
     align-items: center !important;
     gap: 8px !important;
@@ -1202,7 +1283,7 @@ body {
     width: 26px !important;
     height: 26px !important;
     border-radius: 50% !important;
-    background: rgba(0, 111, 230, 0.1) !important;
+    background: #EAF4FD !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -1210,34 +1291,67 @@ body {
 
   .hero-truck-badge-number {
     font-family: 'Inter', Arial, sans-serif !important;
-    font-size: 20px !important;
+    font-size: 18px !important;
     font-weight: 900 !important;
-    color: #071F42 !important;
+    color: #172531 !important;
     line-height: 1 !important;
-    letter-spacing: -0.5px !important;
   }
 
   .hero-truck-badge-label {
     font-family: 'Inter', Arial, sans-serif !important;
-    font-size: 8px !important;
+    font-size: 7.5px !important;
     font-weight: 800 !important;
-    letter-spacing: 0.8px !important;
+    letter-spacing: 0.6px !important;
     text-transform: uppercase !important;
-    color: #006FE6 !important;
+    color: #306497 !important;
     line-height: 1.2 !important;
   }
 
-  /* ── Stacked CTA Buttons ── */
+  .hero-label {
+    font-family: 'Inter', Arial, sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    letter-spacing: 2.2px !important;
+    text-transform: uppercase !important;
+    color: #6796C6 !important;
+    margin-bottom: 6px !important;
+    display: block !important;
+  }
+
+  .hero-title {
+    font-family: 'Inter', Arial, Helvetica, sans-serif !important;
+    font-weight: 900 !important;
+    font-size: clamp(25px, 7vw, 32px) !important;
+    line-height: 1.12 !important;
+    letter-spacing: -0.025em !important;
+    text-transform: uppercase !important;
+    color: #FFFFFF !important;
+    margin: 0 0 8px 0 !important;
+    padding: 0 !important;
+  }
+
+  .hero-title-accent {
+    color: #6796C6 !important;
+  }
+
+  .hero-paragraph {
+    font-family: 'Inter', Arial, sans-serif !important;
+    font-size: 12.5px !important;
+    line-height: 1.5 !important;
+    color: rgba(255, 255, 255, 0.88) !important;
+    margin: 0 0 14px 0 !important;
+    max-width: 100% !important;
+  }
+
+  /* Full-Width Stacked CTA Buttons */
   .hero-buttons {
     display: flex !important;
     flex-direction: column !important;
-    gap: 10px !important;
+    gap: 8px !important;
     width: 100% !important;
-    margin: 0 0 18px 0 !important;
+    margin: 0 0 16px 0 !important;
     background: transparent !important;
     padding: 0 !important;
-    position: relative !important;
-    z-index: 5 !important;
   }
 
   .hero-section .btn-primary {
@@ -1249,7 +1363,7 @@ body {
     min-height: 46px !important;
     height: 46px !important;
     padding: 0 16px !important;
-    background: #006FE6 !important;
+    background: #306497 !important;
     color: #FFFFFF !important;
     font-family: 'Inter', Arial, sans-serif !important;
     font-size: 12px !important;
@@ -1261,7 +1375,7 @@ body {
     cursor: pointer !important;
     white-space: nowrap !important;
     box-sizing: border-box !important;
-    box-shadow: 0 6px 20px rgba(0, 111, 230, 0.35) !important;
+    box-shadow: 0 6px 18px rgba(48, 100, 151, 0.4) !important;
   }
 
   .hero-section .btn-secondary {
@@ -1273,14 +1387,14 @@ body {
     min-height: 46px !important;
     height: 46px !important;
     padding: 0 16px !important;
-    background: rgba(255, 255, 255, 0.12) !important;
+    background: rgba(23, 37, 49, 0.45) !important;
     color: #FFFFFF !important;
     font-family: 'Inter', Arial, sans-serif !important;
     font-size: 12px !important;
     font-weight: 800 !important;
     letter-spacing: 0.06em !important;
     text-transform: uppercase !important;
-    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.65) !important;
     border-radius: 10px !important;
     cursor: pointer !important;
     white-space: nowrap !important;
@@ -1299,46 +1413,22 @@ body {
 
   .br-desktop { display: none !important; }
   .br-all { display: inline !important; }
-  .heading-dot { display: none !important; }
   .hero-location-badge { display: none !important; }
 
-  /* Full-bleed wave at bottom */
-  .hero-wave-container {
-    display: block !important;
-    position: absolute !important;
-    bottom: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    width: 100% !important;
-    height: clamp(80px, 12vh, 120px) !important;
-    z-index: 9 !important;
-    pointer-events: none !important;
-  }
-
-  /* ══════════════════════════════════════════════════════
-     FLOATING WHITE UNIFIED INFORMATION CONTAINER
-     3 stacked rows floating over lower background image
-  ══════════════════════════════════════════════════════ */
+  /* 5-Item Trust Information Card */
   .hero-stats-wrapper {
     position: relative !important;
-    top: auto !important;
-    bottom: auto !important;
-    left: auto !important;
-    right: auto !important;
-    transform: none !important;
     width: 100% !important;
-    margin: 0 0 16px 0 !important;
-    z-index: 10 !important;
+    z-index: 6 !important;
+    margin: 0 !important;
     box-sizing: border-box !important;
   }
 
   .stats-card {
-    background: rgba(255, 255, 255, 0.95) !important;
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
+    background: #FFFFFF !important;
     border-radius: 16px !important;
-    border: 1px solid rgba(255, 255, 255, 0.85) !important;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+    border: 1px solid rgba(255, 255, 255, 0.9) !important;
     padding: 4px 12px !important;
     box-sizing: border-box !important;
     width: 100% !important;
@@ -1358,12 +1448,11 @@ body {
     display: flex !important;
     align-items: center !important;
     gap: 12px !important;
-    padding: 10px 4px !important;
+    padding: 9px 4px !important;
     background: transparent !important;
-    backdrop-filter: none !important;
     border: none !important;
     box-shadow: none !important;
-    border-bottom: 1px solid rgba(7, 31, 66, 0.08) !important;
+    border-bottom: 1px solid #F1F5F9 !important;
     border-radius: 0 !important;
     width: 100% !important;
     box-sizing: border-box !important;
@@ -1380,14 +1469,21 @@ body {
   }
 
   .hero-section .stats-icon-wrap {
-    width: 36px !important;
-    height: 36px !important;
+    width: 34px !important;
+    height: 34px !important;
     border-radius: 50% !important;
-    background: rgba(0, 111, 230, 0.10) !important;
+    background: #EAF4FD !important;
+    color: #306497 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     flex-shrink: 0 !important;
+  }
+
+  .hero-section .stats-icon-wrap svg {
+    width: 18px !important;
+    height: 18px !important;
+    stroke: #306497 !important;
   }
 
   .hero-section .stats-text-wrap {
@@ -1399,45 +1495,66 @@ body {
 
   .hero-section .stats-label {
     font-family: 'Inter', Arial, sans-serif !important;
-    font-size: 8.5px !important;
+    font-size: 8px !important;
     font-weight: 800 !important;
-    letter-spacing: 1.5px !important;
+    letter-spacing: 1px !important;
     text-transform: uppercase !important;
     color: #64748B !important;
     line-height: 1.2 !important;
-    margin: 0 0 2px 0 !important;
+    margin: 0 !important;
   }
 
   .hero-section .stats-main {
     font-family: 'Inter', Arial, sans-serif !important;
-    font-size: 15px !important;
+    font-size: 14px !important;
     font-weight: 900 !important;
-    line-height: 1.05 !important;
-    color: #071F42 !important;
-    margin: 0 0 2px 0 !important;
+    line-height: 1.1 !important;
+    color: #172531 !important;
+    margin: 0 !important;
   }
 
-  .hero-section .stats-main.color-blue { color: #006FE6 !important; }
-  .hero-section .stats-main.color-navy { color: #071F42 !important; }
+  .hero-section .stats-main.color-blue { color: #306497 !important; }
+  .hero-section .stats-main.color-navy { color: #172531 !important; }
 
   .hero-section .stats-main.size-normal {
-    font-size: 13.5px !important;
+    font-size: 13px !important;
   }
 
   .hero-section .stats-sub {
     font-family: 'Inter', Arial, sans-serif !important;
-    font-size: 8.5px !important;
+    font-size: 8px !important;
     font-weight: 700 !important;
-    letter-spacing: 0.6px !important;
+    letter-spacing: 0.5px !important;
     text-transform: uppercase !important;
     color: #64748B !important;
-    line-height: 1.35 !important;
+    line-height: 1.2 !important;
     margin: 0 !important;
   }
 
   .stats-quality-content {
     display: flex !important;
     flex-direction: column !important;
+    gap: 1px !important;
+  }
+
+  /* Full-bleed wave at bottom */
+  .hero-wave-container {
+    display: block !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: 75px !important;
+    z-index: 8 !important;
+    pointer-events: none !important;
+  }
+
+  .hero-wave-svg {
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+    object-fit: fill !important;
   }
 
   .hero-construction-wrap {
@@ -1446,83 +1563,44 @@ body {
 }
 
 /* ══════════════════════════════════════════════════════════
-   MICRO PHONES ≤ 360px (320px, 360px)
+   3. MICRO PHONES ≤ 360px (320px, 360px)
 ══════════════════════════════════════════════════════════ */
 @media (max-width: 360px) {
   :root { --navbar-h: 72px; }
 
-  .hero-right-col {
-    height: 220px;
-  }
-
   .hero-truck-floating-badge {
-    top: 14px;
-    right: 12px;
-    padding: 8px 12px;
+    padding: 5px 8px !important;
   }
 
   .hero-truck-badge-number {
-    font-size: 20px;
-  }
-
-  .hero-left-col {
-    padding: 14px 14px 8px;
+    font-size: 16px !important;
   }
 
   .hero-title {
-    font-size: 24px;
+    font-size: 22px !important;
   }
 
   .hero-paragraph {
-    font-size: 12px;
-  }
-
-  .hero-buttons {
-    padding: 8px 14px 18px;
-    gap: 8px;
+    font-size: 11.5px !important;
   }
 
   .hero-section .btn-primary,
   .hero-section .btn-secondary {
-    height: 44px;
-    font-size: 12px !important;
-  }
-
-  .hero-stats-wrapper {
-    width: calc(100% - 24px) !important;
-    left: auto !important;
-    right: auto !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    margin-top: -24px !important;
-    margin-bottom: -30px !important;
+    height: 42px !important;
+    font-size: 11px !important;
   }
 
   .stats-card {
-    padding: 10px !important;
-    border-radius: 16px !important;
-  }
-
-  .hero-section .stats-grid {
-    gap: 8px !important;
-  }
-
-  .hero-section .stats-item {
-    padding: 8px 8px !important;
-    gap: 6px !important;
+    padding: 4px 8px !important;
   }
 
   .hero-section .stats-icon-wrap {
-    width: 34px !important;
-    height: 34px !important;
+    width: 30px !important;
+    height: 30px !important;
   }
 
   .hero-section .stats-main {
-    font-size: 15px !important;
-  }
-
-  .hero-section .stats-main.size-normal {
-    font-size: 12px !important;
+    font-size: 13px !important;
   }
 }
 
