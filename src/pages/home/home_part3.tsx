@@ -180,6 +180,28 @@ export const HomePart3: React.FC = () => {
                   <div className="legacy-feature-icon">{card.icon}</div>
                   <h4 className="legacy-feature-title">{card.title}</h4>
                   <span className="legacy-feature-accent" />
+
+                  {/* SVG PERIMETER BORDER OVERLAY */}
+                  <svg className="legacy-card-border-svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                    <rect
+                      className="legacy-card-border-base"
+                      x="1" y="1" width="98" height="98" rx="12" ry="12"
+                      pathLength="1000"
+                      vectorEffect="non-scaling-stroke"
+                    />
+                    <rect
+                      className="legacy-card-border-glow"
+                      x="1" y="1" width="98" height="98" rx="12" ry="12"
+                      pathLength="1000"
+                      vectorEffect="non-scaling-stroke"
+                    />
+                    <rect
+                      className="legacy-card-border-stroke"
+                      x="1" y="1" width="98" height="98" rx="12" ry="12"
+                      pathLength="1000"
+                      vectorEffect="non-scaling-stroke"
+                    />
+                  </svg>
                 </motion.div>
               ))}
             </div>

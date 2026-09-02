@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 const PROCESS_STEPS_DATA = [
   {
@@ -52,10 +52,10 @@ const PROCESS_STEPS_DATA = [
 ];
 
 const BOTTOM_STATS_DATA = [
-  { iconKey: 'Verify', value: '100%', label: 'QUALITY ASSURED' },
-  { iconKey: 'Award', value: '18+', label: 'YEARS OF EXPERIENCE' },
-  { iconKey: 'Building', value: '1000+', label: 'PROJECTS DELIVERED' },
-  { iconKey: 'Users', value: '500+', label: 'SATISFIED CLIENTS' }
+  { iconKey: 'Verify', target: 100, suffix: '%', label: 'QUALITY ASSURED' },
+  { iconKey: 'Award', target: 18, suffix: '+', label: 'YEARS OF EXPERIENCE' },
+  { iconKey: 'Building', target: 1000, suffix: '+', label: 'PROJECTS DELIVERED' },
+  { iconKey: 'Users', target: 500, suffix: '+', label: 'SATISFIED CLIENTS' }
 ];
 
 const ProcessStepIcon = ({ iconKey }: { iconKey: string }) => {
@@ -172,8 +172,57 @@ const StatsBarIcon = ({ iconKey }: { iconKey: string }) => {
 };
 
 export const HomePart5: React.FC = () => {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [statsStarted, setStatsStarted] = useState(false);
+  const [statValues, setStatValues] = useState<number[]>(() =>
+    BOTTOM_STATS_DATA.map(() => 0)
+  );
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setStatsStarted(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!statsStarted) return;
+
+    let frame = 0;
+    const duration = 1800;
+    const startTime = performance.now();
+
+    const animate = (now: number) => {
+      const progress = Math.min((now - startTime) / duration, 1);
+      // Smooth ease-out: fast start, gentle finish.
+      const eased = 1 - Math.pow(1 - progress, 3);
+
+      setStatValues(BOTTOM_STATS_DATA.map((stat) =>
+        Math.round(stat.target * eased)
+      ));
+
+      if (progress < 1) {
+        frame = requestAnimationFrame(animate);
+      }
+    };
+
+    frame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(frame);
+  }, [statsStarted]);
+
   return (
-    <section id="home-part-5" className="quality-section home-snap-part">
+    <section ref={sectionRef} id="home-part-5" className="quality-section home-snap-part">
       <div className="quality-bg-pattern-left" aria-hidden="true">
         <svg width="300" height="300" viewBox="0 0 300 300" fill="none">
           <circle cx="50" cy="50" r="100" stroke="#0875D1" strokeOpacity="0.08" strokeWidth="1.5" />
@@ -214,15 +263,20 @@ export const HomePart5: React.FC = () => {
           ))}
         </div>
 
-        <div className="quality-stats-bar">
+        <div className="quality-stats-bar" aria-label="Company statistics">
           {BOTTOM_STATS_DATA.map((stat, i) => (
             <React.Fragment key={i}>
               <div className="quality-stat-block">
-                <div className="quality-stat-icon">
+                <div className="quality-stat-icon" aria-hidden="true">
                   <StatsBarIcon iconKey={stat.iconKey} />
                 </div>
                 <div className="quality-stat-text">
-                  <span className="quality-stat-value">{stat.value}</span>
+                  <span
+                    className={`quality-stat-value${statsStarted ? ' is-counting' : ''}`}
+                    aria-label={`${stat.target}${stat.suffix} ${stat.label}`}
+                  >
+                    {statValues[i]}{stat.suffix}
+                  </span>
                   <span className="quality-stat-label">{stat.label}</span>
                 </div>
               </div>
