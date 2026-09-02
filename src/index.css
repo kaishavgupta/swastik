@@ -749,7 +749,243 @@ body {
 }
 
 /* Tablet layout (768px to 1199px) */
+/* Tablet layout (768px to 1199px) — Premium cohesive hero layout */
 @media (max-width: 1199px) and (min-width: 768px) {
+  .hero-section {
+    scroll-snap-align: start;
+    position: relative !important;
+    width: 100% !important;
+    min-height: 100svh !important;
+    height: auto !important;
+    background: #071F42 !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    padding-top: var(--navbar-h) !important;
+    padding-bottom: 110px !important;
+    isolation: isolate !important;
+  }
+
+  .hero-flex-layout {
+    display: grid !important;
+    grid-template-columns: 55% 45% !important;
+    align-items: center !important;
+    width: 100% !important;
+    padding: 30px 40px 20px 40px !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+    z-index: 5 !important;
+  }
+
+  .hero-right-col {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 1 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+    background: transparent !important;
+  }
+
+  .hero-right-col::before {
+    display: none !important;
+  }
+
+  .hero-truck-visual {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center right !important;
+    opacity: 0.38 !important;
+    filter: brightness(0.9) contrast(1.1) !important;
+  }
+
+  .hero-visual-gradient {
+    display: block !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: linear-gradient(
+      90deg,
+      #071F42 0%,
+      rgba(7, 31, 66, 0.88) 50%,
+      rgba(7, 31, 66, 0.65) 100%
+    ) !important;
+    z-index: 2 !important;
+    pointer-events: none !important;
+  }
+
+  .hero-left-col {
+    position: relative !important;
+    z-index: 5 !important;
+    width: 100% !important;
+    padding: 0 !important;
+    background: transparent !important;
+  }
+
+  .hero-label {
+    font-size: 12px !important;
+    font-weight: 800 !important;
+    letter-spacing: 3px !important;
+    color: #006FE6 !important;
+    margin-bottom: 12px !important;
+  }
+
+  .hero-title {
+    font-size: clamp(34px, 4.5vw, 44px) !important;
+    font-weight: 900 !important;
+    line-height: 1.08 !important;
+    color: #FFFFFF !important;
+    margin-bottom: 16px !important;
+  }
+
+  .hero-title-accent {
+    color: #006FE6 !important;
+  }
+
+  .hero-paragraph {
+    font-size: 14.5px !important;
+    line-height: 1.6 !important;
+    color: rgba(255, 255, 255, 0.88) !important;
+    margin-bottom: 24px !important;
+    max-width: 480px !important;
+  }
+
+  .hero-buttons {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 14px !important;
+    width: 100% !important;
+    margin-bottom: 0 !important;
+    background: transparent !important;
+    padding: 0 !important;
+  }
+
+  .hero-section .btn-primary,
+  .hero-section .btn-secondary {
+    height: 48px !important;
+    border-radius: 10px !important;
+    font-size: 13px !important;
+    font-weight: 800 !important;
+    letter-spacing: 1px !important;
+    padding: 0 22px !important;
+  }
+
+  .hero-section .btn-primary {
+    background: #006FE6 !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    box-shadow: 0 6px 20px rgba(0, 111, 230, 0.35) !important;
+  }
+
+  .hero-section .btn-secondary {
+    background: rgba(255, 255, 255, 0.12) !important;
+    color: #FFFFFF !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  }
+
+  /* Floating 18+ Badge */
+  .hero-truck-floating-badge {
+    display: flex !important;
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border-radius: 16px !important;
+    padding: 18px 24px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+    z-index: 10 !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-direction: column !important;
+    text-align: center !important;
+    width: max-content !important;
+    margin-left: auto !important;
+  }
+
+  .hero-truck-badge-number {
+    font-size: 30px !important;
+    font-weight: 900 !important;
+    color: #071F42 !important;
+    line-height: 1 !important;
+  }
+
+  .hero-truck-badge-label {
+    font-size: 9.5px !important;
+    font-weight: 800 !important;
+    color: #006FE6 !important;
+    letter-spacing: 1.2px !important;
+    line-height: 1.3 !important;
+    margin-top: 4px !important;
+  }
+
+  /* Floating 3-column information cards on tablet */
+  .hero-stats-wrapper {
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    transform: none !important;
+    width: calc(100% - 80px) !important;
+    max-width: 1000px !important;
+    margin: 24px auto 0 auto !important;
+    z-index: 10 !important;
+  }
+
+  .stats-card {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border-radius: 16px !important;
+    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+    padding: 16px 20px !important;
+  }
+
+  .hero-section .stats-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 16px !important;
+    width: 100% !important;
+  }
+
+  .hero-section .stats-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    padding: 8px 12px !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .hero-section .stats-icon-wrap {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    background: rgba(0, 111, 230, 0.1) !important;
+  }
+
+  .hero-section .stats-main {
+    font-size: 16px !important;
+    font-weight: 800 !important;
+    color: #071F42 !important;
+  }
+
+  .hero-section .stats-sub {
+    font-size: 9.5px !important;
+    font-weight: 700 !important;
+    color: #64748B !important;
+    letter-spacing: 1px !important;
+  }
+
   .hero-wave-container {
     display: block !important;
     position: absolute !important;
@@ -757,111 +993,9 @@ body {
     left: 0 !important;
     right: 0 !important;
     width: 100% !important;
-    max-width: none !important;
     height: clamp(120px, 15vh, 160px) !important;
     z-index: 9 !important;
-    line-height: 0 !important;
     pointer-events: none !important;
-  }
-
-  .hero-left-col {
-    width: 45% !important;
-    padding-left: clamp(24px, 4vw, 40px) !important;
-    padding-right: 20px !important;
-    padding-top: clamp(30px, 4vh, 60px) !important;
-    padding-bottom: clamp(145px, 14vh, 170px) !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    background-color: transparent !important;
-    position: relative !important;
-    z-index: 8 !important;
-  }
-
-  .hero-title {
-    font-size: clamp(32px, 3.5vw, 48px) !important;
-  }
-
-  .hero-right-col {
-    width: 55% !important;
-    position: relative !important;
-    z-index: 7 !important;
-    overflow: hidden !important;
-    background-color: transparent !important;
-  }
-
-  .hero-right-col::before {
-    display: block !important;
-    width: 40% !important;
-  }
-
-  .hero-truck-visual {
-    object-fit: contain !important;
-    object-position: bottom right !important;
-    width: 100% !important;
-    height: 100% !important;
-  }
-}
-
-/* Compact layout for tablet landscape / mid-desktop (992px to 1199px) where stats stay in 1 row */
-@media (max-width: 1199px) and (min-width: 992px) {
-  .stats-item {
-    padding: 14px 10px !important;
-    gap: 8px !important;
-  }
-  .stats-icon-wrap {
-    width: 36px !important;
-    height: 36px !important;
-  }
-  .stats-icon-img {
-    width: 18px !important;
-    height: 18px !important;
-  }
-  .stats-main.size-big {
-    font-size: 20px !important;
-  }
-  .stats-main.size-normal {
-    font-size: 14px !important;
-  }
-  .stats-label,
-  .stats-sub {
-    font-size: 8px !important;
-    letter-spacing: 1px !important;
-  }
-  .hero-title {
-    font-size: clamp(30px, 3vw, 40px) !important;
-  }
-}
-
-/* Tablet portrait layout (768px to 991px) where stats wrap to 3 columns */
-@media (max-width: 991px) and (min-width: 768px) {
-  .hero-stats-wrapper {
-    position: relative !important;
-    left: auto !important;
-    right: auto !important;
-    transform: none !important;
-    width: calc(100% - 48px) !important;
-    max-width: 900px !important;
-    margin: -40px auto 0 auto !important;
-    z-index: 10 !important;
-  }
-
-  .hero-section .stats-grid {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 12px !important;
-  }
-
-  .hero-section .stats-item {
-    border-right: none !important;
-    border-bottom: none !important;
-    border: 1px solid #E2E8F0 !important;
-    border-radius: 12px !important;
-    padding: 14px 12px !important;
-  }
-
-  .hero-section .stats-item--quality {
-    grid-column: span 2 !important;
   }
 }
 
@@ -905,47 +1039,52 @@ body {
   }
 
   /* ══════════════════════════════════════════════════════
-     SECTION SHELL
+     HOME PART 1 MOBILE SECTION SHELL
+     Unified single-screen composition over background visual
   ══════════════════════════════════════════════════════ */
   .hero-section {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    width: 100%;
-    max-width: 100%;
-    min-height: auto;
-    height: auto;
-    overflow-x: hidden;
-    box-sizing: border-box;
-    background: #071F42;
-    padding-top: var(--navbar-h);
+    scroll-snap-align: start;
+    display: flex !important;
+    flex-direction: column !important;
+    position: relative !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 100svh !important;
+    height: auto !important;
+    overflow-x: hidden !important;
+    overflow-y: hidden !important;
+    box-sizing: border-box !important;
+    background: #071F42 !important;
+    padding-top: var(--navbar-h) !important;
+    padding-bottom: 90px !important;
+    isolation: isolate !important;
   }
 
   .hero-flex-layout {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    overflow: hidden;
-    padding-top: 0;
-    box-sizing: border-box;
+    display: flex !important;
+    flex-direction: column !important;
+    position: relative !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    padding: 20px 20px 16px 20px !important;
+    box-sizing: border-box !important;
+    z-index: 5 !important;
   }
 
-  /* ══════════════════════════════════════════════════════
-     1. HERO IMAGE (Truck visual directly under mobile navbar)
-  ══════════════════════════════════════════════════════ */
+  /* Background image container for truck visual on mobile */
   .hero-right-col {
-    order: 1;
-    position: relative;
-    width: 100%;
-    max-width: 100%;
-    height: clamp(240px, 58vw, 330px);
-    flex-shrink: 0;
-    line-height: 0;
-    overflow: hidden;
-    box-sizing: border-box;
-    background: #071F42;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 1 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+    background: transparent !important;
   }
 
   .hero-right-col::before {
@@ -953,243 +1092,217 @@ body {
   }
 
   .hero-truck-wrap {
-    position: relative;
-    width: 100%;
-    height: 100%;
+    position: relative !important;
+    width: 100% !important;
+    height: 100% !important;
   }
 
   .hero-truck-visual {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 25%;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center 25% !important;
+    opacity: 0.35 !important;
+    filter: brightness(0.9) contrast(1.1) !important;
   }
 
-  /* Floating 18+ Years Badge Over the Truck */
-  .hero-truck-floating-badge {
-    display: flex !important;
-    position: absolute;
-    top: 24px;
-    right: 18px;
-    background: #FFFFFF;
-    border-radius: 16px;
-    padding: 12px 16px;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    box-shadow: 0 10px 26px rgba(7, 26, 54, 0.18);
-    border: 1px solid rgba(0, 111, 230, 0.15);
-    z-index: 10;
-  }
-
-  .hero-truck-badge-icon {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: rgba(0, 111, 230, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 4px;
-  }
-
-  .hero-truck-badge-number {
-    font-family: 'Inter', Arial, sans-serif;
-    font-size: 24px;
-    font-weight: 900;
-    color: #071A36;
-    line-height: 1.05;
-    letter-spacing: -0.5px;
-    margin-bottom: 4px;
-  }
-
-  .hero-truck-badge-label {
-    font-family: 'Inter', Arial, sans-serif;
-    font-size: 9px;
-    font-weight: 800;
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-    color: #526887;
-    line-height: 1.25;
-  }
-
+  /* Smooth dark navy gradient overlay */
   .hero-visual-gradient {
-    display: block;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 65%;
+    display: block !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
     background: linear-gradient(
       180deg,
-      rgba(7, 31, 66, 0.00) 0%,
-      rgba(7, 31, 66, 0.45) 40%,
-      rgba(7, 31, 66, 0.88) 75%,
-      rgba(7, 31, 66, 1.00) 100%
-    );
-    pointer-events: none;
-    z-index: 2;
+      rgba(7, 31, 66, 0.70) 0%,
+      rgba(7, 31, 66, 0.92) 55%,
+      #071F42 100%
+    ) !important;
+    pointer-events: none !important;
+    z-index: 2 !important;
   }
 
-  /* ══════════════════════════════════════════════════════
-     2. HERO TEXT CONTENT (Dark navy, clean typography)
-  ══════════════════════════════════════════════════════ */
+  /* Content area sitting over the gradient background */
   .hero-left-col {
-    order: 2;
-    width: 100%;
-    max-width: 100%;
-    display: block;
-    flex-shrink: 0;
-    background: #071F42;
-    padding: clamp(16px, 4vw, 24px) clamp(18px, 5vw, 26px) 12px;
-    margin-top: -1px;
-    box-sizing: border-box;
-    z-index: 5;
+    position: relative !important;
+    z-index: 5 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    display: block !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
   }
 
   .hero-text-content {
-    max-width: 100%;
-    width: 100%;
-    box-sizing: border-box;
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
 
   .hero-label {
-    font-family: 'Inter', Arial, sans-serif;
-    font-size: 11.5px;
-    font-weight: 800;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #006FE6;
-    margin-bottom: 10px;
-    display: block;
+    font-family: 'Inter', Arial, sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    letter-spacing: 2.5px !important;
+    text-transform: uppercase !important;
+    color: #006FE6 !important;
+    margin-bottom: 8px !important;
+    display: block !important;
   }
 
   .hero-title {
-    font-family: 'Inter', Arial, Helvetica, sans-serif;
-    font-weight: 900;
-    font-size: clamp(28px, 7.5vw, 40px);
-    line-height: 1.06;
-    letter-spacing: -0.025em;
-    text-transform: uppercase;
-    color: #FFFFFF;
-    margin: 0 0 12px 0;
-    padding: 0;
-    user-select: none;
+    font-family: 'Inter', Arial, Helvetica, sans-serif !important;
+    font-weight: 900 !important;
+    font-size: clamp(26px, 6.8vw, 34px) !important;
+    line-height: 1.12 !important;
+    letter-spacing: -0.025em !important;
+    text-transform: uppercase !important;
+    color: #FFFFFF !important;
+    margin: 0 0 10px 0 !important;
+    padding: 0 !important;
+    user-select: none !important;
   }
 
   .hero-title-accent {
-    color: #006FE6;
+    color: #006FE6 !important;
   }
 
   .hero-paragraph {
-    font-family: 'Inter', Arial, sans-serif;
-    font-size: clamp(13px, 3.4vw, 15px);
-    line-height: 1.55;
-    color: rgba(255, 255, 255, 0.85);
-    margin: 0;
-    max-width: 100%;
+    font-family: 'Inter', Arial, sans-serif !important;
+    font-size: 13px !important;
+    line-height: 1.55 !important;
+    color: rgba(255, 255, 255, 0.88) !important;
+    margin: 0 0 16px 0 !important;
+    max-width: 100% !important;
   }
 
-  /* ══════════════════════════════════════════════════════
-     3. CTA BUTTONS (Stacked full width with icons)
-  ══════════════════════════════════════════════════════ */
+  /* Floating 18+ Years Badge top-right */
+  .hero-truck-floating-badge {
+    display: flex !important;
+    position: absolute !important;
+    top: -4px !important;
+    right: 0 !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border-radius: 14px !important;
+    padding: 8px 12px !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25) !important;
+    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+    z-index: 10 !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+
+  .hero-truck-badge-icon {
+    width: 26px !important;
+    height: 26px !important;
+    border-radius: 50% !important;
+    background: rgba(0, 111, 230, 0.1) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .hero-truck-badge-number {
+    font-family: 'Inter', Arial, sans-serif !important;
+    font-size: 20px !important;
+    font-weight: 900 !important;
+    color: #071F42 !important;
+    line-height: 1 !important;
+    letter-spacing: -0.5px !important;
+  }
+
+  .hero-truck-badge-label {
+    font-family: 'Inter', Arial, sans-serif !important;
+    font-size: 8px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.8px !important;
+    text-transform: uppercase !important;
+    color: #006FE6 !important;
+    line-height: 1.2 !important;
+  }
+
+  /* ── Stacked CTA Buttons ── */
   .hero-buttons {
-    order: 3;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding: 12px clamp(18px, 5vw, 26px) 24px;
-    margin: 0;
-    background: #071F42;
-    box-sizing: border-box;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    width: 100% !important;
+    margin: 0 0 18px 0 !important;
+    background: transparent !important;
+    padding: 0 !important;
+    position: relative !important;
+    z-index: 5 !important;
   }
 
   .hero-section .btn-primary {
     display: flex !important;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-    min-height: 48px;
-    height: 48px;
-    padding: 0 20px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+    min-height: 46px !important;
+    height: 46px !important;
+    padding: 0 16px !important;
     background: #006FE6 !important;
     color: #FFFFFF !important;
-    font-family: 'Inter', Arial, sans-serif;
-    font-size: 13px !important;
-    font-weight: 800;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
+    font-family: 'Inter', Arial, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
     border: none !important;
-    border-radius: 9px !important;
-    cursor: pointer;
-    white-space: nowrap;
-    box-sizing: border-box;
-    box-shadow: 0 6px 20px rgba(0, 111, 230, 0.4);
-    transition: background var(--transition), transform var(--transition);
+    border-radius: 10px !important;
+    cursor: pointer !important;
+    white-space: nowrap !important;
+    box-sizing: border-box !important;
+    box-shadow: 0 6px 20px rgba(0, 111, 230, 0.35) !important;
   }
-  .hero-section .btn-primary:hover { background: #005ec4 !important; transform: translateY(-1px); }
-  .hero-section .btn-primary:active { transform: scale(0.98); }
 
   .hero-section .btn-secondary {
     display: flex !important;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-    min-height: 48px;
-    height: 48px;
-    padding: 0 20px !important;
-    background: transparent !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+    min-height: 46px !important;
+    height: 46px !important;
+    padding: 0 16px !important;
+    background: rgba(255, 255, 255, 0.12) !important;
     color: #FFFFFF !important;
-    font-family: 'Inter', Arial, sans-serif;
-    font-size: 13px !important;
-    font-weight: 800;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    border: 1.5px solid rgba(255, 255, 255, 0.4) !important;
-    border-radius: 9px !important;
-    cursor: pointer;
-    white-space: nowrap;
-    box-sizing: border-box;
-    transition: background var(--transition), border-color var(--transition), transform var(--transition);
+    font-family: 'Inter', Arial, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    border-radius: 10px !important;
+    cursor: pointer !important;
+    white-space: nowrap !important;
+    box-sizing: border-box !important;
   }
-  .hero-section .btn-secondary:hover { background: rgba(255, 255, 255, 0.12) !important; border-color: rgba(255, 255, 255, 0.7) !important; transform: translateY(-1px); }
-  .hero-section .btn-secondary:active { transform: scale(0.98); }
 
   .btn-icon--left {
     display: inline-flex !important;
-    align-items: center;
-    gap: 8px;
+    align-items: center !important;
   }
 
   .btn-icon--right-chevron {
     display: inline-flex !important;
-    align-items: center;
+    align-items: center !important;
   }
 
-  .btn-icon--right-arrow {
-    display: none !important;
-  }
+  .br-desktop { display: none !important; }
+  .br-all { display: inline !important; }
+  .heading-dot { display: none !important; }
+  .hero-location-badge { display: none !important; }
 
-  .br-desktop {
-    display: none !important;
-  }
-
-  .br-all {
-    display: inline !important;
-  }
-
-  .heading-dot {
-    display: none !important;
-  }
-
-  .hero-location-badge {
-    display: none !important;
-  }
-
+  /* Full-bleed wave at bottom */
   .hero-wave-container {
     display: block !important;
     position: absolute !important;
@@ -1197,50 +1310,44 @@ body {
     left: 0 !important;
     right: 0 !important;
     width: 100% !important;
-    max-width: none !important;
     height: clamp(80px, 12vh, 120px) !important;
     z-index: 9 !important;
-    line-height: 0 !important;
     pointer-events: none !important;
   }
 
   /* ══════════════════════════════════════════════════════
-     4. FLOATING WHITE INFORMATION CONTAINER
-     Overlaps the navy hero & sits over the construction scene below
+     FLOATING WHITE UNIFIED INFORMATION CONTAINER
+     3 stacked rows floating over lower background image
   ══════════════════════════════════════════════════════ */
   .hero-stats-wrapper {
-    order: 4;
     position: relative !important;
     top: auto !important;
     bottom: auto !important;
     left: auto !important;
     right: auto !important;
     transform: none !important;
-    width: calc(100% - 32px) !important;
-    max-width: 580px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    margin-top: 10px !important;
-    margin-bottom: 24px !important;
+    width: 100% !important;
+    margin: 0 0 16px 0 !important;
     z-index: 10 !important;
     box-sizing: border-box !important;
   }
 
   .stats-card {
-    background: transparent !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    border: none !important;
-    padding: 0 !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border-radius: 16px !important;
+    border: 1px solid rgba(255, 255, 255, 0.85) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+    padding: 4px 12px !important;
     box-sizing: border-box !important;
     width: 100% !important;
   }
 
   .hero-section .stats-grid {
-    flex-shrink: 0;
-    display: grid !important;
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 10px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
     padding: 0 !important;
     background: transparent !important;
     box-sizing: border-box !important;
@@ -1250,144 +1357,91 @@ body {
   .hero-section .stats-item {
     display: flex !important;
     align-items: center !important;
-    gap: 10px !important;
-    background: rgba(255, 255, 255, 0.90) !important;
-    backdrop-filter: blur(10px) !important;
-    -webkit-backdrop-filter: blur(10px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.75) !important;
-    border-radius: 14px !important;
-    padding: 12px 10px !important;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14) !important;
+    gap: 12px !important;
+    padding: 10px 4px !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-bottom: 1px solid rgba(7, 31, 66, 0.08) !important;
+    border-radius: 0 !important;
     width: 100% !important;
-    min-width: 0 !important;
     box-sizing: border-box !important;
   }
 
+  .hero-section .stats-item:last-child {
+    border-bottom: none !important;
+  }
+
   .hero-section .stats-item--quality {
-    grid-column: 1 / -1 !important;
+    grid-column: auto !important;
     justify-content: flex-start !important;
     width: 100% !important;
   }
 
   .hero-section .stats-icon-wrap {
-    width: 40px !important;
-    height: 40px !important;
-    border-radius: 50%;
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 50% !important;
     background: rgba(0, 111, 230, 0.10) !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
   }
 
   .hero-section .stats-text-wrap {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-    min-width: 0;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1px !important;
+    min-width: 0 !important;
   }
 
   .hero-section .stats-label {
-    font-family: 'Inter', Arial, sans-serif;
+    font-family: 'Inter', Arial, sans-serif !important;
     font-size: 8.5px !important;
-    font-weight: 800;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: #475569;
-    line-height: 1.2;
-    margin: 0 0 2px 0;
+    font-weight: 800 !important;
+    letter-spacing: 1.5px !important;
+    text-transform: uppercase !important;
+    color: #64748B !important;
+    line-height: 1.2 !important;
+    margin: 0 0 2px 0 !important;
   }
 
   .hero-section .stats-main {
-    font-family: 'Inter', Arial, sans-serif;
-    font-size: clamp(17px, 4.5vw, 22px) !important;
-    font-weight: 900;
-    line-height: 1.05;
-    color: #071A36;
-    margin: 0 0 2px 0;
+    font-family: 'Inter', Arial, sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 900 !important;
+    line-height: 1.05 !important;
+    color: #071F42 !important;
+    margin: 0 0 2px 0 !important;
   }
 
   .hero-section .stats-main.color-blue { color: #006FE6 !important; }
-  .hero-section .stats-main.color-navy { color: #071A36 !important; }
+  .hero-section .stats-main.color-navy { color: #071F42 !important; }
 
   .hero-section .stats-main.size-normal {
-    font-size: clamp(12.5px, 3.4vw, 15px) !important;
+    font-size: 13.5px !important;
   }
 
   .hero-section .stats-sub {
-    font-family: 'Inter', Arial, sans-serif;
+    font-family: 'Inter', Arial, sans-serif !important;
     font-size: 8.5px !important;
-    font-weight: 700;
-    letter-spacing: 0.6px;
-    text-transform: uppercase;
-    color: #475569;
-    line-height: 1.35;
-    margin: 0;
+    font-weight: 700 !important;
+    letter-spacing: 0.6px !important;
+    text-transform: uppercase !important;
+    color: #64748B !important;
+    line-height: 1.35 !important;
+    margin: 0 !important;
   }
 
   .stats-quality-content {
-    display: flex;
-    flex-direction: column;
+    display: flex !important;
+    flex-direction: column !important;
   }
 
-  /* ══════════════════════════════════════════════════════
-     5. BLURRED CONSTRUCTION BACKGROUND (Behind & Below Cards)
-  ══════════════════════════════════════════════════════ */
   .hero-construction-wrap {
-    order: 5;
-    display: block;
-    position: absolute;
-    top: 30%;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 70%;
-    overflow: hidden;
-    background: #071F42;
-    box-sizing: border-box;
-    z-index: 1;
-    pointer-events: none;
-  }
-
-  .mob-construction-img {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: bottom center;
-    display: block;
-    filter: blur(2.5px);
-    opacity: 0.75;
-  }
-
-  .hero-construction-fade {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-      180deg,
-      #071F42 0%,
-      rgba(7, 31, 66, 0.45) 30%,
-      rgba(7, 31, 66, 0.85) 100%
-    );
-    pointer-events: none;
-    z-index: 2;
-  }
-
-  .hero-construction-bottom-wave {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 24px;
-    background: linear-gradient(180deg, transparent 0%, #FFFFFF 100%);
-    pointer-events: none;
-    z-index: 2;
+    display: none !important;
   }
 }
 
