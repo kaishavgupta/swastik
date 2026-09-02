@@ -44,12 +44,11 @@ const CLIENT_LOGO_CANDIDATES: Record<string, string[]> = {
 
 const getLogoCandidates = (client: Client): string[] => {
   const candidates = CLIENT_LOGO_CANDIDATES[client.id] ?? [client.logo.replace(/^\//, "")];
-  const baseUrl = import.meta.env.BASE_URL || "/";
+  const baseUrl = (import.meta.env.BASE_URL || "/").replace(/\/$/, "");
 
   return candidates.map((filename) => {
-    // ERROR FIX: Resolve through Vite's configured base URL instead of
-    // assuming the production site is always mounted at "/".
-    return new URL(filename, baseUrl).toString();
+    const cleanFn = filename.replace(/^\//, "");
+    return `${baseUrl}/${cleanFn}`;
   });
 };
 
