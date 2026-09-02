@@ -17758,17 +17758,29 @@ body {
     scroll-snap-stop: always;
   }
 
+  .about-main-container {
+    display: contents !important;
+  }
+
   /* Full-bleed right-side batching plant image */
-  .about-bg-img-col {
+  .about-image-wrapper {
     position: absolute !important;
     top: 0 !important;
     right: 0 !important;
     bottom: 0 !important;
     width: 65% !important;
     height: 100% !important;
-    overflow: hidden !important;
+    overflow: visible !important;
     z-index: 1 !important;
     display: block !important;
+  }
+
+  .about-bg-img-col {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden !important;
   }
 
   .about-bg-img {
@@ -17834,6 +17846,16 @@ body {
     display: block !important;
   }
 
+  .about-divider {
+    width: 40px !important;
+    height: 3.5px !important;
+    background-color: var(--blue, #0875D1) !important;
+    border-radius: 2px !important;
+    margin-bottom: clamp(10px, 1.6vh, 20px) !important;
+    flex-shrink: 0 !important;
+    display: block !important;
+  }
+
   .about-heading {
     font-family: 'Inter', Arial, Helvetica, sans-serif !important;
     font-weight: 900 !important;
@@ -17847,16 +17869,6 @@ body {
 
   .about-heading-accent {
     color: var(--blue, #0875D1) !important;
-  }
-
-  .about-divider {
-    width: 40px !important;
-    height: 3.5px !important;
-    background-color: var(--blue, #0875D1) !important;
-    border-radius: 2px !important;
-    margin-bottom: clamp(10px, 1.6vh, 20px) !important;
-    flex-shrink: 0 !important;
-    display: block !important;
   }
 
   .about-paragraph {
@@ -17952,7 +17964,7 @@ body {
     box-sizing: border-box !important;
     width: clamp(135px, 9.5vw, 160px) !important;
     height: clamp(135px, 9.5vw, 160px) !important;
-    left: clamp(39%, 41vw, 43%) !important;
+    left: -80px !important;
     top: 50% !important;
     transform: translateY(-50%) !important;
   }
@@ -18098,19 +18110,27 @@ body {
     scroll-snap-align: start;
   }
 
+  .about-main-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    max-width: 680px !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+  }
+
   /* 1. Content Narrative Column */
   .about-left-col {
-    order: 1 !important;
     position: relative !important;
     z-index: 5 !important;
     width: 100% !important;
-    max-width: 680px !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: flex-start !important;
     text-align: left !important;
     padding: 0 !important;
-    margin: 0 auto !important;
+    margin: 0 0 24px 0 !important;
     box-sizing: border-box !important;
   }
 
@@ -18120,7 +18140,6 @@ body {
     align-items: flex-start !important;
     text-align: left !important;
     width: 100% !important;
-    max-width: 100% !important;
   }
 
   .about-eyebrow {
@@ -18129,7 +18148,16 @@ body {
     letter-spacing: 2.8px !important;
     text-transform: uppercase !important;
     color: var(--blue, #0875D1) !important;
-    margin-bottom: 10px !important;
+    margin-bottom: 8px !important;
+    display: block !important;
+  }
+
+  .about-divider {
+    width: 42px !important;
+    height: 3.5px !important;
+    background-color: var(--blue, #0875D1) !important;
+    border-radius: 2px !important;
+    margin-bottom: 14px !important;
     display: block !important;
   }
 
@@ -18146,15 +18174,6 @@ body {
 
   .about-heading-accent {
     color: var(--blue, #0875D1) !important;
-  }
-
-  .about-divider {
-    width: 42px !important;
-    height: 3.5px !important;
-    background-color: var(--blue, #0875D1) !important;
-    border-radius: 2px !important;
-    margin-bottom: 18px !important;
-    display: block !important;
   }
 
   .about-paragraph {
@@ -18176,9 +18195,7 @@ body {
     flex-direction: column !important;
     gap: 12px !important;
     margin-top: 18px !important;
-    margin-bottom: 28px !important;
     width: 100% !important;
-    max-width: 100% !important;
   }
 
   .about-btn-quote {
@@ -18223,21 +18240,23 @@ body {
     width: 100% !important;
   }
 
-  /* 2. Concrete Plant Image below CTAs */
-  .about-bg-img-col {
-    order: 2 !important;
+  /* 2. Concrete Plant Image & Badge Wrapper */
+  .about-image-wrapper {
     position: relative !important;
     width: 100% !important;
-    max-width: 680px !important;
     height: clamp(240px, 32vh, 320px) !important;
     border-radius: 20px !important;
-    overflow: visible !important;
-    margin: 0 auto 0 auto !important;
-    top: auto !important;
-    right: auto !important;
-    bottom: auto !important;
+    margin: 0 auto 52px auto !important;
     display: block !important;
     z-index: 2 !important;
+  }
+
+  .about-bg-img-col {
+    position: relative !important;
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 20px !important;
+    overflow: hidden !important;
   }
 
   .about-bg-img {
@@ -18257,12 +18276,10 @@ body {
 
   /* 3. Floating 18+ Badge overlapping bottom-center of image */
   .about-floating-badge {
-    order: 3 !important;
-    position: relative !important;
-    left: auto !important;
-    top: auto !important;
-    transform: none !important;
-    margin: -48px auto 28px auto !important;
+    position: absolute !important;
+    bottom: -38px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
     width: 145px !important;
     height: 120px !important;
     background: #FFFFFF !important;
@@ -18306,13 +18323,11 @@ body {
 
   /* 4. Three Feature Bubbles in 3-Column Horizontal Row */
   .about-info-panel {
-    order: 4 !important;
     position: relative !important;
     bottom: auto !important;
     left: auto !important;
     right: auto !important;
     width: 100% !important;
-    max-width: 680px !important;
     margin: 0 auto 30px auto !important;
     height: auto !important;
     z-index: 10 !important;
@@ -18392,7 +18407,6 @@ body {
 
   /* 5. Bottom Dual-Layer Wave */
   .about-wave-container {
-    order: 5 !important;
     position: absolute !important;
     bottom: 0 !important;
     left: 0 !important;
@@ -18436,9 +18450,16 @@ body {
     scroll-snap-align: start;
   }
 
+  .about-main-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
   /* 1. Content Narrative Column */
   .about-left-col {
-    order: 1 !important;
     position: relative !important;
     z-index: 5 !important;
     width: 100% !important;
@@ -18447,7 +18468,7 @@ body {
     align-items: flex-start !important;
     text-align: left !important;
     padding: 0 !important;
-    margin: 0 !important;
+    margin: 0 0 16px 0 !important;
     box-sizing: border-box !important;
   }
 
@@ -18460,28 +18481,13 @@ body {
   }
 
   .about-eyebrow {
-    font-size: 10.5px !important;
+    font-size: 11px !important;
     font-weight: 800 !important;
     letter-spacing: 2.2px !important;
     text-transform: uppercase !important;
     color: var(--blue, #0875D1) !important;
-    margin-bottom: 8px !important;
+    margin-bottom: 6px !important;
     display: block !important;
-  }
-
-  .about-heading {
-    font-family: 'Inter', Arial, Helvetica, sans-serif !important;
-    font-weight: 900 !important;
-    font-size: clamp(26px, 7.2vw, 34px) !important;
-    line-height: 1.08 !important;
-    letter-spacing: -0.02em !important;
-    color: var(--navy, #071A36) !important;
-    margin: 0 0 10px 0 !important;
-    text-align: left !important;
-  }
-
-  .about-heading-accent {
-    color: var(--blue, #0875D1) !important;
   }
 
   .about-divider {
@@ -18489,14 +18495,29 @@ body {
     height: 3px !important;
     background-color: var(--blue, #0875D1) !important;
     border-radius: 2px !important;
-    margin-bottom: 14px !important;
+    margin-bottom: 12px !important;
     display: block !important;
+  }
+
+  .about-heading {
+    font-family: 'Inter', Arial, Helvetica, sans-serif !important;
+    font-weight: 900 !important;
+    font-size: clamp(28px, 7.5vw, 36px) !important;
+    line-height: 1.08 !important;
+    letter-spacing: -0.02em !important;
+    color: var(--navy, #071A36) !important;
+    margin: 0 0 12px 0 !important;
+    text-align: left !important;
+  }
+
+  .about-heading-accent {
+    color: var(--blue, #0875D1) !important;
   }
 
   .about-paragraph {
     font-size: 13.5px !important;
     line-height: 1.55 !important;
-    color: var(--text-muted, #526887) !important;
+    color: #475569 !important;
     margin: 0 0 10px 0 !important;
     max-width: 100% !important;
     text-align: left !important;
@@ -18512,7 +18533,6 @@ body {
     flex-direction: column !important;
     gap: 10px !important;
     margin-top: 14px !important;
-    margin-bottom: 20px !important;
     width: 100% !important;
   }
 
@@ -18533,7 +18553,7 @@ body {
     border-radius: 10px !important;
     border: none !important;
     cursor: pointer !important;
-    box-shadow: 0 4px 16px rgba(0, 111, 230, 0.28) !important;
+    box-shadow: 0 4px 14px rgba(0, 111, 230, 0.25) !important;
     width: 100% !important;
   }
 
@@ -18552,26 +18572,29 @@ body {
     height: 46px !important;
     padding: 0 20px !important;
     border-radius: 10px !important;
-    border: 1.5px solid var(--border, #DCE5EF) !important;
+    border: 1.5px solid #CBD5E1 !important;
     cursor: pointer !important;
     box-shadow: 0 2px 8px rgba(7, 26, 54, 0.04) !important;
     width: 100% !important;
   }
 
-  /* 2. Concrete Plant Image */
-  .about-bg-img-col {
-    order: 2 !important;
+  /* 2. Concrete Plant Image & Badge Wrapper */
+  .about-image-wrapper {
     position: relative !important;
     width: 100% !important;
     height: clamp(180px, 26vh, 230px) !important;
     border-radius: 18px !important;
-    overflow: visible !important;
-    margin: 0 0 0 0 !important;
-    top: auto !important;
-    right: auto !important;
-    bottom: auto !important;
+    margin: 0 0 46px 0 !important;
     display: block !important;
     z-index: 2 !important;
+  }
+
+  .about-bg-img-col {
+    position: relative !important;
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 18px !important;
+    overflow: hidden !important;
   }
 
   .about-bg-img {
@@ -18591,18 +18614,16 @@ body {
 
   /* 3. Floating 18+ Badge overlapping bottom-center of image */
   .about-floating-badge {
-    order: 3 !important;
-    position: relative !important;
-    left: auto !important;
-    top: auto !important;
-    transform: none !important;
-    margin: -36px auto 22px auto !important;
-    width: 125px !important;
+    position: absolute !important;
+    bottom: -32px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 130px !important;
     height: 105px !important;
     background: #FFFFFF !important;
     border-radius: 16px !important;
     box-shadow: 0 10px 30px rgba(7, 26, 54, 0.12), 0 2px 10px rgba(7, 26, 54, 0.04) !important;
-    border: 1px solid rgba(7, 26, 54, 0.06) !important;
+    border: 1px solid rgba(7, 26, 54, 0.05) !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
@@ -18640,7 +18661,6 @@ body {
 
   /* 4. Three Feature Bubbles in Vertical Stack with Dotted Connecting Line */
   .about-info-panel {
-    order: 4 !important;
     position: relative !important;
     bottom: auto !important;
     left: auto !important;
@@ -18656,7 +18676,7 @@ body {
     flex-direction: column !important;
     align-items: flex-start !important;
     gap: 16px !important;
-    padding: 0 8px !important;
+    padding: 0 4px !important;
     box-sizing: border-box !important;
   }
 
@@ -18664,11 +18684,11 @@ body {
   .about-info-panel::before {
     content: "" !important;
     position: absolute !important;
-    left: 29px !important; /* Centered with the 44px bubble inside 8px padded panel */
+    left: 26px !important;
     top: 22px !important;
     bottom: 22px !important;
     width: 1px !important;
-    border-left: 1.5px dashed rgba(8, 117, 209, 0.28) !important;
+    border-left: 1.5px dashed rgba(8, 117, 209, 0.32) !important;
     z-index: 1 !important;
     display: block !important;
   }
@@ -18721,7 +18741,7 @@ body {
   .about-info-sub {
     font-size: 9.5px !important;
     font-weight: 700 !important;
-    color: #526887 !important;
+    color: #64748B !important;
     letter-spacing: 0.8px !important;
     text-transform: uppercase !important;
     margin: 0 !important;
@@ -18733,13 +18753,12 @@ body {
 
   /* 5. Bottom Dual-Layer Wave */
   .about-wave-container {
-    order: 5 !important;
     position: absolute !important;
     bottom: 0 !important;
     left: 0 !important;
     right: 0 !important;
     width: 100% !important;
-    height: clamp(65px, 10vh, 85px) !important;
+    height: 75px !important;
     z-index: 5 !important;
     pointer-events: none !important;
     line-height: 0 !important;
