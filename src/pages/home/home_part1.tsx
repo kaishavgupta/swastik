@@ -144,7 +144,7 @@ export const HomePart1: React.FC<HomePart1Props> = ({ onNavigate }) => {
 
             <span className="hero-label">READY MIX CONCRETE</span>
             <h1 className="hero-title">
-              BUILDING<span className="br-desktop"><br /></span> STRENGTH.<span className="br-all"><br /></span> DELIVERING<span className="br-desktop"><br /></span> <span className="hero-title-accent">TRUST.</span>
+              BUILDING<br className="br-mobile-only" /> STRENGTH.<br className="br-tablet-desktop" /> DELIVERING<br className="br-mobile-only" /> <span className="hero-title-accent">TRUST.</span>
             </h1>
             <p className="hero-paragraph">
               18+ years of dependable Ready Mix Concrete solutions for
