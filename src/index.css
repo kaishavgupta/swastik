@@ -17740,24 +17740,22 @@ body {
 
 /* ══════════════════════════════════════════════════════════
    1. DESKTOP / LARGE SCREEN LAYOUT (>= 1200px)
-   Exact match to Desktop Reference + 100vh Full Viewport Alignment
+   Exact match to Desktop Reference + 100svh Full Viewport Alignment (Exactly like Part 1)
 ══════════════════════════════════════════════════════════ */
 @media (min-width: 1200px) {
   .about-section-fullscreen {
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-    scroll-margin-top: var(--navbar-h, 72px);
     position: relative !important;
     width: 100% !important;
-    min-height: calc(100vh - var(--navbar-h, 72px)) !important;
-    height: calc(100vh - var(--navbar-h, 72px)) !important;
-    max-height: calc(100vh - var(--navbar-h, 72px)) !important;
+    height: 100svh !important;
+    min-height: 820px !important;
     background-color: #FFFFFF !important;
     display: flex !important;
     box-sizing: border-box !important;
     overflow: hidden !important;
     z-index: 1 !important;
     isolation: isolate !important;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
   }
 
   /* Full-bleed right-side batching plant image */
@@ -17767,6 +17765,7 @@ body {
     right: 0 !important;
     bottom: 0 !important;
     width: 65% !important;
+    height: 100% !important;
     overflow: hidden !important;
     z-index: 1 !important;
     display: block !important;
@@ -17809,8 +17808,8 @@ body {
     justify-content: flex-start !important;
     padding-left: clamp(48px, 5.5vw, 96px) !important;
     padding-right: 16px !important;
-    padding-bottom: clamp(70px, 10vh, 100px) !important;
-    padding-top: clamp(10px, 2vh, 30px) !important;
+    padding-top: calc(var(--navbar-h, 72px) + 20px) !important;
+    padding-bottom: clamp(100px, 14vh, 140px) !important;
     box-sizing: border-box !important;
   }
 
@@ -17822,7 +17821,7 @@ body {
     text-align: left !important;
     width: 100% !important;
     max-width: 460px !important;
-    height: 100% !important;
+    height: auto !important;
   }
 
   .about-eyebrow {
@@ -17954,7 +17953,7 @@ body {
     width: clamp(135px, 9.5vw, 160px) !important;
     height: clamp(135px, 9.5vw, 160px) !important;
     left: clamp(39%, 41vw, 43%) !important;
-    top: 48% !important;
+    top: 50% !important;
     transform: translateY(-50%) !important;
   }
 
@@ -17984,14 +17983,14 @@ body {
     margin: 0 !important;
   }
 
-  /* Bottom Wave - Full Viewport Width */
+  /* Bottom Wave - Full Viewport Width anchored to absolute bottom */
   .about-wave-container {
     position: absolute !important;
     bottom: 0 !important;
     left: 0 !important;
     right: 0 !important;
     width: 100% !important;
-    height: clamp(75px, 10.5vh, 115px) !important;
+    height: clamp(110px, 14vh, 160px) !important;
     z-index: 6 !important;
     pointer-events: none !important;
     line-height: 0 !important;
@@ -18007,7 +18006,7 @@ body {
   /* Bottom 3-column Info Panel */
   .about-info-panel {
     position: absolute !important;
-    bottom: clamp(12px, 2vh, 20px) !important;
+    bottom: clamp(20px, 3vh, 32px) !important;
     left: clamp(24px, 4vw, 60px) !important;
     right: clamp(24px, 4vw, 60px) !important;
     max-width: 1120px !important;
