@@ -17766,7 +17766,7 @@ body {
     top: 0 !important;
     right: 0 !important;
     bottom: 0 !important;
-    width: 62% !important;
+    width: 65% !important;
     overflow: hidden !important;
     z-index: 1 !important;
     display: block !important;
@@ -17787,27 +17787,29 @@ body {
     background: linear-gradient(
       to right,
       #FFFFFF 0%,
-      rgba(255, 255, 255, 0.95) 14%,
-      rgba(255, 255, 255, 0.6) 32%,
-      rgba(255, 255, 255, 0) 52%
+      rgba(255, 255, 255, 0.98) 12%,
+      rgba(255, 255, 255, 0.70) 28%,
+      rgba(255, 255, 255, 0.20) 44%,
+      rgba(255, 255, 255, 0) 60%
     ) !important;
     pointer-events: none !important;
     z-index: 2 !important;
     display: block !important;
   }
 
-  /* Left narrative column */
+  /* Left narrative column - anchored to left edge of viewport */
   .about-left-col {
     position: relative !important;
     z-index: 5 !important;
-    width: 44% !important;
+    width: 40% !important;
+    max-width: 520px !important;
     height: 100% !important;
     display: flex !important;
     align-items: center !important;
     justify-content: flex-start !important;
-    padding-left: clamp(36px, 5.5vw, 90px) !important;
-    padding-right: 24px !important;
-    padding-bottom: clamp(60px, 9vh, 90px) !important;
+    padding-left: clamp(48px, 5.5vw, 96px) !important;
+    padding-right: 16px !important;
+    padding-bottom: clamp(70px, 10vh, 100px) !important;
     padding-top: clamp(10px, 2vh, 30px) !important;
     box-sizing: border-box !important;
   }
@@ -17818,79 +17820,83 @@ body {
     align-items: flex-start !important;
     justify-content: center !important;
     text-align: left !important;
-    max-width: 500px !important;
+    width: 100% !important;
+    max-width: 460px !important;
     height: 100% !important;
   }
 
   .about-eyebrow {
-    font-size: clamp(11px, 0.9vw, 12px) !important;
+    font-size: clamp(11px, 0.85vw, 12px) !important;
     font-weight: 800 !important;
     letter-spacing: 3px !important;
     text-transform: uppercase !important;
-    color: var(--blue, #0868C9) !important;
-    margin-bottom: clamp(8px, 1.2vh, 16px) !important;
+    color: var(--blue, #0875D1) !important;
+    margin-bottom: clamp(6px, 1.2vh, 12px) !important;
     display: block !important;
   }
 
   .about-heading {
     font-family: 'Inter', Arial, Helvetica, sans-serif !important;
     font-weight: 900 !important;
-    font-size: clamp(36px, 4.2vw, 64px) !important;
-    line-height: 1.02 !important;
+    font-size: clamp(32px, 3.8vw, 56px) !important;
+    line-height: 1.04 !important;
     letter-spacing: -0.02em !important;
     color: var(--navy, #071A36) !important;
-    margin: 0 0 clamp(10px, 1.5vh, 20px) 0 !important;
+    margin: 0 0 clamp(8px, 1.4vh, 16px) 0 !important;
+    text-align: left !important;
   }
 
   .about-heading-accent {
-    color: var(--blue, #0868C9) !important;
+    color: var(--blue, #0875D1) !important;
   }
 
   .about-divider {
-    width: 44px !important;
-    height: 4px !important;
-    background-color: var(--blue, #0868C9) !important;
+    width: 40px !important;
+    height: 3.5px !important;
+    background-color: var(--blue, #0875D1) !important;
     border-radius: 2px !important;
-    margin-bottom: clamp(12px, 1.8vh, 24px) !important;
+    margin-bottom: clamp(10px, 1.6vh, 20px) !important;
     flex-shrink: 0 !important;
     display: block !important;
   }
 
   .about-paragraph {
-    font-size: clamp(13.5px, 1.05vw, 15.5px) !important;
-    line-height: 1.65 !important;
-    color: #3E5470 !important;
+    font-size: clamp(13px, 0.95vw, 14.5px) !important;
+    line-height: 1.6 !important;
+    color: var(--text-muted, #526887) !important;
     margin: 0 0 clamp(8px, 1.2vh, 14px) 0 !important;
     max-width: 450px !important;
+    text-align: left !important;
   }
 
   .about-paragraph:last-of-type {
     margin-bottom: 0 !important;
   }
 
-  /* Action Buttons */
+  /* Action Buttons - Stacked cleanly */
   .about-buttons {
     display: flex !important;
-    align-items: center !important;
-    gap: 16px !important;
+    flex-direction: column !important;
+    gap: 12px !important;
     margin-top: clamp(12px, 2vh, 20px) !important;
     width: 100% !important;
+    max-width: 280px !important;
   }
 
   .about-btn-quote {
-    display: inline-flex !important;
+    display: flex !important;
     align-items: center !important;
-    justify-content: center !important;
+    justify-content: space-between !important;
     gap: 10px !important;
-    background-color: var(--blue, #0868C9) !important;
+    background-color: var(--blue, #0875D1) !important;
     color: #FFFFFF !important;
     font-family: 'Inter', Arial, sans-serif !important;
     font-weight: 800 !important;
-    font-size: 13px !important;
-    letter-spacing: 1.2px !important;
+    font-size: clamp(11.5px, 0.85vw, 13px) !important;
+    letter-spacing: 0.05em !important;
     text-transform: uppercase !important;
-    height: clamp(44px, 5vh, 50px) !important;
-    padding: 0 24px !important;
+    height: clamp(42px, 4.8vh, 48px) !important;
+    padding: 0 20px !important;
     border-radius: 10px !important;
     border: none !important;
     cursor: pointer !important;
@@ -17904,28 +17910,29 @@ body {
   }
 
   .about-btn-products {
-    display: inline-flex !important;
+    display: flex !important;
     align-items: center !important;
-    justify-content: center !important;
+    justify-content: space-between !important;
     gap: 10px !important;
     background-color: #FFFFFF !important;
     color: var(--navy, #071A36) !important;
     font-family: 'Inter', Arial, sans-serif !important;
     font-weight: 800 !important;
-    font-size: 13px !important;
-    letter-spacing: 1.2px !important;
+    font-size: clamp(11.5px, 0.85vw, 13px) !important;
+    letter-spacing: 0.05em !important;
     text-transform: uppercase !important;
-    height: clamp(44px, 5vh, 50px) !important;
-    padding: 0 24px !important;
+    height: clamp(42px, 4.8vh, 48px) !important;
+    padding: 0 20px !important;
     border-radius: 10px !important;
-    border: 1.5px solid var(--border, #DCE5EF) !important;
+    border: 1.5px solid var(--navy, #071A36) !important;
     cursor: pointer !important;
     box-shadow: 0 2px 10px rgba(7, 26, 54, 0.04) !important;
     transition: border-color 200ms ease, transform 200ms ease !important;
   }
 
   .about-btn-products:hover {
-    border-color: var(--navy, #071A36) !important;
+    border-color: var(--blue, #0875D1) !important;
+    color: var(--blue, #0875D1) !important;
     transform: translateY(-2px) !important;
   }
 
@@ -17944,15 +17951,15 @@ body {
     gap: 5px !important;
     text-align: center !important;
     box-sizing: border-box !important;
-    width: clamp(140px, 10vw, 170px) !important;
-    height: clamp(140px, 10vw, 170px) !important;
-    left: 38% !important;
+    width: clamp(135px, 9.5vw, 160px) !important;
+    height: clamp(135px, 9.5vw, 160px) !important;
+    left: clamp(39%, 41vw, 43%) !important;
     top: 48% !important;
-    transform: translate(-22%, -50%) !important;
+    transform: translateY(-50%) !important;
   }
 
   .about-badge-icon {
-    color: var(--blue, #0868C9) !important;
+    color: var(--blue, #0875D1) !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -17960,7 +17967,7 @@ body {
 
   .about-badge-num {
     font-family: 'Inter', Arial, Helvetica, sans-serif !important;
-    font-size: clamp(34px, 2.6vw, 44px) !important;
+    font-size: clamp(32px, 2.5vw, 42px) !important;
     font-weight: 900 !important;
     line-height: 1 !important;
     color: var(--navy, #071A36) !important;
@@ -17984,7 +17991,7 @@ body {
     left: 0 !important;
     right: 0 !important;
     width: 100% !important;
-    height: clamp(80px, 11vh, 120px) !important;
+    height: clamp(75px, 10.5vh, 115px) !important;
     z-index: 6 !important;
     pointer-events: none !important;
     line-height: 0 !important;
@@ -18003,20 +18010,18 @@ body {
     bottom: clamp(12px, 2vh, 20px) !important;
     left: clamp(24px, 4vw, 60px) !important;
     right: clamp(24px, 4vw, 60px) !important;
-    max-width: 1100px !important;
+    max-width: 1120px !important;
     margin-left: auto !important;
     margin-right: auto !important;
-    height: clamp(70px, 8.5vh, 86px) !important;
+    height: clamp(68px, 8.5vh, 82px) !important;
     z-index: 15 !important;
-    background: rgba(255, 255, 255, 0.97) !important;
+    background: #FFFFFF !important;
     border-radius: 18px !important;
     border: 1px solid rgba(7, 26, 54, 0.08) !important;
     box-shadow: 0 10px 36px rgba(7, 26, 54, 0.10) !important;
-    backdrop-filter: blur(14px) !important;
-    -webkit-backdrop-filter: blur(14px) !important;
     display: flex !important;
     align-items: center !important;
-    padding: 0 40px !important;
+    padding: 0 clamp(20px, 3vw, 44px) !important;
     box-sizing: border-box !important;
   }
 
@@ -18029,10 +18034,10 @@ body {
   }
 
   .about-info-icon {
-    width: 44px !important;
-    height: 44px !important;
+    width: clamp(36px, 3vw, 44px) !important;
+    height: clamp(36px, 3vw, 44px) !important;
     border-radius: 50% !important;
-    background: rgba(0, 111, 230, 0.08) !important;
+    background: #EAF4FD !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -18046,7 +18051,7 @@ body {
   }
 
   .about-info-main {
-    font-size: 14px !important;
+    font-size: clamp(12.5px, 0.9vw, 14px) !important;
     font-weight: 900 !important;
     color: var(--navy, #071A36) !important;
     letter-spacing: 0.5px !important;
@@ -18054,7 +18059,7 @@ body {
   }
 
   .about-info-sub {
-    font-size: 10px !important;
+    font-size: clamp(9.5px, 0.75vw, 10.5px) !important;
     font-weight: 700 !important;
     color: #526887 !important;
     letter-spacing: 1px !important;
@@ -18064,7 +18069,7 @@ body {
 
   .about-info-sep {
     width: 1px !important;
-    height: 44px !important;
+    height: clamp(32px, 4vh, 44px) !important;
     background: rgba(7, 26, 54, 0.10) !important;
     flex-shrink: 0 !important;
   }
@@ -18823,727 +18828,6 @@ body {
     padding: 14px 20px;
     border-radius: 10px;
     font-size: 13.5px;
-  }
-}
-
-
-/* ══════════════════════════════════════════════════════════
-   HOME PAGE — PART 2 (ABOUT SWASTIK MIXTURES)
-   VIEWPORT-PERFECT MULTI-BREAKPOINT RESPONSIVENESS
-══════════════════════════════════════════════════════════ */
-
-/* ══════════════════════════════════════════════════════════
-   DESKTOP VIEWPORT LAYOUT (>= 1200px)
-   Exact match to Desktop Reference Design + 100vh Full Viewport Alignment
-══════════════════════════════════════════════════════════ */
-@media (min-width: 1200px) {
-  .about-section-fullscreen {
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-    scroll-margin-top: var(--navbar-h, 72px);
-    position: relative !important;
-    width: 100% !important;
-    min-height: calc(100vh - var(--navbar-h, 72px)) !important;
-    height: calc(100vh - var(--navbar-h, 72px)) !important;
-    max-height: calc(100vh - var(--navbar-h, 72px)) !important;
-    background-color: #FFFFFF !important;
-    display: flex !important;
-    align-items: center !important;
-    box-sizing: border-box !important;
-    overflow: hidden !important;
-    z-index: 1 !important;
-    isolation: isolate !important;
-  }
-
-  .about-mobile-img-wrapper {
-    display: none !important;
-  }
-
-  /* ── Full-bleed right-side batching plant image ── */
-  .about-bg-img-col {
-    position: absolute !important;
-    top: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    width: 62% !important;
-    overflow: hidden !important;
-    z-index: 1 !important;
-  }
-
-  .about-bg-img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    object-position: right center !important;
-    display: block !important;
-  }
-
-  .about-img-fade {
-    position: absolute !important;
-    inset: 0 !important;
-    background: linear-gradient(
-      to right,
-      #FFFFFF 0%,
-      rgba(255, 255, 255, 0.96) 14%,
-      rgba(255, 255, 255, 0.6) 30%,
-      rgba(255, 255, 255, 0) 52%
-    ) !important;
-    pointer-events: none !important;
-    z-index: 2 !important;
-  }
-
-  /* ── Left narrative column ── */
-  .about-left-col {
-    position: relative !important;
-    z-index: 5 !important;
-    width: 44% !important;
-    height: 100% !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    padding-left: clamp(36px, 5.5vw, 90px) !important;
-    padding-right: 24px !important;
-    padding-bottom: clamp(60px, 9vh, 90px) !important;
-    padding-top: clamp(10px, 2vh, 30px) !important;
-    box-sizing: border-box !important;
-  }
-
-  .about-left-content {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    justify-content: center !important;
-    text-align: left !important;
-    max-width: 480px !important;
-    height: 100% !important;
-  }
-
-  .about-eyebrow {
-    font-size: clamp(11px, 0.9vw, 12px) !important;
-    font-weight: 800 !important;
-    letter-spacing: 3px !important;
-    text-transform: uppercase !important;
-    color: var(--blue, #0875D1) !important;
-    margin-bottom: clamp(6px, 1.2vh, 12px) !important;
-    display: block !important;
-  }
-
-  .about-heading {
-    font-family: 'Inter', Arial, Helvetica, sans-serif !important;
-    font-weight: 900 !important;
-    font-size: clamp(32px, 3.8vw, 56px) !important;
-    line-height: 1.05 !important;
-    letter-spacing: -0.02em !important;
-    color: var(--navy, #071A36) !important;
-    margin: 0 0 clamp(8px, 1.5vh, 14px) 0 !important;
-  }
-
-  .about-heading-accent {
-    color: var(--blue, #0875D1) !important;
-  }
-
-  .about-divider {
-    width: 38px !important;
-    height: 3.5px !important;
-    background-color: var(--blue, #0875D1) !important;
-    border-radius: 2px !important;
-    margin-bottom: clamp(10px, 1.8vh, 18px) !important;
-    flex-shrink: 0 !important;
-    display: block !important;
-  }
-
-  .about-paragraph {
-    font-size: clamp(13px, 0.95vw, 14.5px) !important;
-    line-height: 1.6 !important;
-    color: var(--text-muted, #526887) !important;
-    margin: 0 0 clamp(6px, 1.2vh, 12px) 0 !important;
-    max-width: 440px !important;
-  }
-
-  .about-paragraph:last-of-type {
-    margin-bottom: 0 !important;
-  }
-
-  /* CTA Action Buttons */
-  .about-buttons {
-    display: flex !important;
-    align-items: center !important;
-    gap: 12px !important;
-    margin-top: clamp(12px, 2.2vh, 20px) !important;
-    width: 100% !important;
-  }
-
-  .about-btn-quote {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 8px !important;
-    height: clamp(42px, 5vh, 48px) !important;
-    padding: 0 clamp(16px, 1.8vw, 24px) !important;
-    background: #0875D1 !important;
-    color: #FFFFFF !important;
-    font-family: 'Inter', Arial, sans-serif !important;
-    font-size: clamp(11.5px, 0.85vw, 13px) !important;
-    font-weight: 800 !important;
-    letter-spacing: 0.05em !important;
-    text-transform: uppercase !important;
-    border: none !important;
-    border-radius: 10px !important;
-    cursor: pointer !important;
-    white-space: nowrap !important;
-    box-shadow: 0 6px 20px rgba(8, 117, 209, 0.35) !important;
-  }
-
-  .about-btn-products {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 8px !important;
-    height: clamp(42px, 5vh, 48px) !important;
-    padding: 0 clamp(16px, 1.8vw, 24px) !important;
-    background: #FFFFFF !important;
-    color: #071A36 !important;
-    font-family: 'Inter', Arial, sans-serif !important;
-    font-size: clamp(11.5px, 0.85vw, 13px) !important;
-    font-weight: 800 !important;
-    letter-spacing: 0.05em !important;
-    text-transform: uppercase !important;
-    border: 1.5px solid #071A36 !important;
-    border-radius: 10px !important;
-    cursor: pointer !important;
-    white-space: nowrap !important;
-  }
-
-  /* ── 18+ Floating Badge ── */
-  .about-floating-badge {
-    display: flex !important;
-    position: absolute !important;
-    z-index: 10 !important;
-    background: #FFFFFF !important;
-    border-radius: 18px !important;
-    box-shadow: 0 16px 48px rgba(7, 26, 54, 0.12), 0 4px 16px rgba(7, 26, 54, 0.06) !important;
-    border: 1px solid rgba(8, 117, 209, 0.14) !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    text-align: center !important;
-    box-sizing: border-box !important;
-    width: clamp(125px, 9.5vw, 150px) !important;
-    height: clamp(125px, 9.5vw, 150px) !important;
-    left: 39% !important;
-    top: 46% !important;
-    transform: translate(-10%, -50%) !important;
-  }
-
-  .about-badge-icon {
-    color: var(--blue, #0875D1) !important;
-    margin-bottom: 2px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-  }
-
-  .about-badge-num {
-    font-family: 'Inter', Arial, Helvetica, sans-serif !important;
-    font-size: clamp(32px, 2.5vw, 40px) !important;
-    font-weight: 900 !important;
-    line-height: 1 !important;
-    color: var(--navy, #071A36) !important;
-    margin: 0 0 4px 0 !important;
-  }
-
-  .about-badge-txt {
-    font-size: clamp(8px, 0.6vw, 9.5px) !important;
-    font-weight: 800 !important;
-    letter-spacing: 1.4px !important;
-    text-transform: uppercase !important;
-    color: #7B8B99 !important;
-    line-height: 1.4 !important;
-    margin: 0 !important;
-  }
-
-  /* ── Bottom Wave ── */
-  .about-wave-container {
-    position: absolute !important;
-    bottom: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    width: 100% !important;
-    height: clamp(75px, 10vh, 115px) !important;
-    z-index: 6 !important;
-    pointer-events: none !important;
-    line-height: 0 !important;
-  }
-
-  .about-wave-svg {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: fill !important;
-    display: block !important;
-  }
-
-  /* ── Bottom 3-column Info Panel ── */
-  .about-info-panel {
-    position: absolute !important;
-    bottom: clamp(10px, 1.8vh, 20px) !important;
-    left: clamp(24px, 4vw, 60px) !important;
-    right: clamp(24px, 4vw, 60px) !important;
-    max-width: 1140px !important;
-    margin: 0 auto !important;
-    height: clamp(68px, 8.5vh, 82px) !important;
-    z-index: 15 !important;
-    background: #FFFFFF !important;
-    border-radius: 16px !important;
-    border: 1px solid rgba(8, 117, 209, 0.14) !important;
-    box-shadow: 0 10px 36px rgba(7, 26, 54, 0.12) !important;
-    display: flex !important;
-    align-items: center !important;
-    padding: 0 clamp(16px, 2vw, 32px) !important;
-    box-sizing: border-box !important;
-  }
-
-  .about-info-item {
-    display: flex !important;
-    align-items: center !important;
-    gap: 14px !important;
-    flex: 1 !important;
-    justify-content: center !important;
-  }
-
-  .about-info-icon {
-    width: clamp(36px, 3vw, 44px) !important;
-    height: clamp(36px, 3vw, 44px) !important;
-    border-radius: 50% !important;
-    background: #EAF4FD !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    flex-shrink: 0 !important;
-  }
-
-  .about-info-text {
-    display: flex !important;
-    flex-direction: column !important;
-  }
-
-  .about-info-main {
-    font-size: clamp(12.5px, 0.9vw, 14px) !important;
-    font-weight: 800 !important;
-    color: var(--navy, #071A36) !important;
-    letter-spacing: 0.5px !important;
-    margin: 0 0 2px 0 !important;
-  }
-
-  .about-info-sub {
-    font-size: clamp(9.5px, 0.75vw, 11px) !important;
-    font-weight: 700 !important;
-    color: var(--text-muted, #526887) !important;
-    letter-spacing: 0.5px !important;
-    margin: 0 !important;
-  }
-
-  .about-info-sep {
-    width: 1px !important;
-    height: clamp(32px, 4vh, 44px) !important;
-    background: rgba(8, 117, 209, 0.14) !important;
-    flex-shrink: 0 !important;
-  }
-}
-
-/* ══════════════════════════════════════════════════════════
-   TABLET / MEDIUM SCREENS (768px – 1199px)
-══════════════════════════════════════════════════════════ */
-@media (max-width: 1199px) and (min-width: 768px) {
-  .about-section-fullscreen {
-    height: auto !important;
-    min-height: calc(100svh - var(--navbar-h, 72px)) !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    padding-top: calc(var(--navbar-h, 72px) + 32px) !important;
-    padding-bottom: 120px !important;
-    padding-inline: 36px !important;
-    position: relative !important;
-  }
-
-  .about-left-col {
-    width: 100% !important;
-    height: auto !important;
-    padding: 0 0 24px 0 !important;
-    align-items: flex-start !important;
-    text-align: left !important;
-  }
-
-  .about-left-content {
-    align-items: flex-start !important;
-    text-align: left !important;
-    max-width: 100% !important;
-  }
-
-  .about-heading {
-    font-size: clamp(32px, 4.5vw, 48px) !important;
-    text-align: left !important;
-  }
-
-  .about-paragraph {
-    max-width: 680px !important;
-    text-align: left !important;
-  }
-
-  .about-bg-img-col {
-    position: relative !important;
-    width: 100% !important;
-    height: 340px !important;
-    border-radius: 20px !important;
-    overflow: hidden !important;
-    margin: 0 0 40px 0 !important;
-    top: auto !important;
-    right: auto !important;
-    bottom: auto !important;
-    box-shadow: 0 12px 36px rgba(7, 26, 54, 0.12) !important;
-    border: 1px solid rgba(8, 117, 209, 0.12) !important;
-  }
-
-  .about-bg-img {
-    object-position: center center !important;
-  }
-
-  .about-img-fade {
-    display: none !important;
-  }
-
-  .about-floating-badge.desktop-tablet-badge {
-    position: absolute !important;
-    left: auto !important;
-    right: 40px !important;
-    top: 340px !important;
-    transform: translateY(-50%) !important;
-    width: 145px !important;
-    height: 145px !important;
-    border-radius: 18px !important;
-    box-shadow: 0 14px 40px rgba(7, 26, 54, 0.16) !important;
-    z-index: 10 !important;
-  }
-
-  .about-buttons {
-    flex-direction: row !important;
-    width: 100% !important;
-    margin-top: 24px !important;
-    margin-bottom: 24px !important;
-  }
-
-  .about-btn-quote,
-  .about-btn-products {
-    height: 48px !important;
-    padding: 0 24px !important;
-  }
-
-  .about-info-panel {
-    position: relative !important;
-    bottom: auto !important;
-    left: auto !important;
-    right: auto !important;
-    width: 100% !important;
-    margin: 20px 0 40px 0 !important;
-    z-index: 15 !important;
-    padding: 0 24px !important;
-  }
-
-  .about-wave-container {
-    position: absolute !important;
-    bottom: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    width: 100% !important;
-    height: 100px !important;
-    z-index: 6 !important;
-  }
-}
-
-/* ══════════════════════════════════════════════════════════
-   MOBILE / SMALL SCREENS (<= 767px)
-   Exact match to Mobile Reference Design: Navy Background Image Layer →
-   White Text → Floating 18+ Badge → 2 Full-Width Buttons →
-   Vertical White Info Panel → Full-Bleed Bottom Wave
-══════════════════════════════════════════════════════════ */
-@media (max-width: 767px) {
-  .about-section-fullscreen {
-    scroll-snap-align: start;
-    scroll-margin-top: var(--navbar-h, 80px);
-    position: relative !important;
-    width: 100% !important;
-    min-height: 100svh !important;
-    height: auto !important;
-    display: flex !important;
-    flex-direction: column !important;
-    background: #071F42 !important;
-    padding-top: var(--navbar-h, 80px) !important;
-    padding-bottom: 90px !important;
-    padding-inline: 0 !important;
-    overflow-x: hidden !important;
-    overflow-y: hidden !important;
-    box-sizing: border-box !important;
-    isolation: isolate !important;
-  }
-
-  /* Full background visual layer on mobile */
-  .about-bg-img-col {
-    display: block !important;
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    z-index: 1 !important;
-    overflow: hidden !important;
-    pointer-events: none !important;
-    background: transparent !important;
-  }
-
-  .about-bg-img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    object-position: center 25% !important;
-    opacity: 0.38 !important;
-    filter: brightness(0.9) contrast(1.1) !important;
-  }
-
-  .about-img-fade {
-    display: block !important;
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    background: linear-gradient(
-      180deg,
-      rgba(7, 31, 66, 0.70) 0%,
-      rgba(7, 31, 66, 0.92) 55%,
-      #071F42 100%
-    ) !important;
-    pointer-events: none !important;
-    z-index: 2 !important;
-  }
-
-  .about-left-col {
-    position: relative !important;
-    z-index: 5 !important;
-    width: 100% !important;
-    height: auto !important;
-    padding: 20px 20px 16px 20px !important;
-    align-items: flex-start !important;
-    text-align: left !important;
-    box-sizing: border-box !important;
-  }
-
-  .about-left-content {
-    align-items: flex-start !important;
-    text-align: left !important;
-    max-width: 100% !important;
-    width: 100% !important;
-  }
-
-  .about-eyebrow {
-    font-family: 'Inter', Arial, sans-serif !important;
-    font-size: 11px !important;
-    font-weight: 800 !important;
-    letter-spacing: 2.5px !important;
-    text-transform: uppercase !important;
-    color: #006FE6 !important;
-    margin-bottom: 8px !important;
-    display: block !important;
-  }
-
-  .about-heading {
-    font-family: 'Inter', Arial, Helvetica, sans-serif !important;
-    font-weight: 900 !important;
-    font-size: clamp(26px, 6.8vw, 34px) !important;
-    line-height: 1.12 !important;
-    letter-spacing: -0.025em !important;
-    text-transform: uppercase !important;
-    color: #FFFFFF !important;
-    margin: 0 0 10px 0 !important;
-  }
-
-  .about-heading-accent {
-    color: #006FE6 !important;
-  }
-
-  .about-divider {
-    display: block !important;
-    width: 36px !important;
-    height: 3px !important;
-    background: #006FE6 !important;
-    border-radius: 2px !important;
-    margin-bottom: 14px !important;
-  }
-
-  .about-paragraph {
-    font-family: 'Inter', Arial, sans-serif !important;
-    font-size: 13px !important;
-    line-height: 1.55 !important;
-    color: rgba(255, 255, 255, 0.88) !important;
-    margin: 0 0 12px 0 !important;
-    max-width: 100% !important;
-  }
-
-  /* Floating 18+ Badge top-right of mobile hero content */
-  .about-floating-badge.desktop-tablet-badge {
-    display: flex !important;
-    position: absolute !important;
-    top: 16px !important;
-    right: 18px !important;
-    background: rgba(255, 255, 255, 0.95) !important;
-    backdrop-filter: blur(10px) !important;
-    -webkit-backdrop-filter: blur(10px) !important;
-    border-radius: 14px !important;
-    padding: 8px 12px !important;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25) !important;
-    border: 1px solid rgba(255, 255, 255, 0.8) !important;
-    z-index: 10 !important;
-    align-items: center !important;
-    justify-content: center !important;
-    flex-direction: column !important;
-    text-align: center !important;
-    width: auto !important;
-    height: auto !important;
-    left: auto !important;
-    transform: none !important;
-  }
-
-  .about-floating-badge.desktop-tablet-badge .about-badge-icon {
-    width: 26px !important;
-    height: 26px !important;
-    border-radius: 50% !important;
-    background: rgba(0, 111, 230, 0.1) !important;
-  }
-
-  .about-floating-badge.desktop-tablet-badge .about-badge-num {
-    font-size: 20px !important;
-    font-weight: 900 !important;
-    color: #071F42 !important;
-    line-height: 1 !important;
-  }
-
-  .about-floating-badge.desktop-tablet-badge .about-badge-txt {
-    font-size: 8px !important;
-    font-weight: 800 !important;
-    color: #006FE6 !important;
-    letter-spacing: 0.8px !important;
-    line-height: 1.2 !important;
-  }
-
-  /* Full-Width Stacked Buttons */
-  .about-buttons {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 10px !important;
-    width: 100% !important;
-    margin: 14px 0 18px 0 !important;
-    position: relative !important;
-    z-index: 5 !important;
-  }
-
-  .about-btn-quote {
-    width: 100% !important;
-    height: 46px !important;
-    min-height: 46px !important;
-    background: #006FE6 !important;
-    color: #FFFFFF !important;
-    border-radius: 10px !important;
-    font-size: 12px !important;
-    font-weight: 800 !important;
-    letter-spacing: 0.06em !important;
-    text-transform: uppercase !important;
-    border: none !important;
-    box-shadow: 0 6px 20px rgba(0, 111, 230, 0.35) !important;
-  }
-
-  .about-btn-products {
-    width: 100% !important;
-    height: 46px !important;
-    min-height: 46px !important;
-    background: rgba(255, 255, 255, 0.12) !important;
-    color: #FFFFFF !important;
-    border-radius: 10px !important;
-    font-size: 12px !important;
-    font-weight: 800 !important;
-    letter-spacing: 0.06em !important;
-    text-transform: uppercase !important;
-    border: 1px solid rgba(255, 255, 255, 0.35) !important;
-  }
-
-  /* Vertical Info Panel floating on mobile */
-  .about-info-panel {
-    position: relative !important;
-    bottom: auto !important;
-    left: auto !important;
-    right: auto !important;
-    width: calc(100% - 36px) !important;
-    margin: 0 auto 16px auto !important;
-    z-index: 10 !important;
-    height: auto !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    padding: 6px 14px !important;
-    gap: 0 !important;
-    background: rgba(255, 255, 255, 0.95) !important;
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
-    border-radius: 16px !important;
-    border: 1px solid rgba(255, 255, 255, 0.85) !important;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
-    box-sizing: border-box !important;
-  }
-
-  .about-info-item {
-    display: flex !important;
-    align-items: center !important;
-    gap: 12px !important;
-    padding: 10px 4px !important;
-    width: 100% !important;
-    justify-content: flex-start !important;
-    box-sizing: border-box !important;
-  }
-
-  .about-info-icon {
-    width: 36px !important;
-    height: 36px !important;
-    border-radius: 50% !important;
-    background: rgba(0, 111, 230, 0.10) !important;
-  }
-
-  .about-info-main {
-    font-size: 13.5px !important;
-    font-weight: 900 !important;
-    color: #071F42 !important;
-  }
-
-  .about-info-sub {
-    font-size: 8.5px !important;
-    font-weight: 700 !important;
-    color: #64748B !important;
-    letter-spacing: 0.8px !important;
-  }
-
-  .about-info-sep {
-    width: 100% !important;
-    height: 1px !important;
-    background: rgba(7, 31, 66, 0.08) !important;
-  }
-
-  .about-wave-container {
-    display: block !important;
-    position: absolute !important;
-    bottom: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    width: 100% !important;
-    height: clamp(80px, 12vh, 120px) !important;
-    z-index: 9 !important;
-    pointer-events: none !important;
   }
 }
 
