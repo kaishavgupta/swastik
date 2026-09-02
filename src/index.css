@@ -750,15 +750,11 @@ body {
 
 /* Tablet layout (768px to 1199px) */
 /* ══════════════════════════════════════════════════════════
-   HOME PAGE — PART 1 (HERO) RESPONSIVE REDESIGN
-   Exact Match to Target Reference Mockup:
-   - Official Brand Palette: #6796C6, #306497, #172531, #4B4C4E, #FCFCFD, #FFFFFF
-   - Full Mixer Truck Background with #172531 Dark Navy Overlay
-   - Upper-Right Floating 18+ Trust Badge
-   - Left Typography with #6796C6 Eyebrow & TRUST. accent
-   - Two Stacked Buttons: Solid #306497 & Translucent White Border
-   - 5-Item Trust Information Card: Single White Rounded Card with Thin Dividers
-   - 100% Width Layered Bottom Wave
+   HOME PAGE — PART 1 (HERO) RESPONSIVE COMPOSITION
+   Strict reproduction of the reference design for:
+   - Mobile: ≤ 767px
+   - Tablet: 768px – 1199px
+   - Desktop (≥ 1200px) remains 100% UNTOUCHED
 ══════════════════════════════════════════════════════════ */
 
 /* Default hide for floating badge on desktop */
@@ -770,8 +766,9 @@ body {
    1. TABLET / MEDIUM SCREENS (768px – 1199px)
 ══════════════════════════════════════════════════════════ */
 @media (min-width: 768px) and (max-width: 1199px) {
-  :root { --navbar-h: 88px; }
+  :root { --navbar-h: 96px; }
 
+  /* Section Shell */
   .hero-section {
     scroll-snap-align: start;
     position: relative !important;
@@ -783,9 +780,9 @@ body {
     overflow-x: hidden !important;
     overflow-y: visible !important;
     box-sizing: border-box !important;
-    padding-top: calc(var(--navbar-h, 88px) + 16px) !important;
-    padding-bottom: 95px !important;
-    padding-inline: 24px !important;
+    padding-top: calc(var(--navbar-h, 96px) + 20px) !important;
+    padding-bottom: 100px !important;
+    padding-inline: 32px !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
@@ -793,19 +790,21 @@ body {
     isolation: isolate !important;
   }
 
+  /* Main Container */
   .hero-flex-layout {
     display: flex !important;
     flex-direction: column !important;
-    align-items: flex-start !important;
+    align-items: stretch !important;
     width: 100% !important;
-    max-width: 760px !important;
+    max-width: 720px !important;
     padding: 0 !important;
+    margin: 0 0 24px 0 !important;
     box-sizing: border-box !important;
     position: relative !important;
     z-index: 5 !important;
   }
 
-  /* Full background image of transit mixer truck */
+  /* Full Background Image of transit mixer truck with dark navy overlay */
   .hero-right-col {
     position: absolute !important;
     top: 0 !important;
@@ -869,6 +868,7 @@ body {
     width: 100% !important;
     position: relative !important;
     box-sizing: border-box !important;
+    transform: none !important;
   }
 
   /* Upper-Right Floating 18+ Badge */
@@ -878,9 +878,9 @@ body {
     top: -4px !important;
     right: 0 !important;
     background: #FFFFFF !important;
-    border-radius: 12px !important;
+    border-radius: 14px !important;
     padding: 8px 14px !important;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25) !important;
     border: 1px solid rgba(255, 255, 255, 0.9) !important;
     z-index: 10 !important;
     align-items: center !important;
@@ -922,19 +922,19 @@ body {
     letter-spacing: 2.5px !important;
     text-transform: uppercase !important;
     color: #6796C6 !important;
-    margin-bottom: 8px !important;
+    margin-bottom: 10px !important;
     display: block !important;
   }
 
   .hero-title {
     font-family: 'Inter', Arial, Helvetica, sans-serif !important;
     font-weight: 900 !important;
-    font-size: clamp(30px, 4.8vw, 42px) !important;
+    font-size: clamp(32px, 4.8vw, 44px) !important;
     line-height: 1.1 !important;
     letter-spacing: -0.025em !important;
     text-transform: uppercase !important;
     color: #FFFFFF !important;
-    margin: 0 0 12px 0 !important;
+    margin: 0 0 14px 0 !important;
   }
 
   .hero-title-accent {
@@ -946,16 +946,17 @@ body {
     font-size: 14px !important;
     line-height: 1.55 !important;
     color: rgba(255, 255, 255, 0.9) !important;
-    margin: 0 0 18px 0 !important;
-    max-width: 620px !important;
+    margin: 0 0 20px 0 !important;
+    max-width: 600px !important;
   }
 
+  /* Full-width Stacked CTA Buttons */
   .hero-buttons {
     display: flex !important;
     flex-direction: column !important;
-    gap: 10px !important;
+    gap: 12px !important;
     width: 100% !important;
-    margin: 0 0 20px 0 !important;
+    margin: 0 !important;
     padding: 0 !important;
     background: transparent !important;
   }
@@ -966,7 +967,7 @@ body {
     justify-content: center !important;
     gap: 8px !important;
     width: 100% !important;
-    height: 48px !important;
+    height: 52px !important;
     background: #306497 !important;
     color: #FFFFFF !important;
     font-family: 'Inter', Arial, sans-serif !important;
@@ -974,10 +975,11 @@ body {
     font-weight: 800 !important;
     letter-spacing: 0.06em !important;
     text-transform: uppercase !important;
-    border-radius: 10px !important;
+    border-radius: 12px !important;
     border: none !important;
     box-shadow: 0 6px 20px rgba(48, 100, 151, 0.4) !important;
     cursor: pointer !important;
+    box-sizing: border-box !important;
   }
 
   .hero-section .btn-secondary {
@@ -986,7 +988,7 @@ body {
     justify-content: center !important;
     gap: 8px !important;
     width: 100% !important;
-    height: 48px !important;
+    height: 52px !important;
     background: rgba(23, 37, 49, 0.45) !important;
     color: #FFFFFF !important;
     font-family: 'Inter', Arial, sans-serif !important;
@@ -994,9 +996,10 @@ body {
     font-weight: 800 !important;
     letter-spacing: 0.06em !important;
     text-transform: uppercase !important;
-    border-radius: 10px !important;
+    border-radius: 12px !important;
     border: 1.5px solid rgba(255, 255, 255, 0.65) !important;
     cursor: pointer !important;
+    box-sizing: border-box !important;
   }
 
   .btn-icon--left {
@@ -1016,8 +1019,13 @@ body {
   /* 5-Item Trust Information Card */
   .hero-stats-wrapper {
     position: relative !important;
+    top: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
     width: 100% !important;
-    max-width: 760px !important;
+    max-width: 720px !important;
     z-index: 6 !important;
     margin: 0 !important;
     box-sizing: border-box !important;
@@ -1025,12 +1033,14 @@ body {
 
   .stats-card {
     background: #FFFFFF !important;
-    border-radius: 18px !important;
+    border-radius: 20px !important;
     box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25) !important;
     border: 1px solid rgba(255, 255, 255, 0.9) !important;
-    padding: 6px 16px !important;
+    padding: 6px 18px !important;
     width: 100% !important;
     box-sizing: border-box !important;
+    margin: 0 !important;
+    transform: none !important;
   }
 
   .hero-section .stats-grid {
@@ -1038,13 +1048,15 @@ body {
     flex-direction: column !important;
     gap: 0 !important;
     width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   .hero-section .stats-item {
     display: flex !important;
     align-items: center !important;
     gap: 14px !important;
-    padding: 11px 4px !important;
+    padding: 11px 0 !important;
     border-bottom: 1px solid #F1F5F9 !important;
     width: 100% !important;
     box-sizing: border-box !important;
@@ -1134,6 +1146,7 @@ body {
     height: 85px !important;
     z-index: 8 !important;
     pointer-events: none !important;
+    line-height: 0 !important;
   }
 
   .hero-wave-svg {
@@ -1153,12 +1166,13 @@ body {
    Exact match to Target Reference Mobile Mockup
 ══════════════════════════════════════════════════════════ */
 @media (max-width: 767px) {
-  :root { --navbar-h: 80px; }
+  :root { --navbar-h: 84px; }
 
   /* Disable parallax offset on mobile */
   .hero-text-content,
   .hero-truck-visual,
-  .hero-stats-wrapper {
+  .hero-stats-wrapper,
+  .hero-stats-wrapper .stats-card {
     transform: none !important;
   }
 
@@ -1175,9 +1189,11 @@ body {
     overflow-y: visible !important;
     box-sizing: border-box !important;
     background: #172531 !important;
-    padding-top: calc(var(--navbar-h, 80px) + 12px) !important;
-    padding-bottom: 80px !important;
+    padding-top: calc(var(--navbar-h, 84px) + 12px) !important;
+    padding-bottom: 85px !important;
     padding-inline: 16px !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
     isolation: isolate !important;
   }
 
@@ -1189,6 +1205,7 @@ body {
     max-width: 100% !important;
     height: auto !important;
     padding: 0 !important;
+    margin: 0 0 16px 0 !important;
     box-sizing: border-box !important;
     z-index: 5 !important;
   }
@@ -1261,6 +1278,7 @@ body {
     width: 100% !important;
     position: relative !important;
     box-sizing: border-box !important;
+    transform: none !important;
   }
 
   /* Upper-Right Floating 18+ Badge */
@@ -1272,7 +1290,7 @@ body {
     background: #FFFFFF !important;
     border-radius: 12px !important;
     padding: 6px 12px !important;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25) !important;
     border: 1px solid rgba(255, 255, 255, 0.9) !important;
     z-index: 10 !important;
     align-items: center !important;
@@ -1328,6 +1346,7 @@ body {
     color: #FFFFFF !important;
     margin: 0 0 8px 0 !important;
     padding: 0 !important;
+    max-width: 90% !important;
   }
 
   .hero-title-accent {
@@ -1347,9 +1366,9 @@ body {
   .hero-buttons {
     display: flex !important;
     flex-direction: column !important;
-    gap: 8px !important;
+    gap: 10px !important;
     width: 100% !important;
-    margin: 0 0 16px 0 !important;
+    margin: 0 !important;
     background: transparent !important;
     padding: 0 !important;
   }
@@ -1360,18 +1379,18 @@ body {
     justify-content: center !important;
     gap: 8px !important;
     width: 100% !important;
-    min-height: 46px !important;
-    height: 46px !important;
+    min-height: 50px !important;
+    height: 50px !important;
     padding: 0 16px !important;
     background: #306497 !important;
     color: #FFFFFF !important;
     font-family: 'Inter', Arial, sans-serif !important;
-    font-size: 12px !important;
+    font-size: 12.5px !important;
     font-weight: 800 !important;
     letter-spacing: 0.06em !important;
     text-transform: uppercase !important;
     border: none !important;
-    border-radius: 10px !important;
+    border-radius: 12px !important;
     cursor: pointer !important;
     white-space: nowrap !important;
     box-sizing: border-box !important;
@@ -1384,18 +1403,18 @@ body {
     justify-content: center !important;
     gap: 8px !important;
     width: 100% !important;
-    min-height: 46px !important;
-    height: 46px !important;
+    min-height: 50px !important;
+    height: 50px !important;
     padding: 0 16px !important;
     background: rgba(23, 37, 49, 0.45) !important;
     color: #FFFFFF !important;
     font-family: 'Inter', Arial, sans-serif !important;
-    font-size: 12px !important;
+    font-size: 12.5px !important;
     font-weight: 800 !important;
     letter-spacing: 0.06em !important;
     text-transform: uppercase !important;
     border: 1.5px solid rgba(255, 255, 255, 0.65) !important;
-    border-radius: 10px !important;
+    border-radius: 12px !important;
     cursor: pointer !important;
     white-space: nowrap !important;
     box-sizing: border-box !important;
@@ -1415,10 +1434,16 @@ body {
   .br-all { display: inline !important; }
   .hero-location-badge { display: none !important; }
 
-  /* 5-Item Trust Information Card */
+  /* 5-Item Trust Information Card: 100% inside mobile viewport */
   .hero-stats-wrapper {
     position: relative !important;
+    top: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
     width: 100% !important;
+    max-width: 100% !important;
     z-index: 6 !important;
     margin: 0 !important;
     box-sizing: border-box !important;
@@ -1426,12 +1451,14 @@ body {
 
   .stats-card {
     background: #FFFFFF !important;
-    border-radius: 16px !important;
+    border-radius: 18px !important;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
     border: 1px solid rgba(255, 255, 255, 0.9) !important;
-    padding: 4px 12px !important;
+    padding: 6px 14px !important;
     box-sizing: border-box !important;
     width: 100% !important;
+    margin: 0 !important;
+    transform: none !important;
   }
 
   .hero-section .stats-grid {
@@ -1442,13 +1469,14 @@ body {
     background: transparent !important;
     box-sizing: border-box !important;
     width: 100% !important;
+    margin: 0 !important;
   }
 
   .hero-section .stats-item {
     display: flex !important;
     align-items: center !important;
     gap: 12px !important;
-    padding: 9px 4px !important;
+    padding: 9px 0 !important;
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
@@ -1548,6 +1576,7 @@ body {
     height: 75px !important;
     z-index: 8 !important;
     pointer-events: none !important;
+    line-height: 0 !important;
   }
 
   .hero-wave-svg {
@@ -1566,7 +1595,7 @@ body {
    3. MICRO PHONES ≤ 360px (320px, 360px)
 ══════════════════════════════════════════════════════════ */
 @media (max-width: 360px) {
-  :root { --navbar-h: 72px; }
+  :root { --navbar-h: 76px; }
 
   .hero-truck-floating-badge {
     padding: 5px 8px !important;
@@ -1586,12 +1615,12 @@ body {
 
   .hero-section .btn-primary,
   .hero-section .btn-secondary {
-    height: 42px !important;
-    font-size: 11px !important;
+    height: 44px !important;
+    font-size: 11.5px !important;
   }
 
   .stats-card {
-    padding: 4px 8px !important;
+    padding: 4px 10px !important;
   }
 
   .hero-section .stats-icon-wrap {
