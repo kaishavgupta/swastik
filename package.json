@@ -7,10 +7,12 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "node server.js"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
+    "express": "^4.21.2",
     "framer-motion": "^13.1.1",
     "lucide-react": "^1.34.0",
     "react": "^19.2.8",
