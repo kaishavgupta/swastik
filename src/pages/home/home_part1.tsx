@@ -123,80 +123,86 @@ export const HomePart1: React.FC<HomePart1Props> = ({ onNavigate }) => {
   return (
     <section id="home-part-1" className="hero-section home-snap-part" aria-label="Ready Mix Concrete Hero">
       <div className="hero-flex-layout">
-        {/* ── LEFT COLUMN: Typography & CTAs ── */}
-        <div className="hero-left-col">
-          <motion.div style={{ y: textY }} className="hero-text-content">
-            {/* Floating 18+ Years Badge on mobile/tablet */}
-            <div className="hero-truck-floating-badge" aria-label="18+ Years of Concreting Trust">
-              <div className="hero-truck-badge-icon" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#306497" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                  <circle cx="9" cy="7" r="4" />
-                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                </svg>
-              </div>
-              <span className="hero-truck-badge-number">18+</span>
-              <span className="hero-truck-badge-label">
-                YEARS OF<br />CONCRETING TRUST
-              </span>
-            </div>
-
-            <span className="hero-label">READY MIX CONCRETE</span>
-            <h1 className="hero-title">
-              BUILDING<br className="br-mobile-only" /> STRENGTH.<br className="br-tablet-desktop" /> DELIVERING<br className="br-mobile-only" /> <span className="hero-title-accent">TRUST.</span>
-            </h1>
-            <p className="hero-paragraph">
-              18+ years of dependable Ready Mix Concrete solutions for
-              construction and infrastructure across Lucknow.
-            </p>
-
-            <div className="hero-buttons">
-              <button
-                type="button"
-                className="btn-primary hero-btn-quote"
-                onClick={() => handleNav('/contact?form=true')}
-                aria-label="Request a quote for ready mix concrete"
-              >
-                <span className="btn-icon--left" aria-hidden="true">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                    <line x1="16" y1="2" x2="16" y2="6" />
-                    <line x1="8" y1="2" x2="8" y2="6" />
-                    <line x1="3" y1="10" x2="21" y2="10" />
-                  </svg>
-                </span>
-                <span>REQUEST A QUOTE</span>
-                <span className="btn-icon--right-chevron" aria-hidden="true">&rarr;</span>
-              </button>
-
-              <button
-                type="button"
-                className="btn-secondary hero-btn-products"
-                onClick={() => handleNav('/products')}
-                aria-label="Explore ready mix concrete products"
-              >
-                <span className="btn-icon--left" aria-hidden="true">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                    <polygon points="12 2 2 7 12 12 22 7 12 2" />
-                    <polyline points="2 17 12 22 22 17" />
-                    <polyline points="2 12 12 17 22 12" />
-                  </svg>
-                </span>
-                <span>EXPLORE PRODUCTS</span>
-                <span className="btn-icon--right-chevron" aria-hidden="true">&rarr;</span>
-              </button>
-            </div>
-
-            <div className="hero-location-badge">
-              <svg width="14" height="14" viewBox="0 0 20 20" fill="var(--blue)" style={{ flexShrink: 0 }} aria-hidden="true">
-                <path fillRule="evenodd" d="M5.05 4.05a7 7 0 1 1 9.9 9.9L10 18.9l-4.95-4.95a7 7 0 0 1 0-9.9zM10 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" clipRule="evenodd"/>
+        {/* Mobile/tablet hero content group: badge + text/CTAs move together in normal document flow. */}
+        <div className="hero-content-group">
+          {/* Floating 18+ Years Badge */}
+          <div className="hero-truck-floating-badge" aria-label="18+ Years of Concreting Trust">
+            <div className="hero-truck-badge-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#306497" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
               </svg>
-              <span>
-                <strong style={{ color: 'var(--navy)', fontWeight: 700 }}>LOCATION:</strong> LUCKNOW, UTTAR PRADESH, INDIA
-              </span>
             </div>
-          </motion.div>
+            <span className="hero-truck-badge-number">18+</span>
+            <span className="hero-truck-badge-label">
+              YEARS OF<br />CONCRETING TRUST
+            </span>
+          </div>
+
+          {/* ── LEFT COLUMN: Typography & CTAs ── */}
+          <div className="hero-left-col">
+            <motion.div style={{ y: textY }} className="hero-text-content">
+              <span className="hero-label">READY MIX CONCRETE</span>
+              <h1 className="hero-title">
+                <span className="hero-title-line">BUILDING STRENGTH.</span>{' '}
+                <span className="hero-title-line">
+                  DELIVERING <span className="hero-title-accent">TRUST.</span>
+                </span>
+              </h1>
+              <p className="hero-paragraph">
+                18+ years of dependable Ready Mix Concrete solutions for
+                construction and infrastructure across Lucknow.
+              </p>
+
+              <div className="hero-buttons">
+                <button
+                  type="button"
+                  className="btn-primary hero-btn-quote"
+                  onClick={() => handleNav('/contact?form=true')}
+                  aria-label="Request a quote for ready mix concrete"
+                >
+                  <span className="btn-icon--left" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                      <line x1="16" y1="2" x2="16" y2="6" />
+                      <line x1="8" y1="2" x2="8" y2="6" />
+                      <line x1="3" y1="10" x2="21" y2="10" />
+                    </svg>
+                  </span>
+                  <span>REQUEST A QUOTE</span>
+                  <span className="btn-icon--right-chevron" aria-hidden="true">&rarr;</span>
+                </button>
+
+                <button
+                  type="button"
+                  className="btn-secondary hero-btn-products"
+                  onClick={() => handleNav('/products')}
+                  aria-label="Explore ready mix concrete products"
+                >
+                  <span className="btn-icon--left" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                      <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                      <polyline points="2 17 12 22 22 17" />
+                      <polyline points="2 12 17 22 12" />
+                    </svg>
+                  </span>
+                  <span>EXPLORE PRODUCTS</span>
+                  <span className="btn-icon--right-chevron" aria-hidden="true">&rarr;</span>
+                </button>
+              </div>
+
+              <div className="hero-location-badge">
+                <svg width="14" height="14" viewBox="0 0 20 20" fill="#6796C6" style={{ flexShrink: 0 }} aria-hidden="true">
+                  <path fillRule="evenodd" d="M5.05 4.05a7 7 0 1 1 9.9 9.9L10 18.9l-4.95-4.95a7 7 0 0 1 0-9.9zM10 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" clipRule="evenodd"/>
+                </svg>
+                <span>
+                  <strong className="hero-location-strong">LOCATION:</strong> LUCKNOW, UTTAR PRADESH, INDIA
+                </span>
+              </div>
+            </motion.div>
+          </div>
         </div>
 
         {/* ── RIGHT COLUMN: Transit Mixer Truck Visual ── */}
