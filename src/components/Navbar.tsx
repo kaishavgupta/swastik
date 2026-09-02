@@ -365,58 +365,72 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
 
         /* ═══════════ BREAKPOINTS ═══════════ */
 
-        /* Large desktop — full row */
-        @media (min-width: 1100px) {
+        /* Large desktop — full row (≥ 1200px) */
+        @media (min-width: 1200px) {
           .nh-desktop-row { display: flex !important; }
           .nh-compact-row { display: none !important; }
         }
 
-        /* Tablet + mobile — compact row (logo + hamburger only) */
-        @media (max-width: 1099px) {
+        /* Tablet + mobile — compact row (logo + hamburger only) (< 1200px) */
+        @media (max-width: 1199px) {
           .nh-desktop-row { display: none !important; }
           .nh-compact-row { display: flex !important; }
         }
 
-        /* Tablet (768px–1099px) */
-        @media (min-width: 768px) and (max-width: 1099px) {
-          .nh-logo-img--compact { height: clamp(64px, 8vw, 80px); }
-          .nh-compact-row { padding: 26px 24px 12px; }
-        }
-
-        /* Mobile (≤ 767px): compact header, large clear logo */
-        @media (max-width: 767px) {
-          /* Tighten the outer wrapper so it never causes overflow */
+        /* Tablet (768px–1199px) */
+        @media (min-width: 768px) and (max-width: 1199px) {
           .nh-wrapper {
-            padding: 8px 8px 0;
-            /* Prevent it from ever exceeding the viewport */
+            padding: 12px 20px 0;
             max-width: 100vw;
             box-sizing: border-box;
           }
-          /* The floating card must not overflow */
           .nh-card {
             overflow: hidden;
             width: 100%;
             box-sizing: border-box;
           }
           .nh-compact-row {
-            padding: 20px 16px 10px;
-            /* Make sure it never overflows */
+            padding: 20px 20px 10px;
+            width: 100%;
+            box-sizing: border-box;
+          }
+          .nh-logo-img--compact {
+            height: clamp(56px, 7vw, 70px);
+          }
+          .nh-hamburger {
+            flex-shrink: 0;
+            padding: 8px;
+            margin-left: auto;
+          }
+        }
+
+        /* Mobile (≤ 767px): compact header, large clear logo */
+        @media (max-width: 767px) {
+          .nh-wrapper {
+            padding: 10px 12px 0;
+            max-width: 100vw;
+            box-sizing: border-box;
+          }
+          .nh-card {
+            overflow: hidden;
+            width: 100%;
+            box-sizing: border-box;
+          }
+          .nh-compact-row {
+            padding: 18px 14px 8px;
             width: 100%;
             box-sizing: border-box;
             overflow: hidden;
           }
-          /* Logo: clearly readable on small screens */
           .nh-logo-img--compact {
-            height: clamp(56px, 15vw, 76px);
-            max-width: calc(100vw - 80px); /* leave room for hamburger */
+            height: clamp(50px, 12vw, 64px);
+            max-width: calc(100vw - 80px);
           }
-          /* Hamburger: large touch target, always visible */
           .nh-hamburger {
             flex-shrink: 0;
-            padding: 10px;
+            padding: 8px;
             margin-left: auto;
           }
-          /* Drawer must also not overflow */
           .nh-drawer {
             width: 100%;
             box-sizing: border-box;
@@ -426,9 +440,9 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
 
         /* Very small phones (≤ 360px) */
         @media (max-width: 360px) {
-          .nh-wrapper { padding: 6px 6px 0; }
-          .nh-compact-row { padding: 18px 12px 8px; }
-          .nh-logo-img--compact { height: clamp(48px, 14vw, 64px); }
+          .nh-wrapper { padding: 6px 8px 0; }
+          .nh-compact-row { padding: 14px 10px 6px; }
+          .nh-logo-img--compact { height: 46px; }
         }
       `}</style>
     </>

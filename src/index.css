@@ -748,7 +748,6 @@ body {
   }
 }
 
-/* Tablet layout (768px to 1199px) */
 /* ══════════════════════════════════════════════════════════
    HOME PAGE — PART 1 (HERO) RESPONSIVE COMPOSITION
    Strict reproduction of the reference design for:
@@ -766,9 +765,9 @@ body {
    1. TABLET / MEDIUM SCREENS (768px – 1199px)
 ══════════════════════════════════════════════════════════ */
 @media (min-width: 768px) and (max-width: 1199px) {
-  :root { --navbar-h: 96px; }
+  :root { --navbar-h: 108px; }
 
-  /* Section Shell */
+  /* Section Shell: reserves full space below the header */
   .hero-section {
     scroll-snap-align: start;
     position: relative !important;
@@ -780,7 +779,7 @@ body {
     overflow-x: hidden !important;
     overflow-y: visible !important;
     box-sizing: border-box !important;
-    padding-top: calc(var(--navbar-h, 96px) + 20px) !important;
+    padding-top: calc(var(--navbar-h, 108px) + 24px) !important;
     padding-bottom: 100px !important;
     padding-inline: 32px !important;
     display: flex !important;
@@ -871,11 +870,11 @@ body {
     transform: none !important;
   }
 
-  /* Upper-Right Floating 18+ Badge */
+  /* Upper-Right Floating 18+ Badge: cleanly sits below header */
   .hero-truck-floating-badge {
     display: flex !important;
     position: absolute !important;
-    top: -4px !important;
+    top: 0 !important;
     right: 0 !important;
     background: #FFFFFF !important;
     border-radius: 14px !important;
@@ -935,6 +934,7 @@ body {
     text-transform: uppercase !important;
     color: #FFFFFF !important;
     margin: 0 0 14px 0 !important;
+    max-width: 65% !important;
   }
 
   .hero-title-accent {
@@ -1166,7 +1166,7 @@ body {
    Exact match to Target Reference Mobile Mockup
 ══════════════════════════════════════════════════════════ */
 @media (max-width: 767px) {
-  :root { --navbar-h: 84px; }
+  :root { --navbar-h: 102px; }
 
   /* Disable parallax offset on mobile */
   .hero-text-content,
@@ -1189,7 +1189,7 @@ body {
     overflow-y: visible !important;
     box-sizing: border-box !important;
     background: #172531 !important;
-    padding-top: calc(var(--navbar-h, 84px) + 12px) !important;
+    padding-top: calc(var(--navbar-h, 102px) + 20px) !important;
     padding-bottom: 85px !important;
     padding-inline: 16px !important;
     align-items: center !important;
@@ -1281,11 +1281,11 @@ body {
     transform: none !important;
   }
 
-  /* Upper-Right Floating 18+ Badge */
+  /* Upper-Right Floating 18+ Badge: cleanly sits below header */
   .hero-truck-floating-badge {
     display: flex !important;
     position: absolute !important;
-    top: -2px !important;
+    top: 0 !important;
     right: 0 !important;
     background: #FFFFFF !important;
     border-radius: 12px !important;
@@ -1334,19 +1334,20 @@ body {
     color: #6796C6 !important;
     margin-bottom: 6px !important;
     display: block !important;
+    max-width: calc(100% - 130px) !important;
   }
 
   .hero-title {
     font-family: 'Inter', Arial, Helvetica, sans-serif !important;
     font-weight: 900 !important;
-    font-size: clamp(25px, 7vw, 32px) !important;
+    font-size: clamp(24px, 6.8vw, 30px) !important;
     line-height: 1.12 !important;
     letter-spacing: -0.025em !important;
     text-transform: uppercase !important;
     color: #FFFFFF !important;
     margin: 0 0 8px 0 !important;
     padding: 0 !important;
-    max-width: 90% !important;
+    max-width: calc(100% - 110px) !important;
   }
 
   .hero-title-accent {
@@ -1595,7 +1596,11 @@ body {
    3. MICRO PHONES ≤ 360px (320px, 360px)
 ══════════════════════════════════════════════════════════ */
 @media (max-width: 360px) {
-  :root { --navbar-h: 76px; }
+  :root { --navbar-h: 84px; }
+
+  .hero-section {
+    padding-top: calc(var(--navbar-h, 84px) + 14px) !important;
+  }
 
   .hero-truck-floating-badge {
     padding: 5px 8px !important;
@@ -1607,6 +1612,7 @@ body {
 
   .hero-title {
     font-size: 22px !important;
+    max-width: calc(100% - 90px) !important;
   }
 
   .hero-paragraph {
