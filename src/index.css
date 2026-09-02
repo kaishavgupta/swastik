@@ -29323,3 +29323,384 @@ body {
     top: 40px !important;
   }
 }
+
+/* ================================================================
+   HOME PART 4 — PRODUCTS REDESIGN
+   Matches the new centered UI: heading -> carousel -> CTA -> features.
+   Cards remain horizontally scrollable on every viewport and auto-advance.
+   ================================================================ */
+.products-outer-section {
+  position: relative !important;
+  width: 100% !important;
+  min-height: 760px;
+  padding: clamp(72px, 7vw, 108px) 0 150px !important;
+  background: #F7FAFE !important;
+  overflow: hidden !important;
+}
+
+.products-container {
+  width: min(94%, 1380px) !important;
+  margin-inline: auto !important;
+  position: relative !important;
+  z-index: 5 !important;
+}
+
+/* Centered heading block */
+.products-section-header {
+  width: min(100%, 920px);
+  margin: 0 auto clamp(30px, 3.5vw, 44px);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.products-section-header .products-eyebrow {
+  display: block;
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: #0875D1;
+}
+
+.products-section-header .products-heading-line {
+  width: 48px;
+  height: 3px;
+  margin: 0 0 18px;
+  background: #0875D1;
+  border-radius: 10px;
+}
+
+.products-section-header .products-main-title {
+  width: 100%;
+  margin: 0;
+  font-size: clamp(36px, 4.2vw, 58px);
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+  font-weight: 900;
+  color: #071B3A;
+}
+
+.products-section-header .products-description {
+  width: min(100%, 780px);
+  max-width: 780px;
+  margin: 18px auto 0;
+  color: #52627A;
+  font-size: clamp(15px, 1.3vw, 18px);
+  line-height: 1.65;
+}
+
+/* Horizontal carousel */
+.products-main-layout {
+  display: block !important;
+  width: 100% !important;
+}
+
+.products-intro {
+  display: none !important;
+}
+
+.products-carousel-shell {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.products-grid-wrapper {
+  width: 100% !important;
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  overflow-x: auto !important;
+  overflow-y: visible !important;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  padding: 8px 3px 18px;
+}
+
+.products-grid-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.products-cards-grid {
+  display: flex !important;
+  width: max-content !important;
+  min-width: 100%;
+  gap: 18px !important;
+}
+
+.product-card {
+  flex: 0 0 clamp(250px, 18vw, 270px) !important;
+  width: clamp(250px, 18vw, 270px) !important;
+  min-height: 405px;
+  scroll-snap-align: start;
+  border-radius: 14px !important;
+  border: 1px solid #DCE8F5 !important;
+  background: #FFFFFF !important;
+  box-shadow: 0 5px 20px rgba(7, 26, 54, .055) !important;
+}
+
+.product-card-image-wrap {
+  aspect-ratio: 1.42 / 1 !important;
+}
+
+.product-card-meta-row {
+  padding: 15px 15px 0 !important;
+}
+
+.product-card-icon-wrap {
+  width: 40px !important;
+  height: 40px !important;
+}
+
+.product-card-content {
+  padding: 13px 15px 18px !important;
+}
+
+.product-card-title {
+  font-size: 16px !important;
+}
+
+.product-card-description {
+  font-size: 13.5px !important;
+  line-height: 1.5 !important;
+}
+
+.products-carousel-arrow {
+  flex: 0 0 54px;
+  width: 54px;
+  height: 54px;
+  border: 0;
+  border-radius: 50%;
+  background: #FFFFFF;
+  color: #0875D1;
+  box-shadow: 0 8px 25px rgba(7, 26, 54, .10);
+  font-size: 28px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .2s ease, box-shadow .2s ease;
+  z-index: 8;
+}
+
+.products-carousel-arrow:hover {
+  transform: scale(1.06);
+  box-shadow: 0 10px 30px rgba(7, 26, 54, .16);
+}
+
+.products-carousel-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+  margin: 3px 0 22px;
+}
+
+.products-carousel-dots span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #C9E1F8;
+}
+
+.products-carousel-dots span.active {
+  width: 11px;
+  height: 11px;
+  background: #0875D1;
+}
+
+.products-view-all-centered {
+  display: flex !important;
+  width: 276px !important;
+  height: 52px !important;
+  margin: 0 auto !important;
+}
+
+.products-feature-list-horizontal {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  max-width: 900px;
+  margin: 30px auto 0 !important;
+  gap: 0 !important;
+  flex-direction: row !important;
+}
+
+.products-feature-list-horizontal .products-feature-item {
+  justify-content: center;
+  min-height: 54px;
+  padding: 0 28px;
+  border-right: 1px solid #DCE5EF;
+}
+
+.products-feature-list-horizontal .products-feature-item:last-child {
+  border-right: 0;
+}
+
+.products-feature-list-horizontal .products-feature-icon-circle {
+  width: 42px;
+  height: 42px;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.products-feature-list-horizontal .products-feature-text {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.products-feature-list-horizontal .products-feature-line-connector {
+  display: none !important;
+}
+
+/* Large desktop: keep the visual density close to the supplied design */
+@media (min-width: 1400px) {
+  .products-container {
+    width: min(92%, 1380px) !important;
+  }
+
+  .product-card {
+    flex-basis: 246px !important;
+    width: 246px !important;
+  }
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .products-outer-section {
+    min-height: 720px;
+    padding-top: 72px !important;
+    padding-bottom: 140px !important;
+  }
+
+  .products-section-header {
+    width: min(94%, 760px);
+    margin-bottom: 34px;
+  }
+
+  .products-section-header .products-main-title {
+    font-size: clamp(34px, 5vw, 48px);
+  }
+
+  .product-card {
+    flex-basis: min(300px, 38vw) !important;
+    width: min(300px, 38vw) !important;
+  }
+
+  .products-carousel-arrow {
+    flex-basis: 48px;
+    width: 48px;
+    height: 48px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .products-outer-section {
+    min-height: auto;
+    padding: 58px 0 118px !important;
+  }
+
+  .products-container {
+    width: calc(100% - 32px) !important;
+  }
+
+  .products-section-header {
+    width: 100%;
+    margin-bottom: 27px;
+  }
+
+  .products-section-header .products-eyebrow {
+    font-size: 11px;
+    letter-spacing: 2.5px;
+  }
+
+  .products-section-header .products-main-title {
+    font-size: clamp(31px, 9vw, 42px);
+    line-height: 1.06;
+  }
+
+  .products-section-header .products-description {
+    margin-top: 14px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .products-carousel-shell {
+    display: block;
+  }
+
+  .products-grid-wrapper {
+    width: calc(100vw - 32px) !important;
+    margin-left: 0;
+    padding: 5px 2px 15px;
+  }
+
+  .products-cards-grid {
+    gap: 14px !important;
+  }
+
+  .product-card {
+    flex-basis: calc(100vw - 78px) !important;
+    width: calc(100vw - 78px) !important;
+    min-height: 390px;
+  }
+
+  .products-carousel-arrow {
+    position: absolute;
+    top: 43%;
+    width: 42px;
+    height: 42px;
+    flex-basis: 42px;
+    font-size: 22px;
+    z-index: 10;
+  }
+
+  .products-carousel-arrow-left {
+    left: -9px;
+  }
+
+  .products-carousel-arrow-right {
+    right: -9px;
+  }
+
+  .products-carousel-dots {
+    margin-top: 1px;
+    margin-bottom: 20px;
+  }
+
+  .products-view-all-centered {
+    width: 100% !important;
+    max-width: 380px;
+    height: 52px !important;
+  }
+
+  .products-feature-list-horizontal {
+    grid-template-columns: 1fr;
+    width: 100%;
+    margin-top: 24px !important;
+    gap: 0 !important;
+  }
+
+  .products-feature-list-horizontal .products-feature-item {
+    justify-content: flex-start;
+    min-height: 56px;
+    padding: 10px 8px;
+    border-right: 0;
+    border-bottom: 1px solid #DCE5EF;
+  }
+
+  .products-feature-list-horizontal .products-feature-item:last-child {
+    border-bottom: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .products-grid-wrapper {
+    scroll-behavior: auto !important;
+  }
+}

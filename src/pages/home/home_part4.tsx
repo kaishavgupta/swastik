@@ -99,13 +99,61 @@ const ProductCardIcon = ({ iconKey }: { iconKey: string }) => {
 };
 
 export const HomePart4: React.FC<HomePart4Props> = ({ onNavigate }) => {
+  const sliderRef = React.useRef<HTMLDivElement>(null);
+  const autoScrollRef = React.useRef<number | null>(null);
+
   const handleNav = (path: string) => {
-    if (onNavigate) {
-      onNavigate(path);
-    } else {
-      window.location.hash = path;
-    }
+    if (onNavigate) onNavigate(path);
+    else window.location.hash = path;
   };
+
+  const scrollCards = (direction: 'left' | 'right') => {
+    const slider = sliderRef.current;
+    if (!slider) return;
+    const card = slider.querySelector<HTMLElement>('.product-card');
+    if (!card) return;
+    const amount = card.offsetWidth + 18;
+    slider.scrollBy({ left: direction === 'right' ? amount : -amount, behavior: 'smooth' });
+  };
+
+  React.useEffect(() => {
+    const slider = sliderRef.current;
+    if (!slider) return;
+
+    const startAutoScroll = () => {
+      autoScrollRef.current = window.setInterval(() => {
+        const maxScroll = slider.scrollWidth - slider.clientWidth;
+        if (maxScroll <= 0) return;
+        if (slider.scrollLeft >= maxScroll - 4) {
+          slider.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          const card = slider.querySelector<HTMLElement>('.product-card');
+          slider.scrollBy({ left: (card?.offsetWidth || 280) + 18, behavior: 'smooth' });
+        }
+      }, 3500);
+    };
+
+    const stopAutoScroll = () => {
+      if (autoScrollRef.current !== null) {
+        window.clearInterval(autoScrollRef.current);
+        autoScrollRef.current = null;
+      }
+    };
+
+    startAutoScroll();
+    slider.addEventListener('mouseenter', stopAutoScroll);
+    slider.addEventListener('mouseleave', startAutoScroll);
+    slider.addEventListener('touchstart', stopAutoScroll, { passive: true });
+    slider.addEventListener('touchend', startAutoScroll, { passive: true });
+
+    return () => {
+      stopAutoScroll();
+      slider.removeEventListener('mouseenter', stopAutoScroll);
+      slider.removeEventListener('mouseleave', startAutoScroll);
+      slider.removeEventListener('touchstart', stopAutoScroll);
+      slider.removeEventListener('touchend', startAutoScroll);
+    };
+  }, []);
 
   return (
     <section id="home-part-4" className="products-outer-section home-snap-part">
@@ -140,61 +188,23 @@ export const HomePart4: React.FC<HomePart4Props> = ({ onNavigate }) => {
       </div>
 
       <div className="products-container">
-        <div className="products-main-layout">
-          {/* Left Block */}
-          <div className="products-intro">
-            <span className="products-eyebrow">OUR PRODUCTS</span>
-            <h2 className="products-main-title">
-              Concrete<br />
-              Engineered<br />
-              for <span className="text-accent-blue">Every</span><br />
-              Requirement
-            </h2>
-            <div className="products-heading-line" aria-hidden="true" />
-            <p className="products-description">
-              High performance concrete solutions designed to meet diverse construction needs with strength, durability and unmatched reliability.
-            </p>
+        <div className="products-section-header">
+          <span className="products-eyebrow">OUR PRODUCTS</span>
+          <div className="products-heading-line" aria-hidden="true" />
+          <h2 className="products-main-title">
+            Concrete Engineered for <span className="text-accent-blue">Every</span> Requirement
+          </h2>
+          <p className="products-description">
+            High performance concrete solutions designed to meet diverse construction needs with strength, durability and unmatched reliability.
+          </p>
+        </div>
 
-            <div className="products-cta-wrap">
-              <button className="products-view-all-btn" onClick={() => handleNav('/products')}>
-                VIEW ALL PRODUCTS &rarr;
-              </button>
-            </div>
+        <div className="products-carousel-shell">
+          <button className="products-carousel-arrow products-carousel-arrow-left" aria-label="Previous products" onClick={() => scrollCards('left')}>
+            &#8592;
+          </button>
 
-            <div className="products-feature-list">
-              <div className="products-feature-line-connector" aria-hidden="true" />
-              <div className="products-feature-item">
-                <div className="products-feature-icon-circle">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0875D1" strokeWidth="2.5">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                    <path d="m9 11 2 2 4-4" />
-                  </svg>
-                </div>
-                <span className="products-feature-text">Advanced Technology</span>
-              </div>
-              <div className="products-feature-item">
-                <div className="products-feature-icon-circle">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0875D1" strokeWidth="2.5">
-                    <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76z" />
-                    <path d="m9 12 2 2 4-4" />
-                  </svg>
-                </div>
-                <span className="products-feature-text">Consistent Quality</span>
-              </div>
-              <div className="products-feature-item">
-                <div className="products-feature-icon-circle">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0875D1" strokeWidth="2.5">
-                    <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
-                    <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
-                  </svg>
-                </div>
-                <span className="products-feature-text">Reliable Support</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Cards Grid */}
-          <div className="products-grid-wrapper">
+          <div className="products-grid-wrapper" ref={sliderRef}>
             <div className="products-cards-grid">
               {PRODUCT_CARDS_DATA.map((card) => (
                 <div key={card.id} className="product-card">
@@ -202,9 +212,7 @@ export const HomePart4: React.FC<HomePart4Props> = ({ onNavigate }) => {
                     <img src={card.image} alt={card.title} className="product-card-image" />
                   </div>
                   <div className="product-card-meta-row">
-                    <div className="product-card-icon-wrap">
-                      <ProductCardIcon iconKey={card.iconKey} />
-                    </div>
+                    <div className="product-card-icon-wrap"><ProductCardIcon iconKey={card.iconKey} /></div>
                     <span className="product-card-badge">{card.badge}</span>
                   </div>
                   <div className="product-card-content">
@@ -223,6 +231,33 @@ export const HomePart4: React.FC<HomePart4Props> = ({ onNavigate }) => {
                 </div>
               ))}
             </div>
+          </div>
+
+          <button className="products-carousel-arrow products-carousel-arrow-right" aria-label="Next products" onClick={() => scrollCards('right')}>
+            &#8594;
+          </button>
+        </div>
+
+        <div className="products-carousel-dots" aria-hidden="true">
+          <span></span><span className="active"></span><span></span><span></span><span></span>
+        </div>
+
+        <button className="products-view-all-btn products-view-all-centered" onClick={() => handleNav('/products')}>
+          VIEW ALL PRODUCTS &rarr;
+        </button>
+
+        <div className="products-feature-list products-feature-list-horizontal">
+          <div className="products-feature-item">
+            <div className="products-feature-icon-circle">✓</div>
+            <span className="products-feature-text">Advanced Technology</span>
+          </div>
+          <div className="products-feature-item">
+            <div className="products-feature-icon-circle">✓</div>
+            <span className="products-feature-text">Consistent Quality</span>
+          </div>
+          <div className="products-feature-item">
+            <div className="products-feature-icon-circle">✓</div>
+            <span className="products-feature-text">Reliable Support</span>
           </div>
         </div>
       </div>
