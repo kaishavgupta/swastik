@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { getWhatsAppUrl } from '../../config/contact';
+import { getWhatsAppUrl, getTelUrl, CONTACT_NUMBER_DISPLAY } from '../../config/contact';
 
 export const Contact2: React.FC = () => {
   // Form State
@@ -171,8 +171,7 @@ Thank you.`;
                 <div className="contact-touch-info-details">
                   <span className="contact-touch-info-label">PHONE</span>
                   <div className="contact-touch-info-text">
-                    <a href="tel:+918076439354" className="contact-touch-link">+91 80764 39354</a>
-                    <a href="tel:+919307381838" className="contact-touch-link">+91 93073 81838</a>
+                    <a href={getTelUrl()} className="contact-touch-link">{CONTACT_NUMBER_DISPLAY}</a>
                   </div>
                 </div>
               </div>

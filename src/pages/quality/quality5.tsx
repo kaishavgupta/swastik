@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { getTelUrl, CONTACT_NUMBER_DISPLAY } from '../../config/contact';
 
 interface Quality5Props {
   onNavigate?: (path: string) => void;
@@ -24,8 +25,7 @@ export const Quality5: React.FC<Quality5Props> = ({ onNavigate }) => {
       ),
       content: (
         <div className="quality-cta-contact-text">
-          <a href="tel:+919307381838" className="quality-cta-contact-link">+91 9307381838</a>
-          <a href="tel:+917619906200" className="quality-cta-contact-link">+91 7619906200</a>
+          <a href={getTelUrl()} className="quality-cta-contact-link">{CONTACT_NUMBER_DISPLAY}</a>
         </div>
       )
     },
