@@ -16,17 +16,7 @@ export const HomePart2: React.FC<HomePart2Props> = ({ onNavigate }) => {
 
   return (
     <section id="home-part-2" className="about-section-fullscreen home-snap-part" aria-label="About Swastik Mixtures">
-      {/* Full-bleed right-side image */}
-      <div className="about-bg-img-col" aria-hidden="true">
-        <img
-          src="/swastik-concrete-batching-plant.svg"
-          alt="Swastik Mixtures Ready Mix Concrete Batching Plant"
-          className="about-bg-img"
-        />
-        <div className="about-img-fade" />
-      </div>
-
-      {/* Left text content */}
+      {/* ── LEFT COLUMN / MAIN CONTENT ── */}
       <div className="about-left-col">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
@@ -41,6 +31,25 @@ export const HomePart2: React.FC<HomePart2Props> = ({ onNavigate }) => {
             <span className="about-heading-accent">Trust</span>
           </h2>
           <span className="about-divider" />
+
+          {/* ── MOBILE-ONLY IMAGE CONTAINER (Inline under title) ── */}
+          <div className="about-mobile-img-wrapper">
+            <img
+              src="/swastik-concrete-batching-plant.svg"
+              alt="Swastik Mixtures Ready Mix Concrete Batching Plant"
+              className="about-mobile-img"
+            />
+            <div className="about-mobile-badge">
+              <div className="about-badge-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
+                </svg>
+              </div>
+              <p className="about-badge-num">18+</p>
+              <p className="about-badge-txt">YEARS OF<br />CONCRETING TRUST</p>
+            </div>
+          </div>
+
           <p className="about-paragraph">
             Swastik Mixtures is a trusted Ready Mix Concrete company based
             in Lucknow, Uttar Pradesh, bringing 18+ years of dedicated
@@ -93,13 +102,23 @@ export const HomePart2: React.FC<HomePart2Props> = ({ onNavigate }) => {
         </motion.div>
       </div>
 
-      {/* 18+ Floating Badge */}
+      {/* ── DESKTOP & TABLET RIGHT-SIDE BATCHING PLANT IMAGE ── */}
+      <div className="about-bg-img-col" aria-hidden="true">
+        <img
+          src="/swastik-concrete-batching-plant.svg"
+          alt="Swastik Mixtures Ready Mix Concrete Batching Plant"
+          className="about-bg-img"
+        />
+        <div className="about-img-fade" />
+      </div>
+
+      {/* ── DESKTOP & TABLET 18+ FLOATING BADGE ── */}
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ delay: 0.35, duration: 0.75, ease: "easeOut" }}
-        className="about-floating-badge"
+        className="about-floating-badge desktop-tablet-badge"
       >
         <div className="about-badge-icon">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
@@ -110,7 +129,7 @@ export const HomePart2: React.FC<HomePart2Props> = ({ onNavigate }) => {
         <p className="about-badge-txt">YEARS OF<br />CONCRETING TRUST</p>
       </motion.div>
 
-      {/* Bottom Wave */}
+      {/* ── BOTTOM WAVE ── */}
       <div className="about-wave-container" aria-hidden="true">
         <svg
           viewBox="0 0 1440 130"
@@ -130,7 +149,7 @@ export const HomePart2: React.FC<HomePart2Props> = ({ onNavigate }) => {
         </svg>
       </div>
 
-      {/* Bottom Info Panel */}
+      {/* ── BOTTOM SUPPORTING INFORMATION PANEL ── */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
