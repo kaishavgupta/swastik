@@ -10,6 +10,100 @@ type Client = {
   alt: string;
 };
 
+
+/**
+ * Production-safe client logo loader.
+ *
+ * ERROR FIX:
+ * GoDaddy's production server can be case-sensitive and the Vite base path
+ * can differ from local development. RERA/NBCC were being requested as
+ * root-relative files and were rendering as broken images in production.
+ *
+ * We keep the existing UI and try known filename variants before showing
+ * a clean text fallback. This prevents a broken-image icon from ever
+ * appearing while still preferring the real SVG asset.
+ */
+const CLIENT_LOGO_CANDIDATES: Record<string, string[]> = {
+  rera: [
+    "RERA.svg",
+    "rera.svg",
+    "RERA_Logo.svg",
+    "RERA-logo.svg",
+    "UP-RERA.svg",
+    "UP_RERA.svg",
+  ],
+  nbcc: [
+    "NBCC.svg",
+    "nbcc.svg",
+    "NBCC_Logo.svg",
+    "NBCC-logo.svg",
+    "NBCC_India.svg",
+    "NBCC_India_Logo.svg",
+  ],
+};
+
+const getLogoCandidates = (client: Client): string[] => {
+  const candidates = CLIENT_LOGO_CANDIDATES[client.id] ?? [client.logo.replace(/^\//, "")];
+  const baseUrl = import.meta.env.BASE_URL || "/";
+
+  return candidates.map((filename) => {
+    // ERROR FIX: Resolve through Vite's configured base URL instead of
+    // assuming the production site is always mounted at "/".
+    return new URL(filename, baseUrl).toString();
+  });
+};
+
+const ClientLogo: React.FC<{ client: Client }> = ({ client }) => {
+  const candidates = React.useMemo(() => getLogoCandidates(client), [client]);
+  const [candidateIndex, setCandidateIndex] = React.useState(0);
+
+  React.useEffect(() => {
+    // ERROR FIX: Reset the candidate when a client record changes.
+    setCandidateIndex(0);
+  }, [client.id]);
+
+  const handleError = () => {
+    setCandidateIndex((current) => Math.min(current + 1, candidates.length));
+  };
+
+  if (candidateIndex >= candidates.length) {
+    // ERROR FIX: Never leave a broken-image icon in the production UI.
+    return (
+      <span
+        className="client-v3-logo-fallback"
+        role="img"
+        aria-label={client.alt}
+        style={{
+          display: "inline-flex",
+          alignItems: "center",
+          justifyContent: "center",
+          minHeight: 52,
+          padding: "8px 14px",
+          borderRadius: 8,
+          color: "#123B68",
+          fontWeight: 800,
+          fontSize: 18,
+          letterSpacing: "0.04em",
+          background: "#F4F8FC",
+          border: "1px solid #DCEAF7",
+          boxSizing: "border-box",
+        }}
+      >
+        {client.id === "rera" ? "UP RERA" : client.name}
+      </span>
+    );
+  }
+
+  return (
+    <img
+      src={candidates[candidateIndex]}
+      alt={client.alt}
+      onError={handleError}
+      decoding="async"
+    />
+  );
+};
+
 const clients: Client[] = [
   {
     id: "pwd",
@@ -229,7 +323,7 @@ export default function HomePart11Clients() {
               <div className="client-v3-light" aria-hidden="true" />
 
               <div className="client-v3-logo-wrap">
-                <img src={client.logo} alt={client.alt} />
+                <ClientLogo client={client} />
               </div>
 
               <h3>{client.name}</h3>
