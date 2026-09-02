@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { getWhatsAppUrl, getTelUrl, CONTACT_NUMBER_DISPLAY } from '../../config/contact';
+import { getWhatsAppUrl, getTelUrl, CONTACT_NUMBER_DISPLAY, getMailtoUrl, CONTACT_EMAIL } from '../../config/contact';
 
 export const Contact2: React.FC = () => {
   // Form State
@@ -189,8 +189,7 @@ Thank you.`;
                 <div className="contact-touch-info-details">
                   <span className="contact-touch-info-label">EMAIL</span>
                   <div className="contact-touch-info-text">
-                    <a href="mailto:info@swastikmixtures.com" className="contact-touch-link">info@swastikmixtures.com</a>
-                    <a href="mailto:sales@swastikmixtures.com" className="contact-touch-link">sales@swastikmixtures.com</a>
+                    <a href={getMailtoUrl()} className="contact-touch-link">{CONTACT_EMAIL}</a>
                   </div>
                 </div>
               </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { SVGIcons } from '../icons/SVGIcons';
 import { navigationLinks } from '../data/mockData';
-import { getTelUrl, CONTACT_NUMBER_DISPLAY } from '../config/contact';
+import { getTelUrl, CONTACT_NUMBER_DISPLAY, getMailtoUrl, CONTACT_EMAIL } from '../config/contact';
 
 interface FooterProps {
   onNavigate: (path: string) => void;
@@ -101,9 +101,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 <span className="footer-contact-icon"><SVGIcons.Phone size={15} /></span>
                 <span>{CONTACT_NUMBER_DISPLAY}</span>
               </a>
-              <a href="mailto:info@swastikmixtures.com" className="footer-contact-item">
+              <a href={getMailtoUrl()} className="footer-contact-item">
                 <span className="footer-contact-icon"><SVGIcons.Mail size={15} /></span>
-                <span>info@swastikmixtures.com</span>
+                <span>{CONTACT_EMAIL}</span>
               </a>
               <div className="footer-contact-item">
                 <span className="footer-contact-icon"><SVGIcons.MapPin size={15} /></span>

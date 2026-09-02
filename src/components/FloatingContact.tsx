@@ -1,12 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { getWhatsAppUrl } from '../config/contact';
+import { getWhatsAppUrl, getMailtoUrl } from '../config/contact';
 
 export const FloatingContact: React.FC = () => {
-  const officialEmail = 'info@swastikmixtures.com';
-
-  const emailSubject = encodeURIComponent('Swastik Mixtures Enquiry');
-  const mailtoUrl = `mailto:${officialEmail}?subject=${emailSubject}`;
+  const mailtoUrl = getMailtoUrl('Swastik Mixtures Enquiry');
   const whatsappUrl = getWhatsAppUrl();
 
   return (

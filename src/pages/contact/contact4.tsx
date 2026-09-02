@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { getTelUrl, CONTACT_NUMBER_DISPLAY } from '../../config/contact';
+import { getTelUrl, CONTACT_NUMBER_DISPLAY, getMailtoUrl, CONTACT_EMAIL } from '../../config/contact';
 
 interface Contact4Props {
   onScrollToPart?: (index: number) => void;
@@ -115,9 +115,9 @@ export const Contact4: React.FC<Contact4Props> = ({ onScrollToPart }) => {
             </p>
 
             <a
-              href="mailto:info@swastikmixtures.com"
+              href={getMailtoUrl()}
               className="contact-project-card-btn contact-project-btn-outline"
-              aria-label="Send email to Swastik Mixtures"
+              aria-label={`Send email to ${CONTACT_EMAIL}`}
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
