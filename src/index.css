@@ -636,15 +636,91 @@ body {
   }
 }
 
-/* Large tablet/desktop (1024–1495px) — keep 100vh so scroll snap works */
-@media (max-width: 1495px) and (min-width: 1024px) {
+/* ══════════════════════════════════════════════════════
+   DESKTOP HERO SECTION ( >= 1200px )
+   Clean two-column design: Text strictly on left with solid light background,
+   Concrete mixer truck image strictly on right with 0 bleed into text area.
+══════════════════════════════════════════════════════ */
+@media (min-width: 1200px) {
+  .hero-section {
+    position: relative !important;
+    width: 100% !important;
+    height: 100svh !important;
+    min-height: 780px !important;
+    background-color: #FFFFFF !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+
   .hero-flex-layout {
-    flex-direction: row !important;
-    align-items: stretch !important;
+    display: grid !important;
+    grid-template-columns: 44% 56% !important;
+    align-items: center !important;
+    width: 100% !important;
+    height: 100% !important;
+    padding-top: var(--navbar-h) !important;
+    box-sizing: border-box !important;
+  }
+
+  .hero-left-col {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    padding-left: clamp(32px, 5vw, 90px) !important;
+    padding-right: 32px !important;
+    padding-top: clamp(20px, 4vh, 60px) !important;
+    padding-bottom: clamp(140px, 15vh, 180px) !important;
+    background-color: #FFFFFF !important;
+    position: relative !important;
+    z-index: 10 !important;
+    box-sizing: border-box !important;
+  }
+
+  .hero-right-col {
+    width: 100% !important;
+    height: 100% !important;
+    position: relative !important;
+    z-index: 5 !important;
+    overflow: hidden !important;
+    background-color: #FFFFFF !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: flex-end !important;
+  }
+
+  .hero-right-col::before {
+    display: none !important;
+  }
+
+  .hero-truck-wrap {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: flex-end !important;
+    position: relative !important;
+    z-index: 5 !important;
+  }
+
+  .hero-truck-visual {
+    width: 100% !important;
+    height: 100% !important;
+    max-height: calc(100vh - var(--navbar-h) - 100px) !important;
+    object-fit: contain !important;
+    object-position: bottom right !important;
+    display: block !important;
+  }
+
+  .hero-construction-wrap {
+    display: none !important;
   }
 }
 
-@media (max-width: 1495px) and (min-width: 768px) {
+/* Tablet layout (768px to 1199px) */
+@media (max-width: 1199px) and (min-width: 768px) {
   .hero-left-col {
     width: 45% !important;
     padding-left: clamp(24px, 4vw, 40px) !important;
