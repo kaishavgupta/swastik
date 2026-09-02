@@ -1,8 +1,30 @@
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
-export default defineConfig({
-  plugins: [react(), tailwindcss()],
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), '')
+
+  return {
+    plugins: [
+      react(),
+      tailwindcss(),
+      {
+        name: 'api-contact-info-dev',
+        configureServer(server) {
+          server.middlewares.use('/api/contact-info', (_req, res) => {
+            res.setHeader('Content-Type', 'application/json')
+            res.end(
+              JSON.stringify({
+                phone: env.CONTACT_NUMBER || env.VITE_CONTACT_NUMBER || '919219616304',
+                email: env.CONTACT_EMAIL || env.VITE_CONTACT_EMAIL || 'sales@swastikmixtures.com',
+              })
+            )
+          })
+        },
+      },
+    ],
+  }
 })
+

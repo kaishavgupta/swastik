@@ -1,16 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { getWhatsAppUrl, getMailtoUrl } from '../config/contact';
+import { useContactInfo } from '../config/contact';
 
 export const FloatingContact: React.FC = () => {
-  const mailtoUrl = getMailtoUrl('Swastik Mixtures Enquiry');
-  const whatsappUrl = getWhatsAppUrl();
+  const { mailtoUrl, whatsappUrl } = useContactInfo();
 
   return (
     <div className="floating-contact-widget" role="region" aria-label="Quick contact links">
       {/* EMAIL FLOATING BUTTON */}
       <motion.a
-        href={mailtoUrl}
+        href={mailtoUrl('Swastik Mixtures Enquiry')}
         aria-label="Email Swastik Mixtures"
         whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.95 }}
@@ -25,7 +24,7 @@ export const FloatingContact: React.FC = () => {
 
       {/* WHATSAPP FLOATING BUTTON */}
       <motion.a
-        href={whatsappUrl}
+        href={whatsappUrl()}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Contact Swastik Mixtures on WhatsApp"

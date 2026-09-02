@@ -1,12 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { getTelUrl, CONTACT_NUMBER_DISPLAY, getMailtoUrl, CONTACT_EMAIL } from '../../config/contact';
+import { useContactInfo } from '../../config/contact';
 
 interface Quality5Props {
   onNavigate?: (path: string) => void;
 }
 
 export const Quality5: React.FC<Quality5Props> = ({ onNavigate }) => {
+  const { phoneDisplay, telUrl, mailtoUrl, email } = useContactInfo();
+
   const handleQuoteClick = () => {
     if (onNavigate) {
       onNavigate('/contact?form=true');
@@ -25,7 +27,7 @@ export const Quality5: React.FC<Quality5Props> = ({ onNavigate }) => {
       ),
       content: (
         <div className="quality-cta-contact-text">
-          <a href={getTelUrl()} className="quality-cta-contact-link">{CONTACT_NUMBER_DISPLAY}</a>
+          <a href={telUrl} className="quality-cta-contact-link">{phoneDisplay}</a>
         </div>
       )
     },
@@ -39,7 +41,7 @@ export const Quality5: React.FC<Quality5Props> = ({ onNavigate }) => {
       ),
       content: (
         <div className="quality-cta-contact-text">
-          <a href={getMailtoUrl()} className="quality-cta-contact-link">{CONTACT_EMAIL}</a>
+          <a href={mailtoUrl()} className="quality-cta-contact-link">{email}</a>
         </div>
       )
     },

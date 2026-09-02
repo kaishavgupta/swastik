@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { getWhatsAppUrl, getTelUrl, CONTACT_NUMBER_DISPLAY, getMailtoUrl, CONTACT_EMAIL } from '../../config/contact';
+import { useContactInfo } from '../../config/contact';
 
 export const Contact2: React.FC = () => {
+  const { phoneDisplay, telUrl, mailtoUrl, email, whatsappUrl: getDynamicWhatsAppUrl } = useContactInfo();
   // Form State
   const [formData, setFormData] = useState({
     name: '',
@@ -91,7 +92,7 @@ This enquiry was submitted through the Swastik Mixtures website.
 Thank you.`;
 
     // 3. Open WhatsApp Web/App dynamically with configured contact number
-    const whatsappUrl = getWhatsAppUrl(formattedMessage);
+    const whatsappUrl = getDynamicWhatsAppUrl(formattedMessage);
 
     setFormStatus('loading');
 
@@ -171,7 +172,7 @@ Thank you.`;
                 <div className="contact-touch-info-details">
                   <span className="contact-touch-info-label">PHONE</span>
                   <div className="contact-touch-info-text">
-                    <a href={getTelUrl()} className="contact-touch-link">{CONTACT_NUMBER_DISPLAY}</a>
+                    <a href={telUrl} className="contact-touch-link">{phoneDisplay}</a>
                   </div>
                 </div>
               </div>
@@ -189,7 +190,7 @@ Thank you.`;
                 <div className="contact-touch-info-details">
                   <span className="contact-touch-info-label">EMAIL</span>
                   <div className="contact-touch-info-text">
-                    <a href={getMailtoUrl()} className="contact-touch-link">{CONTACT_EMAIL}</a>
+                    <a href={mailtoUrl()} className="contact-touch-link">{email}</a>
                   </div>
                 </div>
               </div>

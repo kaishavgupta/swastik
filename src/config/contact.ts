@@ -1,66 +1,137 @@
+import { useState, useEffect } from 'react';
+
 /**
  * Centralized contact configuration module.
- * Reads the WhatsApp/phone contact number and sales email strictly from environment configuration.
- *
- * VITE_CONTACT_NUMBER should be set as the full international number without '+',
- * e.g. 918076439354 for +91 8076439354.
- * VITE_CONTACT_EMAIL should be set to the target email address, e.g. sales@swastikmixtures.com
+ * Dynamically fetches phone number and email from the server endpoint /api/contact-info
+ * with fallback to environment variables.
  */
 
-const rawContactNumber = import.meta.env.VITE_CONTACT_NUMBER as string | undefined;
-const rawContactEmail = import.meta.env.VITE_CONTACT_EMAIL as string | undefined;
+const defaultNumber = (import.meta.env.VITE_CONTACT_NUMBER as string | undefined) || '919219616304';
+const defaultEmail = (import.meta.env.VITE_CONTACT_EMAIL as string | undefined) || 'sales@swastikmixtures.com';
 
-if (!rawContactNumber && import.meta.env.DEV) {
-  console.warn(
-    '[Swastik Config Warning]: VITE_CONTACT_NUMBER is not set in your environment file (.env). Please check .env.example.'
-  );
+export interface ContactState {
+  phone: string;
+  email: string;
+  isLoaded: boolean;
 }
 
-if (!rawContactEmail && import.meta.env.DEV) {
-  console.warn(
-    '[Swastik Config Warning]: VITE_CONTACT_EMAIL is not set in your environment file (.env). Please check .env.example.'
-  );
-}
+let globalContactState: ContactState = {
+  phone: defaultNumber,
+  email: defaultEmail,
+  isLoaded: false,
+};
 
-/** Full international number without '+', e.g. "918076439354" */
-export const CONTACT_NUMBER: string = rawContactNumber || '';
+const listeners = new Set<() => void>();
+let fetchPromise: Promise<void> | null = null;
 
-/** Official contact email address, e.g. "sales@swastikmixtures.com" */
-export const CONTACT_EMAIL: string = rawContactEmail || 'sales@swastikmixtures.com';
+export const fetchContactInfo = async (): Promise<ContactState> => {
+  if (fetchPromise) {
+    await fetchPromise;
+    return globalContactState;
+  }
 
-/**
- * Human-readable display string derived from CONTACT_NUMBER.
- * Assumes Indian numbers in format 91XXXXXXXXXX → "+91 XXXXXXXXXX".
- */
-export const CONTACT_NUMBER_DISPLAY: string = CONTACT_NUMBER
-  ? CONTACT_NUMBER.startsWith('91') && CONTACT_NUMBER.length === 12
-    ? `+91 ${CONTACT_NUMBER.slice(2)}`
-    : `+${CONTACT_NUMBER}`
-  : '';
+  fetchPromise = (async () => {
+    try {
+      const response = await fetch('/api/contact-info');
+      if (response.ok) {
+        const data = await response.json();
+        if (data.phone || data.email) {
+          globalContactState = {
+            phone: data.phone || globalContactState.phone,
+            email: data.email || globalContactState.email,
+            isLoaded: true,
+          };
+          listeners.forEach((listener) => listener());
+        }
+      }
+    } catch (err) {
+      console.warn('[Swastik Config]: Server contact info fetch skipped/failed, using local fallback.', err);
+    }
+  })();
 
-/** tel: href for use in anchor tags */
-export const getTelUrl = (): string =>
-  CONTACT_NUMBER ? `tel:+${CONTACT_NUMBER}` : '#';
+  await fetchPromise;
+  return globalContactState;
+};
 
-/** mailto: href for use in anchor tags */
-export const getMailtoUrl = (subject?: string, body?: string): string => {
-  if (!CONTACT_EMAIL) return '#';
+// Helper utility functions
+export const formatPhoneDisplay = (phone: string = globalContactState.phone): string => {
+  const cleanPhone = phone.replace(/[^0-9]/g, '');
+  if (!cleanPhone) return '';
+  if (cleanPhone.startsWith('91') && cleanPhone.length === 12) {
+    return `+91 ${cleanPhone.slice(2)}`;
+  }
+  return `+${cleanPhone}`;
+};
+
+export const getTelUrl = (phone: string = globalContactState.phone): string => {
+  const cleanPhone = phone.replace(/[^0-9]/g, '');
+  return cleanPhone ? `tel:+${cleanPhone}` : '#';
+};
+
+export const getMailtoUrl = (
+  subject?: string,
+  body?: string,
+  email: string = globalContactState.email
+): string => {
+  if (!email) return '#';
   const params: string[] = [];
   if (subject) params.push(`subject=${encodeURIComponent(subject)}`);
   if (body) params.push(`body=${encodeURIComponent(body)}`);
-  return `mailto:${CONTACT_EMAIL}${params.length ? `?${params.join('&')}` : ''}`;
+  return `mailto:${email}${params.length ? `?${params.join('&')}` : ''}`;
 };
 
-export const getWhatsAppUrl = (message?: string): string => {
-  if (!CONTACT_NUMBER) {
-    console.error('[Swastik Config Error]: Cannot open WhatsApp. CONTACT_NUMBER is not configured.');
+export const getWhatsAppUrl = (
+  message?: string,
+  phone: string = globalContactState.phone
+): string => {
+  const cleanPhone = phone.replace(/[^0-9]/g, '');
+  if (!cleanPhone) {
     return '#';
   }
-
   if (message) {
-    return `https://wa.me/${CONTACT_NUMBER}?text=${encodeURIComponent(message)}`;
+    return `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`;
   }
-
-  return `https://wa.me/${CONTACT_NUMBER}`;
+  return `https://wa.me/${cleanPhone}`;
 };
 
+// Static export helpers for legacy or direct access
+export let CONTACT_NUMBER: string = globalContactState.phone;
+export let CONTACT_EMAIL: string = globalContactState.email;
+export let CONTACT_NUMBER_DISPLAY: string = formatPhoneDisplay(globalContactState.phone);
+
+listeners.add(() => {
+  CONTACT_NUMBER = globalContactState.phone;
+  CONTACT_EMAIL = globalContactState.email;
+  CONTACT_NUMBER_DISPLAY = formatPhoneDisplay(globalContactState.phone);
+});
+
+/**
+ * Custom React hook that subscribes to contact info fetched from the server.
+ * Automatically calls /api/contact-info when mounted.
+ */
+export const useContactInfo = () => {
+  const [state, setState] = useState<ContactState>(globalContactState);
+
+  useEffect(() => {
+    const handleUpdate = () => {
+      setState({ ...globalContactState });
+    };
+
+    listeners.add(handleUpdate);
+    fetchContactInfo();
+
+    return () => {
+      listeners.delete(handleUpdate);
+    };
+  }, []);
+
+  return {
+    phone: state.phone,
+    email: state.email,
+    phoneDisplay: formatPhoneDisplay(state.phone),
+    telUrl: getTelUrl(state.phone),
+    mailtoUrl: (subject?: string, body?: string) => getMailtoUrl(subject, body, state.email),
+    whatsappUrl: (message?: string) => getWhatsAppUrl(message, state.phone),
+    isLoaded: state.isLoaded,
+  };
+};

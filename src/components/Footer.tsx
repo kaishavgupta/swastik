@@ -1,13 +1,15 @@
 import React from 'react';
 import { SVGIcons } from '../icons/SVGIcons';
 import { navigationLinks } from '../data/mockData';
-import { getTelUrl, CONTACT_NUMBER_DISPLAY, getMailtoUrl, CONTACT_EMAIL } from '../config/contact';
+import { useContactInfo } from '../config/contact';
 
 interface FooterProps {
   onNavigate: (path: string) => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
+  const { phoneDisplay, telUrl, mailtoUrl, email } = useContactInfo();
+
   const go = (path: string) => {
     onNavigate(path);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -97,13 +99,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           <div className="footer-col">
             <h4 className="footer-col-heading">CONTACT US</h4>
             <div className="footer-contact-list">
-              <a href={getTelUrl()} className="footer-contact-item">
+              <a href={telUrl} className="footer-contact-item">
                 <span className="footer-contact-icon"><SVGIcons.Phone size={15} /></span>
-                <span>{CONTACT_NUMBER_DISPLAY}</span>
+                <span>{phoneDisplay}</span>
               </a>
-              <a href={getMailtoUrl()} className="footer-contact-item">
+              <a href={mailtoUrl()} className="footer-contact-item">
                 <span className="footer-contact-icon"><SVGIcons.Mail size={15} /></span>
-                <span>{CONTACT_EMAIL}</span>
+                <span>{email}</span>
               </a>
               <div className="footer-contact-item">
                 <span className="footer-contact-icon"><SVGIcons.MapPin size={15} /></span>

@@ -19,6 +19,14 @@ if (!existsSync(distDir)) {
   process.exit(1);
 }
 
+// API endpoint to serve contact info directly from server environment variables
+app.get('/api/contact-info', (_req, res) => {
+  res.json({
+    phone: process.env.CONTACT_NUMBER || process.env.VITE_CONTACT_NUMBER || '919219616304',
+    email: process.env.CONTACT_EMAIL || process.env.VITE_CONTACT_EMAIL || 'sales@swastikmixtures.com',
+  });
+});
+
 // Serve static assets with aggressive caching (hashed filenames are safe)
 app.use(
   '/assets',
