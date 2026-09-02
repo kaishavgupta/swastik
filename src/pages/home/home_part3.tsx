@@ -25,7 +25,9 @@ const FEATURE_CARDS = [
     title: 'High Strength Concrete',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+        <polygon points="12 2 2 7 12 12 22 7 12 2" />
+        <polyline points="2 17 12 22 22 17" />
+        <polyline points="2 12 12 17 22 12" />
       </svg>
     )
   },
@@ -96,7 +98,8 @@ const TIMELINE_MILESTONES = [
     title: 'One of the first 4 RMC plants in Lucknow',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-        <path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+        <polyline points="17 6 23 6 23 12" />
       </svg>
     )
   },
@@ -124,93 +127,97 @@ const TIMELINE_MILESTONES = [
 export const HomePart3: React.FC = () => {
   return (
     <section id="home-part-3" className="legacy-section home-snap-part">
+      {/* Full-bleed background image covering entire section */}
       <div className="legacy-factory-bg" aria-hidden="true" />
+      {/* Luminous light overlay for readability */}
       <div className="legacy-factory-fade" aria-hidden="true" />
 
-      <div className="legacy-content-grid">
-        {/* LEFT — Feature Panel */}
-        <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.75, ease: "easeOut" }}
-          className="legacy-features-panel"
-        >
-          <div className="legacy-features-grid">
-            {FEATURE_CARDS.map((card, i) => (
-              <motion.div
-                key={card.title}
-                initial={{ opacity: 0, y: 14 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ delay: i * 0.055, duration: 0.5, ease: "easeOut" }}
-                className="legacy-feature-card"
-              >
-                <div className="legacy-feature-icon">{card.icon}</div>
-                <h4 className="legacy-feature-title">{card.title}</h4>
-                <span className="legacy-feature-accent" />
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* RIGHT — Our Legacy heading + timeline */}
-        <div className="legacy-right-col">
+      <div className="legacy-main-container">
+        {/* TOP / HEADING AREA */}
+        <div className="legacy-header-block">
           <motion.span
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
+            viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.5 }}
             className="legacy-eyebrow"
           >
             OUR LEGACY
           </motion.span>
-
+          <span className="legacy-divider" />
           <motion.h2
-            initial={{ opacity: 0, y: 22 }}
+            initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ delay: 0.1, duration: 0.75, ease: "easeOut" }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ delay: 0.1, duration: 0.6, ease: "easeOut" }}
             className="legacy-heading"
           >
-            Building Lucknow's RMC<br />
-            Culture Since{' '}
+            Building Lucknow's RMC <br className="legacy-br-desktop" />Culture Since{' '}
             <span className="legacy-heading-accent">2009</span>
           </motion.h2>
+        </div>
 
-          <span className="legacy-divider" />
-
-          {/* Horizontal timeline */}
-          <div className="legacy-timeline">
-            <div className="legacy-timeline-track" aria-hidden="true" />
-            {TIMELINE_MILESTONES.map((item, i) => (
-              <div key={item.label} className="legacy-milestone">
-                <span className="legacy-milestone-label">{item.label}</span>
+        {/* CONTENT ROW: Left 8-Card Grid + Right Timeline on Desktop */}
+        <div className="legacy-content-columns">
+          {/* 8-CARD FEATURE PANEL */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="legacy-features-panel"
+          >
+            <div className="legacy-features-grid">
+              {FEATURE_CARDS.map((card, i) => (
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.75 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true, margin: "-60px" }}
-                  transition={{ delay: 0.25 + i * 0.12, duration: 0.55, ease: "easeOut" }}
-                  className="legacy-milestone-node"
+                  key={card.title}
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ delay: i * 0.04, duration: 0.45, ease: "easeOut" }}
+                  className="legacy-feature-card"
                 >
-                  {item.icon}
+                  <div className="legacy-feature-icon">{card.icon}</div>
+                  <h4 className="legacy-feature-title">{card.title}</h4>
+                  <span className="legacy-feature-accent" />
                 </motion.div>
-                <div className="legacy-milestone-dot" aria-hidden="true" />
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true, margin: "-60px" }}
-                  transition={{ delay: 0.45 + i * 0.12, duration: 0.55 }}
-                  className="legacy-milestone-desc"
-                >
-                  {item.title}
-                </motion.p>
-              </div>
-            ))}
+              ))}
+            </div>
+          </motion.div>
+
+          {/* 4-POINT HORIZONTAL TIMELINE */}
+          <div className="legacy-timeline-wrapper">
+            <div className="legacy-timeline">
+              <div className="legacy-timeline-track" aria-hidden="true" />
+              {TIMELINE_MILESTONES.map((item, i) => (
+                <div key={item.label} className="legacy-milestone">
+                  <span className="legacy-milestone-label">{item.label}</span>
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true, margin: "-40px" }}
+                    transition={{ delay: 0.15 + i * 0.1, duration: 0.45, ease: "easeOut" }}
+                    className="legacy-milestone-node"
+                  >
+                    {item.icon}
+                  </motion.div>
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true, margin: "-40px" }}
+                    transition={{ delay: 0.3 + i * 0.1, duration: 0.45 }}
+                    className="legacy-milestone-desc"
+                  >
+                    {item.title}
+                  </motion.p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
 
+      {/* FULL-WIDTH DUAL LAYER WAVE FOOTER */}
       <div className="legacy-wave-container" aria-hidden="true">
         <svg
           viewBox="0 0 1440 160"
@@ -225,7 +232,7 @@ export const HomePart3: React.FC = () => {
           <path
             d="M0,100 C200,48 440,150 720,95 C960,48 1220,140 1440,88 L1440,160 L0,160 Z"
             fill="#0868C9"
-            fillOpacity="0.7"
+            fillOpacity="0.75"
           />
         </svg>
       </div>
