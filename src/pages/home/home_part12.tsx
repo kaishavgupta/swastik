@@ -207,4 +207,3 @@ export const HomePart12: React.FC<HomePart12Props> = ({ onNavigate }) => {
 };
 
 export default HomePart12;
-

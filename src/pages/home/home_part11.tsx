@@ -99,6 +99,14 @@ const ClientLogo: React.FC<{ client: Client }> = ({ client }) => {
       alt={client.alt}
       onError={handleError}
       decoding="async"
+      style={{
+        maxWidth: "100%",
+        maxHeight: "100%",
+        width: "auto",
+        height: "auto",
+        objectFit: "contain",
+        display: "block",
+      }}
     />
   );
 };
