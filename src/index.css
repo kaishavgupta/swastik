@@ -31166,3 +31166,2620 @@ body {
     animation: none !important;
   }
 }
+
+
+/* ========================================================================
+   ABOUT US — PART 4B RESPONSIVE FIX
+   Target: Technology & Infrastructure
+   ------------------------------------------------------------------------
+   Root cause fixed here:
+   - The desktop grid used percentage columns + a gap, which could exceed
+     the available width.
+   - The mobile equipment markup existed in AboutPart4b.tsx but had no CSS,
+     while the desktop gallery remained visible at mobile widths.
+   - The section used a viewport-height/min-height model on small screens,
+     causing the content and bottom wave to collide with following sections.
+   - The statistics markup also had no Part 4B-specific responsive styling.
+   ======================================================================== */
+
+/* Base: content-driven section. The wave is a visual terminator, not a
+   layout layer that should overlap the next section. */
+.about-tech-independent-section {
+  min-height: auto !important;
+  height: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+  padding: clamp(72px, 7vw, 104px) 0 150px !important;
+  overflow: hidden !important;
+  isolation: isolate !important;
+}
+
+.about-tech-wrapper {
+  width: min(94%, 1360px) !important;
+  max-width: 1360px !important;
+  margin: 0 auto !important;
+  flex: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+  gap: clamp(34px, 4vw, 54px) !important;
+}
+
+/* Desktop: narrative + 3x2 gallery. fr units prevent percentage+gap overflow. */
+.about-tech-top-layout {
+  display: grid !important;
+  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1fr) !important;
+  gap: clamp(30px, 3vw, 52px) !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+.about-tech-narrative-col {
+  min-width: 0 !important;
+}
+
+.about-tech-heading {
+  font-size: clamp(34px, 3.25vw, 52px) !important;
+  line-height: 1.08 !important;
+}
+
+.about-tech-paragraph {
+  max-width: 520px !important;
+}
+
+.about-tech-gallery-col {
+  min-width: 0 !important;
+}
+
+.about-tech-gallery-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: clamp(12px, 1.2vw, 18px) !important;
+}
+
+.about-tech-gallery-card {
+  min-width: 0 !important;
+  aspect-ratio: 16 / 11 !important;
+}
+
+/* The mobile-only list must never leak into desktop/tablet. */
+.about-tech-mobile-equipment-list {
+  display: none !important;
+}
+
+/* Statistics — desktop 4-column strip. */
+.about-tech-stats-strip {
+  width: 100% !important;
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  align-items: stretch !important;
+  padding: 26px 30px !important;
+  gap: 0 !important;
+}
+
+.about-tech-stat-item {
+  min-width: 0 !important;
+  padding: 0 22px !important;
+}
+
+.about-tech-stat-icon-wrap {
+  width: 58px !important;
+  height: 58px !important;
+}
+
+.about-tech-stat-content {
+  min-width: 0 !important;
+}
+
+.about-tech-stat-number {
+  display: block !important;
+  color: var(--blue, #0875D1) !important;
+  font-size: clamp(28px, 2.5vw, 40px) !important;
+  font-weight: 900 !important;
+  line-height: 1 !important;
+  margin-bottom: 7px !important;
+}
+
+.about-tech-stat-title {
+  color: var(--navy, #071A36) !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  line-height: 1.3 !important;
+  margin: 0 0 4px !important;
+}
+
+.about-tech-stat-sub {
+  color: var(--text-muted, #52627A) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  line-height: 1.45 !important;
+  margin: 0 !important;
+}
+
+.about-tech-stat-divider {
+  width: 1px !important;
+  height: 70px !important;
+  align-self: center !important;
+  background: rgba(8, 117, 209, 0.14) !important;
+}
+
+.about-tech-stat-mobile-arrow {
+  display: none !important;
+}
+
+/* Wave stays attached to this section only and is reserved for by padding. */
+.about-tech-wave-container {
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: -1px !important;
+  width: 100% !important;
+  height: clamp(82px, 10vw, 125px) !important;
+  line-height: 0 !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+  overflow: hidden !important;
+}
+
+.about-tech-wave-svg {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  object-fit: fill !important;
+  display: block !important;
+}
+
+/* ========================================================================
+   TABLET — 768px to 1199px
+   ======================================================================== */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .about-tech-independent-section {
+    min-height: auto !important;
+    padding: 64px 0 135px !important;
+  }
+
+  .about-tech-wrapper {
+    width: min(92%, 1020px) !important;
+    gap: 34px !important;
+  }
+
+  /* Reference tablet layout: centered narrative, then 2-column gallery. */
+  .about-tech-top-layout {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+    align-items: stretch !important;
+  }
+
+  .about-tech-narrative-col {
+    width: min(100%, 760px) !important;
+    margin: 0 auto !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .about-tech-eyebrow {
+    margin-bottom: 8px !important;
+  }
+
+  .about-tech-eyebrow-line {
+    margin: 0 auto 16px !important;
+  }
+
+  .about-tech-heading {
+    font-size: clamp(36px, 4.4vw, 48px) !important;
+    text-align: center !important;
+    margin-bottom: 14px !important;
+  }
+
+  .about-tech-paragraph {
+    max-width: 720px !important;
+    text-align: center !important;
+    margin: 0 auto 22px !important;
+  }
+
+  /* Keep the checklist as two columns on tablet, as in the reference. */
+  .about-tech-checklist-dual-col {
+    width: min(100%, 700px) !important;
+    margin: 0 auto !important;
+    gap: 10px 34px !important;
+    text-align: left !important;
+  }
+
+  .about-tech-gallery-col {
+    width: 100% !important;
+  }
+
+  .about-tech-gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+  }
+
+  .about-tech-gallery-card {
+    aspect-ratio: 16 / 11 !important;
+    border-radius: 14px !important;
+  }
+
+  .about-tech-gallery-overlay {
+    padding: 10px 11px !important;
+    gap: 8px !important;
+  }
+
+  .about-tech-card-badge-icon {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .about-tech-gallery-title {
+    font-size: 12px !important;
+  }
+
+  .about-tech-mobile-equipment-list {
+    display: none !important;
+  }
+
+  /* Reference tablet statistics: 2x2. */
+  .about-tech-stats-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    padding: 18px 18px !important;
+    gap: 0 !important;
+    border-radius: 16px !important;
+  }
+
+  .about-tech-stat-item {
+    min-height: 82px !important;
+    padding: 12px 14px !important;
+    gap: 12px !important;
+  }
+
+  /* Vertical dividers in the 2x2 arrangement. */
+  .about-tech-stat-divider {
+    width: auto !important;
+    height: 1px !important;
+    background: rgba(8, 117, 209, 0.12) !important;
+  }
+
+  .about-tech-stat-divider:nth-of-type(2) {
+    display: none !important;
+  }
+
+  .about-tech-stat-number {
+    font-size: 28px !important;
+  }
+
+  .about-tech-stat-title {
+    font-size: 12px !important;
+  }
+
+  .about-tech-stat-sub {
+    font-size: 10.5px !important;
+  }
+}
+
+/* ========================================================================
+   MOBILE — 320px to 767px
+   ======================================================================== */
+@media (max-width: 767px) {
+  .about-tech-independent-section {
+    min-height: auto !important;
+    height: auto !important;
+    padding: 50px 0 112px !important;
+    justify-content: flex-start !important;
+  }
+
+  .about-tech-independent-section::before {
+    bottom: 70px !important;
+    width: 180px !important;
+    height: 180px !important;
+    background-size: 12px 12px !important;
+    opacity: 0.45 !important;
+  }
+
+  .about-tech-wrapper {
+    width: calc(100% - 32px) !important;
+    max-width: none !important;
+    gap: 18px !important;
+  }
+
+  /* Mobile uses one clean vertical content flow. */
+  .about-tech-top-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 18px !important;
+    align-items: stretch !important;
+  }
+
+  .about-tech-narrative-col {
+    width: 100% !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .about-tech-eyebrow {
+    font-size: 10px !important;
+    letter-spacing: 2px !important;
+    margin-bottom: 7px !important;
+  }
+
+  .about-tech-eyebrow-line {
+    width: 32px !important;
+    height: 2px !important;
+    margin: 0 auto 12px !important;
+  }
+
+  .about-tech-heading {
+    width: 100% !important;
+    font-size: clamp(28px, 8.2vw, 36px) !important;
+    line-height: 1.06 !important;
+    letter-spacing: -0.025em !important;
+    text-align: center !important;
+    margin: 0 0 12px !important;
+  }
+
+  .about-tech-paragraph {
+    width: 100% !important;
+    max-width: 390px !important;
+    font-size: 12px !important;
+    line-height: 1.65 !important;
+    text-align: center !important;
+    margin: 0 auto 16px !important;
+  }
+
+  /* IMPORTANT: the checklist remains 2 columns on mobile. */
+  .about-tech-checklist-dual-col {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    width: 100% !important;
+    gap: 9px 10px !important;
+    text-align: left !important;
+  }
+
+  .about-tech-checklist-subcol {
+    gap: 9px !important;
+  }
+
+  .about-checklist-row {
+    min-width: 0 !important;
+    gap: 7px !important;
+    align-items: center !important;
+  }
+
+  .about-check-badge {
+    width: 20px !important;
+    height: 20px !important;
+    font-size: 10px !important;
+  }
+
+  .about-checklist-label {
+    min-width: 0 !important;
+    font-size: 10.5px !important;
+    line-height: 1.25 !important;
+  }
+
+  /* Hide desktop/tablet image cards on mobile. */
+  .desktop-tablet-gallery {
+    display: none !important;
+  }
+
+  /*
+    MOBILE TARGET:
+    six compact horizontal rows.
+    icon + title on left, thumbnail on right.
+    This replaces the large vertically stacked image cards.
+  */
+  .about-tech-mobile-equipment-list {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    width: 100% !important;
+    margin-top: 0 !important;
+  }
+
+  .about-tech-mobile-equipment-row {
+    width: 100% !important;
+    min-height: 50px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 9px !important;
+    padding: 6px 7px 6px 9px !important;
+    background: #FFFFFF !important;
+    border: 1px solid rgba(8, 117, 209, 0.08) !important;
+    border-radius: 10px !important;
+    box-shadow: 0 3px 12px rgba(7, 26, 54, 0.06) !important;
+    box-sizing: border-box !important;
+  }
+
+  .about-tech-mobile-icon-badge {
+    width: 30px !important;
+    height: 30px !important;
+    flex: 0 0 30px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 50% !important;
+    background: #EAF4FD !important;
+  }
+
+  .about-tech-mobile-icon-badge svg {
+    width: 17px !important;
+    height: 17px !important;
+  }
+
+  .about-tech-mobile-equipment-title {
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+    color: var(--navy, #071A36) !important;
+    font-size: 10.5px !important;
+    font-weight: 800 !important;
+    line-height: 1.2 !important;
+    white-space: normal !important;
+  }
+
+  .about-tech-mobile-thumb-wrap {
+    width: 86px !important;
+    height: 38px !important;
+    flex: 0 0 86px !important;
+    overflow: hidden !important;
+    border-radius: 7px !important;
+    background: #EAF4FD !important;
+  }
+
+  .about-tech-mobile-thumb-img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    display: block !important;
+  }
+
+  /* Mobile statistics become four compact stacked rows. */
+  .about-tech-stats-strip {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 6px 12px !important;
+    border-radius: 12px !important;
+    gap: 0 !important;
+  }
+
+  .about-tech-stat-item {
+    width: 100% !important;
+    min-height: 60px !important;
+    flex: none !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 9px !important;
+    padding: 8px 0 !important;
+  }
+
+  .about-tech-stat-icon-wrap {
+    width: 38px !important;
+    height: 38px !important;
+    flex: 0 0 38px !important;
+  }
+
+  .about-tech-stat-icon-wrap svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  .about-tech-stat-content {
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+  }
+
+  .about-tech-stat-number {
+    display: inline-block !important;
+    min-width: 44px !important;
+    font-size: 20px !important;
+    line-height: 1 !important;
+    margin-right: 5px !important;
+    margin-bottom: 2px !important;
+  }
+
+  .about-tech-stat-title {
+    display: inline !important;
+    font-size: 9.5px !important;
+    line-height: 1.25 !important;
+    margin: 0 !important;
+  }
+
+  .about-tech-stat-sub {
+    display: block !important;
+    font-size: 8.5px !important;
+    line-height: 1.3 !important;
+    margin-top: 2px !important;
+  }
+
+  .about-tech-stat-mobile-arrow {
+    display: block !important;
+    flex: 0 0 auto !important;
+    color: var(--blue, #0875D1) !important;
+    font-size: 19px !important;
+    font-weight: 800 !important;
+    line-height: 1 !important;
+    padding-right: 2px !important;
+  }
+
+  .about-tech-stat-divider {
+    display: block !important;
+    width: 100% !important;
+    height: 1px !important;
+    flex: 0 0 1px !important;
+    background: rgba(8, 117, 209, 0.10) !important;
+  }
+
+  /* Wave is now below the complete mobile content. */
+  .about-tech-wave-container {
+    height: 68px !important;
+    bottom: -1px !important;
+  }
+
+  .about-tech-wave-svg {
+    height: 68px !important;
+    min-height: 0 !important;
+  }
+}
+
+/* Very small phones: preserve the 2-column checklist, but tighten only the
+   thumbnail/text proportions so nothing can force horizontal overflow. */
+@media (max-width: 360px) {
+  .about-tech-independent-section {
+    padding-top: 44px !important;
+    padding-bottom: 104px !important;
+  }
+
+  .about-tech-wrapper {
+    width: calc(100% - 24px) !important;
+  }
+
+  .about-tech-heading {
+    font-size: 28px !important;
+  }
+
+  .about-tech-paragraph {
+    font-size: 11.5px !important;
+  }
+
+  .about-checklist-label {
+    font-size: 9.5px !important;
+  }
+
+  .about-tech-mobile-equipment-row {
+    min-height: 48px !important;
+    gap: 7px !important;
+    padding-left: 7px !important;
+  }
+
+  .about-tech-mobile-icon-badge {
+    width: 28px !important;
+    height: 28px !important;
+    flex-basis: 28px !important;
+  }
+
+  .about-tech-mobile-equipment-title {
+    font-size: 9.5px !important;
+  }
+
+  .about-tech-mobile-thumb-wrap {
+    width: 76px !important;
+    height: 36px !important;
+    flex-basis: 76px !important;
+  }
+
+  .about-tech-stat-number {
+    font-size: 19px !important;
+    min-width: 40px !important;
+  }
+
+  .about-tech-stat-title {
+    font-size: 9px !important;
+  }
+}
+
+
+/* Final grid correction: the JSX renders statistic dividers as sibling nodes
+   (via React.Fragment). Hide those spacer nodes and draw separators on the
+   statistic items themselves, so the four stats always occupy four/2x2/1x4
+   actual grid/flex items. */
+.about-tech-stat-divider {
+  display: none !important;
+}
+
+@media (min-width: 1200px) {
+  .about-tech-stats-strip .about-tech-stat-item:not(:last-of-type) {
+    border-right: 1px solid rgba(8, 117, 209, 0.14) !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .about-tech-stats-strip .about-tech-stat-item {
+    border-right: 1px solid rgba(8, 117, 209, 0.12) !important;
+    border-bottom: 1px solid rgba(8, 117, 209, 0.12) !important;
+  }
+
+  .about-tech-stats-strip .about-tech-stat-item:nth-of-type(2),
+  .about-tech-stats-strip .about-tech-stat-item:nth-of-type(4) {
+    border-right: none !important;
+  }
+
+  .about-tech-stats-strip .about-tech-stat-item:nth-of-type(3),
+  .about-tech-stats-strip .about-tech-stat-item:nth-of-type(4) {
+    border-bottom: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .about-tech-stats-strip .about-tech-stat-item {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(8, 117, 209, 0.10) !important;
+  }
+
+  .about-tech-stats-strip .about-tech-stat-item:last-of-type {
+    border-bottom: none !important;
+  }
+}
+
+
+/* Correct the sibling positions created by the Fragment-rendered divider
+   <div>s: statistic items are div children 1, 3, 5 and 7. */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .about-tech-stats-strip .about-tech-stat-item {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(8, 117, 209, 0.12) !important;
+  }
+
+  .about-tech-stats-strip .about-tech-stat-item:nth-of-type(1),
+  .about-tech-stats-strip .about-tech-stat-item:nth-of-type(5) {
+    border-right: 1px solid rgba(8, 117, 209, 0.12) !important;
+  }
+
+  .about-tech-stats-strip .about-tech-stat-item:nth-of-type(5),
+  .about-tech-stats-strip .about-tech-stat-item:nth-of-type(7) {
+    border-bottom: none !important;
+  }
+}
+
+
+/* ========================================================================
+   FINAL FIX — ABOUT US PART 3 / OUR LEGACY RESPONSIVE REBUILD
+   ========================================================================
+   ERROR FOUND:
+   The About Us legacy section uses `.about-legacy-*` classes, while several
+   later responsive fixes in this stylesheet target the separate Home-page
+   `.legacy-*` implementation.
+
+   The About Us implementation also changed the timeline to a vertical
+   stack on mobile and a 2x2 layout on tablet. This is why the section loses
+   the intended visual structure as the viewport becomes narrower.
+
+   FIX:
+   - Keep the 4 milestone timeline horizontal at desktop, tablet and mobile.
+   - Let the section height be content-driven below 1200px.
+   - Keep Mission + Vision side-by-side on tablet.
+   - Stack Mission + Vision only on small phones.
+   - Lock timeline node/label geometry so the connector stays aligned.
+   - Prevent fixed viewport heights from creating blank/overlapping areas.
+   ======================================================================== */
+
+/* Base safety for this section */
+.about-legacy-section,
+.about-legacy-wrapper,
+.about-legacy-timeline,
+.about-legacy-cards-grid,
+.legacy-mission-card,
+.legacy-vision-card {
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+
+.about-legacy-section {
+  width: 100% !important;
+  overflow: hidden !important;
+}
+
+/* ----------------------------- DESKTOP ----------------------------- */
+@media (min-width: 1200px) {
+  .about-legacy-section {
+    min-height: 0 !important;
+    height: auto !important;
+  }
+
+  .about-legacy-wrapper {
+    width: min(92%, 1240px) !important;
+  }
+
+  .about-legacy-timeline {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 0 !important;
+    padding-inline: 0 !important;
+    margin-bottom: clamp(32px, 4vh, 52px) !important;
+  }
+
+  .legacy-milestone {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .legacy-milestone-tag {
+    width: 100% !important;
+    min-height: 28px !important;
+    height: 28px !important;
+    margin-bottom: 8px !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: center !important;
+    text-align: center !important;
+    line-height: 14px !important;
+  }
+
+  .legacy-milestone-circle {
+    width: 50px !important;
+    height: 50px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .legacy-milestone-title,
+  .legacy-milestone-desc {
+    width: 100% !important;
+    max-width: 150px !important;
+    text-align: center !important;
+  }
+
+  /* ERROR FIX:
+     Connector must be positioned from milestone 1 center to milestone 4
+     center. With four equal columns, those centers are exactly 12.5% and
+     87.5% of the timeline width. */
+  .about-legacy-timeline .legacy-timeline-track {
+    top: 53px !important;
+    left: 12.5% !important;
+    right: 12.5% !important;
+    width: auto !important;
+    height: 0 !important;
+    border-top: 2px dashed rgba(8, 117, 209, 0.4) !important;
+    border-left: 0 !important;
+  }
+
+  .about-legacy-cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: clamp(20px, 2.5vw, 36px) !important;
+  }
+}
+
+/* --------------------------- TABLET --------------------------- */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .about-legacy-section {
+    min-height: 0 !important;
+    height: auto !important;
+    padding-top: clamp(44px, 6vw, 64px) !important;
+    padding-bottom: 100px !important;
+  }
+
+  .about-legacy-wrapper {
+    width: min(92%, 1000px) !important;
+  }
+
+  .about-legacy-header {
+    width: min(100%, 760px) !important;
+    margin-bottom: 34px !important;
+  }
+
+  .about-legacy-heading {
+    font-size: clamp(30px, 4vw, 42px) !important;
+    line-height: 1.12 !important;
+  }
+
+  .about-legacy-subheading {
+    font-size: clamp(14px, 1.7vw, 16px) !important;
+    line-height: 1.55 !important;
+  }
+
+  /* ERROR FIX:
+     Do not turn the timeline into a 2x2 block. The reference composition
+     is one continuous four-milestone timeline. */
+  .about-legacy-timeline {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 0 !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin-bottom: 36px !important;
+  }
+
+  .legacy-milestone {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .legacy-milestone-tag {
+    width: 100% !important;
+    height: 28px !important;
+    min-height: 28px !important;
+    margin-bottom: 7px !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: center !important;
+    text-align: center !important;
+    font-size: clamp(8.5px, 1.15vw, 11px) !important;
+    line-height: 13px !important;
+    letter-spacing: 1.2px !important;
+    overflow: visible !important;
+  }
+
+  .legacy-milestone-circle {
+    width: 42px !important;
+    height: 42px !important;
+    margin-bottom: 9px !important;
+  }
+
+  .legacy-milestone-circle svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  .legacy-milestone-title {
+    font-size: clamp(11px, 1.35vw, 14px) !important;
+    line-height: 1.25 !important;
+    margin-bottom: 3px !important;
+    width: 100% !important;
+  }
+
+  .legacy-milestone-desc {
+    font-size: clamp(9.5px, 1.15vw, 12px) !important;
+    line-height: 1.35 !important;
+    max-width: 125px !important;
+    width: 100% !important;
+  }
+
+  .about-legacy-timeline .legacy-timeline-track {
+    display: block !important;
+    top: 49px !important;
+    left: 12.5% !important;
+    right: 12.5% !important;
+    width: auto !important;
+    height: 0 !important;
+    border-top: 2px dashed rgba(8, 117, 209, 0.4) !important;
+    border-left: 0 !important;
+  }
+
+  .about-legacy-timeline .legacy-timeline-track::before,
+  .about-legacy-timeline .legacy-timeline-track::after {
+    top: -4px !important;
+  }
+
+  /* Keep the two large content cards together on tablet. */
+  .about-legacy-cards-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 18px !important;
+    width: 100% !important;
+  }
+
+  .legacy-mission-card,
+  .legacy-vision-card {
+    min-height: 175px !important;
+    padding: 22px !important;
+  }
+
+  .legacy-card-inner {
+    gap: 14px !important;
+  }
+
+  .legacy-mission-icon-wrap,
+  .legacy-vision-icon-wrap {
+    width: 44px !important;
+    height: 44px !important;
+  }
+
+  .legacy-card-title {
+    font-size: 12px !important;
+  }
+
+  .legacy-card-desc {
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+  }
+}
+
+/* ---------------------------- MOBILE ---------------------------- */
+@media (max-width: 767px) {
+  .about-legacy-section {
+    min-height: 0 !important;
+    height: auto !important;
+    padding-top: 34px !important;
+    padding-bottom: 82px !important;
+  }
+
+  .about-legacy-wrapper {
+    width: calc(100% - 24px) !important;
+    max-width: none !important;
+  }
+
+  .about-legacy-header {
+    width: 100% !important;
+    margin-bottom: 28px !important;
+  }
+
+  .about-legacy-eyebrow {
+    font-size: 10px !important;
+    letter-spacing: 2.2px !important;
+    margin-bottom: 5px !important;
+  }
+
+  .about-legacy-eyebrow-line {
+    width: 30px !important;
+    height: 2px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .about-legacy-heading {
+    width: 100% !important;
+    font-size: clamp(24px, 7vw, 31px) !important;
+    line-height: 1.12 !important;
+    letter-spacing: -0.025em !important;
+    margin-bottom: 9px !important;
+  }
+
+  .about-legacy-subheading {
+    width: 100% !important;
+    font-size: 12.5px !important;
+    line-height: 1.55 !important;
+    max-width: 430px !important;
+  }
+
+  /* ERROR FIX:
+     The old About Us mobile rule changed this to flex-direction: column,
+     producing the long vertical timeline seen in the resize video.
+     Keep all four milestones in one responsive row instead. */
+  .about-legacy-timeline {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 0 !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin-bottom: 28px !important;
+    align-items: start !important;
+  }
+
+  .legacy-milestone {
+    width: 100% !important;
+    min-width: 0 !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 0 !important;
+  }
+
+  .legacy-milestone-tag {
+    width: 100% !important;
+    height: 24px !important;
+    min-height: 24px !important;
+    margin: 0 0 6px 0 !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: center !important;
+    text-align: center !important;
+    font-size: clamp(7px, 2.2vw, 9px) !important;
+    line-height: 10px !important;
+    letter-spacing: 0.9px !important;
+    overflow: visible !important;
+    word-break: normal !important;
+  }
+
+  .legacy-milestone-circle {
+    width: 34px !important;
+    height: 34px !important;
+    margin: 0 0 8px 0 !important;
+    box-shadow:
+      0 0 0 4px rgba(8, 117, 209, 0.12),
+      0 5px 12px rgba(8, 117, 209, 0.22) !important;
+  }
+
+  .legacy-milestone-circle svg {
+    width: 15px !important;
+    height: 15px !important;
+  }
+
+  .legacy-milestone-title {
+    width: 100% !important;
+    max-width: 82px !important;
+    font-size: clamp(9px, 2.6vw, 11px) !important;
+    line-height: 1.2 !important;
+    margin: 0 0 3px 0 !important;
+  }
+
+  .legacy-milestone-desc {
+    width: 100% !important;
+    max-width: 78px !important;
+    font-size: clamp(8px, 2.25vw, 9.5px) !important;
+    line-height: 1.25 !important;
+    margin: 0 auto !important;
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+  }
+
+  /* ERROR FIX:
+     The connector is horizontal and aligned to the center of the 34px
+     milestone circles. Label: 24px + margin 6px + half node: 17px = 47px. */
+  .about-legacy-timeline .legacy-timeline-track {
+    display: block !important;
+    top: 47px !important;
+    bottom: auto !important;
+    left: 12.5% !important;
+    right: 12.5% !important;
+    width: auto !important;
+    height: 0 !important;
+    border-top: 1.5px dashed rgba(8, 117, 209, 0.42) !important;
+    border-left: 0 !important;
+  }
+
+  .about-legacy-timeline .legacy-timeline-track::before,
+  .about-legacy-timeline .legacy-timeline-track::after {
+    top: -3px !important;
+    width: 5px !important;
+    height: 5px !important;
+  }
+
+  /* Mission + Vision become a clean vertical stack on phones. */
+  .about-legacy-cards-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+    width: 100% !important;
+  }
+
+  .legacy-mission-card,
+  .legacy-vision-card {
+    min-height: 0 !important;
+    padding: 20px !important;
+    border-radius: 16px !important;
+  }
+
+  .legacy-card-inner {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    gap: 13px !important;
+  }
+
+  .legacy-mission-icon-wrap,
+  .legacy-vision-icon-wrap {
+    width: 42px !important;
+    height: 42px !important;
+  }
+
+  .legacy-mission-icon-wrap svg,
+  .legacy-vision-icon-wrap svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .legacy-card-title {
+    font-size: 11.5px !important;
+    letter-spacing: 1.3px !important;
+    margin-bottom: 5px !important;
+  }
+
+  .legacy-card-line {
+    width: 24px !important;
+    height: 2px !important;
+    margin-bottom: 7px !important;
+  }
+
+  .legacy-card-desc {
+    font-size: 11.5px !important;
+    line-height: 1.48 !important;
+  }
+
+  .legacy-mission-bg-art {
+    width: 140px !important;
+    height: 110px !important;
+    opacity: 0.10 !important;
+  }
+
+  .legacy-vision-bg-art {
+    width: 125px !important;
+    height: 100px !important;
+    opacity: 0.08 !important;
+  }
+
+  .about-legacy-wave-container {
+    bottom: -1px !important;
+    width: 100% !important;
+  }
+
+  .about-legacy-wave-svg {
+    width: 100% !important;
+    min-height: 52px !important;
+  }
+}
+
+/* ------------------------- MICRO PHONES ------------------------- */
+@media (max-width: 360px) {
+  .about-legacy-section {
+    padding-top: 28px !important;
+    padding-bottom: 74px !important;
+  }
+
+  .about-legacy-wrapper {
+    width: calc(100% - 16px) !important;
+  }
+
+  .about-legacy-heading {
+    font-size: 22px !important;
+  }
+
+  .about-legacy-subheading {
+    font-size: 11.5px !important;
+  }
+
+  .about-legacy-timeline {
+    margin-bottom: 24px !important;
+  }
+
+  .legacy-milestone-tag {
+    height: 22px !important;
+    min-height: 22px !important;
+    font-size: 7px !important;
+    line-height: 9px !important;
+    letter-spacing: 0.7px !important;
+  }
+
+  .legacy-milestone-circle {
+    width: 30px !important;
+    height: 30px !important;
+    margin-bottom: 7px !important;
+  }
+
+  .legacy-milestone-circle svg {
+    width: 13px !important;
+    height: 13px !important;
+  }
+
+  .legacy-milestone-title {
+    max-width: 70px !important;
+    font-size: 8.5px !important;
+  }
+
+  .legacy-milestone-desc {
+    max-width: 66px !important;
+    font-size: 7.5px !important;
+  }
+
+  .about-legacy-timeline .legacy-timeline-track {
+    top: 44px !important;
+  }
+
+  .legacy-mission-card,
+  .legacy-vision-card {
+    padding: 17px !important;
+  }
+
+  .legacy-card-inner {
+    gap: 10px !important;
+  }
+
+  .legacy-mission-icon-wrap,
+  .legacy-vision-icon-wrap {
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  .legacy-card-desc {
+    font-size: 10.5px !important;
+  }
+}
+
+
+/* ========================================================================
+   FINAL FIX — ABOUT US / OUR LEGACY — TRUE ONE-VIEWPORT RESPONSIVE LAYOUT
+   ========================================================================
+   The Legacy section must occupy one viewport only. The next section must
+   start below it, never inside the first viewport. Content is compacted
+   responsively rather than allowing the section to grow vertically.
+   ======================================================================== */
+
+.about-legacy-section {
+  position: relative !important;
+  width: 100% !important;
+  height: 100svh !important;
+  min-height: 100svh !important;
+  max-height: 100svh !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  isolation: isolate !important;
+}
+
+.about-legacy-wrapper {
+  position: relative !important;
+  z-index: 2 !important;
+  width: min(92%, 1240px) !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  margin: 0 auto !important;
+  padding: clamp(22px, 3.2vh, 36px) 0 clamp(58px, 8vh, 82px) !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.about-legacy-header {
+  flex: 0 0 auto !important;
+  width: min(100%, 850px) !important;
+  margin: 0 0 clamp(20px, 3vh, 32px) !important;
+}
+
+.about-legacy-eyebrow {
+  font-size: clamp(9px, 1vw, 12px) !important;
+  letter-spacing: clamp(1.8px, 0.28vw, 3px) !important;
+  margin-bottom: 5px !important;
+}
+
+.about-legacy-eyebrow-line {
+  width: 30px !important;
+  height: 2px !important;
+  margin-bottom: clamp(9px, 1.4vh, 14px) !important;
+}
+
+.about-legacy-heading {
+  font-size: clamp(26px, 3.2vw, 42px) !important;
+  line-height: 1.08 !important;
+  letter-spacing: -0.025em !important;
+  margin: 0 0 clamp(8px, 1.2vh, 12px) !important;
+}
+
+.about-legacy-subheading {
+  font-size: clamp(11px, 1.05vw, 15px) !important;
+  line-height: 1.42 !important;
+  max-width: 760px !important;
+}
+
+.about-legacy-timeline {
+  flex: 0 0 auto !important;
+  position: relative !important;
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 0 clamp(20px, 3vh, 34px) !important;
+  align-items: start !important;
+}
+
+.legacy-milestone {
+  width: 100% !important;
+  min-width: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  gap: 0 !important;
+}
+
+.legacy-milestone-tag {
+  width: 100% !important;
+  height: 22px !important;
+  min-height: 22px !important;
+  margin: 0 0 5px !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: center !important;
+  text-align: center !important;
+  font-size: clamp(8px, 0.75vw, 11px) !important;
+  line-height: 10px !important;
+  letter-spacing: 1px !important;
+  overflow: visible !important;
+}
+
+.legacy-milestone-circle {
+  width: clamp(34px, 3.2vw, 46px) !important;
+  height: clamp(34px, 3.2vw, 46px) !important;
+  margin: 0 0 7px !important;
+  flex-shrink: 0 !important;
+}
+
+.legacy-milestone-circle svg {
+  width: clamp(14px, 1.4vw, 19px) !important;
+  height: clamp(14px, 1.4vw, 19px) !important;
+}
+
+.legacy-milestone-title {
+  width: 100% !important;
+  max-width: 145px !important;
+  font-size: clamp(9px, 0.9vw, 14px) !important;
+  line-height: 1.18 !important;
+  margin: 0 0 3px !important;
+}
+
+.legacy-milestone-desc {
+  width: 100% !important;
+  max-width: 135px !important;
+  font-size: clamp(8px, 0.78vw, 12px) !important;
+  line-height: 1.28 !important;
+  margin: 0 auto !important;
+}
+
+.about-legacy-timeline .legacy-timeline-track {
+  display: block !important;
+  top: clamp(44px, 4.4vw, 55px) !important;
+  left: 12.5% !important;
+  right: 12.5% !important;
+  width: auto !important;
+  height: 0 !important;
+  border-top: 1.5px dashed rgba(8, 117, 209, 0.42) !important;
+  border-left: 0 !important;
+  z-index: 1 !important;
+}
+
+.about-legacy-timeline .legacy-timeline-track::before,
+.about-legacy-timeline .legacy-timeline-track::after {
+  top: -3px !important;
+  width: 5px !important;
+  height: 5px !important;
+}
+
+.about-legacy-cards-grid {
+  flex: 0 0 auto !important;
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: clamp(12px, 1.8vw, 24px) !important;
+  width: 100% !important;
+}
+
+.legacy-mission-card,
+.legacy-vision-card {
+  min-height: clamp(112px, 16vh, 160px) !important;
+  padding: clamp(16px, 2vh, 24px) clamp(16px, 2vw, 28px) !important;
+  border-radius: 16px !important;
+}
+
+.legacy-card-inner {
+  gap: clamp(12px, 1.5vw, 18px) !important;
+}
+
+.legacy-mission-icon-wrap,
+.legacy-vision-icon-wrap {
+  width: clamp(38px, 3.5vw, 48px) !important;
+  height: clamp(38px, 3.5vw, 48px) !important;
+}
+
+.legacy-mission-icon-wrap svg,
+.legacy-vision-icon-wrap svg {
+  width: clamp(18px, 1.7vw, 22px) !important;
+  height: clamp(18px, 1.7vw, 22px) !important;
+}
+
+.legacy-card-title {
+  font-size: clamp(10px, 0.9vw, 13px) !important;
+  letter-spacing: clamp(1px, 0.13vw, 1.7px) !important;
+  margin-bottom: 5px !important;
+}
+
+.legacy-card-line {
+  width: 26px !important;
+  height: 2px !important;
+  margin-bottom: 7px !important;
+}
+
+.legacy-card-desc {
+  font-size: clamp(10px, 0.88vw, 13px) !important;
+  line-height: 1.42 !important;
+}
+
+.about-legacy-wave-container {
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: -1px !important;
+  width: 100% !important;
+  z-index: 5 !important;
+  pointer-events: none !important;
+  line-height: 0 !important;
+}
+
+.about-legacy-wave-svg {
+  display: block !important;
+  width: 100% !important;
+  height: clamp(48px, 7vh, 72px) !important;
+  min-height: 0 !important;
+  object-fit: fill !important;
+}
+
+/* Short desktop/tablet screens: use the available height aggressively. */
+@media (min-width: 768px) and (max-height: 800px) {
+  .about-legacy-wrapper {
+    padding-top: 18px !important;
+    padding-bottom: 52px !important;
+  }
+
+  .about-legacy-header {
+    margin-bottom: 18px !important;
+  }
+
+  .about-legacy-heading {
+    font-size: clamp(25px, 3vw, 36px) !important;
+  }
+
+  .about-legacy-timeline {
+    margin-bottom: 18px !important;
+  }
+
+  .legacy-milestone-circle {
+    width: 38px !important;
+    height: 38px !important;
+    margin-bottom: 5px !important;
+  }
+
+  .about-legacy-timeline .legacy-timeline-track {
+    top: 42px !important;
+  }
+
+  .legacy-mission-card,
+  .legacy-vision-card {
+    min-height: 112px !important;
+    padding: 14px 18px !important;
+  }
+}
+
+/* Tablet: preserve the horizontal 4-point timeline and side-by-side cards. */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .about-legacy-wrapper {
+    width: min(92%, 1000px) !important;
+    padding-top: 24px !important;
+    padding-bottom: 60px !important;
+  }
+
+  .about-legacy-header {
+    margin-bottom: 20px !important;
+  }
+
+  .about-legacy-heading {
+    font-size: clamp(27px, 4vw, 38px) !important;
+  }
+
+  .about-legacy-subheading {
+    font-size: clamp(11px, 1.5vw, 14px) !important;
+  }
+
+  .about-legacy-timeline {
+    margin-bottom: 20px !important;
+  }
+
+  .legacy-milestone-tag {
+    font-size: clamp(7.5px, 1vw, 10px) !important;
+  }
+
+  .legacy-milestone-circle {
+    width: 38px !important;
+    height: 38px !important;
+  }
+
+  .about-legacy-timeline .legacy-timeline-track {
+    top: 42px !important;
+  }
+
+  .legacy-milestone-title {
+    font-size: clamp(9px, 1.15vw, 12px) !important;
+  }
+
+  .legacy-milestone-desc {
+    font-size: clamp(8px, 1vw, 10.5px) !important;
+    max-width: 110px !important;
+  }
+
+  .legacy-mission-card,
+  .legacy-vision-card {
+    min-height: 120px !important;
+    padding: 16px !important;
+  }
+
+  .legacy-card-inner {
+    gap: 12px !important;
+  }
+
+  .legacy-mission-icon-wrap,
+  .legacy-vision-icon-wrap {
+    width: 40px !important;
+    height: 40px !important;
+  }
+}
+
+/* Mobile: everything remains inside one viewport. */
+@media (max-width: 767px) {
+  .about-legacy-wrapper {
+    width: calc(100% - 24px) !important;
+    padding-top: 18px !important;
+    padding-bottom: 52px !important;
+  }
+
+  .about-legacy-header {
+    margin-bottom: 17px !important;
+  }
+
+  .about-legacy-eyebrow {
+    font-size: 9px !important;
+    letter-spacing: 2px !important;
+  }
+
+  .about-legacy-eyebrow-line {
+    width: 28px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .about-legacy-heading {
+    font-size: clamp(22px, 6.2vw, 29px) !important;
+    line-height: 1.08 !important;
+    margin-bottom: 7px !important;
+  }
+
+  .about-legacy-subheading {
+    font-size: 11px !important;
+    line-height: 1.4 !important;
+    max-width: 420px !important;
+  }
+
+  .about-legacy-timeline {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    margin-bottom: 17px !important;
+  }
+
+  .legacy-milestone-tag {
+    height: 20px !important;
+    min-height: 20px !important;
+    margin-bottom: 4px !important;
+    font-size: clamp(6.5px, 2vw, 8.5px) !important;
+    line-height: 9px !important;
+    letter-spacing: 0.65px !important;
+  }
+
+  .legacy-milestone-circle {
+    width: 30px !important;
+    height: 30px !important;
+    margin-bottom: 5px !important;
+    box-shadow: 0 0 0 4px rgba(8, 117, 209, 0.10), 0 4px 10px rgba(8, 117, 209, 0.20) !important;
+  }
+
+  .legacy-milestone-circle svg {
+    width: 13px !important;
+    height: 13px !important;
+  }
+
+  .legacy-milestone-title {
+    max-width: 72px !important;
+    font-size: clamp(8px, 2.35vw, 10px) !important;
+    line-height: 1.15 !important;
+    margin-bottom: 2px !important;
+  }
+
+  .legacy-milestone-desc {
+    max-width: 68px !important;
+    font-size: clamp(7px, 1.95vw, 8.5px) !important;
+    line-height: 1.18 !important;
+  }
+
+  .about-legacy-timeline .legacy-timeline-track {
+    top: 39px !important;
+    left: 12.5% !important;
+    right: 12.5% !important;
+  }
+
+  .about-legacy-cards-grid {
+    grid-template-columns: 1fr !important;
+    gap: 9px !important;
+  }
+
+  .legacy-mission-card,
+  .legacy-vision-card {
+    min-height: 0 !important;
+    height: auto !important;
+    padding: 12px 14px !important;
+    border-radius: 13px !important;
+  }
+
+  .legacy-card-inner {
+    gap: 10px !important;
+  }
+
+  .legacy-mission-icon-wrap,
+  .legacy-vision-icon-wrap {
+    width: 34px !important;
+    height: 34px !important;
+  }
+
+  .legacy-mission-icon-wrap svg,
+  .legacy-vision-icon-wrap svg {
+    width: 17px !important;
+    height: 17px !important;
+  }
+
+  .legacy-card-title {
+    font-size: 9.5px !important;
+    letter-spacing: 1px !important;
+    margin-bottom: 3px !important;
+  }
+
+  .legacy-card-line {
+    width: 22px !important;
+    height: 2px !important;
+    margin-bottom: 5px !important;
+  }
+
+  .legacy-card-desc {
+    font-size: 10px !important;
+    line-height: 1.35 !important;
+  }
+
+  .legacy-mission-bg-art {
+    width: 110px !important;
+    height: 90px !important;
+    opacity: 0.09 !important;
+  }
+
+  .legacy-vision-bg-art {
+    width: 100px !important;
+    height: 80px !important;
+    opacity: 0.07 !important;
+  }
+
+  .about-legacy-wave-svg {
+    height: 50px !important;
+  }
+}
+
+/* Very small phones: preserve readability while still fitting one viewport. */
+@media (max-width: 360px) {
+  .about-legacy-wrapper {
+    width: calc(100% - 16px) !important;
+    padding-top: 14px !important;
+    padding-bottom: 48px !important;
+  }
+
+  .about-legacy-header {
+    margin-bottom: 14px !important;
+  }
+
+  .about-legacy-heading {
+    font-size: 21px !important;
+  }
+
+  .about-legacy-subheading {
+    font-size: 10px !important;
+  }
+
+  .about-legacy-timeline {
+    margin-bottom: 14px !important;
+  }
+
+  .legacy-milestone-tag {
+    height: 18px !important;
+    min-height: 18px !important;
+    font-size: 6.5px !important;
+  }
+
+  .legacy-milestone-circle {
+    width: 27px !important;
+    height: 27px !important;
+    margin-bottom: 4px !important;
+  }
+
+  .legacy-milestone-circle svg {
+    width: 12px !important;
+    height: 12px !important;
+  }
+
+  .legacy-milestone-title {
+    max-width: 65px !important;
+    font-size: 7.8px !important;
+  }
+
+  .legacy-milestone-desc {
+    max-width: 61px !important;
+    font-size: 6.8px !important;
+  }
+
+  .about-legacy-timeline .legacy-timeline-track {
+    top: 35px !important;
+  }
+
+  .legacy-mission-card,
+  .legacy-vision-card {
+    padding: 10px 12px !important;
+  }
+
+  .legacy-card-desc {
+    font-size: 9.3px !important;
+  }
+
+  .about-legacy-wave-svg {
+    height: 44px !important;
+  }
+}
+
+/* ========================================================================== 
+   FINAL MOBILE UI FIX — ABOUT US / OUR LEGACY
+   ERROR FOUND: the mobile section was vertically centering a flex wrapper,
+   creating the huge blank area above the content shown in the screenshot.
+   FIX: top-align the content, keep the section exactly one viewport high,
+   preserve the horizontal 4-step timeline, and keep the two cards compact.
+   ========================================================================== */
+@media (max-width: 767px) {
+  .about-legacy-section {
+    position: relative !important;
+    width: 100% !important;
+    height: 100svh !important;
+    min-height: 100svh !important;
+    max-height: 100svh !important;
+    overflow: hidden !important;
+    display: block !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .about-legacy-wrapper {
+    position: relative !important;
+    z-index: 3 !important;
+    width: calc(100% - 32px) !important;
+    max-width: 520px !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    margin: 0 auto !important;
+    padding: 30px 0 70px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: stretch !important;
+    box-sizing: border-box !important;
+  }
+
+  .about-legacy-header {
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 0 18px !important;
+    padding: 0 !important;
+    text-align: center !important;
+    align-items: center !important;
+  }
+
+  .about-legacy-eyebrow {
+    font-size: 9.5px !important;
+    line-height: 1.2 !important;
+    letter-spacing: 2.4px !important;
+    margin: 0 0 6px !important;
+  }
+
+  .about-legacy-eyebrow-line {
+    width: 28px !important;
+    height: 2px !important;
+    margin: 0 0 10px !important;
+  }
+
+  .about-legacy-heading {
+    width: 100% !important;
+    max-width: 100% !important;
+    font-size: clamp(24px, 7.1vw, 31px) !important;
+    line-height: 1.08 !important;
+    letter-spacing: -0.035em !important;
+    margin: 0 0 8px !important;
+  }
+
+  .about-legacy-subheading {
+    width: 100% !important;
+    max-width: 410px !important;
+    font-size: 11.5px !important;
+    line-height: 1.42 !important;
+    margin: 0 auto !important;
+  }
+
+  .about-legacy-timeline {
+    flex: 0 0 auto !important;
+    position: relative !important;
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 0 !important;
+    align-items: start !important;
+    margin: 0 0 18px !important;
+    padding: 0 !important;
+  }
+
+  .legacy-milestone {
+    position: relative !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    text-align: center !important;
+    gap: 0 !important;
+    padding: 0 2px !important;
+  }
+
+  .legacy-milestone-tag {
+    width: 100% !important;
+    height: 20px !important;
+    min-height: 20px !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: center !important;
+    margin: 0 0 5px !important;
+    font-size: 7px !important;
+    line-height: 8px !important;
+    letter-spacing: 0.7px !important;
+    white-space: nowrap !important;
+  }
+
+  .legacy-milestone-circle {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    margin: 0 0 7px !important;
+    box-shadow: 0 0 0 3px rgba(8,117,209,.12), 0 4px 10px rgba(8,117,209,.20) !important;
+  }
+
+  .legacy-milestone-circle svg {
+    width: 13px !important;
+    height: 13px !important;
+  }
+
+  .legacy-milestone-title {
+    width: 100% !important;
+    max-width: 76px !important;
+    min-height: 22px !important;
+    margin: 0 0 2px !important;
+    font-size: 8.5px !important;
+    line-height: 1.15 !important;
+  }
+
+  .legacy-milestone-desc {
+    width: 100% !important;
+    max-width: 72px !important;
+    margin: 0 auto !important;
+    font-size: 7.5px !important;
+    line-height: 1.18 !important;
+  }
+
+  .about-legacy-timeline .legacy-timeline-track {
+    display: block !important;
+    position: absolute !important;
+    top: 41px !important;
+    left: 12.5% !important;
+    right: 12.5% !important;
+    width: auto !important;
+    height: 0 !important;
+    border-top: 1.5px dashed rgba(8,117,209,.40) !important;
+    border-left: 0 !important;
+    z-index: 1 !important;
+  }
+
+  .about-legacy-timeline .legacy-timeline-track::before,
+  .about-legacy-timeline .legacy-timeline-track::after {
+    top: -3px !important;
+    width: 5px !important;
+    height: 5px !important;
+  }
+
+  .about-legacy-cards-grid {
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    margin: 0 !important;
+  }
+
+  .legacy-mission-card,
+  .legacy-vision-card {
+    width: 100% !important;
+    min-height: 0 !important;
+    height: auto !important;
+    padding: 13px 14px !important;
+    border-radius: 13px !important;
+  }
+
+  .legacy-card-inner {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 10px !important;
+  }
+
+  .legacy-mission-icon-wrap,
+  .legacy-vision-icon-wrap {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    min-height: 34px !important;
+  }
+
+  .legacy-mission-icon-wrap svg,
+  .legacy-vision-icon-wrap svg {
+    width: 17px !important;
+    height: 17px !important;
+  }
+
+  .legacy-card-body { min-width: 0 !important; }
+
+  .legacy-card-title {
+    font-size: 9.5px !important;
+    line-height: 1.2 !important;
+    letter-spacing: 1.1px !important;
+    margin: 0 0 4px !important;
+  }
+
+  .legacy-card-line {
+    width: 22px !important;
+    height: 1.5px !important;
+    margin: 0 0 5px !important;
+  }
+
+  .legacy-card-desc {
+    font-size: 9.5px !important;
+    line-height: 1.35 !important;
+    margin: 0 !important;
+    max-width: none !important;
+  }
+
+  .legacy-mission-bg-art {
+    width: 115px !important;
+    height: 82px !important;
+    right: -4px !important;
+    bottom: -8px !important;
+    opacity: .08 !important;
+  }
+
+  .legacy-vision-bg-art {
+    width: 105px !important;
+    height: 75px !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    opacity: .06 !important;
+  }
+
+  .about-legacy-wave-container {
+    position: absolute !important;
+    z-index: 1 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 52px !important;
+    overflow: hidden !important;
+  }
+
+  .about-legacy-wave-svg {
+    display: block !important;
+    width: 100% !important;
+    height: 52px !important;
+    min-height: 52px !important;
+    object-fit: cover !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .about-legacy-wrapper { width: calc(100% - 24px) !important; padding-top: 26px !important; padding-bottom: 64px !important; }
+  .about-legacy-header { margin-bottom: 15px !important; }
+  .about-legacy-heading { font-size: 23px !important; }
+  .about-legacy-subheading { font-size: 10.5px !important; }
+  .about-legacy-timeline { margin-bottom: 15px !important; }
+  .legacy-milestone-tag { font-size: 6.5px !important; }
+  .legacy-milestone-circle { width: 30px !important; height: 30px !important; min-width: 30px !important; min-height: 30px !important; }
+  .legacy-milestone-circle svg { width: 12px !important; height: 12px !important; }
+  .legacy-milestone-title { max-width: 68px !important; font-size: 8px !important; }
+  .legacy-milestone-desc { max-width: 64px !important; font-size: 7px !important; }
+  .about-legacy-timeline .legacy-timeline-track { top: 39px !important; }
+  .legacy-mission-card, .legacy-vision-card { padding: 11px 12px !important; border-radius: 12px !important; }
+  .legacy-card-inner { gap: 8px !important; }
+  .legacy-mission-icon-wrap, .legacy-vision-icon-wrap { width: 31px !important; height: 31px !important; min-width: 31px !important; min-height: 31px !important; }
+  .legacy-card-title { font-size: 8.5px !important; letter-spacing: 1px !important; }
+  .legacy-card-desc { font-size: 8.5px !important; line-height: 1.3 !important; }
+}
+
+@media (max-width: 767px) and (max-height: 700px) {
+  .about-legacy-wrapper { padding-top: 20px !important; padding-bottom: 56px !important; }
+  .about-legacy-header { margin-bottom: 12px !important; }
+  .about-legacy-heading { font-size: 22px !important; margin-bottom: 6px !important; }
+  .about-legacy-subheading { font-size: 10px !important; }
+  .about-legacy-timeline { margin-bottom: 12px !important; }
+  .legacy-milestone-tag { height: 18px !important; min-height: 18px !important; }
+  .legacy-milestone-circle { width: 28px !important; height: 28px !important; min-width: 28px !important; min-height: 28px !important; margin-bottom: 5px !important; }
+  .legacy-milestone-title { font-size: 7.8px !important; }
+  .legacy-milestone-desc { font-size: 6.8px !important; }
+  .about-legacy-timeline .legacy-timeline-track { top: 36px !important; }
+  .legacy-mission-card, .legacy-vision-card { padding: 9px 11px !important; }
+  .legacy-mission-icon-wrap, .legacy-vision-icon-wrap { width: 29px !important; height: 29px !important; min-width: 29px !important; min-height: 29px !important; }
+  .legacy-card-title { font-size: 8px !important; }
+  .legacy-card-desc { font-size: 8px !important; }
+}
+
+
+/* ==========================================================================
+   ABOUT US — PART 3 / OUR LEGACY — FINAL RESPONSIVE REDESIGN
+   --------------------------------------------------------------------------
+   Goals:
+   - One clean composition at every width.
+   - 4 milestone timeline stays horizontal on tablet/mobile.
+   - Mission + Vision become clean stacked cards on smaller screens.
+   - No forced 100vh blank space on phones.
+   - Content never leaks into the following "What We Stand For" section.
+   - Wave stays inside this section and never overlays the next section.
+   ========================================================================== */
+
+.about-legacy-section {
+  position: relative !important;
+  width: 100% !important;
+  min-height: 0 !important;
+  height: auto !important;
+  max-height: none !important;
+  background:
+    radial-gradient(circle at 8% 18%, rgba(22,119,210,.07) 0 2px, transparent 2.5px) 0 0 / 18px 18px,
+    linear-gradient(180deg, #F8FBFF 0%, #F5F9FE 100%) !important;
+  overflow: hidden !important;
+  isolation: isolate !important;
+  display: block !important;
+  padding: clamp(64px, 7vw, 92px) 0 128px !important;
+  box-sizing: border-box !important;
+}
+
+.about-legacy-wrapper {
+  position: relative !important;
+  z-index: 3 !important;
+  width: min(92%, 1240px) !important;
+  max-width: 1240px !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  justify-content: flex-start !important;
+  flex: none !important;
+}
+
+.about-legacy-header {
+  width: min(100%, 900px) !important;
+  max-width: 900px !important;
+  margin: 0 auto clamp(30px, 4vw, 46px) !important;
+  text-align: center !important;
+  align-items: center !important;
+}
+
+.about-legacy-eyebrow {
+  display: block !important;
+  font-size: clamp(10px, 1vw, 13px) !important;
+  font-weight: 800 !important;
+  letter-spacing: clamp(2px, .28vw, 3.5px) !important;
+  line-height: 1.2 !important;
+  color: #0868C9 !important;
+  margin-bottom: 8px !important;
+}
+
+.about-legacy-eyebrow-line {
+  width: 38px !important;
+  height: 3px !important;
+  margin: 0 auto 16px !important;
+  background: #0868C9 !important;
+  border-radius: 99px !important;
+}
+
+.about-legacy-heading {
+  width: 100% !important;
+  max-width: 900px !important;
+  margin: 0 auto 12px !important;
+  color: #071A36 !important;
+  font-family: 'Inter', Arial, sans-serif !important;
+  font-size: clamp(30px, 3.5vw, 48px) !important;
+  font-weight: 900 !important;
+  line-height: 1.08 !important;
+  letter-spacing: -.035em !important;
+  text-align: center !important;
+}
+
+.about-legacy-heading .text-blue-accent {
+  color: #0868C9 !important;
+}
+
+.about-legacy-subheading {
+  width: min(100%, 760px) !important;
+  max-width: 760px !important;
+  margin: 0 auto !important;
+  color: #52627A !important;
+  font-size: clamp(13px, 1.15vw, 16px) !important;
+  line-height: 1.55 !important;
+  text-align: center !important;
+}
+
+/* ---- Timeline: always 4 columns ---- */
+.about-legacy-timeline {
+  position: relative !important;
+  width: 100% !important;
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+  align-items: start !important;
+  padding: 0 !important;
+  margin: 0 0 clamp(30px, 4vw, 48px) !important;
+}
+
+.legacy-timeline-track {
+  position: absolute !important;
+  top: 49px !important;
+  left: 12.5% !important;
+  right: 12.5% !important;
+  width: auto !important;
+  height: 0 !important;
+  border: 0 !important;
+  border-top: 2px dashed rgba(8,104,201,.42) !important;
+  z-index: 1 !important;
+  display: block !important;
+  pointer-events: none !important;
+}
+
+.legacy-timeline-track::before,
+.legacy-timeline-track::after {
+  content: "" !important;
+  position: absolute !important;
+  top: -4px !important;
+  width: 6px !important;
+  height: 6px !important;
+  border-radius: 50% !important;
+  background: #0868C9 !important;
+}
+
+.legacy-timeline-track::before { left: -3px !important; }
+.legacy-timeline-track::after { right: -3px !important; }
+
+.legacy-milestone {
+  position: relative !important;
+  z-index: 2 !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+.legacy-milestone-tag {
+  width: 100% !important;
+  height: 25px !important;
+  min-height: 25px !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: center !important;
+  margin: 0 0 7px !important;
+  color: #0868C9 !important;
+  font-size: clamp(8px, .8vw, 11px) !important;
+  font-weight: 800 !important;
+  letter-spacing: 1px !important;
+  line-height: 1 !important;
+  text-transform: uppercase !important;
+  text-align: center !important;
+}
+
+.legacy-milestone-circle {
+  width: clamp(38px, 4vw, 52px) !important;
+  height: clamp(38px, 4vw, 52px) !important;
+  margin: 0 0 10px !important;
+  flex: 0 0 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 50% !important;
+  background: linear-gradient(145deg, #1677D2, #0868C9) !important;
+  border: 4px solid #E6F1FC !important;
+  box-shadow: 0 5px 15px rgba(8,104,201,.20) !important;
+}
+
+.legacy-milestone-circle svg {
+  width: clamp(16px, 1.55vw, 22px) !important;
+  height: clamp(16px, 1.55vw, 22px) !important;
+}
+
+.legacy-milestone-title {
+  width: 100% !important;
+  max-width: 145px !important;
+  min-height: 36px !important;
+  margin: 0 auto 4px !important;
+  color: #071A36 !important;
+  font-size: clamp(10px, 1vw, 14px) !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+  text-align: center !important;
+}
+
+.legacy-milestone-desc {
+  width: 100% !important;
+  max-width: 145px !important;
+  margin: 0 auto !important;
+  color: #52627A !important;
+  font-size: clamp(9px, .9vw, 12px) !important;
+  line-height: 1.35 !important;
+  text-align: center !important;
+}
+
+/* ---- Mission + Vision ---- */
+.about-legacy-cards-grid {
+  width: 100% !important;
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: clamp(18px, 2.4vw, 32px) !important;
+  align-items: stretch !important;
+}
+
+.legacy-mission-card,
+.legacy-vision-card {
+  position: relative !important;
+  min-width: 0 !important;
+  min-height: 154px !important;
+  padding: clamp(22px, 2.2vw, 30px) !important;
+  border-radius: 18px !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+}
+
+.legacy-mission-card {
+  color: #fff !important;
+  background: linear-gradient(120deg, #071A36 0%, #0A3B73 56%, #1677D2 100%) !important;
+  border: 1px solid rgba(22,119,210,.25) !important;
+  box-shadow: 0 12px 28px rgba(7,26,54,.16) !important;
+}
+
+.legacy-vision-card {
+  color: #071A36 !important;
+  background: rgba(255,255,255,.92) !important;
+  border: 1px solid #DCE8F5 !important;
+  box-shadow: 0 10px 26px rgba(7,26,54,.08) !important;
+}
+
+.legacy-card-inner {
+  position: relative !important;
+  z-index: 3 !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: clamp(14px, 1.6vw, 22px) !important;
+}
+
+.legacy-mission-icon-wrap,
+.legacy-vision-icon-wrap {
+  width: clamp(42px, 4.2vw, 58px) !important;
+  height: clamp(42px, 4.2vw, 58px) !important;
+  flex: 0 0 auto !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.legacy-mission-icon-wrap {
+  background: rgba(255,255,255,.12) !important;
+  border: 1px solid rgba(255,255,255,.28) !important;
+}
+
+.legacy-vision-icon-wrap {
+  background: #EAF4FF !important;
+  border: 1px solid #CFE3F8 !important;
+}
+
+.legacy-card-body {
+  position: relative !important;
+  z-index: 3 !important;
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+}
+
+.legacy-card-title {
+  margin: 0 0 7px !important;
+  color: #fff !important;
+  font-size: clamp(12px, 1vw, 15px) !important;
+  font-weight: 800 !important;
+  letter-spacing: 1.7px !important;
+  line-height: 1.2 !important;
+}
+
+.legacy-card-title--vision {
+  color: #0868C9 !important;
+}
+
+.legacy-card-line {
+  width: 30px !important;
+  height: 2.5px !important;
+  margin: 0 0 10px !important;
+  border-radius: 99px !important;
+}
+
+.legacy-card-line--mission { background: rgba(255,255,255,.62) !important; }
+.legacy-card-line--vision { background: #0868C9 !important; }
+
+.legacy-card-desc {
+  max-width: 720px !important;
+  margin: 0 !important;
+  color: rgba(255,255,255,.91) !important;
+  font-size: clamp(11px, 1vw, 14px) !important;
+  line-height: 1.55 !important;
+}
+
+.legacy-card-desc--vision {
+  color: #52627A !important;
+}
+
+.legacy-mission-bg-art,
+.legacy-vision-bg-art {
+  position: absolute !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: clamp(110px, 14vw, 190px) !important;
+  height: 100% !important;
+  opacity: .12 !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+  background-position: right bottom !important;
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
+}
+
+/* ---- Wave is part of this section, not a floating element over the next one ---- */
+.about-legacy-wave-container {
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: -1px !important;
+  width: 100% !important;
+  height: clamp(56px, 7vw, 92px) !important;
+  z-index: 2 !important;
+  pointer-events: none !important;
+  overflow: hidden !important;
+}
+
+.about-legacy-wave-svg {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  object-fit: fill !important;
+  display: block !important;
+}
+
+/* ---- Tablet: compact but still spacious ---- */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .about-legacy-section {
+    padding: 52px 0 108px !important;
+  }
+
+  .about-legacy-wrapper {
+    width: min(92%, 960px) !important;
+  }
+
+  .about-legacy-header {
+    margin-bottom: 30px !important;
+  }
+
+  .about-legacy-heading {
+    font-size: clamp(28px, 4vw, 40px) !important;
+  }
+
+  .about-legacy-subheading {
+    font-size: 13px !important;
+  }
+
+  .about-legacy-timeline {
+    margin-bottom: 30px !important;
+  }
+
+  .legacy-milestone-title {
+    max-width: 125px !important;
+  }
+
+  .legacy-milestone-desc {
+    max-width: 125px !important;
+  }
+
+  .about-legacy-cards-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  .legacy-mission-card,
+  .legacy-vision-card {
+    min-height: 128px !important;
+    padding: 20px 22px !important;
+  }
+}
+
+/* ---- Mobile: clean editorial layout, no huge blank viewport ---- */
+@media (max-width: 767px) {
+  .about-legacy-section {
+    padding: 42px 0 92px !important;
+    background:
+      radial-gradient(circle at 5% 14%, rgba(22,119,210,.08) 0 1.5px, transparent 2px) 0 0 / 15px 15px,
+      linear-gradient(180deg, #F8FBFF 0%, #F4F8FD 100%) !important;
+  }
+
+  .about-legacy-wrapper {
+    width: calc(100% - 28px) !important;
+    max-width: none !important;
+  }
+
+  .about-legacy-header {
+    width: 100% !important;
+    margin-bottom: 24px !important;
+  }
+
+  .about-legacy-eyebrow {
+    font-size: 9px !important;
+    letter-spacing: 2.4px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .about-legacy-eyebrow-line {
+    width: 28px !important;
+    height: 2px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .about-legacy-heading {
+    font-size: clamp(24px, 7.2vw, 31px) !important;
+    line-height: 1.08 !important;
+    letter-spacing: -.03em !important;
+    margin-bottom: 9px !important;
+  }
+
+  .about-legacy-subheading {
+    width: 100% !important;
+    font-size: 11.5px !important;
+    line-height: 1.45 !important;
+  }
+
+  .legacy-sub-br {
+    display: none !important;
+  }
+
+  .about-legacy-timeline {
+    width: 100% !important;
+    margin-bottom: 24px !important;
+  }
+
+  .legacy-timeline-track {
+    top: 38px !important;
+    left: 12.5% !important;
+    right: 12.5% !important;
+  }
+
+  .legacy-milestone-tag {
+    height: 19px !important;
+    min-height: 19px !important;
+    margin-bottom: 5px !important;
+    font-size: 7px !important;
+    letter-spacing: .65px !important;
+  }
+
+  .legacy-milestone-circle {
+    width: 36px !important;
+    height: 36px !important;
+    border-width: 3px !important;
+    margin-bottom: 7px !important;
+  }
+
+  .legacy-milestone-circle svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
+
+  .legacy-milestone-title {
+    min-height: 27px !important;
+    max-width: 74px !important;
+    font-size: 8.5px !important;
+    line-height: 1.18 !important;
+    margin-bottom: 3px !important;
+  }
+
+  .legacy-milestone-desc {
+    max-width: 74px !important;
+    font-size: 7.5px !important;
+    line-height: 1.28 !important;
+  }
+
+  .about-legacy-cards-grid {
+    grid-template-columns: 1fr !important;
+    gap: 11px !important;
+  }
+
+  .legacy-mission-card,
+  .legacy-vision-card {
+    min-height: 0 !important;
+    padding: 16px !important;
+    border-radius: 15px !important;
+  }
+
+  .legacy-card-inner {
+    gap: 12px !important;
+  }
+
+  .legacy-mission-icon-wrap,
+  .legacy-vision-icon-wrap {
+    width: 38px !important;
+    height: 38px !important;
+  }
+
+  .legacy-mission-icon-wrap svg,
+  .legacy-vision-icon-wrap svg {
+    width: 19px !important;
+    height: 19px !important;
+  }
+
+  .legacy-card-title {
+    font-size: 10px !important;
+    letter-spacing: 1.35px !important;
+    margin-bottom: 5px !important;
+  }
+
+  .legacy-card-line {
+    width: 24px !important;
+    height: 2px !important;
+    margin-bottom: 7px !important;
+  }
+
+  .legacy-card-desc {
+    font-size: 9.5px !important;
+    line-height: 1.45 !important;
+  }
+
+  .legacy-mission-bg-art,
+  .legacy-vision-bg-art {
+    width: 95px !important;
+    opacity: .08 !important;
+  }
+
+  .about-legacy-wave-container {
+    height: 48px !important;
+  }
+}
+
+/* ---- Very small phones: preserve readability instead of shrinking to dust ---- */
+@media (max-width: 380px) {
+  .about-legacy-section {
+    padding-top: 34px !important;
+    padding-bottom: 80px !important;
+  }
+
+  .about-legacy-wrapper {
+    width: calc(100% - 22px) !important;
+  }
+
+  .about-legacy-heading {
+    font-size: 22px !important;
+  }
+
+  .about-legacy-subheading {
+    font-size: 10.5px !important;
+  }
+
+  .legacy-milestone-circle {
+    width: 33px !important;
+    height: 33px !important;
+  }
+
+  .legacy-milestone-title {
+    font-size: 8px !important;
+    max-width: 66px !important;
+  }
+
+  .legacy-milestone-desc {
+    font-size: 7px !important;
+    max-width: 66px !important;
+  }
+
+  .legacy-card-desc {
+    font-size: 9px !important;
+  }
+}

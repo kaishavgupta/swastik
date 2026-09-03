@@ -19,8 +19,7 @@ export const AboutPart3: React.FC = () => {
             Building Lucknow's <span className="text-blue-accent">RMC Culture</span> Since 2009
           </h2>
           <p className="about-legacy-subheading">
-            From a single RMC plant to a trusted concrete solutions partner,<br className="legacy-sub-br" />
-            our journey is built on consistency, quality and trust.
+            From a single RMC plant to a trusted concrete solutions partner, our journey is built on consistency, quality and trust.
           </p>
         </motion.div>
 
