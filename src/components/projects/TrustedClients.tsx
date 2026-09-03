@@ -10,51 +10,136 @@ export interface ClientItem {
 export const TRUSTED_CLIENTS_DATA: ClientItem[] = [
   {
     id: 'up-pwd',
-    name: 'Uttar Pradesh',
+    name: 'PWD Lucknow',
     logoUrl: '/PWD_Lucknow.svg',
     altText: 'Government of Uttar Pradesh PWD'
   },
   {
     id: 'lda',
-    name: 'Lucknow Development Authority',
+    name: 'LDA Lucknow',
     logoUrl: '/LDA_Lucknow.svg',
     altText: 'Lucknow Development Authority (LDA)'
   },
   {
     id: 'nbcc',
-    name: 'A Navratna CPSE',
+    name: 'NBCC India',
     logoUrl: '/NBCC.svg',
-    altText: 'NBCC India Limited (A Navratna CPSE)'
+    altText: 'NBCC India Limited'
   },
   {
     id: 'ircon',
-    name: 'International Limited',
+    name: 'IRCON International',
     logoUrl: '/IRCON_International.svg',
     altText: 'IRCON International Limited'
   },
   {
-    id: 'cpwd',
-    name: 'Central PWD',
+    id: 'rera',
+    name: 'UP RERA',
     logoUrl: '/RERA.svg',
-    altText: 'Central Public Works Department (CPWD) / RERA'
+    altText: 'UP RERA Registered Projects'
   },
   {
-    id: 'uppcl',
-    name: 'Uttar Pradesh Power Corp.',
+    id: 'hal',
+    name: 'HAL India',
     logoUrl: '/HAL_Logo_HighQuality.svg',
-    altText: 'Uttar Pradesh Power Corporation Limited (UPPCL)'
+    altText: 'Hindustan Aeronautics Limited'
   },
   {
-    id: 'infra-india',
-    name: 'Infrastructure India Ltd.',
+    id: 'mrc',
+    name: 'MRC Construction',
+    logoUrl: '/MRC_Logo_HighQuality.svg',
+    altText: 'MRC Construction'
+  },
+  {
+    id: 'jaypee',
+    name: 'Jaypee Group',
     logoUrl: '/Jaypee_Group_Logo_HighQuality.svg',
-    altText: 'Infrastructure India Ltd.'
+    altText: 'Jaypee Group'
   }
 ];
 
-const TOTAL_CLIENTS = TRUSTED_CLIENTS_DATA.length; // 7
+const CLIENT_LOGO_CANDIDATES: Record<string, string[]> = {
+  rera: ["RERA.svg", "rera.svg", "RERA_Logo.svg", "RERA-logo.svg", "UP-RERA.svg", "UP_RERA.svg"],
+  nbcc: ["NBCC.svg", "nbcc.svg", "NBCC_Logo.svg", "NBCC-logo.svg", "NBCC_India.svg", "NBCC_India_Logo.svg"],
+  'up-pwd': ["PWD_Lucknow.svg", "pwd_lucknow.svg", "PWD.svg", "pwd.svg"],
+  lda: ["LDA_Lucknow.svg", "lda_lucknow.svg", "LDA.svg", "lda.svg"],
+  ircon: ["IRCON_International.svg", "ircon_international.svg", "IRCON.svg", "ircon.svg"],
+  hal: ["HAL_Logo_HighQuality.svg", "hal_logo_highquality.svg", "HAL.svg", "hal.svg"],
+  mrc: ["MRC_Logo_HighQuality.svg", "mrc_logo_highquality.svg", "MRC.svg", "mrc.svg"],
+  jaypee: ["Jaypee_Group_Logo_HighQuality.svg", "jaypee_group_logo_highquality.svg", "Jaypee.svg", "jaypee.svg"],
+};
 
-// 3 Full Sets for TRUE Endless Loop: [Set 0 (0..6), Set 1 (0..6), Set 2 (0..6)] (21 total items)
+const getLogoCandidates = (client: ClientItem): string[] => {
+  const candidates = CLIENT_LOGO_CANDIDATES[client.id] ?? [client.logoUrl.replace(/^\//, "")];
+  const baseUrl = (import.meta.env.BASE_URL || "/").replace(/\/$/, "");
+
+  return candidates.map((filename) => {
+    const cleanFn = filename.replace(/^\//, "");
+    return `${baseUrl}/${cleanFn}`;
+  });
+};
+
+const TrustedClientLogo: React.FC<{ client: ClientItem }> = ({ client }) => {
+  const candidates = React.useMemo(() => getLogoCandidates(client), [client]);
+  const [candidateIndex, setCandidateIndex] = useState(0);
+
+  useEffect(() => {
+    setCandidateIndex(0);
+  }, [client.id]);
+
+  const handleError = () => {
+    setCandidateIndex((current) => Math.min(current + 1, candidates.length));
+  };
+
+  if (candidateIndex >= candidates.length) {
+    return (
+      <span
+        className="trust-clients__logo-fallback"
+        role="img"
+        aria-label={client.altText}
+        style={{
+          display: "inline-flex",
+          alignItems: "center",
+          justifyContent: "center",
+          minHeight: 44,
+          padding: "6px 12px",
+          borderRadius: 8,
+          color: "#0875D1",
+          fontWeight: 800,
+          fontSize: 14,
+          letterSpacing: "0.04em",
+          background: "#F4F8FC",
+          border: "1px solid #DCEAF7",
+          boxSizing: "border-box",
+          textAlign: "center",
+        }}
+      >
+        {client.name}
+      </span>
+    );
+  }
+
+  return (
+    <img
+      src={candidates[candidateIndex]}
+      alt={client.altText}
+      onError={handleError}
+      loading="lazy"
+      className="trust-clients__logo-img"
+      style={{
+        maxWidth: "100%",
+        maxHeight: "100%",
+        width: "auto",
+        height: "auto",
+        objectFit: "contain",
+        display: "block",
+      }}
+    />
+  );
+};
+
+const TOTAL_CLIENTS = TRUSTED_CLIENTS_DATA.length;
+
 const EXTENDED_CLIENTS = [
   ...TRUSTED_CLIENTS_DATA,
   ...TRUSTED_CLIENTS_DATA,
@@ -360,12 +445,7 @@ export const TrustedClients: React.FC = () => {
                     aria-label={`Client: ${client.name}`}
                   >
                     <div className="trust-clients__logo-wrap">
-                      <img
-                        src={client.logoUrl}
-                        alt={client.altText}
-                        loading="lazy"
-                        className="trust-clients__logo-img"
-                      />
+                      <TrustedClientLogo client={client} />
                     </div>
                     <div className="trust-clients__card-divider" />
                     <span className="trust-clients__name">{client.name}</span>
